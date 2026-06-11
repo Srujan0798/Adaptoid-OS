@@ -47,10 +47,7 @@
 | `protocols/memory-tiers.md` | when building durable memory for long-running agents |
 | `protocols/consolidation-cycle.md` | when adding background memory maintenance |
 | `protocols/evolution-engine.md` | when adding experimental prompt/skill evolution |
-| `protocols/event-sourcing.md` | designing session persistence / debugging a past run / proving what happened |
-| `protocols/sandboxing.md` | before running untrusted or agent-generated code |
-| `protocols/clarification-protocol.md` | when a brief is vague, garbled, or under-specified |
-| `adaptor/INPUT-TAXONOMY.md` | at ANALYZE — classify request shape (15 input types × duration × complexity × risk) |
+
 
 ### Super-Adaptoid protocols (v5.0)
 
