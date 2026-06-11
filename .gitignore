@@ -1,1 +1,10 @@
 *.zip
+__pycache__/
+*.pyc
+*.pyo
+.DS_Store
+node_modules/
+.vscode/
+.idea/
+*.log
+

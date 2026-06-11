@@ -41,4 +41,6 @@ An adapter is a thin translator, not a rewrite. For framework F, an adapter prov
 ## The rule
 The core never depends on a framework. Adapters are opt-in, at the edges. A project must run with zero external frameworks if the user wants sovereignty — and still be excellent.
 
+Implemented bridges live in `claw_bridge/`.
+
 `verified: 2026-05 (ADK ⚡; LangGraph/CrewAI/AutoGen/OpenAI-SDK/DSPy corpus; MetaGPT/LlamaIndex/SK/Agno/OWL/DeerFlow reported — verify before relying)`

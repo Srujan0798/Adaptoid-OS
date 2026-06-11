@@ -32,6 +32,8 @@ Agentic AI projects fail for the same 18 reasons, every time:
 
 **Existing frameworks** (LangGraph, CrewAI, AutoGen) give you primitives. They don't give you an *operating system* that prevents, detects, and heals these failures automatically.
 
+![Demo](launch-kit/demo.gif)
+
 ---
 
 ## Quick Start
