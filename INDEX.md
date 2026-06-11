@@ -67,6 +67,10 @@
 | `validators/memory_sync.sh` | monthly — rotate stale memory entries |
 | `slash-commands/README.md` | when using named orchestrator commands |
 | `protocols/self-improvement.md` | when setting up GEPA / Hermes loops |
+| `protocols/adapt-loop.md` | when designing a request-handling workflow |
+| `protocols/memory-tiers.md` | when building durable memory for long-running agents |
+| `protocols/consolidation-cycle.md` | when adding background memory maintenance |
+| `protocols/evolution-engine.md` | when adding experimental prompt/skill evolution |
 | `failure-modes/FM-NN.md` | when you SEE that symptom, or proactively before a risky op |
 | `validators/emit_event.sh` | after every major action — append to durable session log |
 | `validators/replay_session.sh` | after crash or compaction — reconstruct context |
@@ -84,6 +88,8 @@
 | `reference/ecosystem/<topic>.md` | pull the 2–4 that match the project (coding-agents, sdks-adks, memory-context, optimizations, etc.) |
 | `reference/ecosystem/tools-compendium.md` | when choosing your tool stack |
 | `reference/ecosystem/skills-registry.md` | when selecting or authoring skills |
+| `reference/ecosystem/hidden-gems.md` | when evaluating lesser-known tools and patterns |
+| `reference/ecosystem/ecosystem-analysis.md` | when positioning against the broader agentic landscape |
 | `reference/workflows/startup-mvp.md` | startup MVP playbook |
 | `reference/workflows/data-science.md` | data science / ML playbook |
 | `reference/workflows/hackathon-48h.md` | 48-hour hackathon playbook |
