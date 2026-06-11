@@ -110,7 +110,7 @@
 | Site/repo down | README fails to load | Verify DNS/GitHub status, post update |
 | Install script broken | 3+ reports | Pause promotion, fix and re-test |
 | Negative HN thread | Top comment is critical | Respond honestly, invite specifics, fix fast |
-| Scope-creep requests | High-visibility feature asks | Log in ROADBACKLOG, explain criteria |
+| Scope-creep requests | High-visibility feature asks | Log in ROADMAP, explain criteria |
 | Maintainer overload | >20 open issues | Triage, label "good first issue", delegate |
 
 ## Communication Templates

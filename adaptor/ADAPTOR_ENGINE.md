@@ -12,8 +12,10 @@
 ```
 INGEST    Read: this DevKit (kernel + INDEX) + the project brief + any existing code/config.
    ↓
-ANALYZE   Detect: archetype (archetypes/), tier (tiers/), domain, constraints, success criteria,
+ANALYZE   Detect: input type (INPUT-TAXONOMY.md — request shape: PROJECT/PROBLEM/DEBUG/…),
+          archetype (archetypes/), tier (tiers/), domain, constraints, success criteria,
           deadline, audience, risk profile. Identify the highest-risk failure modes.
+          Ambiguous brief → protocols/clarification-protocol.md (never guess silently).
    ↓
 PULL      From reference/ecosystem/SELECTION.md → the smallest winning stack.
           From skills-catalog → the skills tasks will need.

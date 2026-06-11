@@ -14,7 +14,7 @@
 
 **A framework-agnostic harness for agentic AI that treats the control stack surrounding the LLM — routing, memory, validation, policy — as the primary optimization target.**
 
-[Quick Start](#quick-start) · [Features](#features) · [Comparison](#why-adaptoid-beats-every-alternative) · [Architecture](#architecture) · [Contributing](#contributing)
+[Quick Start](#quick-start) · [Features](#features) · [Comparison](#how-adaptoid-differs) · [Architecture](#architecture) · [Contributing](#contributing)
 
 </div>
 
@@ -32,7 +32,7 @@ Agentic AI projects fail for the same 18 reasons, every time:
 
 **Existing frameworks** (LangGraph, CrewAI, AutoGen) give you primitives. They don't give you an *operating system* that prevents, detects, and heals these failures automatically.
 
-![Demo](docs/demo.gif)
+![Demo](../../docs/demo.gif)
 
 ---
 
@@ -213,7 +213,7 @@ read kernel/ → detect archetype → pick tier → generate structure
 
 ## Contributing
 
-We welcome contributions! See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
+We welcome contributions! See [CONTRIBUTING.md](../../CONTRIBUTING.md) for guidelines.
 
 **Every critical bug found in production → add a new FM file + regression test + validator.** The library only grows.
 
@@ -221,7 +221,7 @@ We welcome contributions! See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
 
 ## License
 
-MIT — see [LICENSE](LICENSE)
+MIT — see [LICENSE](../../LICENSE)
 
 ---
 

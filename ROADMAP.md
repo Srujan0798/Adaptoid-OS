@@ -18,24 +18,24 @@
 - Self-improvement: GEPA + Hermes protocol
 - GitHub-ready: CI, templates, LICENSE
 
-## v4.1 — Runtime Hardening
+## v5.1 — Runtime Hardening
 - [ ] Python reference runtime for conductor.py
 - [ ] Integration tests for all validators
 - [ ] Benchmark suite (speed, cost, accuracy)
 - [ ] Calibration sets per archetype (50 cases)
 
-## v4.2 — Framework Adapters
+## v5.2 — Framework Adapters
 - [ ] Claw Bridge: LangGraph adapter
 - [ ] Claw Bridge: CrewAI adapter
 - [ ] Claw Bridge: AutoGen adapter
 - [ ] .agf.yaml agent format standard
 
-## v4.3 — Multi-Channel
+## v5.3 — Multi-Channel
 - [ ] OpenClaw-style gateway
 - [ ] Slack / Telegram / Discord bindings
 - [ ] Per-channel context isolation
 
-## v4.4 — Enterprise
+## v5.4 — Enterprise
 - [ ] SOC2 / ISO compliance templates
 - [ ] Team scaling guide
 - [ ] Org-wide deployment playbook

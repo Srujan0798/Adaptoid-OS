@@ -22,7 +22,26 @@
 
 ## The Problem
 
-Agentic AI projects fail for the same 18 reasons, every time: agents hallucinate DAG transitions and call the wrong tools; state drifts silently between sessions; workers claim "done" without evidence; context bloat causes遗忘 (forgetting); embarrassing artifacts get committed to production; no one knows what the active wave is after a crash; duplicate or contradictory rows appear in state files; old processes run with wrong parameters; documentation links point nowhere; metrics are stated two different ways; configs silently revert; errors are swallowed by fallback code; READMEs show stale results; two workers edit the same file; new sessions have no idea where things are; orchestrators hit token limits and lose state; routes are tampered with or undetected; and unauthorized tool calls cause destructive actions.
+Agentic AI projects fail for the same 18 reasons, every time:
+
+- Agents hallucinate DAG transitions and call the wrong tools.
+- State drifts silently between sessions.
+- Workers claim "done" without evidence.
+- Context bloat causes forgetting.
+- Embarrassing artifacts get committed to production.
+- No one knows what the active wave is after a crash.
+- Duplicate or contradictory rows appear in state files.
+- Old processes run with wrong parameters.
+- Documentation links point nowhere.
+- Metrics are stated two different ways.
+- Configs silently revert.
+- Errors are swallowed by fallback code.
+- READMEs show stale results.
+- Two workers edit the same file.
+- New sessions have no idea where things are.
+- Orchestrators hit token limits and lose state.
+- Routes are tampered with or undetected.
+- Unauthorized tool calls cause destructive actions.
 
 **Existing frameworks** (LangGraph, CrewAI, AutoGen) give you primitives. They don't give you an *operating system* that prevents, detects, and heals these failures automatically.
 
@@ -239,6 +258,6 @@ MIT — see [LICENSE](LICENSE)
 
 **⭐ Star this repo if it saves you from one agentic failure.**
 
-*Built from 5 real shipping projects + 300+ research sources + 97 gap analyses. Not theory. Battle-tested.*
+*Built from 5 real shipping projects + 300+ research sources + 97 gap analyses. Not theory.*
 
 </div>

@@ -9,8 +9,15 @@ The v5.0 release transforms Adaptoid OS into a professional open-source project 
 - **README v5.0 rewrite.** Professional open-source positioning, 3-layer architecture diagram, expanded comparison matrix, Super-Adaptoid section.
 - **INDEX v5.0 restructure.** "Always load / Load on trigger / Reference" sections, Super-Adaptoid navigation, Fable 5 and hidden-gems quick-reference indexes.
 - **Historical backups.** README.md and INDEX.md archived to `docs/historical/` before rewrite.
+- **`protocols/event-sourcing.md` — event log as single source of truth.** Every state mutation is an immutable hash-chained event; HANDOFF/EXECUTION are projections. Replay, time-travel debugging, snapshots, retention. Grounded in existing `emit_event.sh`/`audit_chain.sh`/`replay_session.sh` machinery (FM-14/15/17).
+- **`protocols/sandboxing.md` — isolation levels + credential proxy.** Four isolation tiers (V8 isolate → namespaces → gVisor → microVM) with selection rules, the four non-negotiable guarantees (filesystem, network deny-by-default, secrets-never-enter-sandbox, resource caps), and a hardening checklist. Incident-grounded.
+- **`protocols/clarification-protocol.md` — ambiguity handling (FM-08/FM-16 upstream).** Ambiguity scoring table, 4-step protocol (deconstruct → ≤4 questions → analytical frame → confirm), 3-iteration cap, anti-patterns. Feeds typed PROJECT-INTENT.
+- **`adaptor/INPUT-TAXONOMY.md` — 15 canonical input types.** Request-shape classification (PROJECT/PROBLEM/RESEARCH/…/AUDIT) orthogonal to archetypes, plus duration/complexity/risk axes and the risk×complexity verification scaling matrix with dynamic in-run scaling triggers.
 
 ### Changed
+- **`validators/emit_event.sh` now hash-CHAINS events.** Each event embeds `prev_hash` (genesis = 64 zeros), making `audit_chain.sh` continuity checks real tamper evidence instead of best-effort. Verified by test.
+- **`protocols/verification.md` adds gate ordering + cost cascade.** Route gate → policy gate → schema gate → state gate → cheap-model self-check → cross-check → grounding; fail-closed ternary outcomes; max_retries=3 then human escalation.
+- **`adaptor/ADAPTOR_ENGINE.md` ANALYZE step** now detects input type (INPUT-TAXONOMY) and routes ambiguous briefs to the clarification protocol.
 - README centered hero and badges updated to v5.0.
 - Comparison matrix adds Super-Adaptoid rows: self-monitoring/consciousness, proactive assistant mode, self-improving evolution.
 - Architecture section now shows Layer 1 (Kernel), Layer 2 (Public Product), Layer 3 (Super-Adaptoid).

@@ -26,9 +26,17 @@ done
 TS=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
 ID="evt-$(date +%s%N | cut -c1-12)"
 
-# Compute hash of payload for audit chain
-EVENT_LINE=$(printf '{"ts": "%s", "id": "%s", "type": "%s", "wave": "%s", "task": "%s"%s}' \
-  "$TS" "$ID" "$ETYPE" "$WAVE" "$TASK" "${PAYLOAD:+, $PAYLOAD}")
+# Hash chain: each event includes the previous event's hash (tamper evidence).
+# Genesis (first event in file) chains from 64 zeros.
+PREV_HASH="sha256:0000000000000000000000000000000000000000000000000000000000000000"
+if [ -s "$EVENT_FILE" ]; then
+  LAST_HASH=$(tail -n 1 "$EVENT_FILE" | python3 -c "import sys,json; print(json.load(sys.stdin).get('hash',''))" 2>/dev/null || echo "")
+  [ -n "$LAST_HASH" ] && PREV_HASH="$LAST_HASH"
+fi
+
+# Compute hash of the event (including prev_hash) for the audit chain
+EVENT_LINE=$(printf '{"ts": "%s", "id": "%s", "type": "%s", "wave": "%s", "task": "%s", "prev_hash": "%s"%s}' \
+  "$TS" "$ID" "$ETYPE" "$WAVE" "$TASK" "$PREV_HASH" "${PAYLOAD:+, $PAYLOAD}")
 HASH="sha256:$(echo "$EVENT_LINE" | sha256sum | awk '{print $1}')"
 
 # Append hash to the line
