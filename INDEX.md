@@ -82,6 +82,10 @@
 | `reference/workflows/mobile-development.md` | mobile app playbook |
 | `reference/workflows/bioinformatics.md` | bioinformatics pipeline playbook |
 | `reference/workflows/content-creation.md` | content creation playbook |
+| `reference/workflows/devops-sre.md` | DevOps / SRE playbook |
+| `reference/workflows/game-development.md` | game development playbook |
+| `reference/workflows/blockchain-web3.md` | blockchain / Web3 playbook |
+| `reference/workflows/finance-trading.md` | finance / trading playbook |
 | `reference/OS_SETUP_v1.3_full.md` | when you need an exact template body |
 | `templates/**` | when generating a specific file |
 | `validators/*.sh` | run via preflight before every merge/ship |
