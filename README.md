@@ -1,20 +1,20 @@
 <div align="center">
 
-# 🧠⚡ Adaptoid OS v4.0
-## A Harness-First Agentic AI Operating System
+# Adaptoid OS v5.0
+## The Agent Operating System for Agentic AI
 
 [![Dogfood](https://img.shields.io/badge/dogfood-passing-brightgreen)](#)
 [![Preflight](https://img.shields.io/badge/preflight-passing-brightgreen)](#)
-[![Version](https://img.shields.io/badge/version-4.0-blue)](#)
+[![Version](https://img.shields.io/badge/version-5.0-blue)](#)
 [![License](https://img.shields.io/badge/license-MIT-yellow)](#)
 [![Archetypes](https://img.shields.io/badge/archetypes-11-orange)](#)
 [![Failure%20Modes](https://img.shields.io/badge/failure_modes-18-red)](#)
 
 > **Adapt. Validate at runtime. Verify relentlessly. Compound carefully.**
 
-**A framework-agnostic harness for agentic AI that treats the control stack surrounding the LLM — routing, memory, validation, policy — as the primary optimization target.**
+**A framework-agnostic harness that turns any LLM into a self-monitoring, self-improving, wrong-route-blocking agentic workforce.**
 
-[Quick Start](#quick-start) · [Features](#features) · [Comparison](#why-adaptoid-beats-every-alternative) · [Architecture](#architecture) · [Contributing](#contributing)
+[Quick Start](#quick-start) · [Features](#features) · [Comparison](#why-adaptoid-os-wins) · [Architecture](#architecture) · [Super-Adaptoid](#super-adaptoid-layer) · [Contributing](#contributing)
 
 </div>
 
@@ -22,13 +22,7 @@
 
 ## The Problem
 
-Agentic AI projects fail for the same 18 reasons, every time:
-- Agents hallucinate DAG transitions and call wrong tools
-- State drifts silently between sessions
-- Workers claim "done" without evidence
-- Context bloat causes遗忘 (forgetting)
-- Embarrassing artifacts get committed to production
-- No one knows what the active wave is after a crash
+Agentic AI projects fail for the same 18 reasons, every time: agents hallucinate DAG transitions and call the wrong tools; state drifts silently between sessions; workers claim "done" without evidence; context bloat causes遗忘 (forgetting); embarrassing artifacts get committed to production; no one knows what the active wave is after a crash; duplicate or contradictory rows appear in state files; old processes run with wrong parameters; documentation links point nowhere; metrics are stated two different ways; configs silently revert; errors are swallowed by fallback code; READMEs show stale results; two workers edit the same file; new sessions have no idea where things are; orchestrators hit token limits and lose state; routes are tampered with or undetected; and unauthorized tool calls cause destructive actions.
 
 **Existing frameworks** (LangGraph, CrewAI, AutoGen) give you primitives. They don't give you an *operating system* that prevents, detects, and heals these failures automatically.
 
@@ -69,12 +63,13 @@ The engine detects archetype, consults the ecosystem library, generates structur
 
 <div align="center">
 
-| 🔒 **Safety** | 🚀 **Speed** | 🧠 **Intelligence** |
+| 🔒 Safety | 🚀 Speed | 🧠 Intelligence |
 |---|---|---|
-| Route Sentinel (pre-execution blocking) | 11 archetypes = instant fit | Typed PROJECT-INTENT.md |
+| Route Sentinel (pre-execution blocking) | 11 archetypes = instant fit | Typed `PROJECT-INTENT.md` |
 | VaultMMU (SHA-256 hash chain) | 5 core workflow templates | 18 failure modes with validators |
 | OAP Security (deterministic policies) | Slash commands with cost caps | Self-improvement protocol (GEPA + Hermes) |
-| 18 executable validators | Parallel conductor pattern | Living folder memory bank |
+| 18 executable validators | Parallel conductor pattern | Living-folder memory bank |
+| 7-layer verification stack | Engine-driven project generation | Super-Adaptoid self-monitoring layer |
 
 </div>
 
@@ -90,7 +85,7 @@ A single giant markdown bloats the context window. Agents read it once, then for
 
 ---
 
-## How Adaptoid Differs
+## Why Adaptoid OS Wins
 
 Adaptoid OS is not a replacement for the frameworks below. It is a harness layer you can use with or without them.
 
@@ -98,11 +93,14 @@ Adaptoid OS is not a replacement for the frameworks below. It is a harness layer
 |---|---|---|---|---|
 | **Primary focus** | Stateful graphs | Role-based crews | Conversational agents | **Control stack / harness** |
 | **Framework agnostic** | LangChain ecosystem | CrewAI | Microsoft ecosystem | ✅ **Sovereign core + optional bridges** |
-| **Typed intent capture** | Manual | Manual | Manual | ✅ **PROJECT-INTENT.md + JSON Schema** |
+| **Typed intent capture** | Manual | Manual | Manual | ✅ **`PROJECT-INTENT.md` + JSON Schema** |
 | **Failure-mode library** | — | — | — | ✅ **18 FMs + validators** |
 | **Deterministic safety layer** | Checkpoints | — | — | ✅ **Route Sentinel + VaultMMU + OAP** |
 | **Living-folder memory** | In-graph | In-crew | In-chat | ✅ **Markdown + SQLite + Obsidian-ready** |
 | **Self-validation** | — | — | — | ✅ **dogfood + preflight validators** |
+| **Self-monitoring / consciousness** | — | — | — | ✅ **Consciousness Core protocol** |
+| **Proactive assistant mode** | — | — | — | ✅ **Jarvis Mode protocol** |
+| **Self-improving evolution** | — | — | — | ✅ **Evolution Engine protocol** |
 
 **LangGraph** is excellent for durable, resumable graphs. Use Adaptoid's `claw_bridge/langgraph_adapter.py` when you want to export a plan to LangGraph.
 
@@ -114,27 +112,37 @@ Adaptoid OS is not a replacement for the frameworks below. It is a harness layer
 
 ---
 
+## Super-Adaptoid Layer
+
+The **Super-Adaptoid layer** is the v5.0 protocol stack for self-monitoring, memory-identity, and evolution. It is a named protocol layer, not a franchise claim.
+
+| Protocol | One-liner |
+|---|---|
+| [Consciousness Core](protocols/super-adaptoid/consciousness-core.md) | Self-monitoring, runtime introspection, and honest status reporting. |
+| [Memory-Identity](protocols/super-adaptoid/memory-identity.md) | Persistent agent identity, session continuity, and memory-integrity rituals. |
+| [Evolution Engine](protocols/super-adaptoid/evolution-engine.md) | Experimental prompt, skill, and workflow evolution with falsification gates. |
+| [Jarvis Mode](protocols/super-adaptoid/jarvis-mode.md) | Proactive assistant mode: anticipate, surface, escalate, never interrupt. |
+| [Hidden Gems](protocols/super-adaptoid/hidden-gems.md) | Discover, evaluate, and integrate lesser-known tools and patterns. |
+| [Fable 5 Workflows](protocols/super-adaptoid/fable-5-workflows.md) | The v5.0 workflow library for long-horizon, multi-agent, and self-improving tasks. |
+| [Super-Prompt](protocols/super-adaptoid/super-prompt.md) | Meta-prompt system for composing, versioning, and testing system prompts. |
+
+See [`protocols/super-adaptoid/README.md`](protocols/super-adaptoid/README.md) for the full layer overview.
+
+---
+
 ## Architecture
 
 ```
-┌─────────────────────────────────────────┐
-│           ORCHESTRATOR                  │
-│    (Claude Code / Kimi / Cursor)        │
-│         Plans · Dispatches · Reviews    │
-└──────────────┬──────────────────────────┘
-               │ writes task brief
-               ▼
-┌─────────────────────────────────────────┐
-│           WORKERS                       │
-│    (OpenCode CLI / Codex / MiniMax)     │
-│         Execute · Write code · Report   │
-└──────────────┬──────────────────────────┘
-               │ writes report
-               ▼
-┌─────────────────────────────────────────┐
-│           VALIDATION LAYER              │
-│  Route Sentinel · VaultMMU · OAP · L1-L7│
-└─────────────────────────────────────────┘
+┌─────────────────────────────────────┐
+│  Layer 3: Super-Adaptoid            │
+│  consciousness · memory · evolution │
+├─────────────────────────────────────┤
+│  Layer 2: Public Product            │
+│  README · docs/launch · ecosystem   │
+├─────────────────────────────────────┤
+│  Layer 1: Adaptoid Kernel (v4.0)    │
+│  principles · protocols · validators│
+└─────────────────────────────────────┘
 ```
 
 **The 7-Layer Verification Stack:**
@@ -157,6 +165,7 @@ adaptoid-os/
 ├── INDEX.md                     ← agent navigation table
 ├── 00-INVOCATION.md             ← paste-and-go prompt
 ├── CHANGELOG.md
+├── ROADMAP.md
 │
 ├── kernel/                      ← ALWAYS loaded (~2K tokens)
 │   ├── PRINCIPLES.md               12 non-negotiable laws
@@ -185,14 +194,15 @@ adaptoid-os/
 │   ├── vault-mmu.md
 │   ├── oap-security.md
 │   ├── self-improvement.md
-│   └── ...
+│   └── super-adaptoid/             v5.0 consciousness + evolution protocols
 │
 ├── archetypes/                  ← 11 adaptation profiles
-├── workflows/                   ← 5 core + 8 domain YAML
+├── workflows/                   ← 5 core + domain YAML
 ├── slash-commands/              ← named orchestrator API
 ├── memory-bank/                 ← living folder memory
-├── validators/                  ← 20 executable scripts
+├── validators/                  ← 20+ executable scripts
 ├── templates/                   ← project skeleton
+├── docs/launch/                 ← v5.0 positioning + growth playbook
 ├── reference/ecosystem/         ← DevKit library
 ├── setup/harness/               ← Docker Compose stack
 └── schemas/                     ← JSON Schema specs
