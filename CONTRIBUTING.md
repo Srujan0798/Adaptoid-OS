@@ -34,7 +34,7 @@ Missing your project type? Add it:
 ## Development Setup
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/adaptoid-os.git
+git clone https://github.com/Srujan0798/Adaptoid-OS.git
 cd adaptoid-os
 bash validators/dogfood.sh   # must pass
 bash validators/preflight.sh # must pass

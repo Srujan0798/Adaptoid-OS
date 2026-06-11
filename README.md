@@ -39,13 +39,13 @@ Agentic AI projects fail for the same 18 reasons, every time:
 ### Option A — One-Command Setup (Recommended)
 
 ```bash
-curl -sSL https://raw.githubusercontent.com/YOUR_USERNAME/adaptoid-os/main/install.sh | bash
+curl -sSL https://raw.githubusercontent.com/Srujan0798/Adaptoid-OS/main/install.sh | bash
 ```
 
 ### Option B — Clone & Go
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/adaptoid-os.git ~/adaptoid-os
+git clone https://github.com/Srujan0798/Adaptoid-OS.git ~/adaptoid-os
 cd ~/adaptoid-os
 bash validators/dogfood.sh   # verify the kit
 bash validators/preflight.sh # verify your project

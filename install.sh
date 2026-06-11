@@ -2,7 +2,7 @@
 # Adaptoid OS — One-Command Installer
 set -euo pipefail
 
-REPO_URL="https://github.com/YOUR_USERNAME/adaptoid-os.git"
+REPO_URL="https://github.com/Srujan0798/Adaptoid-OS.git"
 INSTALL_DIR="${1:-$HOME/adaptoid-os}"
 
 echo "⚡ Installing Adaptoid OS v4.0..."
