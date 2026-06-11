@@ -96,6 +96,20 @@
 | `reference/workflows/game-development.md` | game development playbook |
 | `reference/workflows/blockchain-web3.md` | blockchain / Web3 playbook |
 | `reference/workflows/finance-trading.md` | finance / trading playbook |
+| `reference/workflows/education-tutoring.md` | education / tutoring playbook |
+| `reference/workflows/consulting.md` | consulting playbook |
+| `reference/workflows/iot-robotics.md` | IoT / robotics playbook |
+| `reference/ADAPTOID-ENGINE.md` | detailed engine specification |
+| `reference/MASTER-SETUP.md` | stack wiring guide |
+| `reference/VERIFICATION-PROTOCOLS.md` | verification taxonomy |
+| `reference/MEMORY-INDEX.md` | memory protocol specification |
+| `reference/research-bibliography.md` | evidence base bibliography |
+| `reference/research-landscape-map.md` | ecosystem landscape map |
+| `reference/research-headroom-analysis.md` | harness headroom analysis |
+| `ROADMAP.md` | future direction |
+| `SECURITY.md` | security policy |
+| `Makefile` | common commands |
+| `tests/run_tests.sh` | validator test suite |
 | `reference/OS_SETUP_v1.3_full.md` | when you need an exact template body |
 | `templates/**` | when generating a specific file |
 | `validators/*.sh` | run via preflight before every merge/ship |
