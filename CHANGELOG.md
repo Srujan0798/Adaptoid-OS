@@ -1,5 +1,23 @@
 # Adaptoid OS Changelog
 
+## v5.0 — Jun 2026 — Public Product Layer + Super-Adaptoid Protocols
+The v5.0 release transforms Adaptoid OS into a professional open-source project with a clear category claim, launch playbook, and self-monitoring protocol layer.
+
+### Added
+- **`docs/launch/` — Public Product Layer.** POSITIONING.md, GROWTH-PLAYBOOK.md, LAUNCH-CHECKLIST.md, BRAND-GUIDELINES.md, CONTENT-CALENDAR.md.
+- **`protocols/super-adaptoid/` — Super-Adaptoid Protocol Layer.** README, consciousness-core, memory-identity, evolution-engine, jarvis-mode, hidden-gems, fable-5-workflows, super-prompt.
+- **README v5.0 rewrite.** Professional open-source positioning, 3-layer architecture diagram, expanded comparison matrix, Super-Adaptoid section.
+- **INDEX v5.0 restructure.** "Always load / Load on trigger / Reference" sections, Super-Adaptoid navigation, Fable 5 and hidden-gems quick-reference indexes.
+- **Historical backups.** README.md and INDEX.md archived to `docs/historical/` before rewrite.
+
+### Changed
+- README centered hero and badges updated to v5.0.
+- Comparison matrix adds Super-Adaptoid rows: self-monitoring/consciousness, proactive assistant mode, self-improving evolution.
+- Architecture section now shows Layer 1 (Kernel), Layer 2 (Public Product), Layer 3 (Super-Adaptoid).
+
+### Philosophy
+v4.0 proved the kernel: safety, typed intent, deterministic validation. v5.0 adds the public product layer and the consciousness/evolution protocols that let the harness monitor and improve itself without hype.
+
 ## v4.0 — Jun 2026 — Safety Core + Typed Intent + Philosophy
 Merged the Adaptoid safety core into OS-Setup.
 
