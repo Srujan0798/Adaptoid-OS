@@ -1,42 +1,38 @@
-## The Problem I Keep Hitting
+# Why I Built Adaptoid OS (and Why It Is Not Another Framework)
 
-Every time I build something with LLMs, the same failures show up:
-- The agent forgets what wave it is on after a crash.
-- It calls a tool that doesn't make sense for the current state.
-- It marks tasks "done" without evidence.
-- Embarrassing artifacts slip into commits.
+I keep building LLM demos that work in a notebook and break in production.
 
-LangGraph, CrewAI, AutoGen, and the OpenAI Agents SDK are great at giving you primitives. But primitives are not guardrails. None of them ship with a built-in answer to "what are the 18 ways this project is likely to fail, and how do we catch each one before production?"
+The model is fine. The problem is everything around it.
 
-That is the gap Adaptoid OS tries to fill.
+## The Same Four Failures
 
-## What Is Adaptoid OS?
+Every project hits the same wall:
 
-Adaptoid OS v4.0 is an open-source, framework-agnostic agentic operating system. Its thesis is simple:
+1. **State drift.** The agent crashes, restarts, and forgets what wave it was on.
+2. **Wrong tool calls.** It invokes a tool that does not match the current state.
+3. **Unverified "done" claims.** It reports completion but there is no evidence.
+4. **Embarrassing artifacts.** Files I never want near production slip into commits.
 
-> **Harness engineering — the control stack surrounding the LLM — is the primary optimization target.**
+These are not model failures. They are harness failures.
 
-The LLM is a powerful but unreliable component. The real work is the scaffold around it: detecting when things go wrong, keeping context clean, enforcing transitions, archiving state, and verifying claims before they become commits.
+## Frameworks Give You Primitives, Not Guardrails
 
-## The 18 Failure Modes
+LangGraph, CrewAI, AutoGen, and the OpenAI Agents SDK are good at what they do. They give you nodes, roles, conversations, and handoffs. What they do not give you is a built-in answer to "how will this fail, and how will we catch it before production?"
 
-Most projects die from a small set of recurring diseases. Adaptoid OS documents 18 of them, from **FM-01 State Drift** to **FM-18 Agent Escalation Bypass**, and gives each one a dedicated validator. Before a project claims it is done, it must pass `bash validators/dogfood.sh` and `bash validators/preflight.sh`.
+That is the gap I wanted to close.
 
-If you cannot name the failure mode, you cannot prevent it.
+## What Adaptoid OS Actually Does
 
-## Architecture in Three Layers
+Adaptoid OS v4.0 is a harness, not a framework. Its job is to make the failure modes explicit and catch them early.
 
-1. **Kernel** — `PRINCIPLES.md`, `TWO-TIER.md`, `ANTI-HALLUCINATION.md`. Cold-start contract, ~2K tokens.
-2. **Safety Core** — Failure modes, validators, route sentinel, OAP security, typed `PROJECT-INTENT.md`.
-3. **Execution Layer** — Memory bank, workflows, slash commands, patterns, and the `adaptor/engine.py` scaffold generator.
+- **18 failure modes** (FM-01 State Drift → FM-18 Agent Escalation Bypass), each with a validator.
+- **Typed project intent** via `PROJECT-INTENT.md` and JSON Schema.
+- **Memory bank** with automated sync and event sourcing.
+- **Wave transitions** enforced in workflow files.
+- **One-command scaffolding** with `adaptor/engine.py`.
+- **Optional framework adapters** for LangGraph, CrewAI, and AutoGen.
 
-Everything else is progressive disclosure. Load it only when the wave demands it.
-
-## Sovereignty Without Isolation
-
-Adaptoid OS does not require you to pick a framework. The core runs with zero external dependencies. But when you do need LangGraph checkpoints, CrewAI role crews, or AutoGen debate loops, **Claw Bridge** adapters let you import and export plans bidirectionally.
-
-You get ecosystem reach without giving up your moat.
+The core has zero external framework dependencies. The adapters are opt-in.
 
 ## How to Try It
 
@@ -44,7 +40,7 @@ You get ecosystem reach without giving up your moat.
 curl -sSL https://raw.githubusercontent.com/Srujan0798/Adaptoid-OS/main/install.sh | bash
 ```
 
-Or clone it and run the validators:
+Or clone and run the validators:
 
 ```bash
 git clone https://github.com/Srujan0798/Adaptoid-OS.git
@@ -52,25 +48,16 @@ cd Adaptoid-OS
 bash validators/dogfood.sh
 ```
 
-## What Makes It Different
+## What It Is Not
 
-| Capability | Frameworks | Adaptoid OS |
-|---|---|---|
-| Primitives | ✅ | ✅ |
-| Failure-mode taxonomy | ❌ | ✅ 18 modes |
-| Runtime validators | ❌ | ✅ 20 scripts |
-| Typed project intent | ❌ | ✅ JSON Schema |
-| Memory bank with sync | ❌ | ✅ |
-| Framework bridges | Partial | ✅ Claw Bridge |
+It is not polished. It is not a silver bullet. It is not trying to replace the frameworks you already use.
 
-## The Road Ahead
+It is one developer's attempt to stop making the same mistakes.
 
-v4.0 is the foundation. The next phase adds more framework adapters, a visual wave inspector, and benchmark-grade calibration sets. The goal is not to replace LangGraph or CrewAI — it is to make them safe to use at scale.
+If you are shipping agentic systems in production, I would love your feedback.
 
-If you are building agentic AI in production, you need a harness, not just a toolbox.
-
-**Star the repo and join the effort:** [github.com/Srujan0798/Adaptoid-OS](https://github.com/Srujan0798/Adaptoid-OS)
+**Repo:** [github.com/Srujan0798/Adaptoid-OS](https://github.com/Srujan0798/Adaptoid-OS)
 
 ---
 
-*Srujan is building tools that make agentic systems reliable. Follow the project on GitHub or reach out via Issues.*
+*Srujan is building tools that make agentic systems less fragile. Feedback welcome via GitHub Issues.*

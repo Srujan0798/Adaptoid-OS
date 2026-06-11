@@ -1,26 +1,28 @@
 # Show HN — Adaptoid OS v4.0
 
 ## Title
-Show HN: Adaptoid OS — an agentic OS with 18 failure-mode validators
+Show HN: Adaptoid OS — a failure-mode-first harness for agentic AI
 
 ## Link
 https://github.com/Srujan0798/Adaptoid-OS
 
 ## Body
-I kept hitting the same failure modes building with LLMs, so I made a harness that bakes them in from day one instead of pretending they won't happen.
+I kept building LLM demos that fell apart in production for the same reasons: state drift, wrong tool calls, unverified "done" claims, and embarrassing artifacts.
 
-Adaptoid OS v4.0 is an agentic operating system that treats harness engineering as the primary optimization target:
-- 18 documented failure modes (FM-01 → FM-18) with dedicated validators
-- 15 project archetypes (CLI tools, research ML, data pipelines, ...)
-- One-command scaffolding via `adaptor/engine.py`
-- Typed `PROJECT-INTENT.md` with JSON Schema validation
-- 14 production workflows, memory bank, route sentinel, OAP security
+Frameworks give primitives. I wanted guardrails.
 
-The core stays independent of LangGraph/CrewAI/AutoGen, but includes optional adapters if you need their runtimes.
+Adaptoid OS is my attempt at that:
+- 18 failure modes (FM-01 → FM-18), each with a bash validator
+- typed PROJECT-INTENT.md with JSON Schema
+- memory bank + event sourcing
+- workflow files that enforce valid wave transitions
+- optional adapters for LangGraph / CrewAI / AutoGen
 
-Would love feedback from anyone building with LLMs in production.
+The core has zero framework dependencies. The adapters are opt-in.
+
+It is rough in places and very opinionated. Feedback from anyone shipping agentic systems in production would be great.
 
 ## Posting tips
-- Post between 8–10 AM PT on a weekday for max dev traffic
-- Stay in the thread for the first hour to reply to comments
-- Don't ask friends to upvote — HN penalizes rings
+- Post between 8–10 AM PT on a weekday
+- Stay in the thread for the first hour
+- Don't ask friends to upvote
