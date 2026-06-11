@@ -17,7 +17,7 @@ Adaptoid OS v4.0 is an open-source harness for building reliable agentic AI syst
 - Software Engineering
 
 ## Maker Comment
-I built Adaptoid OS after watching my own AI projects drift, stall, or ship broken artifacts. Most repos give you building blocks; this gives you the safety net. It merges the best patterns from LangGraph, CrewAI, AutoGen, and MetaGPT into an independent core — with optional bridges when you need their runtimes. v4.0 adds typed project intent, a memory bank, route sentinel, and OAP security.
+I built Adaptoid OS because my own LLM projects kept failing in the same predictable ways: state drift, wrong tool calls, unverified "done" claims. Existing frameworks give you great primitives but no built-in guardrails. This repo is my attempt to fix that with a failure-mode-first harness. It borrows good ideas from LangGraph, CrewAI, AutoGen, and MetaGPT, but keeps an independent core so you are not locked into any of them.
 
 ## Screenshots needed
 1. `screenshots/hero.png` — README hero section with badges

@@ -7,7 +7,7 @@ Show HN: Adaptoid OS — an agentic OS with 18 failure-mode validators
 https://github.com/Srujan0798/Adaptoid-OS
 
 ## Body
-I merged three years of agentic-AI research into one open-source harness instead of yet another framework.
+I kept hitting the same failure modes building with LLMs, so I made a harness that bakes them in from day one instead of pretending they won't happen.
 
 Adaptoid OS v4.0 is an agentic operating system that treats harness engineering as the primary optimization target:
 - 18 documented failure modes (FM-01 → FM-18) with dedicated validators
