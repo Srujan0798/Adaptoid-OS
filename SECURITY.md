@@ -10,7 +10,8 @@
 
 ## Reporting a Vulnerability
 
-Email: security@adaptoid-os.dev (placeholder — update when real)
+Please open a private vulnerability report via GitHub Security Advisories:
+https://github.com/Srujan0798/Adaptoid-OS/security/advisories/new
 
 Please include:
 1. FM number (if matches a known failure mode)

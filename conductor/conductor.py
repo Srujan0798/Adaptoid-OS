@@ -1,6 +1,10 @@
-#!/usrusr/bin/env python3
-"""Lightweight parallel conductor for Adaptoid OS.
-Forks N workspaces, runs them in parallel, rolls up results."""
+#!/usr/bin/env python3
+"""Lightweight parallel conductor stub for Adaptoid OS.
+
+This is a minimal reference implementation. In production it should dispatch
+workspaces to real worker runtimes (e.g., OpenCode CLI, sandboxed subprocesses).
+It currently creates placeholder reports so the orchestrator flow can be tested
+without external dependencies."""
 import asyncio, argparse, json, sys, subprocess, tempfile, os
 from pathlib import Path
 from dataclasses import dataclass
@@ -13,11 +17,10 @@ class Workspace:
 
 async def run_workspace(ws: Workspace):
     print(f"[conductor] Starting {ws.name}...")
-    # In a real implementation, this would dispatch to OpenCode CLI or similar
-    # For now, we simulate with a placeholder
+    # Stub: real implementation dispatches to worker runtime here.
     await asyncio.sleep(0.5)
     report = ws.output_dir / "report.md"
-    report.write_text(f"# {ws.name} Report\n\nCompleted.\n")
+    report.write_text(f"# {ws.name} Report\n\nCompleted (stub).\n")
     print(f"[conductor] {ws.name} done → {report}")
     return ws.name
 

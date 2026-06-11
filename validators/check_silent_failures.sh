@@ -29,10 +29,11 @@ if [ -n "$swallow$bare" ]; then
     if [ "$DRY" -eq 1 ]; then
       echo "  [DRY-RUN] would comment out bare except: blocks (requires human review)"
     else
-      # Comment out bare except: lines (destructive — use with care)
-      find "$ROOT/src" -name '*.py' -exec sed -i.bak -E '/^\s*except\s*:\s*$/c\    except Exception as e:  # TODO: catch specific; log or re-raise' {} + 2>/dev/null || true
-      find "$ROOT/src" -name '*.py.bak' -delete 2>/dev/null || true
-      echo "  FIXED: replaced bare except: with except Exception as e: (review needed)"
+      # Auto-fix is intentionally conservative: we refuse to edit user code without
+      # review because any blanket replacement risks hiding bugs. Log locations for
+      # manual fix instead.
+      echo "  NOT FIXED: bare except: blocks require human review. Locations:" >&2
+      echo "$bare" | sed 's/^/    /' >&2
     fi
   fi
   fail=1

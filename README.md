@@ -1,7 +1,7 @@
 <div align="center">
 
 # 🧠⚡ Adaptoid OS v4.0
-## The Eternal Universal Agentic AI Harness
+## A Harness-First Agentic AI Operating System
 
 [![Dogfood](https://img.shields.io/badge/dogfood-passing-brightgreen)](#)
 [![Preflight](https://img.shields.io/badge/preflight-passing-brightgreen)](#)
@@ -10,9 +10,9 @@
 [![Archetypes](https://img.shields.io/badge/archetypes-11-orange)](#)
 [![Failure%20Modes](https://img.shields.io/badge/failure_modes-18-red)](#)
 
-> **Adapt. Validate at runtime. Verify relentlessly. Compound eternally.**
+> **Adapt. Validate at runtime. Verify relentlessly. Compound carefully.**
 
-**A self-improving, framework-agnostic operating system for agentic AI that treats harness engineering — the control stack surrounding the LLM — as the primary optimization target.**
+**A framework-agnostic harness for agentic AI that treats the control stack surrounding the LLM — routing, memory, validation, policy — as the primary optimization target.**
 
 [Quick Start](#quick-start) · [Features](#features) · [Comparison](#why-adaptoid-beats-every-alternative) · [Architecture](#architecture) · [Contributing](#contributing)
 
@@ -90,27 +90,27 @@ A single giant markdown bloats the context window. Agents read it once, then for
 
 ---
 
-## Why Adaptoid Beats Every Alternative
+## How Adaptoid Differs
+
+Adaptoid OS is not a replacement for the frameworks below. It is a harness layer you can use with or without them.
 
 | Dimension | LangGraph | CrewAI | AutoGen | **Adaptoid OS** |
 |---|---|---|---|---|
-| **Framework Agnostic** | ❌ LangChain-only | ❌ CrewAI-only | ❌ Microsoft ecosystem | ✅ **Sovereign meta-core** |
-| **Self-Improving** | ❌ | ❌ | ❌ | ✅ **GEPA + Hermes loops** |
-| **Deterministic Safety** | Partial | ❌ | ❌ | ✅ **Route Sentinel + VaultMMU + OAP** |
-| **Typed Intent Capture** | ❌ | ❌ | ❌ | ✅ **PROJECT-INTENT.md + JSON Schema** |
-| **Failure Mode Library** | ❌ | ❌ | ❌ | ✅ **18 FMs with executable validators** |
-| **Living Folder Memory** | ❌ (in-memory) | ❌ (crew only) | ❌ | ✅ **Markdown + SQLite + Obsidian** |
-| **Cost Caps** | ❌ | ❌ (30% overhead) | ❌ (5-10x overrun) | ✅ **Per-command ceilings** |
-| **One-Command Setup** | ❌ | ❌ | ❌ | ✅ **`install.sh`** |
-| **Dogfood Validation** | ❌ | ❌ | ❌ | ✅ **Kit validates itself** |
+| **Primary focus** | Stateful graphs | Role-based crews | Conversational agents | **Control stack / harness** |
+| **Framework agnostic** | LangChain ecosystem | CrewAI | Microsoft ecosystem | ✅ **Sovereign core + optional bridges** |
+| **Typed intent capture** | Manual | Manual | Manual | ✅ **PROJECT-INTENT.md + JSON Schema** |
+| **Failure-mode library** | — | — | — | ✅ **18 FMs + validators** |
+| **Deterministic safety layer** | Checkpoints | — | — | ✅ **Route Sentinel + VaultMMU + OAP** |
+| **Living-folder memory** | In-graph | In-crew | In-chat | ✅ **Markdown + SQLite + Obsidian-ready** |
+| **Self-validation** | — | — | — | ✅ **dogfood + preflight validators** |
 
-**LangGraph** (~85K stars): Best for regulated industries with deterministic graphs. Steep learning curve, no self-improvement.
+**LangGraph** is excellent for durable, resumable graphs. Use Adaptoid's `claw_bridge/langgraph_adapter.py` when you want to export a plan to LangGraph.
 
-**CrewAI** (~46K stars): Fastest to demo. Role-based collaboration. Fractures after ~40 production runs.
+**CrewAI** is great for quick role-based demos. Use the `crewai_adapter.py` when that model fits.
 
-**AutoGen** (~36K stars): Microsoft's enterprise framework. Azure-dependent, no built-in verification.
+**AutoGen** shines for conversational multi-agent debate. Use the `autogen_adapter.py` for those waves.
 
-**Adaptoid OS**: The first system built from the ground up with harness engineering as its *raison d'être*.
+**Adaptoid OS** focuses on the layer those frameworks do not: a failure-mode-aware control stack that stays independent.
 
 ---
 

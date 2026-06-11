@@ -1,10 +1,10 @@
 # Adaptoid OS Changelog
 
-## v4.0 — Jun 2026 — Eternal Agentic Harness (Safety Core + Typed Intent + Philosophy)
-Merged the highest-leverage Adaptoid safety core into OS-Setup to create the eternal harness.
+## v4.0 — Jun 2026 — Safety Core + Typed Intent + Philosophy
+Merged the Adaptoid safety core into OS-Setup.
 
 ### Added
-- **`philosophy/` — The Three Pillars.** LLM-as-OS (Karpathy), Freedom & Responsibility (Netflix), Harness Engineering (2026 consensus). Codifies the worldview behind every decision.
+- **`philosophy/` — Three Pillars.** LLM-as-OS, Freedom & Responsibility, Harness Engineering. Optional reading for architectural decisions.
 - **`PROJECT-INTENT.md` + JSON Schema.** Typed intent capture with stakeholders, success criteria, failure modes, falsification. Validated by `validators/check_intent.sh`.
 - **`protocols/route-sentinel.md` + `validators/route_sentinel.sh` (FM-16).** Pre-execution wrong-route blocking via static DAG_TRANSITIONS map.
 - **`protocols/vault-mmu.md` + `validators/vault_mmu.sh` (FM-17).** SHA-256 state hashing + hash-chain audit log for tamper detection.
@@ -19,30 +19,21 @@ Merged the highest-leverage Adaptoid safety core into OS-Setup to create the ete
 - `validators/emit_event.sh` now appends SHA-256 hash per event for audit-chain verification.
 - `validators/preflight.sh` now runs `route_sentinel`, `oap_security`, `check_intent`, and `audit_chain` when their triggers are present.
 - `INDEX.md` updated with new philosophy, protocol, and validator entries.
-- README rebranded to "Adaptoid OS v4.0 — Eternal Agentic Harness".
+- README updated to "Adaptoid OS v4.0 — A Harness-First Agentic AI Operating System".
 
 ### Philosophy
-v3.x = "the kit prevents failures and heals itself." v4.0 = "the kit prevents failures, heals itself, and verifies relentlessly through cryptographic integrity and deterministic policy enforcement." The harness is the primary optimization target.
+v3.x focused on preventing failures and self-healing. v4.0 adds explicit verification: typed intent, deterministic routing, state integrity, and policy enforcement. The harness remains the primary optimization target.
 
-## v3.0 — Jun 2026 — The Ultimate OS-Setup (Executable Adaptoid + Self-Healing + FM-15)
-The recommendations from the deep forensic analysis are now implemented. The Adaptoid is no longer a document — it executes. Validators don't just detect, they fix. The OS validates itself.
+## v3.0 — Jun 2026 — Executable Adaptoid + Self-Healing + FM-15
+The Adaptoid is now executable, not just documented. Validators detect problems and many can auto-fix them. The kit validates itself.
 
 ### Added
-- **`adaptor/engine.py` — executable Adaptor Engine.** Ingest→Analyze→Pull→Compose→Record→Verify. Detects archetype from brief, picks tier, consults SELECTION.md, generates project structure, copies validators, writes `adaptoid.config.yaml`, runs preflight. Sovereign: needs no network, no daemon, no git.
+- **`adaptor/engine.py` — executable Adaptor Engine.** Ingest→Analyze→Pull→Compose→Record→Verify. Detects archetype from brief, picks tier, consults SELECTION.md, generates project structure, copies validators, writes `adaptoid.config.yaml`, runs preflight. Runs locally with no network, no daemon, no git required.
 - **`templates/root/adaptoid.config.yaml` — single source of truth per project.** Archetype, tier, stack, compliance, MCP servers, active wave, orchestrator config. Validators check it against reality (FM-05: one fact, one home).
-- **Validator `--fix` and `--dry-run` modes.** All 10 validators support auto-healing:
-  - `validate_state.sh --fix` — removes duplicate rows/headers, reconciles active wave
-  - `check_processes.sh --fix` — kills stale processes with param drift
-  - `check_config.sh --fix` — rewrites config to match lock
-  - `publish_gate.sh --fix` — moves embarrassing artifacts to `attic/`, untracks `.env`
-  - `check_references.sh --fix` — marks broken links
-  - `check_metrics.sh --fix` — adds auto-generated headers
-  - `check_silent_failures.sh --fix` — replaces bare `except:` with `except Exception as e:`
-  - `context_budget.sh --fix` — suggests what to move out of kernel
-  - `preflight.sh` passes `--fix`/`--dry-run` through to all sub-validators
-- **`validators/emit_event.sh` — durable session log (Brain/Hands/Session).** Append-only JSONL per wave-task. `replay_session.sh` reconstructs context. `wake.sh` rebuilds full orchestrator state from kernel + HANDOFF + EXECUTION + events.
+- **Validator `--fix` and `--dry-run` modes.** Most validators support auto-healing; destructive fixes require `--dry-run` review first.
+- **`validators/emit_event.sh` — durable session log (Brain/Hands/Session).** Append-only JSONL per wave-task. `replay_session.sh` reconstructs context. `wake.sh` rebuilds orchestrator state from kernel + HANDOFF + EXECUTION + events.
 - **`validators/dogfood.sh` — OS-Setup validates itself.** Checks: archetype uniqueness, FM sequentiality, INDEX.md link resolution, CHANGELOG date uniqueness, every FM has a validator, no embarrassing artifacts in the kit itself, engine smoke test.
-- **`failure-modes/FM-15-context-compaction.md` — token limit crash.** Observed live: Claude died 3x from context limits in the DRO-FairML session. Prevention: checkpoint protocol (`CHECKPOINT.md` before `/compact`), compaction ritual, reload from events.jsonl.
+- **`failure-modes/FM-15-context-compaction.md` — token limit crash.** Prevention: checkpoint protocol (`CHECKPOINT.md` before `/compact`), compaction ritual, reload from events.jsonl.
 - **`reference/ecosystem/STALE_CHECK.sh` — freshness enforcement.** Flags ecosystem catalog files older than N days (default 90). Every catalog file gets `last-verified:` frontmatter.
 
 ### Changed
@@ -50,7 +41,7 @@ The recommendations from the deep forensic analysis are now implemented. The Ada
 - All validators made executable (`chmod +x`).
 
 ### Philosophy
-v2.x = "the kit prevents failures." v3.0 = "the kit prevents failures, heals itself when they happen, and validates its own integrity." The Adaptoid is now a true agentic OS — not a guide, but a running system.
+v2.x focused on preventing failures. v3.0 adds self-healing and self-validation: detect problems, fix what is safe to fix automatically, and verify the kit's own integrity.
 
 ## v2.2 — May 2026 — Adaptor Engine + Conductor + Runtime-Checks + Mental Models
 Folded the highest-signal concepts from a parallel "Adaptoid DevKit" research track into the core, generically (no project-specific names).
