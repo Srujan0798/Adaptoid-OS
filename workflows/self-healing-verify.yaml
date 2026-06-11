@@ -1,0 +1,45 @@
+name: self-healing-verify
+description: Reliability-critical flow. Generate → verify → on-fail auto-diagnose → fix → re-verify, looping until acceptance OR escalate. The evaluator-optimizer pattern with explicit recovery.
+params:
+  max_repair_loops: 3
+  escalate_to_human_after: 3
+
+phases:
+  - id: generate
+    role: worker
+    outputs: [src/..., tests/...]
+    acceptance: "the task's executable check"
+    blast_radius: r1
+
+  - id: verify
+    role: orchestrator + verifier-subagent
+    action: "run acceptance + relevant validators yourself (never trust the claim — FM-09)"
+    on_pass: proceed
+    on_fail: diagnose
+    blast_radius: r0
+
+  - id: diagnose            # only on fail
+    role: orchestrator (diagnose skill)
+    action: "systematic root-cause: read full error, reproduce minimal, bisect, check obvious (env/config/migrations)"
+    outputs: [diagnosis + a tighter revised brief]
+    blast_radius: r0
+
+  - id: repair             # loop back to generate with the revised brief
+    role: worker
+    loop_from: generate
+    max_iterations: "{max_repair_loops}"
+    blast_radius: r1
+
+  - id: escalate           # if loops exhausted
+    role: orchestrator (interviewer)
+    when: "repair loops exhausted"
+    action: "summarize what was tried + why it's stuck; ask the human a focused question"
+    blast_radius: r3        # contacting a human
+
+self_heal:
+  on_flaky: quarantine_and_fix          # FM-10 (don't re-run-until-green)
+  on_silent_failure: surface_and_handle  # FM-11
+  on_stale_process: kill_and_restart     # FM-02
+
+verification: [unit, integration, acceptance, verifier-subagent, golden]
+records: ["every failed loop → HALL_OF_SHAME.md if pattern is novel"]   # learn from scars

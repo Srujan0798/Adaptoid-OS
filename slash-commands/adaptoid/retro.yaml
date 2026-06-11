@@ -1,0 +1,11 @@
+name: retro
+description: Post-wave retrospective
+cost_cap_usd: 0.25
+inputs:
+  - work/reports/wave-*/*.md
+  - work/reviews/wave-*/*.md
+outputs:
+  - memory-bank/lessons/LESSON-XXX.md
+verification:
+  - schema
+timeout_minutes: 10

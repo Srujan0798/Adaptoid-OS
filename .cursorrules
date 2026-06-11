@@ -1,0 +1,16 @@
+# Adaptoid OS v4.0 — Cursor Rules
+
+## Context
+This project is Adaptoid OS v4.0, a self-improving agentic AI harness OS.
+
+## Rules
+1. Read `kernel/PRINCIPLES.md`, `kernel/TWO-TIER.md`, `AGENTS.md` before any work.
+2. Evidence-required: every "done" claim needs command + output.
+3. Replace, never append, state files.
+4. Run `validators/preflight.sh` before claiming completion.
+5. No silent failures — every exception is logged.
+6. Mind the blast radius: remote/money/humans pause for confirmation.
+7. Stay in the box: list files you may touch AND files you must NOT.
+8. Never delete — archive to `attic/`.
+9. Check `policies/default.yaml` before any tool call.
+10. Cost discipline: stop and ask if approaching the ceiling.

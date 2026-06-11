@@ -1,0 +1,14 @@
+name: plan
+description: Generate wave plan from PROJECT-INTENT.md
+cost_cap_usd: 0.50
+inputs:
+  - PROJECT-INTENT.md
+  - HANDOFF.md
+outputs:
+  - plan/PRD.md
+  - plan/ARCHITECTURE.md
+  - plan/EXECUTION.md
+verification:
+  - schema
+  - evidence
+timeout_minutes: 10

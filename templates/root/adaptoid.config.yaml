@@ -1,0 +1,65 @@
+---
+# Adaptoid Config — Single source of truth for this project's OS-Setup adaptation.
+# The orchestrator reads this instead of inferring from scattered files.
+# Validators check it against reality (FM-05: one fact, one home).
+
+project:
+  name: "{{PROJECT_NAME}}"
+  goal: "{{PROJECT_GOAL}}"
+  domain: "{{DOMAIN}}"
+
+archetype: "{{ARCHETYPE}}"      # hackathon | internship | job-take-home | research-ml | nlp-pipeline | internal-tool | saas-product | startup-mvp | cli-tool | data-pipeline
+tier: "{{TIER}}"                # T0 | T1 | T2 | T3 | T4
+
+stack:
+  language: "{{LANGUAGE}}"
+  backend: "{{BACKEND}}"
+  frontend: "{{FRONTEND}}"
+  database: "{{DATABASE}}"
+  extras: []                     # e.g. [redis, celery, elasticsearch]
+
+compliance: []                  # [DPDP, GDPR, HIPAA, SOC2] or empty
+mcp_servers: []                 # [playwright, serena, tavily, context7, filesystem, git]
+
+orchestrator:
+  model: "claude-or-kimi"       # interchangeable
+  auto_mode: false              # r0/r1 only — see protocols/blast-radius.md
+
+workers:
+  tool: "opencode-cli"          # opencode-cli | cursor | minimax | codex
+  max_parallel: 5
+
+dag_transitions:
+  plan:
+    allowed_next: [dispatch, review]
+    max_retries: 3
+  dispatch:
+    allowed_next: [review, merge]
+    max_retries: 2
+  review:
+    allowed_next: [merge, dispatch]
+    max_retries: 3
+  merge:
+    allowed_next: [ship]
+    max_retries: 1
+
+policies:
+  active_pack: "default.yaml"
+  auto_load: true
+
+vault:
+  enabled: true
+  hash_algorithm: "sha256"
+
+event_sourcing:
+  enabled: true
+  hash_chain: true
+
+waves:
+  active: "wave-1"
+  total_planned: 0
+  shipped: 0
+
+adapted_at: "{{DATE}}"
+last_verified: "{{DATE}}"
+version: "4.0"

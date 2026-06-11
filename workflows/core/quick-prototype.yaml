@@ -1,0 +1,21 @@
+name: quick-prototype
+description: Single-agent MVP for fast experiments
+archetypes: [hackathon, startup-mvp, cli-tool]
+tier: T0-T1
+agents: 1
+verification: minimal
+steps:
+  - id: plan
+    agent: orchestrator
+    output: work/plan.md
+    verification: [schema]
+  - id: build
+    agent: worker-1
+    input: work/plan.md
+    output: work/artifact.md
+    verification: [evidence]
+  - id: demo
+    agent: orchestrator
+    input: work/artifact.md
+    output: work/demo.md
+    verification: [manual]

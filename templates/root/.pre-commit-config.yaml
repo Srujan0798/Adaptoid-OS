@@ -1,0 +1,21 @@
+# Pre-commit hooks — run validators before every commit
+# Install: pip install pre-commit && pre-commit install
+
+repos:
+  - repo: local
+    hooks:
+      - id: os-setup-preflight
+        name: OS-Setup Preflight
+        entry: bash orchestrator/scripts/preflight.sh
+        language: system
+        pass_filenames: false
+        always_run: true
+        stages: [pre-commit]
+
+      - id: os-setup-publish-gate
+        name: Publish Gate (FM-07)
+        entry: bash orchestrator/scripts/publish_gate.sh
+        language: system
+        pass_filenames: false
+        always_run: true
+        stages: [pre-push]

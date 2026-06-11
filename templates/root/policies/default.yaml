@@ -1,0 +1,19 @@
+policies:
+  filesystem:
+    - pattern: "Read"
+      decision: allow
+    - pattern: "Write"
+      decision: ask
+    - pattern: "Bash(rm -rf*)"
+      decision: deny
+  network:
+    - pattern: "Bash(curl*|wget*)"
+      decision: ask
+  execution:
+    - pattern: "Bash"
+      decision: ask
+    - pattern: "Bash(ls|cat|pwd|echo|grep|find)"
+      decision: allow
+  data:
+    - pattern: "Read(*.env*)"
+      decision: deny

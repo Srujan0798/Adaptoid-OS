@@ -1,0 +1,31 @@
+name: verification-heavy
+description: 5-layer verification for compliance, finance, medical, legal
+archetypes: [saas-product, internal-tool]
+tier: T3-T4
+agents: 2-5
+verification: maximum
+steps:
+  - id: plan
+    agent: orchestrator
+    output: plan/PRD.md
+    verification: [schema, evidence]
+  - id: build
+    agent: worker-1
+    input: plan/PRD.md
+    output: src/
+    verification: [unit-test, integration-test]
+  - id: review
+    agent: reviewer
+    input: src/
+    output: work/review.md
+    verification: [cross-check, acceptance]
+  - id: security-audit
+    agent: security-reviewer
+    input: src/
+    output: work/security.md
+    verification: [static-analysis, policy-check]
+  - id: qa
+    agent: qa-tester
+    input: src/
+    output: work/qa.md
+    verification: [acceptance, regression]

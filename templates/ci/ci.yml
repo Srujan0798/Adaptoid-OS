@@ -1,0 +1,33 @@
+name: CI
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+
+jobs:
+  preflight:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run OS-Setup preflight
+        run: bash orchestrator/scripts/preflight.sh .
+
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run linters
+        run: |
+          # Add your lint commands here (ruff, eslint, etc.)
+          echo "Lint placeholder — replace with your stack's linter"
+
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run tests
+        run: |
+          # Add your test commands here (pytest, jest, etc.)
+          echo "Test placeholder — replace with your stack's test runner"

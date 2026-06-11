@@ -1,0 +1,27 @@
+name: self-improving
+description: Learning loops for continuous optimization
+archetypes: [research-ml, data-pipeline, nlp-pipeline]
+tier: T2-T4
+agents: 2-4
+verification: standard
+steps:
+  - id: baseline
+    agent: orchestrator
+    output: work/baseline.md
+    verification: [evidence]
+  - id: experiment
+    agent: worker-1
+    loop: iterations
+    input: work/baseline.md
+    output: work/experiments/*.md
+    verification: [evidence, metrics]
+  - id: evaluate
+    agent: evaluator
+    input: work/experiments/*.md
+    output: work/evaluation.md
+    verification: [cross-check]
+  - id: crystallize
+    agent: orchestrator
+    input: work/evaluation.md
+    output: memory-bank/lessons/LESSON-XXX.md
+    verification: [schema, acceptance]

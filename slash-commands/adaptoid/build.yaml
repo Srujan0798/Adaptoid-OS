@@ -1,0 +1,13 @@
+name: build
+description: Dispatch wave tasks to workers
+cost_cap_usd: 2.00
+inputs:
+  - plan/EXECUTION.md
+  - work/wave-*/tasks/*.md
+outputs:
+  - work/reports/wave-*/*.md
+  - src/ (code)
+verification:
+  - evidence
+  - acceptance
+timeout_minutes: 30

@@ -1,0 +1,28 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "ProjectIntent",
+  "type": "object",
+  "required": ["schema_version", "project_type", "archetype", "tier", "success_criteria", "failure_modes"],
+  "properties": {
+    "schema_version": { "type": "string", "enum": ["1.0"] },
+    "project_type": { "type": "string", "enum": ["web_app", "data_analysis", "api_design", "ml_pipeline", "infrastructure", "research", "content_creation"] },
+    "archetype": { "type": "string" },
+    "tier": { "type": "string", "enum": ["T0", "T1", "T2", "T3", "T4"] },
+    "stakeholders": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "role": { "type": "string" },
+          "needs": { "type": "string" }
+        },
+        "required": ["role", "needs"]
+      }
+    },
+    "success_criteria": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
+    "failure_modes": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
+    "non_negotiables": { "type": "array", "items": { "type": "string" } },
+    "preferences": { "type": "object" },
+    "verification_level": { "type": "string", "enum": ["minimal", "standard", "maximum"] }
+  }
+}

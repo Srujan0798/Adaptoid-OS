@@ -1,0 +1,57 @@
+name: planner-coder-reviewer
+description: The default feature-development flow. Orchestrator plans, parallel workers code, orchestrator+verifier review. Maps to OS-Setup's two-tier model directly.
+params:
+  wave: required          # e.g. wave-3
+  parallelism: 4          # max concurrent coder workers
+  budget: {minutes_per_task: 90, tokens_per_task: 50000}
+
+phases:
+  - id: plan
+    role: orchestrator
+    inputs: [plan/PRD.md, plan/ARCHITECTURE.md, ".specify/specs/{wave}/spec.md"]
+    outputs: [".specify/specs/{wave}/{plan,tasks}.md", ".specify/specs/{wave}/contracts/"]
+    acceptance: "contracts/ exist and are runnable"
+    blast_radius: r1
+
+  - id: dispatch
+    role: orchestrator
+    inputs: [".specify/specs/{wave}/tasks.md"]
+    outputs: ["work/{wave}/0X-*.md"]
+    pre: [check_dispatch_disjoint.sh]      # FM-13
+    acceptance: "every brief self-contained; write sets disjoint"
+    blast_radius: r1
+
+  - id: build
+    role: worker                            # PARALLEL — one per task
+    parallel: true
+    inputs: ["work/{wave}/0X-*.md"]
+    outputs: [src/..., tests/...]
+    skills: [tdd, code-review]              # worker-side
+    acceptance: "the task brief's executable check passes"
+    blast_radius: r1
+
+  - id: review
+    role: orchestrator + verifier-subagent
+    inputs: ["work/reports/{wave}/*.report.md"]
+    action: "RE-RUN acceptance yourself; spawn verifier; check boundaries + constitution"
+    decision: [APPROVE, REVISE, REJECT]
+    blast_radius: r0
+
+  - id: merge
+    role: orchestrator
+    pre: [preflight.sh]                     # all validators
+    outputs: ["EXECUTION.md (row replaced)", "CHANGELOG [Unreleased]", "HANDOFF.md", events.jsonl]
+    blast_radius: r2
+
+gates:
+  pre_dispatch: [check_dispatch_disjoint.sh]
+  pre_merge: [preflight.sh]
+  pre_ship: [preflight.sh]
+
+self_heal:
+  on_acceptance_fail: revise_brief         # rewrite tighter, redispatch
+  on_flaky: quarantine_and_fix             # FM-10
+  on_drift: regenerate_from_source         # FM-01/FM-12
+  on_context_full: handoff_and_clear       # FM-04
+
+verification: [unit, integration, acceptance, verifier-subagent]

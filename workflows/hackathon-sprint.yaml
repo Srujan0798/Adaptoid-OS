@@ -1,0 +1,45 @@
+name: hackathon-sprint
+description: 24-72h demo build. Speed over polish. One end-to-end happy path that works on stage. Minimal gates — only the demo path matters.
+params:
+  hours: 48
+  demo_path: required      # the one flow that must work on stage
+
+phases:
+  - id: spike
+    role: orchestrator
+    action: "one-page PRD: what it does + the 30s pitch + the single demo path. No more."
+    outputs: [plan/PRD.md]
+    blast_radius: r1
+    budget: {minutes: 30}
+
+  - id: skeleton
+    role: worker
+    action: "thinnest runnable end-to-end skeleton of the demo path (clickable in hours)"
+    acceptance: "demo path runs end-to-end with stub data"
+    blast_radius: r1
+
+  - id: build-parallel
+    role: worker
+    parallel: true                # split the demo path into disjoint pieces
+    action: "fill the skeleton; each worker owns a disjoint slice of the demo path"
+    skills: [tdd-lite, code-review]
+    acceptance: "the slice works in the demo path"
+    blast_radius: r1
+
+  - id: demo-harden
+    role: orchestrator
+    action: "seed DB / offline fallback / pre-recorded data so wifi can't kill the demo (FM-11: fallback is LOUD in dev, graceful in demo)"
+    acceptance: "demo path runs twice in a row on presenter machine"
+    blast_radius: r1
+
+gates:
+  pre_ship: [demo_path_runs_twice]    # the ONLY gate that matters
+
+skip: [observability, compliance, multi-tier-auth, exhaustive-tests, SDKs, multi-agent-frameworks]
+
+self_heal:
+  on_demo_break: switch_to_seeded_fallback
+  on_context_full: handoff_and_clear
+
+verification: [smoke, demo-path-e2e]
+deliverables: [working-demo, 1-page-README-with-pitch]

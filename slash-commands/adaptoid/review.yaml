@@ -1,0 +1,10 @@
+name: review
+description: Review worker reports
+cost_cap_usd: 0.50
+inputs:
+  - work/reports/wave-*/*.md
+outputs:
+  - work/reviews/wave-*/*.md
+verification:
+  - cross-check
+timeout_minutes: 15

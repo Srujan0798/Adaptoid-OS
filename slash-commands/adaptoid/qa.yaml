@@ -1,0 +1,13 @@
+name: qa
+description: Run QA suite + acceptance tests
+cost_cap_usd: 1.00
+inputs:
+  - src/
+  - plan/EXECUTION.md
+outputs:
+  - work/qa.md
+  - test-results/
+verification:
+  - acceptance
+  - regression
+timeout_minutes: 20

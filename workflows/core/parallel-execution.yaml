@@ -1,0 +1,27 @@
+name: parallel-execution
+description: Map-reduce / council for high-throughput consensus
+archetypes: [research-ml, data-pipeline, nlp-pipeline]
+tier: T2-T3
+agents: 3-12
+verification: standard
+steps:
+  - id: split
+    agent: orchestrator
+    output: work/tasks/*.md
+    verification: [schema]
+  - id: map
+    agent: workers
+    parallel: true
+    input: work/tasks/*.md
+    output: work/reports/*.md
+    verification: [evidence]
+  - id: reduce
+    agent: orchestrator
+    input: work/reports/*.md
+    output: work/consensus.md
+    verification: [cross-check]
+  - id: review
+    agent: reviewer
+    input: work/consensus.md
+    output: work/final.md
+    verification: [acceptance]

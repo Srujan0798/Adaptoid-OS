@@ -1,0 +1,26 @@
+name: long-horizon
+description: Checkpointed execution for multi-step durable execution
+archetypes: [saas-product, internal-tool, research-ml]
+tier: T2-T4
+agents: 1-3
+verification: standard
+steps:
+  - id: checkpoint
+    agent: orchestrator
+    output: orchestrator/memory/CHECKPOINT.md
+    verification: [schema]
+  - id: execute-wave
+    agent: workers
+    loop: waves
+    input: plan/EXECUTION.md
+    output: work/reports/wave-*.md
+    verification: [evidence, route-check]
+  - id: checkpoint-update
+    agent: orchestrator
+    output: orchestrator/memory/CHECKPOINT.md
+    verification: [schema]
+  - id: verify
+    agent: verifier
+    input: work/reports/wave-*.md
+    output: work/verification.md
+    verification: [acceptance]
