@@ -7,9 +7,9 @@ Adaptoid OS
 A failure-mode-first harness for agentic AI projects.
 
 ## Description
-I kept shipping LLM demos that broke in production. State drift. Wrong tool calls. Tasks marked "done" with no proof. So I wrote down every failure mode and built a harness around them.
+Most agentic AI projects fail in predictable ways: state drift, wrong tool calls, tasks marked "done" with no proof, artifacts that should never reach production. Existing frameworks give you primitives. Adaptoid OS adds the guardrails.
 
-Adaptoid OS v4.0 gives you:
+It gives you:
 - 18 documented failure modes with dedicated validators
 - typed project intent (PROJECT-INTENT.md + JSON Schema)
 - memory bank + event sourcing
@@ -26,7 +26,7 @@ The core is framework-agnostic. Use the adapters only when you need them.
 - Software Engineering
 
 ## Maker Comment
-I made this because my own agentic projects kept failing in predictable ways and existing frameworks did not give me a way to catch those failures early. It is opinionated, imperfect, and open source. Feedback from people actually shipping this stuff would mean a lot.
+I wanted a harness that treats failure modes as first-class, instead of assuming they will not happen. This is rough, opinionated, and open source. Feedback from people actually shipping agentic AI would mean a lot.
 
 ## Screenshots needed
 1. `screenshots/hero.png` — README hero section

@@ -1,31 +1,27 @@
 # LinkedIn Post — Adaptoid OS v4.0
 
-I built a thing because I got tired of my own LLM projects quietly breaking.
+I open-sourced Adaptoid OS v4.0 this week.
 
-Not the model part. The everything-else part.
+It is not a new LLM framework. It is a harness for the failure modes that keep breaking agentic projects.
 
-The agent would crash, restart, and forget what wave it was on. It would call a tool that made no sense for the state. It would mark a task "done" and I would have no idea if it actually worked. Sometimes it would generate files I did not want anywhere near production.
+If you have shipped anything with LLMs, you have probably seen at least a few of these:
+- an agent loses state after a crash
+- it calls a tool that does not fit the current wave
+- it reports a task as "done" with no proof
+- something embarrassing lands in a commit
 
-I tried LangGraph, CrewAI, AutoGen. They are good at what they do. But they give you primitives, not guardrails. They do not ask: "what are the 18 ways this is likely to fail, and how do we catch each one?"
+Existing frameworks give you primitives. They do not give you a built-in way to catch these failures early.
 
-So I wrote the failures down and built a harness around them.
+So I wrote the failures down as 18 failure modes (FM-01 → FM-18) and added a validator for each. Before a project says it is finished, it runs `bash validators/dogfood.sh`.
 
-Adaptoid OS v4.0 is now open source.
+What else is in there:
+- typed PROJECT-INTENT.md with JSON Schema
+- memory bank + event sourcing
+- wave-transition enforcement
+- optional adapters for LangGraph / CrewAI / AutoGen
+- one-command scaffolding
 
-What it actually is:
-- 18 documented failure modes, each with a validator
-- A typed PROJECT-INTENT.md so the agent knows the real goal
-- A memory bank that persists state across crashes
-- Workflow files that enforce which wave can go to which wave
-- Optional adapters for LangGraph / CrewAI / AutoGen (Claw Bridge)
-- One command to scaffold a project: `bash adaptor/engine.py ...`
-
-What it is not:
-- A new LLM framework
-- A silver bullet
-- Polished to perfection
-
-If you are building agentic stuff in production, you probably already have your own list of failure modes. I would love to compare notes.
+It is rough in places and very opinionated. Feedback from people actually building this stuff is welcome.
 
 Repo: github.com/Srujan0798/Adaptoid-OS
 

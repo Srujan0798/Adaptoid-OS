@@ -1,17 +1,15 @@
 # Why I Built Adaptoid OS (and Why It Is Not Another Framework)
 
-I keep building LLM demos that work in a notebook and break in production.
-
-The model is fine. The problem is everything around it.
+Agentic AI projects tend to fail in a small set of predictable ways.
 
 ## The Same Four Failures
 
-Every project hits the same wall:
+Over and over, the same problems show up:
 
-1. **State drift.** The agent crashes, restarts, and forgets what wave it was on.
+1. **State drift.** An agent crashes, restarts, and forgets what wave it was on.
 2. **Wrong tool calls.** It invokes a tool that does not match the current state.
 3. **Unverified "done" claims.** It reports completion but there is no evidence.
-4. **Embarrassing artifacts.** Files I never want near production slip into commits.
+4. **Embarrassing artifacts.** Files that should never see production slip into commits.
 
 These are not model failures. They are harness failures.
 
@@ -19,7 +17,7 @@ These are not model failures. They are harness failures.
 
 LangGraph, CrewAI, AutoGen, and the OpenAI Agents SDK are good at what they do. They give you nodes, roles, conversations, and handoffs. What they do not give you is a built-in answer to "how will this fail, and how will we catch it before production?"
 
-That is the gap I wanted to close.
+That is the gap Adaptoid OS tries to close.
 
 ## What Adaptoid OS Actually Does
 
@@ -52,12 +50,12 @@ bash validators/dogfood.sh
 
 It is not polished. It is not a silver bullet. It is not trying to replace the frameworks you already use.
 
-It is one developer's attempt to stop making the same mistakes.
+It is one developer's attempt to make agentic systems less fragile.
 
-If you are shipping agentic systems in production, I would love your feedback.
+If you are shipping agentic systems in production, feedback is welcome.
 
 **Repo:** [github.com/Srujan0798/Adaptoid-OS](https://github.com/Srujan0798/Adaptoid-OS)
 
 ---
 
-*Srujan is building tools that make agentic systems less fragile. Feedback welcome via GitHub Issues.*
+*Feedback welcome via GitHub Issues.*
