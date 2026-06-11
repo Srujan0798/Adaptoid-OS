@@ -50,6 +50,16 @@
 | `reference/ecosystem/compatibility-adapters.md` | when bridging to LangGraph/CrewAI/AutoGen |
 | `setup/AGENTIC_OS_PROFILE.md` | when standing up a local harness |
 | `setup/harness/docker-compose.yml` | when starting the optional local stack |
+| `scripts/bootstrap.sh` | when creating a new project from template |
+| `scripts/healthcheck.sh` | when verifying Adaptoid OS integrity |
+| `scripts/intent-parse.py` | when validating PROJECT-INTENT.md |
+| `conductor/conductor.py` | when running parallel workspaces |
+| `vault/README.md` | when setting up Obsidian second brain |
+| `skills/README.md` | when selecting or authoring skills |
+| `examples/hackathon/` | when learning from hackathon example |
+| `examples/production/` | when learning from production SaaS example |
+| `examples/research/` | when learning from research ML example |
+| `examples/bug-fix/` | when learning from emergency bug fix example |
 | `memory-bank/README.md` | when setting up durable memory |
 | `memory-bank/FACT.template.md` | when recording a verified fact |
 | `memory-bank/LESSON.template.md` | when capturing a post-mortem |
