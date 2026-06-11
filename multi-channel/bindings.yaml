@@ -1,0 +1,30 @@
+# Multi-Channel Gateway Bindings
+# OpenClaw-style routing: one gateway, N isolated agents
+
+gateway:
+  name: adaptoid-gateway
+  channels:
+    - id: slack
+      type: chat
+      agent: general-assistant
+      policy: default
+    - id: telegram
+      type: chat
+      agent: general-assistant
+      policy: default
+    - id: discord
+      type: community
+      agent: community-manager
+      policy: permissive
+    - id: email
+      type: async
+      agent: executive-assistant
+      policy: conservative
+    - id: webhook
+      type: api
+      agent: webhook-handler
+      policy: strict
+  defaults:
+    policy: default
+    timeout_seconds: 30
+    max_message_length: 4000

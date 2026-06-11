@@ -1,0 +1,38 @@
+# Calibration Set: Code Generation
+# 50 cases to calibrate LLM-as-judge confidence for code tasks
+
+calibration:
+  domain: code
+  cases: 50
+  format:
+    - id: "string"
+      prompt: "string"
+      expected: "string"
+      difficulty: easy|medium|hard
+      verification:
+        - type: test
+          command: "string"
+        - type: lint
+          command: "string"
+  examples:
+    - id: CG-001
+      prompt: "Write a Python function that reverses a string without using slicing."
+      expected: "iterative or recursive reversal"
+      difficulty: easy
+      verification:
+        - type: test
+          command: "python -c 'assert reverse(\"hello\") == \"olleh\"'"
+    - id: CG-002
+      prompt: "Implement a thread-safe LRU cache in Python."
+      expected: "collections.OrderedDict or custom doubly-linked list + dict"
+      difficulty: medium
+      verification:
+        - type: test
+          command: "pytest tests/lru_cache_test.py"
+    - id: CG-003
+      prompt: "Write a SQL query that finds the second highest salary per department."
+      expected: "window function or subquery approach"
+      difficulty: medium
+      verification:
+        - type: test
+          command: "sqlite3 test.db < query.sql"

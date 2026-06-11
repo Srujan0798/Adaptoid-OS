@@ -1,0 +1,13 @@
+{
+  "editor.formatOnSave": true,
+  "editor.rulers": [80, 120],
+  "files.exclude": {
+    "**/.git": true,
+    "**/.DS_Store": true,
+    "**/__pycache__": true
+  },
+  "markdownlint.config": {
+    "MD013": false,
+    "MD033": false
+  }
+}
