@@ -93,6 +93,7 @@
 | `examples/production/` | when learning from production SaaS example |
 | `examples/research/` | when learning from research ML example |
 | `examples/bug-fix/` | when learning from emergency bug fix example |
+| `examples/super-adaptoid/` | when learning from the full Super-Adaptoid stack example |
 | `memory-bank/README.md` | when setting up durable memory |
 | `memory-bank/FACT.template.md` | when recording a verified fact |
 | `memory-bank/LESSON.template.md` | when capturing a post-mortem |
