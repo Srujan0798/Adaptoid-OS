@@ -49,7 +49,7 @@ rm -rf "$TMPDIR"
 
 # Test: Super-Adaptoid protocol validators (v5.0)
 echo "Test: super-adaptoid validators"
-for v in check_consciousness check_memory_identity check_evolution check_jarvis \
+for v in check_consciousness check_memory_identity check_evolution check_proactive_assistant \
          check_hidden_gems check_fable5 check_super_prompt; do
   bash "$ROOT/validators/$v.sh" "$ROOT" || rc=1
 done

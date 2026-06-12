@@ -114,7 +114,7 @@ rm -rf "$TMPDIR"
 
 # ── Super-Adaptoid protocol layer (v5.0): every protocol has a passing validator ──
 if [ -d "$HERE/protocols/super-adaptoid" ]; then
-  for v in check_consciousness check_memory_identity check_evolution check_jarvis \
+  for v in check_consciousness check_memory_identity check_evolution check_proactive_assistant \
            check_hidden_gems check_fable5 check_super_prompt; do
     if [ -x "$HERE/validators/$v.sh" ]; then
       bash "$HERE/validators/$v.sh" "$HERE" || fail=1
