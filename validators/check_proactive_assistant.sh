@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # check_proactive_assistant.sh — Validates the Proactive Assistant protocol (proactive but never unilateral).
 # Usage: check_proactive_assistant.sh [repo_root]
-set -uo pipefail
+set -euo pipefail
 ROOT="${1:-$(cd "$(dirname "$0")/.." && pwd)}"
 PROTO="$ROOT/protocols/super-adaptoid/proactive-assistant.md"
 fail=0

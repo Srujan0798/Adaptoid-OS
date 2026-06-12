@@ -20,7 +20,7 @@ confidence: corpus
 | 7 | Release Orchestrator | `protocols/wave-lifecycle.md`, `templates/ci/ci.yml` | `publish_gate.sh`, `preflight.sh` |
 | 8 | Dependency Auditor | `reference/ecosystem/STALE_CHECK.sh`, `skills/domain/security-audit.md` | `check_config.sh` |
 | 9 | On-call Responder | `protocols/event-sourcing.md`, `failure-modes/README.md` | `replay_session.sh`, `audit_chain.sh` |
-| 10 | Learning Loop | `protocols/evolution-engine.md`, `protocols/super-adaptoid/evolution-engine.md`, `memory-bank/LESSON.template.md` | `check_processes.sh`, `dogfood.sh` |
+| 10 | Learning Loop | `protocols/super-adaptoid/evolution-engine.md`, `memory-bank/LESSON.template.md` | `check_processes.sh`, `dogfood.sh` |
 
 ## Selection heuristics
 

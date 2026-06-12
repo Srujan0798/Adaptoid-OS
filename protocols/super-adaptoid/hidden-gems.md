@@ -18,6 +18,8 @@ Systematically scan the agentic-AI ecosystem for lesser-known tools, SDKs, and p
 
 **Total score** = sum of the five criteria (range 5–25). A candidate must score **≥ 15** and **≥ 4 on Harness fit** to be cataloged.
 
+> The catalog in `reference/ecosystem/hidden-gems.md` adds optional "Integration Quality Gates" (coverage, license, docs). Treat those gates as pre-scoring filters; the 1–5 rubric above is the scoring step that follows.
+
 ## Process
 
 1. **Scan** — monitor repositories, papers, release notes, and practitioner notes.

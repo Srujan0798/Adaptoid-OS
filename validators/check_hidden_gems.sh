@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # check_hidden_gems.sh — Validates the Hidden Gems protocol + catalog (≥30 scored entries).
 # Usage: check_hidden_gems.sh [repo_root]
-set -uo pipefail
+set -euo pipefail
 ROOT="${1:-$(cd "$(dirname "$0")/.." && pwd)}"
 PROTO="$ROOT/protocols/super-adaptoid/hidden-gems.md"
 GEMS="$ROOT/reference/ecosystem/hidden-gems.md"

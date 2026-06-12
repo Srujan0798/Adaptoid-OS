@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # check_super_prompt.sh — Validates the Super-Prompt protocol (versioned, tested prompts).
 # Usage: check_super_prompt.sh [repo_root]
-set -uo pipefail
+set -euo pipefail
 ROOT="${1:-$(cd "$(dirname "$0")/.." && pwd)}"
 PROTO="$ROOT/protocols/super-adaptoid/super-prompt.md"
 fail=0

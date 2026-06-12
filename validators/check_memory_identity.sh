@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # check_memory_identity.sh — Validates the Memory-Identity protocol (4-tier durable memory).
 # Usage: check_memory_identity.sh [repo_root]
-set -uo pipefail
+set -euo pipefail
 ROOT="${1:-$(cd "$(dirname "$0")/.." && pwd)}"
 PROTO="$ROOT/protocols/super-adaptoid/memory-identity.md"
 fail=0

@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # check_evolution.sh — Validates the Evolution Engine protocol (GEPA + Hermes loops).
 # Usage: check_evolution.sh [repo_root]
-set -uo pipefail
+set -euo pipefail
 ROOT="${1:-$(cd "$(dirname "$0")/.." && pwd)}"
 PROTO="$ROOT/protocols/super-adaptoid/evolution-engine.md"
 fail=0

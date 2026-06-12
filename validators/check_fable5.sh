@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # check_fable5.sh — Validates the Fable 5 Workflows protocol (10 workflow patterns).
 # Usage: check_fable5.sh [repo_root]
-set -uo pipefail
+set -euo pipefail
 ROOT="${1:-$(cd "$(dirname "$0")/.." && pwd)}"
 PROTO="$ROOT/protocols/super-adaptoid/fable-5-workflows.md"
 fail=0

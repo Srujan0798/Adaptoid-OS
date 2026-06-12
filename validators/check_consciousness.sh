@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # check_consciousness.sh — Validates the Consciousness Core protocol (functional self-monitoring).
 # Usage: check_consciousness.sh [repo_root]
-set -uo pipefail
+set -euo pipefail
 ROOT="${1:-$(cd "$(dirname "$0")/.." && pwd)}"
 PROTO="$ROOT/protocols/super-adaptoid/consciousness-core.md"
 fail=0
