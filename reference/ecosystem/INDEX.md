@@ -24,6 +24,11 @@ confidence: corpus
 | `people.md` | Karpathy, Boris Cherny, Simon Willison, Garry Tan/YC, mattpocock, ruvnet | learning the discipline |
 | `SELECTION.md` | archetype → recommended stack | every setup (the decision engine) |
 | `compatibility-adapters.md` | LangGraph, CrewAI, AutoGen, MetaGPT, LlamaIndex, ADK, DSPy | bridging to external frameworks |
+| `hidden-gems.md` | 36 under-hyped tools/patterns with scoring rubric | evaluating lesser-known tools |
+| `ecosystem-analysis.md` | 50+ project competitive landscape + positioning | positioning vs the broader ecosystem |
+| `tools-compendium.md` | broad tool catalog by category | choosing your tool stack |
+| `skills-registry.md` | skill sources and authoring guidance | selecting or authoring skills |
+| `../workflows/fable-5-index.md` | 10 Fable 5 workflow patterns → OS-Setup assets | choosing a long-horizon workflow |
 
 ## The shape of the 2026 ecosystem (one-screen mental model)
 ```

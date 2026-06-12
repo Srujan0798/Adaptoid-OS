@@ -1,5 +1,11 @@
 # Adaptoid OS Roadmap
 
+## v5.0 — Public Product Layer + Super-Adaptoid (SHIPPED)
+- Professional open-source README and INDEX rewrite
+- docs/launch/ suite: positioning, growth playbook, launch checklist, brand guidelines, content calendar
+- Super-Adaptoid protocol layer: consciousness, memory-identity, evolution, proactive-assistant, hidden-gems, fable-5-workflows, super-prompt
+- Historical backups of v4.0 README and INDEX
+
 ## v4.0 — Eternal Agentic Harness (SHIPPED)
 - Safety core: Route Sentinel, VaultMMU, OAP Security
 - Typed intent: PROJECT-INTENT.md + JSON Schema
@@ -12,24 +18,24 @@
 - Self-improvement: GEPA + Hermes protocol
 - GitHub-ready: CI, templates, LICENSE
 
-## v4.1 — Runtime Hardening
+## v5.1 — Runtime Hardening
 - [ ] Python reference runtime for conductor.py
 - [ ] Integration tests for all validators
 - [ ] Benchmark suite (speed, cost, accuracy)
 - [ ] Calibration sets per archetype (50 cases)
 
-## v4.2 — Framework Adapters
+## v5.2 — Framework Adapters
 - [ ] Claw Bridge: LangGraph adapter
 - [ ] Claw Bridge: CrewAI adapter
 - [ ] Claw Bridge: AutoGen adapter
 - [ ] .agf.yaml agent format standard
 
-## v4.3 — Multi-Channel
+## v5.3 — Multi-Channel
 - [ ] OpenClaw-style gateway
 - [ ] Slack / Telegram / Discord bindings
 - [ ] Per-channel context isolation
 
-## v4.4 — Enterprise
+## v5.4 — Enterprise
 - [ ] SOC2 / ISO compliance templates
 - [ ] Team scaling guide
 - [ ] Org-wide deployment playbook

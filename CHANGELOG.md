@@ -1,5 +1,33 @@
 # Adaptoid OS Changelog
 
+## v5.0 — Jun 2026 — Public Product Layer + Super-Adaptoid Protocols
+The v5.0 release transforms Adaptoid OS into a professional open-source project with a clear category claim, launch playbook, and self-monitoring protocol layer.
+
+### Added
+- **`docs/launch/` — Public Product Layer.** POSITIONING.md, GROWTH-PLAYBOOK.md, LAUNCH-CHECKLIST.md, BRAND-GUIDELINES.md, CONTENT-CALENDAR.md.
+- **`protocols/super-adaptoid/` — Super-Adaptoid Protocol Layer.** README, consciousness-core, memory-identity, evolution-engine, proactive-assistant, hidden-gems, fable-5-workflows, super-prompt.
+- **README v5.0 rewrite.** Professional open-source positioning, 3-layer architecture diagram, expanded comparison matrix, Super-Adaptoid section.
+- **INDEX v5.0 restructure.** "Always load / Load on trigger / Reference" sections, Super-Adaptoid navigation, Fable 5 and hidden-gems quick-reference indexes.
+- **Historical backups.** README.md and INDEX.md archived to `docs/historical/` before rewrite.
+- **`protocols/event-sourcing.md` — event log as single source of truth.** Every state mutation is an immutable hash-chained event; HANDOFF/EXECUTION are projections. Replay, time-travel debugging, snapshots, retention. Grounded in existing `emit_event.sh`/`audit_chain.sh`/`replay_session.sh` machinery (FM-14/15/17).
+- **`protocols/sandboxing.md` — isolation levels + credential proxy.** Four isolation tiers (V8 isolate → namespaces → gVisor → microVM) with selection rules, the four non-negotiable guarantees (filesystem, network deny-by-default, secrets-never-enter-sandbox, resource caps), and a hardening checklist. Incident-grounded.
+- **`protocols/clarification-protocol.md` — ambiguity handling (FM-08/FM-16 upstream).** Ambiguity scoring table, 4-step protocol (deconstruct → ≤4 questions → analytical frame → confirm), 3-iteration cap, anti-patterns. Feeds typed PROJECT-INTENT.
+- **`adaptor/INPUT-TAXONOMY.md` — 15 canonical input types.** Request-shape classification (PROJECT/PROBLEM/RESEARCH/…/AUDIT) orthogonal to archetypes, plus duration/complexity/risk axes and the risk×complexity verification scaling matrix with dynamic in-run scaling triggers.
+- **7 Super-Adaptoid validators.** `check_consciousness`, `check_memory_identity`, `check_evolution`, `check_proactive_assistant`, `check_hidden_gems`, `check_fable5`, `check_super_prompt` — each protocol's invariants (config fields, FM coverage, catalog counts, template variables, kernel refs) are executable checks, wired into `dogfood.sh` and `tests/run_tests.sh`.
+- **`reference/workflows/fable-5-index.md`.** Maps the 10 Fable 5 workflow patterns to concrete OS-Setup assets and validators, with selection heuristics keyed to the input taxonomy.
+- **`examples/super-adaptoid/`.** Worked T2 example: typed intent with the full `super_adaptoid:` config block, session walkthrough, trust gate before proactive mode, falsification criteria.
+
+### Changed
+- **`validators/emit_event.sh` now hash-CHAINS events.** Each event embeds `prev_hash` (genesis = 64 zeros), making `audit_chain.sh` continuity checks real tamper evidence instead of best-effort. Verified by test.
+- **`protocols/verification.md` adds gate ordering + cost cascade.** Route gate → policy gate → schema gate → state gate → cheap-model self-check → cross-check → grounding; fail-closed ternary outcomes; max_retries=3 then human escalation.
+- **`adaptor/ADAPTOR_ENGINE.md` ANALYZE step** now detects input type (INPUT-TAXONOMY) and routes ambiguous briefs to the clarification protocol.
+- README centered hero and badges updated to v5.0.
+- Comparison matrix adds Super-Adaptoid rows: self-monitoring/consciousness, proactive assistant mode, self-improving evolution.
+- Architecture section now shows Layer 1 (Kernel), Layer 2 (Public Product), Layer 3 (Super-Adaptoid).
+
+### Philosophy
+v4.0 proved the kernel: safety, typed intent, deterministic validation. v5.0 adds the public product layer and the consciousness/evolution protocols that let the harness monitor and improve itself without hype.
+
 ## v4.0 — Jun 2026 — Safety Core + Typed Intent + Philosophy
 Merged the Adaptoid safety core into OS-Setup.
 

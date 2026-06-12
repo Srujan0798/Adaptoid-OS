@@ -112,6 +112,27 @@ else
 fi
 rm -rf "$TMPDIR"
 
+# ── Super-Adaptoid protocol layer (v5.0): every protocol has a passing validator ──
+if [ -d "$HERE/protocols/super-adaptoid" ]; then
+  for v in check_consciousness check_memory_identity check_evolution check_proactive_assistant \
+           check_hidden_gems check_fable5 check_super_prompt; do
+    if [ -x "$HERE/validators/$v.sh" ]; then
+      bash "$HERE/validators/$v.sh" "$HERE" || fail=1
+    else
+      echo "FAIL: missing validator validators/$v.sh for super-adaptoid layer"
+      fail=1
+    fi
+  done
+fi
+
+# ── README quality gate (v5.0) ──
+if [ -x "$HERE/validators/check_readme.sh" ]; then
+  bash "$HERE/validators/check_readme.sh" "$HERE" || fail=1
+else
+  echo "FAIL: missing validators/check_readme.sh"
+  fail=1
+fi
+
 # ── Summary ──
 echo ""
 echo "==================================================="

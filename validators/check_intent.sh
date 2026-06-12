@@ -6,6 +6,7 @@ ROOT="${1:-.}"
 INTENT="$ROOT/PROJECT-INTENT.md"
 SCHEMA="$ROOT/schemas/ProjectIntent.schema.json"
 [ -f "$SCHEMA" ] || SCHEMA="$ROOT/../schemas/ProjectIntent.schema.json"
+[ -f "$SCHEMA" ] || SCHEMA="$ROOT/../../schemas/ProjectIntent.schema.json"
 
 if [ ! -f "$INTENT" ]; then
   echo "OK check-intent: no PROJECT-INTENT.md found (optional for small projects)"
