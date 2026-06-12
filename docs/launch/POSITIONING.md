@@ -47,7 +47,7 @@ Existing frameworks give you primitives. Adaptoid OS gives you an operating syst
 - ✅ **Living-folder memory** — Markdown + SQLite + Obsidian-ready, progressive disclosure.
 - ✅ **Self-validation** — `dogfood.sh` + `preflight.sh` verify the kit and every project.
 - ✅ **Self-monitoring consciousness layer** — v5.0 Super-Adaptoid protocols for honest status and runtime introspection.
-- ✅ **Proactive assistant mode** — Jarvis Mode surfaces the right context without acting without permission.
+- ✅ **Proactive assistant mode** — Proactive Assistant surfaces the right context without acting without permission.
 - ✅ **Self-improving evolution** — Evolution Engine protocol with falsification gates and canary rollouts.
 
 ## Competitive Map

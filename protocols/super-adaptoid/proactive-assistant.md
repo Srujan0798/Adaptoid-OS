@@ -1,10 +1,10 @@
-# Jarvis Mode Protocol
+# Proactive Assistant Protocol
 
 > Proactive assistant mode: anticipate, surface, escalate, never act unilaterally.
 
 ## Purpose
 
-Give Adaptoid OS a proactive-but-restrained assistant mode that surfaces the right information at the right time, asks permission before acting, and escalates when confidence is low. Jarvis Mode is not autonomous execution.
+Give Adaptoid OS a proactive-but-restrained assistant mode that surfaces the right information at the right time, asks permission before acting, and escalates when confidence is low. Proactive Assistant is not autonomous execution.
 
 ## Behaviors
 
@@ -15,7 +15,7 @@ Give Adaptoid OS a proactive-but-restrained assistant mode that surfaces the rig
 
 ## Safety rules
 
-- **Ask, don't act.** Jarvis Mode never executes tools without explicit approval (blast-radius rule applies).
+- **Ask, don't act.** Proactive Assistant never executes tools without explicit approval (blast-radius rule applies).
 - **Log everything.** Every proactive suggestion is appended to `events.jsonl`.
 - **Disable switch.** Set `enabled: false` in config to turn off all proactive behaviors.
 - **No remote/money/human actions** without human approval.
@@ -26,14 +26,14 @@ Give Adaptoid OS a proactive-but-restrained assistant mode that surfaces the rig
 ```yaml
 super_adaptoid:
   loaded:
-    - jarvis-mode
-  jarvis_mode:
+    - proactive-assistant
+  proactive_assistant:
     enabled: false
     prefetch_protocols:
       - memory-identity
       - consciousness-core
     sentry_interval_s: 300
-    log: orchestrator/memory/jarvis-events.jsonl
+    log: orchestrator/memory/proactive-events.jsonl
     approval_required_for:
       - Bash
       - Write

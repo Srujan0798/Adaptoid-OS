@@ -5,7 +5,7 @@ The v5.0 release transforms Adaptoid OS into a professional open-source project 
 
 ### Added
 - **`docs/launch/` — Public Product Layer.** POSITIONING.md, GROWTH-PLAYBOOK.md, LAUNCH-CHECKLIST.md, BRAND-GUIDELINES.md, CONTENT-CALENDAR.md.
-- **`protocols/super-adaptoid/` — Super-Adaptoid Protocol Layer.** README, consciousness-core, memory-identity, evolution-engine, jarvis-mode, hidden-gems, fable-5-workflows, super-prompt.
+- **`protocols/super-adaptoid/` — Super-Adaptoid Protocol Layer.** README, consciousness-core, memory-identity, evolution-engine, proactive-assistant, hidden-gems, fable-5-workflows, super-prompt.
 - **README v5.0 rewrite.** Professional open-source positioning, 3-layer architecture diagram, expanded comparison matrix, Super-Adaptoid section.
 - **INDEX v5.0 restructure.** "Always load / Load on trigger / Reference" sections, Super-Adaptoid navigation, Fable 5 and hidden-gems quick-reference indexes.
 - **Historical backups.** README.md and INDEX.md archived to `docs/historical/` before rewrite.

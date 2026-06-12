@@ -25,7 +25,7 @@ Load this index (and only the protocols you need) when:
 | [`consciousness-core.md`](consciousness-core.md) | Self-monitoring, runtime introspection, honest status reporting, and anomaly logging. |
 | [`memory-identity.md`](memory-identity.md) | Persistent agent identity, session continuity, and memory-integrity rituals. |
 | [`evolution-engine.md`](evolution-engine.md) | Safe prompt, skill, and workflow evolution with falsification gates. |
-| [`jarvis-mode.md`](jarvis-mode.md) | Proactive assistant mode: anticipate, surface, escalate, never interrupt. |
+| [`proactive-assistant.md`](proactive-assistant.md) | Proactive assistant mode: anticipate, surface, escalate, never interrupt. |
 | [`hidden-gems.md`](hidden-gems.md) | Discover, evaluate, and integrate lesser-known tools and patterns. |
 | [`fable-5-workflows.md`](fable-5-workflows.md) | Curated workflow library for long-horizon, multi-agent, and self-improving tasks. |
 | [`super-prompt.md`](super-prompt.md) | Versioned, tested, composable system-prompt templates. |
@@ -52,5 +52,6 @@ Super-Adaptoid protocols depend on the v4.0 kernel for principles, anti-hallucin
 ## Validator
 
 ```bash
+bash validators/check_references.sh
 bash validators/dogfood.sh
 ```

@@ -3,7 +3,7 @@
 ## v5.0 — Public Product Layer + Super-Adaptoid (SHIPPED)
 - Professional open-source README and INDEX rewrite
 - docs/launch/ suite: positioning, growth playbook, launch checklist, brand guidelines, content calendar
-- Super-Adaptoid protocol layer: consciousness, memory-identity, evolution, jarvis-mode, hidden-gems, fable-5-workflows, super-prompt
+- Super-Adaptoid protocol layer: consciousness, memory-identity, evolution, proactive-assistant, hidden-gems, fable-5-workflows, super-prompt
 - Historical backups of v4.0 README and INDEX
 
 ## v4.0 — Eternal Agentic Harness (SHIPPED)

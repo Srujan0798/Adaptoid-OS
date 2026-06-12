@@ -89,7 +89,7 @@ Overwrite the stubs in `protocols/super-adaptoid/` with full content:
 - `protocols/super-adaptoid/consciousness-core.md`
 - `protocols/super-adaptoid/memory-identity.md`
 - `protocols/super-adaptoid/evolution-engine.md`
-- `protocols/super-adaptoid/jarvis-mode.md`
+- `protocols/super-adaptoid/proactive-assistant.md`
 - `protocols/super-adaptoid/hidden-gems.md`
 - `protocols/super-adaptoid/fable-5-workflows.md`
 - `protocols/super-adaptoid/super-prompt.md`
@@ -101,7 +101,7 @@ Create and wire:
 - `validators/check_consciousness.sh`
 - `validators/check_memory_identity.sh`
 - `validators/check_evolution.sh`
-- `validators/check_jarvis.sh`
+- `validators/check_proactive_assistant.sh`
 - `validators/check_hidden_gems.sh`
 - `validators/check_fable5.sh`
 - `validators/check_super_prompt.sh`

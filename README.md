@@ -118,7 +118,7 @@ Adaptoid OS is not a replacement for the frameworks below. It is a harness layer
 | **Living-folder memory** | In-graph | In-crew | In-chat | ✅ **Markdown + SQLite + Obsidian-ready** |
 | **Self-validation** | — | — | — | ✅ **dogfood + preflight validators** |
 | **Self-monitoring / consciousness** | — | — | — | ✅ **Consciousness Core protocol** |
-| **Proactive assistant mode** | — | — | — | ✅ **Jarvis Mode protocol** |
+| **Proactive assistant mode** | — | — | — | ✅ **Proactive Assistant protocol** |
 | **Self-improving evolution** | — | — | — | ✅ **Evolution Engine protocol** |
 
 **LangGraph** is excellent for durable, resumable graphs. Use Adaptoid's `claw_bridge/langgraph_adapter.py` when you want to export a plan to LangGraph.
@@ -140,7 +140,7 @@ The **Super-Adaptoid layer** is the v5.0 protocol stack for self-monitoring, mem
 | [Consciousness Core](protocols/super-adaptoid/consciousness-core.md) | Self-monitoring, runtime introspection, and honest status reporting. |
 | [Memory-Identity](protocols/super-adaptoid/memory-identity.md) | Persistent agent identity, session continuity, and memory-integrity rituals. |
 | [Evolution Engine](protocols/super-adaptoid/evolution-engine.md) | Experimental prompt, skill, and workflow evolution with falsification gates. |
-| [Jarvis Mode](protocols/super-adaptoid/jarvis-mode.md) | Proactive assistant mode: anticipate, surface, escalate, never interrupt. |
+| [Proactive Assistant](protocols/super-adaptoid/proactive-assistant.md) | Proactive assistant mode: anticipate, surface, escalate, never interrupt. |
 | [Hidden Gems](protocols/super-adaptoid/hidden-gems.md) | Discover, evaluate, and integrate lesser-known tools and patterns. |
 | [Fable 5 Workflows](protocols/super-adaptoid/fable-5-workflows.md) | The v5.0 workflow library for long-horizon, multi-agent, and self-improving tasks. |
 | [Super-Prompt](protocols/super-adaptoid/super-prompt.md) | Meta-prompt system for composing, versioning, and testing system prompts. |

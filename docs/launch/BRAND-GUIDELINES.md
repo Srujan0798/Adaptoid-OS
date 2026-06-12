@@ -11,7 +11,7 @@ The full product name is "Adaptoid OS." The "OS" suffix clarifies that this is a
 ### Internal-only names
 
 - **Super-Adaptoid** — a protocol layer name (`protocols/super-adaptoid/`), not a product or franchise claim. Use only in technical documentation and only to refer to the v5.0 protocol suite.
-- **Jarvis Mode** — a feature name for proactive assistant mode. Do not imply affiliation with any fictional AI assistant franchise.
+- **Proactive Assistant** — the neutral feature name for proactive assistant mode. Avoid "Jarvis" or "J.A.R.V.I.S." to prevent franchise confusion.
 
 ## Name Analysis
 
@@ -92,7 +92,7 @@ Use shields.io badges exactly as in README.md:
 |---|---|
 | Adaptoid OS | Adaptoid (alone) |
 | Super-Adaptoid layer / protocols | Super-Adaptoid product, Super-Adaptoid franchise |
-| Jarvis Mode | Jarvis (alone), J.A.R.V.I.S. |
+| Proactive Assistant | Jarvis, J.A.R.V.I.S., any fictional AI assistant name |
 | Agent Operating System | AI Operating System (too generic) |
 | Harness | Wrapper |
 | Failure mode | Bug type |

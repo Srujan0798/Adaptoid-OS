@@ -60,7 +60,7 @@
 | `protocols/super-adaptoid/consciousness-core.md` | implementing self-monitoring and honest status |
 | `protocols/super-adaptoid/memory-identity.md` | building persistent agent identity |
 | `protocols/super-adaptoid/evolution-engine.md` | running safe prompt/skill evolution |
-| `protocols/super-adaptoid/jarvis-mode.md` | enabling proactive assistant mode |
+| `protocols/super-adaptoid/proactive-assistant.md` | enabling proactive assistant mode |
 | `protocols/super-adaptoid/hidden-gems.md` | evaluating and cataloging under-hyped tools |
 | `protocols/super-adaptoid/fable-5-workflows.md` | choosing a Fable 5 workflow narrative |
 | `protocols/super-adaptoid/super-prompt.md` | versioning and testing system prompts |
