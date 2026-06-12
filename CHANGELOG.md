@@ -13,6 +13,9 @@ The v5.0 release transforms Adaptoid OS into a professional open-source project 
 - **`protocols/sandboxing.md` — isolation levels + credential proxy.** Four isolation tiers (V8 isolate → namespaces → gVisor → microVM) with selection rules, the four non-negotiable guarantees (filesystem, network deny-by-default, secrets-never-enter-sandbox, resource caps), and a hardening checklist. Incident-grounded.
 - **`protocols/clarification-protocol.md` — ambiguity handling (FM-08/FM-16 upstream).** Ambiguity scoring table, 4-step protocol (deconstruct → ≤4 questions → analytical frame → confirm), 3-iteration cap, anti-patterns. Feeds typed PROJECT-INTENT.
 - **`adaptor/INPUT-TAXONOMY.md` — 15 canonical input types.** Request-shape classification (PROJECT/PROBLEM/RESEARCH/…/AUDIT) orthogonal to archetypes, plus duration/complexity/risk axes and the risk×complexity verification scaling matrix with dynamic in-run scaling triggers.
+- **7 Super-Adaptoid validators.** `check_consciousness`, `check_memory_identity`, `check_evolution`, `check_proactive_assistant`, `check_hidden_gems`, `check_fable5`, `check_super_prompt` — each protocol's invariants (config fields, FM coverage, catalog counts, template variables, kernel refs) are executable checks, wired into `dogfood.sh` and `tests/run_tests.sh`.
+- **`reference/workflows/fable-5-index.md`.** Maps the 10 Fable 5 workflow patterns to concrete OS-Setup assets and validators, with selection heuristics keyed to the input taxonomy.
+- **`examples/super-adaptoid/`.** Worked T2 example: typed intent with the full `super_adaptoid:` config block, session walkthrough, trust gate before proactive mode, falsification criteria.
 
 ### Changed
 - **`validators/emit_event.sh` now hash-CHAINS events.** Each event embeds `prev_hash` (genesis = 64 zeros), making `audit_chain.sh` continuity checks real tamper evidence instead of best-effort. Verified by test.
