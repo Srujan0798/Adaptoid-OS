@@ -123,7 +123,7 @@
 > - Route Sentinel + VaultMMU + OAP safety
 > - New v5.0 protocol layer: self-monitoring, memory-identity, evolution
 >
-> One command to turn any LLM into a verified agentic workforce.
+> One command to help turn an LLM into a verified agentic workforce.
 > github.com/Srujan0798/Adaptoid-OS
 
 ### Hacker News title options
