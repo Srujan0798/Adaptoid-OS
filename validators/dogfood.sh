@@ -125,6 +125,14 @@ if [ -d "$HERE/protocols/super-adaptoid" ]; then
   done
 fi
 
+# ── README quality gate (v5.0) ──
+if [ -x "$HERE/validators/check_readme.sh" ]; then
+  bash "$HERE/validators/check_readme.sh" "$HERE" || fail=1
+else
+  echo "FAIL: missing validators/check_readme.sh"
+  fail=1
+fi
+
 # ── Summary ──
 echo ""
 echo "==================================================="

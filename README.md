@@ -12,7 +12,7 @@
 
 > **Adapt. Validate at runtime. Verify relentlessly. Compound carefully.**
 
-**A framework-agnostic harness that turns any LLM into a self-monitoring, self-improving, wrong-route-blocking agentic workforce.**
+**A framework-agnostic harness that helps turn LLMs into a self-monitoring, self-improving, wrong-route-blocking agentic workforce.**
 
 [Quick Start](#quick-start) · [Features](#features) · [Comparison](#why-adaptoid-os-wins) · [Architecture](#architecture) · [v5.0 Protocols](#v50-protocol-layer) · [Contributing](#contributing)
 
@@ -22,7 +22,7 @@
 
 ## The Problem
 
-Agentic AI projects fail for the same 18 reasons, every time:
+Agentic AI projects fail for the same 18 reasons, again and again:
 
 - Agents hallucinate DAG transitions and call the wrong tools.
 - State drifts silently between sessions.

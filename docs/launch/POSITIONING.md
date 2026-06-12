@@ -4,11 +4,11 @@
 
 **Adaptoid OS is an Agent Operating System.**
 
-It is not a framework, not a model, and not a chat wrapper. It is the control layer that turns any LLM into a self-monitoring, self-improving, wrong-route-blocking agentic workforce.
+It is not a framework, not a model, and not a chat wrapper. It is the control layer that helps turn LLMs into a self-monitoring, self-improving, wrong-route-blocking agentic workforce.
 
 ## One-Sentence Description
 
-A framework-agnostic harness that turns any LLM into a self-monitoring, self-improving, wrong-route-blocking agentic workforce.
+A framework-agnostic harness that helps turn LLMs into a self-monitoring, self-improving, wrong-route-blocking agentic workforce.
 
 ## Tagline
 
@@ -16,7 +16,7 @@ A framework-agnostic harness that turns any LLM into a self-monitoring, self-imp
 
 ## Problem We Own
 
-Agentic AI projects fail for the same 18 reasons, every time:
+Agentic AI projects fail for the same 18 reasons, again and again:
 
 - Agents hallucinate DAG transitions and call wrong tools.
 - State drifts silently between sessions.
