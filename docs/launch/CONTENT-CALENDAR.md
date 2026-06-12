@@ -23,7 +23,7 @@
 
 - **Channel**: GitHub Release, Newsletter, Twitter/X, LinkedIn
 - **Format**: Release notes + short announcement posts
-- **Key message**: Adaptoid OS v5.0 is the Agent Operating System with a Super-Adaptoid self-monitoring layer.
+- **Key message**: Adaptoid OS v5.0 is an Agent Operating System with a new self-monitoring protocol layer.
 - **CTA**: Star the repo and try the one-command install.
 - **Assets needed**: README screenshot, social preview image, release notes draft.
 

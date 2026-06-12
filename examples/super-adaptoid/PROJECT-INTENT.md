@@ -1,6 +1,6 @@
 ---
 schema_version: "1.0"
-project_type: "internal_tool"
+project_type: "infrastructure"
 archetype: "internal-tool"
 tier: "T2"
 stakeholders:
@@ -67,7 +67,7 @@ super_adaptoid:
 # Project Intent
 
 ## Problem Statement
-A solo developer runs multi-week research+build projects through agent sessions. Context evaporates between sessions, status claims drift from reality, and lessons learned are never reused. This project stands up a persistent assistant on Adaptoid OS with the Super-Adaptoid layer enabled: self-monitoring, durable 4-tier memory, and a weekly improvement loop.
+A solo developer runs multi-week research+build projects through agent sessions. Context evaporates between sessions, status claims drift from reality, and lessons learned are never reused. This project stands up a persistent assistant on Adaptoid OS with the v5.0 protocol layer enabled: self-monitoring, durable 4-tier memory, and a weekly improvement loop.
 
 ## Scope
 ### IN

@@ -45,7 +45,7 @@ The README must answer these questions in order:
 1. **What is it?** — one-sentence description above the fold.
 2. **Why should I care?** — the 18 failure modes problem paragraph.
 3. **How is it different?** — comparison matrix with LangGraph, CrewAI, AutoGen.
-4. **What do I get?** — Super-Adaptoid layer + features matrix.
+4. **What do I get?** — v5.0 protocol layer + features matrix.
 5. **How do I try it?** — Quick Start (3 options).
 6. **How is it built?** — architecture diagram + folder map.
 7. **How do I help?** — Contributing + License.

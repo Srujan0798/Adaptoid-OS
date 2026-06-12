@@ -31,11 +31,11 @@ You are taking over from a previous planning and implementation session. Do not 
 
 ## 3. What Has Already Been Completed
 
-A previous agent has already implemented **Task Group 1: Public Product Layer**.
+A previous agent has already implemented **all Task Groups for v5.0**.
 
 Committed deliverables:
 - `README.md` — rewritten for v5.0 professional open-source positioning.
-- `INDEX.md` — restructured with Super-Adaptoid navigation.
+- `INDEX.md` — restructured with v5.0 protocol layer navigation.
 - `docs/historical/README-v4.0.md` and `docs/historical/INDEX-v4.0.md` — backups.
 - `docs/launch/POSITIONING.md` — category claim and competitive map.
 - `docs/launch/GROWTH-PLAYBOOK.md` — 0-to-30K-star growth playbook.
@@ -43,8 +43,13 @@ Committed deliverables:
 - `docs/launch/BRAND-GUIDELINES.md` — name analysis, voice, visual identity.
 - `docs/launch/CONTENT-CALENDAR.md` — 12-week content calendar.
 - `CHANGELOG.md` and `ROADMAP.md` — updated for v5.0.
-- `protocols/super-adaptoid/*.md` — **stub files exist** but need to be overwritten with full content.
-- `validators/dogfood.sh` currently **passes**.
+- `protocols/super-adaptoid/*.md` — 7 full protocols + README.
+- `validators/check_*.sh` — 7 Super-Adaptoid validators wired into dogfood.
+- `reference/ecosystem/hidden-gems.md` — 36-entry catalog.
+- `reference/ecosystem/ecosystem-analysis.md` — 56-project analysis.
+- `reference/workflows/fable-5-index.md` — 10 workflow index.
+- `examples/super-adaptoid/` — worked example with README and PROJECT-INTENT.md.
+- `validators/dogfood.sh` and `tests/run_tests.sh` currently **pass**.
 
 ---
 
@@ -79,52 +84,18 @@ There was a file named `kimi_online sessio` that contained the user's full conve
 
 ---
 
-## 5. Remaining Work (Execute in This Order)
+## 5. State of Work
 
-Use the implementation plan at `docs/superpowers/plans/2026-06-12-adaptoid-ultimate.md` as the canonical checklist. High-level remaining groups:
+All planned v5.0 work is **complete** on branch `v5.0-ultimate`:
 
-### Group 2 — Super-Adaptoid Protocols
-Overwrite the stubs in `protocols/super-adaptoid/` with full content:
-- `protocols/super-adaptoid/README.md`
-- `protocols/super-adaptoid/consciousness-core.md`
-- `protocols/super-adaptoid/memory-identity.md`
-- `protocols/super-adaptoid/evolution-engine.md`
-- `protocols/super-adaptoid/proactive-assistant.md`
-- `protocols/super-adaptoid/hidden-gems.md`
-- `protocols/super-adaptoid/fable-5-workflows.md`
-- `protocols/super-adaptoid/super-prompt.md`
+- **Group 1** — Public Product Layer: README, INDEX, launch docs, CHANGELOG, ROADMAP.
+- **Group 2** — Super-Adaptoid Protocols: 8 protocol files in `protocols/super-adaptoid/`.
+- **Group 3** — Validators: 7 `validators/check_*.sh` scripts wired into dogfood and tests.
+- **Group 4** — Ecosystem docs: hidden gems (36 entries), ecosystem analysis (56 projects), Fable 5 index.
+- **Group 5** — Worked example: `examples/super-adaptoid/README.md` and `PROJECT-INTENT.md`.
+- **Group 6** — Final review passed: `dogfood.sh` and `tests/run_tests.sh` both green.
 
-Each protocol must include: purpose, mechanisms/rules, required `PROJECT-INTENT.md` YAML fields, validator command, and failure-mode coverage.
-
-### Group 3 — Validators
-Create and wire:
-- `validators/check_consciousness.sh`
-- `validators/check_memory_identity.sh`
-- `validators/check_evolution.sh`
-- `validators/check_proactive_assistant.sh`
-- `validators/check_hidden_gems.sh`
-- `validators/check_fable5.sh`
-- `validators/check_super_prompt.sh`
-
-Then add them to `validators/dogfood.sh` and ensure `tests/run_tests.sh` runs dogfood.
-
-### Group 4 — Ecosystem Documentation
-- Expand `reference/ecosystem/hidden-gems.md` to at least 36 entries with a scoring rubric.
-- Expand/create `reference/ecosystem/ecosystem-analysis.md` with 50+ project analysis.
-- Create `reference/workflows/fable-5-index.md`.
-- Update `reference/ecosystem/INDEX.md`.
-
-### Group 5 — Worked Example
-- Create `examples/super-adaptoid/README.md`
-- Create `examples/super-adaptoid/PROJECT-INTENT.md`
-
-### Group 6 — Final Review
-- Run `bash validators/dogfood.sh`.
-- Run `bash tests/run_tests.sh`.
-- Score the README 10/10 on the open-source README heuristic.
-- Verify INDEX references every new Super-Adaptoid protocol.
-- Verify every protocol has a matching validator.
-- Commit all work with descriptive messages.
+**If you are taking over, your job is to maintain, extend, or polish — not to re-implement.** Read the source material, run the validators, and make your changes incrementally.
 
 ---
 

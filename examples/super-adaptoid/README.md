@@ -1,7 +1,7 @@
 # Example: Super-Adaptoid Personal Research Assistant
 
 ## Brief
-Stand up a long-running research+build assistant for a solo developer that survives sessions, reports honestly, and improves itself weekly — the full Super-Adaptoid layer in action on a deliberately small project.
+Stand up a long-running research+build assistant for a solo developer that survives sessions, reports honestly, and improves itself weekly — the full v5.0 protocol layer in action on a deliberately small project.
 
 ## Archetype
 `internal-tool`

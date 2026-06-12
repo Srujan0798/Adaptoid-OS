@@ -5,7 +5,7 @@
 ### Product readiness
 
 - [ ] README v5.0 reflects professional open-source positioning.
-- [ ] INDEX v5.0 includes Super-Adaptoid navigation.
+- [ ] INDEX v5.0 includes v5.0 protocol layer navigation.
 - [ ] `docs/launch/` suite is complete: POSITIONING, GROWTH-PLAYBOOK, LAUNCH-CHECKLIST, BRAND-GUIDELINES, CONTENT-CALENDAR.
 - [ ] CHANGELOG and ROADMAP include v5.0 entries.
 - [ ] `bash validators/dogfood.sh` passes on `main`.
@@ -117,11 +117,11 @@
 
 ### Launch tweet
 
-> Adaptoid OS v5.0 is live — the Agent Operating System for Agentic AI.
+> Adaptoid OS v5.0 is live — an Agent Operating System for Agentic AI.
 >
 > - 18 failure modes, each with a validator
 > - Route Sentinel + VaultMMU + OAP safety
-> - New Super-Adaptoid layer: self-monitoring, memory-identity, evolution
+> - New v5.0 protocol layer: self-monitoring, memory-identity, evolution
 >
 > One command to turn any LLM into a verified agentic workforce.
 > github.com/Srujan0798/Adaptoid-OS
@@ -134,4 +134,4 @@
 
 ### Newsletter subject line
 
-> [Launch] Adaptoid OS v5.0 — the Agent Operating System
+> [Launch] Adaptoid OS v5.0 — an Agent Operating System

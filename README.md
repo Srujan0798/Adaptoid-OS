@@ -1,7 +1,7 @@
 <div align="center">
 
 # Adaptoid OS v5.0
-## The Agent Operating System for Agentic AI
+## An Agent Operating System for Agentic AI
 
 [![Dogfood](https://img.shields.io/badge/dogfood-passing-brightgreen)](#)
 [![Preflight](https://img.shields.io/badge/preflight-passing-brightgreen)](#)
@@ -14,7 +14,7 @@
 
 **A framework-agnostic harness that turns any LLM into a self-monitoring, self-improving, wrong-route-blocking agentic workforce.**
 
-[Quick Start](#quick-start) · [Features](#features) · [Comparison](#why-adaptoid-os-wins) · [Architecture](#architecture) · [Super-Adaptoid](#super-adaptoid-layer) · [Contributing](#contributing)
+[Quick Start](#quick-start) · [Features](#features) · [Comparison](#why-adaptoid-os-wins) · [Architecture](#architecture) · [v5.0 Protocols](#v50-protocol-layer) · [Contributing](#contributing)
 
 </div>
 
@@ -43,7 +43,7 @@ Agentic AI projects fail for the same 18 reasons, every time:
 - Routes are tampered with or undetected.
 - Unauthorized tool calls cause destructive actions.
 
-**Existing frameworks** (LangGraph, CrewAI, AutoGen) give you primitives. They don't give you an *operating system* that prevents, detects, and heals these failures automatically.
+**Existing frameworks** (LangGraph, CrewAI, AutoGen) give you primitives. Adaptoid OS adds the control stack that helps prevent, detect, and heal these failures before they ship.
 
 ![Demo](docs/demo.gif)
 
@@ -88,7 +88,7 @@ The engine detects archetype, consults the ecosystem library, generates structur
 | VaultMMU (SHA-256 hash chain) | 5 core workflow templates | 18 failure modes with validators |
 | OAP Security (deterministic policies) | Slash commands with cost caps | Self-improvement protocol (GEPA + Hermes) |
 | 18 executable validators | Parallel conductor pattern | Living-folder memory bank |
-| 7-layer verification stack | Engine-driven project generation | Super-Adaptoid self-monitoring layer |
+| 7-layer verification stack | Engine-driven project generation | v5.0 self-monitoring & evolution layer |
 
 </div>
 
@@ -131,9 +131,9 @@ Adaptoid OS is not a replacement for the frameworks below. It is a harness layer
 
 ---
 
-## Super-Adaptoid Layer
+## v5.0 Protocol Layer
 
-The **Super-Adaptoid layer** is the v5.0 protocol stack for self-monitoring, memory-identity, and evolution. It is a named protocol layer, not a franchise claim.
+The **v5.0 protocol layer** adds self-monitoring, durable memory-identity, safe evolution, proactive assistance, and workflow patterns on top of the v4.0 kernel. It is a protocol layer, not a franchise claim.
 
 | Protocol | One-liner |
 |---|---|
@@ -153,7 +153,7 @@ See [`protocols/super-adaptoid/README.md`](protocols/super-adaptoid/README.md) f
 
 ```
 ┌─────────────────────────────────────┐
-│  Layer 3: Super-Adaptoid            │
+│  Layer 3: v5.0 Protocols            │
 │  consciousness · memory · evolution │
 ├─────────────────────────────────────┤
 │  Layer 2: Public Product            │
@@ -258,6 +258,6 @@ MIT — see [LICENSE](LICENSE)
 
 **⭐ Star this repo if it saves you from one agentic failure.**
 
-*Built from 5 real shipping projects + 300+ research sources + 97 gap analyses. Not theory.*
+*A design-first harness built from real project post-mortems, research synthesis, and ecosystem gap analysis. Every claim links to a validator or ADR.*
 
 </div>

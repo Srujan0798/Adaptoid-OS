@@ -2,7 +2,7 @@
 
 ## Category Claim
 
-**Adaptoid OS is the Agent Operating System.**
+**Adaptoid OS is an Agent Operating System.**
 
 It is not a framework, not a model, and not a chat wrapper. It is the control layer that turns any LLM into a self-monitoring, self-improving, wrong-route-blocking agentic workforce.
 
@@ -37,16 +37,16 @@ Agentic AI projects fail for the same 18 reasons, every time:
 - Routes are tampered with or drift undetected.
 - Unauthorized tool calls cause destructive actions.
 
-Existing frameworks give you primitives. Adaptoid OS gives you an operating system that prevents, detects, and heals these failures automatically.
+Existing frameworks give you primitives. Adaptoid OS adds the control stack that helps prevent, detect, and heal these failures before they ship.
 
-## Only Adaptoid OS
+## Where Adaptoid OS focuses
 
 - ✅ **Typed intent capture** — `PROJECT-INTENT.md` + JSON Schema so the machine knows what "done" means.
 - ✅ **Failure-mode library** — 18 real failures, each with symptom, root cause, prevention, and executable validator.
 - ✅ **Deterministic safety layer** — Route Sentinel + VaultMMU + OAP Security, not hope.
 - ✅ **Living-folder memory** — Markdown + SQLite + Obsidian-ready, progressive disclosure.
 - ✅ **Self-validation** — `dogfood.sh` + `preflight.sh` verify the kit and every project.
-- ✅ **Self-monitoring consciousness layer** — v5.0 Super-Adaptoid protocols for honest status and runtime introspection.
+- ✅ **Self-monitoring consciousness layer** — v5.0 self-monitoring protocols for honest status and runtime introspection.
 - ✅ **Proactive assistant mode** — Proactive Assistant surfaces the right context without acting without permission.
 - ✅ **Self-improving evolution** — Evolution Engine protocol with falsification gates and canary rollouts.
 
