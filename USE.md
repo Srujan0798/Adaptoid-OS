@@ -75,16 +75,18 @@ MY BRIEF:
 """
 
 Do this:
-1. Adapt the environment for this brief (intent, structure, host rules, SDLC tasks).
-2. Follow Adaptoid SHIP SYSTEM: SDLC plan→requirements→design→build→test→deploy→maintain
-   using host tools: plan mode, subagents, skills, hooks, MCP, AGENTS.md, memory/HANDOFF,
-   code search, multi-file edits, git, deep reasoning, web search, terminal, headless/CI,
-   code review, sandbox, background tasks. (See SHIP-SYSTEM.md in Core projects.)
+1. Adapt the environment (intent, AGENTS, HANDOFF, tasks, policies) to THIS brief.
+2. Follow HOST-OPERATING-PLAYBOOK + SHIP-SYSTEM (Core projects have both):
+   - Intent lock if ambiguous (≤4 A/B/C, record answers) before BUILD
+   - Plan → approve → implement for big work; skip plan for tiny fixes
+   - One clear outcome per turn
+   - SDLC: plan→requirements→design→build→test→deploy→maintain
+   - Host tools by stage; subagents only for large explore/tests
+   - Verify before done (tests/preflight + exit code); rewrite HANDOFF
 3. Do not invent scope outside the brief.
 4. Evidence or it didn’t happen.
-5. Preflight / ship checks before “complete”.
 
-Start now.
+Start: orient on SHIP-SYSTEM + HOST-OPERATING-PLAYBOOK + INTENT, then intent-lock or stage 1.
 ```
 
 ---

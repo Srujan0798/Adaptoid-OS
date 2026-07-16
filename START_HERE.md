@@ -23,6 +23,9 @@ python3 adaptor/engine.py \
 ```
 (`--sdlc` default on.) Open `../my-project` → complete with SHIP-SYSTEM.
 
-Full recipes: **`USE.md`**  
-Product OS: **`core/SHIP-SYSTEM.md`**  
-Live file map: **`FLOW.md`**
+| File | Role |
+|---|---|
+| **`USE.md`** | recipes + magic prompt |
+| **`core/SHIP-SYSTEM.md`** | SDLC × host toolkit |
+| **`core/HOST-OPERATING-PLAYBOOK.md`** | Grok-style how to proceed |
+| **`FLOW.md`** | live file spine |
