@@ -5,7 +5,7 @@
 
 [![Dogfood](https://img.shields.io/badge/dogfood-passing-brightgreen)](#)
 [![Preflight](https://img.shields.io/badge/preflight-passing-brightgreen)](#)
-[![Version](https://img.shields.io/badge/version-5.0-blue)](#)
+[![Version](https://img.shields.io/badge/version-5.1-blue)](#)
 [![License](https://img.shields.io/badge/license-MIT-yellow)](#)
 [![Archetypes](https://img.shields.io/badge/archetypes-11-orange)](#)
 [![Failure%20Modes](https://img.shields.io/badge/failure_modes-18-red)](#)
@@ -69,12 +69,42 @@ bash validators/preflight.sh # verify your project
 ### Option C — Engine-Driven (Sovereign, No AI Session Required)
 
 ```bash
+# Pro kit (full) + Claude + AGENTS.md hosts
 python3 ~/adaptoid-os/adaptor/engine.py \
   --brief "Convert RFQ PDFs to structured BOQ" \
-  --output ./my-project
+  --output ./my-project \
+  --host agents,claude
+
+# Core kit only — minimum portable harness for any host
+python3 ~/adaptoid-os/adaptor/engine.py \
+  --brief "48h hackathon: collab whiteboard" \
+  --output ./hack \
+  --core-only \
+  --host all
 ```
 
-The engine detects archetype, consults the ecosystem library, generates structure, copies validators, and runs preflight — all locally, no network, no AI session required.
+The engine detects archetype, emits **host adapters** (`AGENTS.md`, `CLAUDE.md`, Cursor rules, …), copies Core or Pro validators, and runs preflight — all locally, no network, no AI session required.
+
+### Product ladder
+
+| Layer | Path | Use when |
+|---|---|---|
+| **Lite** | `reference/OS_SETUP_v1.3_full.md` | One paste into any chat |
+| **Core** | `core/` + `--core-only` | Default for real projects |
+| **Pro** | this full repo | Long waves, full FM library, v5 protocols |
+
+See [`core/README.md`](core/README.md).
+
+### After generate — conductor
+
+```bash
+python3 conductor/conductor.py wake --project ./my-project
+python3 conductor/conductor.py init-wave --project ./my-project -n 3
+python3 conductor/conductor.py dispatch --project ./my-project --mode stub
+bash ./my-project/orchestrator/scripts/preflight.sh ./my-project
+
+make ship-check   # full product gate on the kit itself
+```
 
 ---
 
@@ -186,43 +216,35 @@ adaptoid-os/
 ├── CHANGELOG.md
 ├── ROADMAP.md
 │
+├── core/                        ← Core kit (portable minimum harness)
+│   ├── README.md · MANIFEST.yaml
+│   ├── hosts/                      host adapter templates
+│   └── templates/                  HANDOFF + INDEX for generated projects
+│
 ├── kernel/                      ← ALWAYS loaded (~2K tokens)
 │   ├── PRINCIPLES.md               12 non-negotiable laws
 │   ├── TWO-TIER.md                 Brain/Hands/Session
 │   └── ANTI-HALLUCINATION.md       drift prevention
 │
+├── adaptor/
+│   ├── engine.py                   brief → project + --host emit
+│   └── host_emit.py                AGENTS/CLAUDE/Cursor/Codex/Grok
+├── conductor/                   ← thin wake / dispatch / handoff runtime
+├── benchmarks/                  ← speed + correctness suite
+├── calibration/                 ← 50 harness cases
+│
 ├── philosophy/                  ← the Three Pillars
-│   ├── LLM-as-OS.md
-│   ├── freedom-responsibility.md
-│   └── harness-engineering.md
-│
-├── patterns/                    ← 10 extracted best practices
-│   ├── parallel-conductor.md
-│   ├── six-enforced-questions.md
-│   ├── closed-learning-loop.md
-│   └── ...
-│
+├── patterns/                    ← extracted best practices
 ├── failure-modes/               ← 18 real failures + prevention
-│   ├── FM-01-state-drift.md
-│   ├── FM-16-wrong-route.md
-│   ├── FM-17-tampered-state.md
-│   └── ...
-│
-├── protocols/                   ← load on trigger
-│   ├── route-sentinel.md
-│   ├── vault-mmu.md
-│   ├── oap-security.md
-│   ├── self-improvement.md
-│   └── super-adaptoid/             v5.0 consciousness + evolution protocols
-│
+├── protocols/                   ← load on trigger (+ super-adaptoid/)
 ├── archetypes/                  ← 11 adaptation profiles
 ├── workflows/                   ← 5 core + domain YAML
 ├── slash-commands/              ← named orchestrator API
 ├── memory-bank/                 ← living folder memory
 ├── validators/                  ← 20+ executable scripts
 ├── templates/                   ← project skeleton
-├── docs/launch/                 ← v5.0 positioning + growth playbook
-├── reference/ecosystem/         ← DevKit library
+├── docs/launch/                 ← positioning + growth playbook
+├── reference/                   ← OS_SETUP lite + ecosystem library
 ├── setup/harness/               ← Docker Compose stack
 └── schemas/                     ← JSON Schema specs
 ```

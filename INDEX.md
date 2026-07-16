@@ -17,14 +17,23 @@
 | File | Load when (trigger) |
 |---|---|
 | `00-INVOCATION.md` | starting a brand-new project |
+| `core/README.md` | choosing Lite vs Core vs Pro; default path for real projects |
+| `core/MANIFEST.yaml` | authoritative Core file list + host matrix |
 | `archetypes/<x>.md` | once, at project creation, to pick adaptation profile |
 | `tiers/TIERS.md` | once, at project creation, to size the build |
-| `adaptor/engine.py` | at project creation — RUN the executable Adaptoid (sovereign, no network needed) |
+| `adaptor/engine.py` | at project creation — RUN the executable Adaptoid (`--host`, `--core-only`) |
+| `adaptor/host_emit.py` | when adding or debugging a host adapter |
 | `adaptor/ADAPTOR_ENGINE.md` | at project creation — understand the transform mechanism |
 | `adaptor/OUTPUT_SPEC.md` | when emitting executable artifacts |
 | `adaptor/EXAMPLE-given-brief-to-output.md` | to see a worked adaptation |
 | `templates/root/adaptoid.config.yaml` | once, at project creation — the single source of truth for this project |
-| `scripts/bootstrap.sh` | when creating a new project from template |
+| `scripts/bootstrap.sh` | when creating a new project from template (wraps engine) |
+| `scripts/ship_check.sh` | before tagging a release — full product gate |
+| `conductor/conductor.py` | wake / init-wave / dispatch / rewrite-handoff |
+| `benchmarks/run_bench.sh` | speed + correctness smoke |
+| `calibration/cases.json` | 50 harness calibration cases |
+| `examples/core-finish/README.md` | dogfood proof path with commands |
+| `reference/OS_SETUP_v1.3_full.md` | Lite path — single pasteable file, no clone |
 
 ### Protocols
 

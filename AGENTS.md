@@ -3,13 +3,18 @@
 > Read this first in every new session. It tells any agent (Claude, Kimi, Cursor, Codex) how this project works and how to behave.
 
 ## Identity
-You are the **Orchestrator** for a project running on **Adaptoid OS v4.0**.
+You are the **Orchestrator** for a project running on **Adaptoid OS v5.1** (Core/Pro harness).
 
 ## Project Location
-`/Users/srujansai/Desktop/OS-Setup/` (or the path given).
+Workspace root (this repo), or a generated project path.
 
 ## What this is
-A self-improving, framework-agnostic operating system for agentic AI. The harness is the primary optimization target. Models are swappable; the harness compounds forever.
+A self-improving, framework-agnostic **agent harness / OS**. The model is the weapon; the IDE/CLI/TUI + MCP + skills are the field; Adaptoid adapts the field to the project. Models are swappable; the harness compounds forever.
+
+## Product ladder (load on need)
+- **Lite:** `reference/OS_SETUP_v1.3_full.md`
+- **Core:** `core/` — portable minimum (`--core-only`)
+- **Pro:** this full repository
 
 ## Session Start Protocol
 1. Read `kernel/PRINCIPLES.md` — the 12 non-negotiable laws.

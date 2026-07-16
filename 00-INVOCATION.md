@@ -1,63 +1,83 @@
 # 00 — INVOCATION
 
-> Paste this whole file into Claude Code or Kimi, then paste your brief. The agent does the rest.
+> Paste this into any coding agent (Claude Code, Cursor, Codex, Grok Build, Kimi, …), then paste your brief.
 
 ---
 
-## The prompt to paste
+## Preferred path (v5.1 Core — no manual scaffold)
+
+If Adaptoid-OS is cloned on disk, **run the engine** instead of hand-building folders:
+
+```bash
+python3 <ADAPTOID_OS>/adaptor/engine.py \
+  --brief "<YOUR BRIEF>" \
+  --output ./<project-name> \
+  --core-only \
+  --host all
+
+python3 <ADAPTOID_OS>/conductor/conductor.py wake --project ./<project-name>
+python3 <ADAPTOID_OS>/conductor/conductor.py init-wave --project ./<project-name> -n 3
+```
+
+Hosts: `agents`, `claude`, `cursor`, `codex`, `grok`, or `all`.  
+Ladder: **Lite** = `reference/OS_SETUP_v1.3_full.md` · **Core** = `--core-only` · **Pro** = full repo.
+
+---
+
+## The prompt to paste (agent-driven setup)
 
 ```
-You are the ORCHESTRATOR for a new project. You will set it up using the OS-Setup
-operating system located at ~/Desktop/OS-Setup/ (or the path I give you).
+You are the ORCHESTRATOR for a new project using Adaptoid OS (agent harness).
+
+Adaptoid path: <set to clone path, e.g. ~/adaptoid-os or this workspace>
 
 Do this, in order:
 
-1. Read OS-Setup/kernel/ (all 3 files). These are your non-negotiable laws.
+1. Read kernel/ (PRINCIPLES, TWO-TIER, ANTI-HALLUCINATION). Non-negotiable.
 
-2. Read my brief (below). Detect the ARCHETYPE by matching against
-   OS-Setup/archetypes/. If ambiguous, ask me ONE multiple-choice question.
-   Then read that one archetype file.
+2. Prefer the sovereign engine when the kit is on disk:
+     python3 adaptor/engine.py --brief "<brief>" --output ./<name> \
+       --core-only --host all
+   If you cannot run it, scaffold Core manually: kernel/, AGENTS.md, CLAUDE.md
+   (if Claude), HANDOFF.md, PROJECT-INTENT.md, adaptoid.config.yaml,
+   policies/default.yaml, orchestrator/scripts/ from validators/.
 
-3. Pick a TIER from OS-Setup/tiers/TIERS.md (default T1; the archetype suggests one).
+3. Detect ARCHETYPE from archetypes/ (or trust engine detection). If ambiguous,
+   ask ONE multiple-choice question.
 
-3b. CONSULT THE LIBRARY. Read OS-Setup/reference/HOW-TO-PULL.md, then
-   OS-Setup/reference/ecosystem/SELECTION.md. Pull the 2–4 ecosystem catalog files
-   that match this project (e.g., coding-agents, sdks-adks, memory-context,
-   optimizations, knowledge-systems). Choose the SMALLEST stack that ships the
-   archetype. Write the choice + why into docs/decisions/0002-stack-selection.md.
-   Then close those files (don't keep them in context).
+4. Pick TIER from tiers/TIERS.md (default T1; hackathon often T0).
 
-4. Generate the complete project structure into THIS directory, using
-   OS-Setup/templates/ (+ reference/OS_SETUP_v1.3_full.md for exact template bodies),
-   adapted to the archetype + tier + chosen stack.
-   Fill every placeholder with project-specific content. No {{PLACEHOLDER}} may remain.
+5. Emit host surfaces for the user's tools (AGENTS.md always; CLAUDE.md for
+   Claude Code; .cursor/rules/adaptoid.mdc for Cursor).
 
-5. Copy OS-Setup/validators/* into orchestrator/scripts/ and run preflight.sh.
+6. Run preflight:
+     bash orchestrator/scripts/preflight.sh .
    It must pass before you declare setup complete.
 
-6. Bake in failure prevention: for every failure mode in OS-Setup/failure-modes/
-   that applies to this archetype, ensure the corresponding validator + rule is wired
-   into the project (pre-commit hook + CI + the orchestrator's review protocol).
+7. Init wave-1 tasks (disjoint writes) via:
+     python3 conductor/conductor.py init-wave --project . --wave wave-1 -n 3
+   Or write work/wave-1/tasks/*.md yourself.
 
-7. Generate wave-1 task files in work/wave-1/ ready to paste into OpenCode CLI workers.
+8. Dispatch only with evidence. Workers implement; you review reports under
+   work/reports/. Rewrite HANDOFF.md (replace, never append).
 
 When done, print:
-  - The folder tree you created
-  - Detected archetype + chosen tier (and why)
-  - The first wave's task files, ready to dispatch
-  - Which failure-mode validators are active
-  - The exact command to start
+  - Folder tree
+  - Archetype + tier + hosts
+  - Wave-1 tasks ready to dispatch
+  - Active validators
+  - Exact next command
 
 MY BRIEF:
 """
 <paste PDF text / scope / one line here>
 """
 
-MY CONTEXT (optional — fill what you know):
-- Deadline:            <e.g. 48h hackathon / 2-week internship / open-ended>
-- Who will see it:     <just me / professor / interviewer / customers / team>
-- Orchestrator model:  <Claude Code / Kimi — interchangeable>
-- Worker tool:         <OpenCode CLI / Cursor / MiniMax / Codex>
+MY CONTEXT (optional):
+- Deadline:            <48h hackathon / 2-week internship / open-ended>
+- Who will see it:     <me / professor / interviewer / customers / team>
+- Host agent(s):       <Claude Code / Cursor / Codex / Grok / OpenCode>
+- Worker tool:         <same or OpenCode CLI>
 - Tech preference:     <or "you choose">
 - Must NOT do:         <hard constraints / out of scope>
 ```
@@ -66,38 +86,25 @@ MY CONTEXT (optional — fill what you know):
 
 ## How archetype detection works
 
-The orchestrator reads your brief + context and matches signals:
-
 | Signal in brief/context | Likely archetype |
 |---|---|
-| "hackathon", "48 hours", "demo day", speed emphasis | `hackathon` |
-| "internship", "report", "presentation", "mentor/professor" | `internship` |
-| "take-home", "assessment", "interview", "evaluate my code" | `job-take-home` |
-| "paper", "experiments", "ablations", "baselines", metrics | `research-ml` |
-| "NER", "OCR", "extraction", "pipeline", documents | `nlp-pipeline` |
-| "internal tool", "ERP", "admin", "for our team" | `internal-tool` |
-| "customers", "multi-tenant", "billing", "SaaS", "PMF" | `saas-product` / `startup-mvp` |
+| "hackathon", "48 hours", "demo day" | `hackathon` |
+| "internship", "report", "mentor/professor" | `internship` |
+| "take-home", "assessment", "interview" | `job-take-home` |
+| "paper", "experiments", "ablations", metrics | `research-ml` |
+| "NER", "OCR", "extraction", documents | `nlp-pipeline` |
+| "internal tool", "ERP", "for our team" | `internal-tool` |
+| "customers", "multi-tenant", "SaaS", "PMF" | `saas-product` / `startup-mvp` |
 | "CLI", "library", "package", "npm/pip" | `cli-tool` |
-| "ETL", "warehouse", "analytics", "dashboard" | `data-pipeline` |
-| none clear | ask ONE question, default `internal-tool` at T1 |
-
-Each archetype file tells the orchestrator: which tier to default to, which folders to include/skip, which failure-modes are highest-risk, what "done" means, and what the deliverables are.
+| "ETL", "warehouse", "analytics pipeline" | `data-pipeline` |
 
 ---
 
-## If you have NO brief yet (just an idea)
+## Verification before "setup complete"
 
-Paste the prompt above with a one-line idea. The orchestrator will run the
-`interviewer` protocol — ask you 3–4 multiple-choice questions — then proceed.
-You never have to write a spec yourself; you answer questions.
+```bash
+bash orchestrator/scripts/preflight.sh .
+python3 conductor/conductor.py status --project .
+```
 
----
-
-## Re-running on an existing project
-
-Point the orchestrator at OS-Setup and say "audit this existing project against
-OS-Setup and add what's missing." It will:
-- Detect the archetype from existing code
-- Run all validators (find drift, broken refs, stale processes, embarrassing artifacts)
-- Report gaps and offer to fix them
-- NOT overwrite your code — only add scaffolding + fix violations you approve
+Evidence or it didn't happen.

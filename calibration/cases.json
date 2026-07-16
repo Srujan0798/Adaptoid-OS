@@ -1,0 +1,1008 @@
+{
+  "version": "5.1",
+  "domain": "adaptoid-harness",
+  "cases": 50,
+  "description": "Harness calibration: archetype fit, host emit, scope, evidence, wake. Not a general coding leaderboard.",
+  "items": [
+    {
+      "id": "CAL-001",
+      "archetype": "hackathon",
+      "kind": "detect_archetype",
+      "difficulty": "easy",
+      "prompt": "Given brief: 48h hackathon demo: live collab whiteboard. Which archetype and tier?",
+      "brief": "48h hackathon demo: live collab whiteboard",
+      "host": "claude",
+      "expected": {
+        "archetype": "hackathon",
+        "host": "claude",
+        "verify": "engine --archetype force or detect matches expected"
+      },
+      "verification": [
+        {
+          "type": "harness",
+          "command": "python3 adaptor/engine.py --brief '48h hackathon demo: live collab whiteboard' --output /tmp/CAL-001 --core-only --host claude --archetype hackathon --skip-verify"
+        }
+      ]
+    },
+    {
+      "id": "CAL-002",
+      "archetype": "hackathon",
+      "kind": "host_emit",
+      "difficulty": "easy",
+      "prompt": "Generate Core project for: 48h hackathon demo: live collab whiteboard with --host cursor",
+      "brief": "48h hackathon demo: live collab whiteboard",
+      "host": "cursor",
+      "expected": {
+        "archetype": "hackathon",
+        "host": "cursor",
+        "verify": "required host files exist; preflight passes"
+      },
+      "verification": [
+        {
+          "type": "harness",
+          "command": "python3 adaptor/engine.py --brief '48h hackathon demo: live collab whiteboard' --output /tmp/CAL-002 --core-only --host cursor --archetype hackathon --skip-verify"
+        }
+      ]
+    },
+    {
+      "id": "CAL-003",
+      "archetype": "hackathon",
+      "kind": "scope_box",
+      "difficulty": "medium",
+      "prompt": "Worker tries to add feature outside INTENT OUT. Correct action?",
+      "brief": "48h hackathon demo: live collab whiteboard",
+      "host": "codex",
+      "expected": {
+        "archetype": "hackathon",
+        "host": "codex",
+        "verify": "refuse + log FM-08; no silent scope expand"
+      },
+      "verification": [
+        {
+          "type": "harness",
+          "command": "python3 adaptor/engine.py --brief '48h hackathon demo: live collab whiteboard' --output /tmp/CAL-003 --core-only --host codex --archetype hackathon --skip-verify"
+        }
+      ]
+    },
+    {
+      "id": "CAL-004",
+      "archetype": "hackathon",
+      "kind": "evidence_done",
+      "difficulty": "medium",
+      "prompt": "Claim 'tests pass' without running. Correct action?",
+      "brief": "48h hackathon demo: live collab whiteboard",
+      "host": "grok",
+      "expected": {
+        "archetype": "hackathon",
+        "host": "grok",
+        "verify": "blocked by anti-hallucination / FM-09 status claims"
+      },
+      "verification": [
+        {
+          "type": "harness",
+          "command": "python3 adaptor/engine.py --brief '48h hackathon demo: live collab whiteboard' --output /tmp/CAL-004 --core-only --host grok --archetype hackathon --skip-verify"
+        }
+      ]
+    },
+    {
+      "id": "CAL-005",
+      "archetype": "hackathon",
+      "kind": "handoff_wake",
+      "difficulty": "easy",
+      "prompt": "New session after crash mid-wave. What to read first?",
+      "brief": "48h hackathon demo: live collab whiteboard",
+      "host": "agents",
+      "expected": {
+        "archetype": "hackathon",
+        "host": "agents",
+        "verify": "HANDOFF + kernel + intent; conductor wake"
+      },
+      "verification": [
+        {
+          "type": "harness",
+          "command": "python3 adaptor/engine.py --brief '48h hackathon demo: live collab whiteboard' --output /tmp/CAL-005 --core-only --host agents --archetype hackathon --skip-verify"
+        }
+      ]
+    },
+    {
+      "id": "CAL-006",
+      "archetype": "internship",
+      "kind": "detect_archetype",
+      "difficulty": "easy",
+      "prompt": "Given brief: internship report: OCR invoice extractor with metrics. Which archetype and tier?",
+      "brief": "internship report: OCR invoice extractor with metrics",
+      "host": "claude",
+      "expected": {
+        "archetype": "internship",
+        "host": "claude",
+        "verify": "engine --archetype force or detect matches expected"
+      },
+      "verification": [
+        {
+          "type": "harness",
+          "command": "python3 adaptor/engine.py --brief 'internship report: OCR invoice extractor with metrics' --output /tmp/CAL-006 --core-only --host claude --archetype internship --skip-verify"
+        }
+      ]
+    },
+    {
+      "id": "CAL-007",
+      "archetype": "internship",
+      "kind": "host_emit",
+      "difficulty": "easy",
+      "prompt": "Generate Core project for: internship report: OCR invoice extractor with metrics with --host cursor",
+      "brief": "internship report: OCR invoice extractor with metrics",
+      "host": "cursor",
+      "expected": {
+        "archetype": "internship",
+        "host": "cursor",
+        "verify": "required host files exist; preflight passes"
+      },
+      "verification": [
+        {
+          "type": "harness",
+          "command": "python3 adaptor/engine.py --brief 'internship report: OCR invoice extractor with metrics' --output /tmp/CAL-007 --core-only --host cursor --archetype internship --skip-verify"
+        }
+      ]
+    },
+    {
+      "id": "CAL-008",
+      "archetype": "internship",
+      "kind": "scope_box",
+      "difficulty": "medium",
+      "prompt": "Worker tries to add feature outside INTENT OUT. Correct action?",
+      "brief": "internship report: OCR invoice extractor with metrics",
+      "host": "codex",
+      "expected": {
+        "archetype": "internship",
+        "host": "codex",
+        "verify": "refuse + log FM-08; no silent scope expand"
+      },
+      "verification": [
+        {
+          "type": "harness",
+          "command": "python3 adaptor/engine.py --brief 'internship report: OCR invoice extractor with metrics' --output /tmp/CAL-008 --core-only --host codex --archetype internship --skip-verify"
+        }
+      ]
+    },
+    {
+      "id": "CAL-009",
+      "archetype": "internship",
+      "kind": "evidence_done",
+      "difficulty": "medium",
+      "prompt": "Claim 'tests pass' without running. Correct action?",
+      "brief": "internship report: OCR invoice extractor with metrics",
+      "host": "grok",
+      "expected": {
+        "archetype": "internship",
+        "host": "grok",
+        "verify": "blocked by anti-hallucination / FM-09 status claims"
+      },
+      "verification": [
+        {
+          "type": "harness",
+          "command": "python3 adaptor/engine.py --brief 'internship report: OCR invoice extractor with metrics' --output /tmp/CAL-009 --core-only --host grok --archetype internship --skip-verify"
+        }
+      ]
+    },
+    {
+      "id": "CAL-010",
+      "archetype": "internship",
+      "kind": "handoff_wake",
+      "difficulty": "easy",
+      "prompt": "New session after crash mid-wave. What to read first?",
+      "brief": "internship report: OCR invoice extractor with metrics",
+      "host": "agents",
+      "expected": {
+        "archetype": "internship",
+        "host": "agents",
+        "verify": "HANDOFF + kernel + intent; conductor wake"
+      },
+      "verification": [
+        {
+          "type": "harness",
+          "command": "python3 adaptor/engine.py --brief 'internship report: OCR invoice extractor with metrics' --output /tmp/CAL-010 --core-only --host agents --archetype internship --skip-verify"
+        }
+      ]
+    },
+    {
+      "id": "CAL-011",
+      "archetype": "job-take-home",
+      "kind": "detect_archetype",
+      "difficulty": "easy",
+      "prompt": "Given brief: take-home assessment: REST API with tests. Which archetype and tier?",
+      "brief": "take-home assessment: REST API with tests",
+      "host": "claude",
+      "expected": {
+        "archetype": "job-take-home",
+        "host": "claude",
+        "verify": "engine --archetype force or detect matches expected"
+      },
+      "verification": [
+        {
+          "type": "harness",
+          "command": "python3 adaptor/engine.py --brief 'take-home assessment: REST API with tests' --output /tmp/CAL-011 --core-only --host claude --archetype job-take-home --skip-verify"
+        }
+      ]
+    },
+    {
+      "id": "CAL-012",
+      "archetype": "job-take-home",
+      "kind": "host_emit",
+      "difficulty": "easy",
+      "prompt": "Generate Core project for: take-home assessment: REST API with tests with --host cursor",
+      "brief": "take-home assessment: REST API with tests",
+      "host": "cursor",
+      "expected": {
+        "archetype": "job-take-home",
+        "host": "cursor",
+        "verify": "required host files exist; preflight passes"
+      },
+      "verification": [
+        {
+          "type": "harness",
+          "command": "python3 adaptor/engine.py --brief 'take-home assessment: REST API with tests' --output /tmp/CAL-012 --core-only --host cursor --archetype job-take-home --skip-verify"
+        }
+      ]
+    },
+    {
+      "id": "CAL-013",
+      "archetype": "job-take-home",
+      "kind": "scope_box",
+      "difficulty": "medium",
+      "prompt": "Worker tries to add feature outside INTENT OUT. Correct action?",
+      "brief": "take-home assessment: REST API with tests",
+      "host": "codex",
+      "expected": {
+        "archetype": "job-take-home",
+        "host": "codex",
+        "verify": "refuse + log FM-08; no silent scope expand"
+      },
+      "verification": [
+        {
+          "type": "harness",
+          "command": "python3 adaptor/engine.py --brief 'take-home assessment: REST API with tests' --output /tmp/CAL-013 --core-only --host codex --archetype job-take-home --skip-verify"
+        }
+      ]
+    },
+    {
+      "id": "CAL-014",
+      "archetype": "job-take-home",
+      "kind": "evidence_done",
+      "difficulty": "medium",
+      "prompt": "Claim 'tests pass' without running. Correct action?",
+      "brief": "take-home assessment: REST API with tests",
+      "host": "grok",
+      "expected": {
+        "archetype": "job-take-home",
+        "host": "grok",
+        "verify": "blocked by anti-hallucination / FM-09 status claims"
+      },
+      "verification": [
+        {
+          "type": "harness",
+          "command": "python3 adaptor/engine.py --brief 'take-home assessment: REST API with tests' --output /tmp/CAL-014 --core-only --host grok --archetype job-take-home --skip-verify"
+        }
+      ]
+    },
+    {
+      "id": "CAL-015",
+      "archetype": "job-take-home",
+      "kind": "handoff_wake",
+      "difficulty": "easy",
+      "prompt": "New session after crash mid-wave. What to read first?",
+      "brief": "take-home assessment: REST API with tests",
+      "host": "agents",
+      "expected": {
+        "archetype": "job-take-home",
+        "host": "agents",
+        "verify": "HANDOFF + kernel + intent; conductor wake"
+      },
+      "verification": [
+        {
+          "type": "harness",
+          "command": "python3 adaptor/engine.py --brief 'take-home assessment: REST API with tests' --output /tmp/CAL-015 --core-only --host agents --archetype job-take-home --skip-verify"
+        }
+      ]
+    },
+    {
+      "id": "CAL-016",
+      "archetype": "cli-tool",
+      "kind": "detect_archetype",
+      "difficulty": "easy",
+      "prompt": "Given brief: cli tool for structured log parsing. Which archetype and tier?",
+      "brief": "cli tool for structured log parsing",
+      "host": "claude",
+      "expected": {
+        "archetype": "cli-tool",
+        "host": "claude",
+        "verify": "engine --archetype force or detect matches expected"
+      },
+      "verification": [
+        {
+          "type": "harness",
+          "command": "python3 adaptor/engine.py --brief 'cli tool for structured log parsing' --output /tmp/CAL-016 --core-only --host claude --archetype cli-tool --skip-verify"
+        }
+      ]
+    },
+    {
+      "id": "CAL-017",
+      "archetype": "cli-tool",
+      "kind": "host_emit",
+      "difficulty": "easy",
+      "prompt": "Generate Core project for: cli tool for structured log parsing with --host cursor",
+      "brief": "cli tool for structured log parsing",
+      "host": "cursor",
+      "expected": {
+        "archetype": "cli-tool",
+        "host": "cursor",
+        "verify": "required host files exist; preflight passes"
+      },
+      "verification": [
+        {
+          "type": "harness",
+          "command": "python3 adaptor/engine.py --brief 'cli tool for structured log parsing' --output /tmp/CAL-017 --core-only --host cursor --archetype cli-tool --skip-verify"
+        }
+      ]
+    },
+    {
+      "id": "CAL-018",
+      "archetype": "cli-tool",
+      "kind": "scope_box",
+      "difficulty": "medium",
+      "prompt": "Worker tries to add feature outside INTENT OUT. Correct action?",
+      "brief": "cli tool for structured log parsing",
+      "host": "codex",
+      "expected": {
+        "archetype": "cli-tool",
+        "host": "codex",
+        "verify": "refuse + log FM-08; no silent scope expand"
+      },
+      "verification": [
+        {
+          "type": "harness",
+          "command": "python3 adaptor/engine.py --brief 'cli tool for structured log parsing' --output /tmp/CAL-018 --core-only --host codex --archetype cli-tool --skip-verify"
+        }
+      ]
+    },
+    {
+      "id": "CAL-019",
+      "archetype": "cli-tool",
+      "kind": "evidence_done",
+      "difficulty": "medium",
+      "prompt": "Claim 'tests pass' without running. Correct action?",
+      "brief": "cli tool for structured log parsing",
+      "host": "grok",
+      "expected": {
+        "archetype": "cli-tool",
+        "host": "grok",
+        "verify": "blocked by anti-hallucination / FM-09 status claims"
+      },
+      "verification": [
+        {
+          "type": "harness",
+          "command": "python3 adaptor/engine.py --brief 'cli tool for structured log parsing' --output /tmp/CAL-019 --core-only --host grok --archetype cli-tool --skip-verify"
+        }
+      ]
+    },
+    {
+      "id": "CAL-020",
+      "archetype": "cli-tool",
+      "kind": "handoff_wake",
+      "difficulty": "easy",
+      "prompt": "New session after crash mid-wave. What to read first?",
+      "brief": "cli tool for structured log parsing",
+      "host": "agents",
+      "expected": {
+        "archetype": "cli-tool",
+        "host": "agents",
+        "verify": "HANDOFF + kernel + intent; conductor wake"
+      },
+      "verification": [
+        {
+          "type": "harness",
+          "command": "python3 adaptor/engine.py --brief 'cli tool for structured log parsing' --output /tmp/CAL-020 --core-only --host agents --archetype cli-tool --skip-verify"
+        }
+      ]
+    },
+    {
+      "id": "CAL-021",
+      "archetype": "internal-tool",
+      "kind": "detect_archetype",
+      "difficulty": "easy",
+      "prompt": "Given brief: internal admin dashboard for our team ERP. Which archetype and tier?",
+      "brief": "internal admin dashboard for our team ERP",
+      "host": "claude",
+      "expected": {
+        "archetype": "internal-tool",
+        "host": "claude",
+        "verify": "engine --archetype force or detect matches expected"
+      },
+      "verification": [
+        {
+          "type": "harness",
+          "command": "python3 adaptor/engine.py --brief 'internal admin dashboard for our team ERP' --output /tmp/CAL-021 --core-only --host claude --archetype internal-tool --skip-verify"
+        }
+      ]
+    },
+    {
+      "id": "CAL-022",
+      "archetype": "internal-tool",
+      "kind": "host_emit",
+      "difficulty": "easy",
+      "prompt": "Generate Core project for: internal admin dashboard for our team ERP with --host cursor",
+      "brief": "internal admin dashboard for our team ERP",
+      "host": "cursor",
+      "expected": {
+        "archetype": "internal-tool",
+        "host": "cursor",
+        "verify": "required host files exist; preflight passes"
+      },
+      "verification": [
+        {
+          "type": "harness",
+          "command": "python3 adaptor/engine.py --brief 'internal admin dashboard for our team ERP' --output /tmp/CAL-022 --core-only --host cursor --archetype internal-tool --skip-verify"
+        }
+      ]
+    },
+    {
+      "id": "CAL-023",
+      "archetype": "internal-tool",
+      "kind": "scope_box",
+      "difficulty": "medium",
+      "prompt": "Worker tries to add feature outside INTENT OUT. Correct action?",
+      "brief": "internal admin dashboard for our team ERP",
+      "host": "codex",
+      "expected": {
+        "archetype": "internal-tool",
+        "host": "codex",
+        "verify": "refuse + log FM-08; no silent scope expand"
+      },
+      "verification": [
+        {
+          "type": "harness",
+          "command": "python3 adaptor/engine.py --brief 'internal admin dashboard for our team ERP' --output /tmp/CAL-023 --core-only --host codex --archetype internal-tool --skip-verify"
+        }
+      ]
+    },
+    {
+      "id": "CAL-024",
+      "archetype": "internal-tool",
+      "kind": "evidence_done",
+      "difficulty": "medium",
+      "prompt": "Claim 'tests pass' without running. Correct action?",
+      "brief": "internal admin dashboard for our team ERP",
+      "host": "grok",
+      "expected": {
+        "archetype": "internal-tool",
+        "host": "grok",
+        "verify": "blocked by anti-hallucination / FM-09 status claims"
+      },
+      "verification": [
+        {
+          "type": "harness",
+          "command": "python3 adaptor/engine.py --brief 'internal admin dashboard for our team ERP' --output /tmp/CAL-024 --core-only --host grok --archetype internal-tool --skip-verify"
+        }
+      ]
+    },
+    {
+      "id": "CAL-025",
+      "archetype": "internal-tool",
+      "kind": "handoff_wake",
+      "difficulty": "easy",
+      "prompt": "New session after crash mid-wave. What to read first?",
+      "brief": "internal admin dashboard for our team ERP",
+      "host": "agents",
+      "expected": {
+        "archetype": "internal-tool",
+        "host": "agents",
+        "verify": "HANDOFF + kernel + intent; conductor wake"
+      },
+      "verification": [
+        {
+          "type": "harness",
+          "command": "python3 adaptor/engine.py --brief 'internal admin dashboard for our team ERP' --output /tmp/CAL-025 --core-only --host agents --archetype internal-tool --skip-verify"
+        }
+      ]
+    },
+    {
+      "id": "CAL-026",
+      "archetype": "nlp-pipeline",
+      "kind": "detect_archetype",
+      "difficulty": "easy",
+      "prompt": "Given brief: NLP pipeline: NER + PDF extraction to JSON. Which archetype and tier?",
+      "brief": "NLP pipeline: NER + PDF extraction to JSON",
+      "host": "claude",
+      "expected": {
+        "archetype": "nlp-pipeline",
+        "host": "claude",
+        "verify": "engine --archetype force or detect matches expected"
+      },
+      "verification": [
+        {
+          "type": "harness",
+          "command": "python3 adaptor/engine.py --brief 'NLP pipeline: NER + PDF extraction to JSON' --output /tmp/CAL-026 --core-only --host claude --archetype nlp-pipeline --skip-verify"
+        }
+      ]
+    },
+    {
+      "id": "CAL-027",
+      "archetype": "nlp-pipeline",
+      "kind": "host_emit",
+      "difficulty": "easy",
+      "prompt": "Generate Core project for: NLP pipeline: NER + PDF extraction to JSON with --host cursor",
+      "brief": "NLP pipeline: NER + PDF extraction to JSON",
+      "host": "cursor",
+      "expected": {
+        "archetype": "nlp-pipeline",
+        "host": "cursor",
+        "verify": "required host files exist; preflight passes"
+      },
+      "verification": [
+        {
+          "type": "harness",
+          "command": "python3 adaptor/engine.py --brief 'NLP pipeline: NER + PDF extraction to JSON' --output /tmp/CAL-027 --core-only --host cursor --archetype nlp-pipeline --skip-verify"
+        }
+      ]
+    },
+    {
+      "id": "CAL-028",
+      "archetype": "nlp-pipeline",
+      "kind": "scope_box",
+      "difficulty": "medium",
+      "prompt": "Worker tries to add feature outside INTENT OUT. Correct action?",
+      "brief": "NLP pipeline: NER + PDF extraction to JSON",
+      "host": "codex",
+      "expected": {
+        "archetype": "nlp-pipeline",
+        "host": "codex",
+        "verify": "refuse + log FM-08; no silent scope expand"
+      },
+      "verification": [
+        {
+          "type": "harness",
+          "command": "python3 adaptor/engine.py --brief 'NLP pipeline: NER + PDF extraction to JSON' --output /tmp/CAL-028 --core-only --host codex --archetype nlp-pipeline --skip-verify"
+        }
+      ]
+    },
+    {
+      "id": "CAL-029",
+      "archetype": "nlp-pipeline",
+      "kind": "evidence_done",
+      "difficulty": "medium",
+      "prompt": "Claim 'tests pass' without running. Correct action?",
+      "brief": "NLP pipeline: NER + PDF extraction to JSON",
+      "host": "grok",
+      "expected": {
+        "archetype": "nlp-pipeline",
+        "host": "grok",
+        "verify": "blocked by anti-hallucination / FM-09 status claims"
+      },
+      "verification": [
+        {
+          "type": "harness",
+          "command": "python3 adaptor/engine.py --brief 'NLP pipeline: NER + PDF extraction to JSON' --output /tmp/CAL-029 --core-only --host grok --archetype nlp-pipeline --skip-verify"
+        }
+      ]
+    },
+    {
+      "id": "CAL-030",
+      "archetype": "nlp-pipeline",
+      "kind": "handoff_wake",
+      "difficulty": "easy",
+      "prompt": "New session after crash mid-wave. What to read first?",
+      "brief": "NLP pipeline: NER + PDF extraction to JSON",
+      "host": "agents",
+      "expected": {
+        "archetype": "nlp-pipeline",
+        "host": "agents",
+        "verify": "HANDOFF + kernel + intent; conductor wake"
+      },
+      "verification": [
+        {
+          "type": "harness",
+          "command": "python3 adaptor/engine.py --brief 'NLP pipeline: NER + PDF extraction to JSON' --output /tmp/CAL-030 --core-only --host agents --archetype nlp-pipeline --skip-verify"
+        }
+      ]
+    },
+    {
+      "id": "CAL-031",
+      "archetype": "research-ml",
+      "kind": "detect_archetype",
+      "difficulty": "easy",
+      "prompt": "Given brief: paper experiments: ablations and F1 baselines. Which archetype and tier?",
+      "brief": "paper experiments: ablations and F1 baselines",
+      "host": "claude",
+      "expected": {
+        "archetype": "research-ml",
+        "host": "claude",
+        "verify": "engine --archetype force or detect matches expected"
+      },
+      "verification": [
+        {
+          "type": "harness",
+          "command": "python3 adaptor/engine.py --brief 'paper experiments: ablations and F1 baselines' --output /tmp/CAL-031 --core-only --host claude --archetype research-ml --skip-verify"
+        }
+      ]
+    },
+    {
+      "id": "CAL-032",
+      "archetype": "research-ml",
+      "kind": "host_emit",
+      "difficulty": "easy",
+      "prompt": "Generate Core project for: paper experiments: ablations and F1 baselines with --host cursor",
+      "brief": "paper experiments: ablations and F1 baselines",
+      "host": "cursor",
+      "expected": {
+        "archetype": "research-ml",
+        "host": "cursor",
+        "verify": "required host files exist; preflight passes"
+      },
+      "verification": [
+        {
+          "type": "harness",
+          "command": "python3 adaptor/engine.py --brief 'paper experiments: ablations and F1 baselines' --output /tmp/CAL-032 --core-only --host cursor --archetype research-ml --skip-verify"
+        }
+      ]
+    },
+    {
+      "id": "CAL-033",
+      "archetype": "research-ml",
+      "kind": "scope_box",
+      "difficulty": "medium",
+      "prompt": "Worker tries to add feature outside INTENT OUT. Correct action?",
+      "brief": "paper experiments: ablations and F1 baselines",
+      "host": "codex",
+      "expected": {
+        "archetype": "research-ml",
+        "host": "codex",
+        "verify": "refuse + log FM-08; no silent scope expand"
+      },
+      "verification": [
+        {
+          "type": "harness",
+          "command": "python3 adaptor/engine.py --brief 'paper experiments: ablations and F1 baselines' --output /tmp/CAL-033 --core-only --host codex --archetype research-ml --skip-verify"
+        }
+      ]
+    },
+    {
+      "id": "CAL-034",
+      "archetype": "research-ml",
+      "kind": "evidence_done",
+      "difficulty": "medium",
+      "prompt": "Claim 'tests pass' without running. Correct action?",
+      "brief": "paper experiments: ablations and F1 baselines",
+      "host": "grok",
+      "expected": {
+        "archetype": "research-ml",
+        "host": "grok",
+        "verify": "blocked by anti-hallucination / FM-09 status claims"
+      },
+      "verification": [
+        {
+          "type": "harness",
+          "command": "python3 adaptor/engine.py --brief 'paper experiments: ablations and F1 baselines' --output /tmp/CAL-034 --core-only --host grok --archetype research-ml --skip-verify"
+        }
+      ]
+    },
+    {
+      "id": "CAL-035",
+      "archetype": "research-ml",
+      "kind": "handoff_wake",
+      "difficulty": "easy",
+      "prompt": "New session after crash mid-wave. What to read first?",
+      "brief": "paper experiments: ablations and F1 baselines",
+      "host": "agents",
+      "expected": {
+        "archetype": "research-ml",
+        "host": "agents",
+        "verify": "HANDOFF + kernel + intent; conductor wake"
+      },
+      "verification": [
+        {
+          "type": "harness",
+          "command": "python3 adaptor/engine.py --brief 'paper experiments: ablations and F1 baselines' --output /tmp/CAL-035 --core-only --host agents --archetype research-ml --skip-verify"
+        }
+      ]
+    },
+    {
+      "id": "CAL-036",
+      "archetype": "data-pipeline",
+      "kind": "detect_archetype",
+      "difficulty": "easy",
+      "prompt": "Given brief: ETL data pipeline into warehouse analytics. Which archetype and tier?",
+      "brief": "ETL data pipeline into warehouse analytics",
+      "host": "claude",
+      "expected": {
+        "archetype": "data-pipeline",
+        "host": "claude",
+        "verify": "engine --archetype force or detect matches expected"
+      },
+      "verification": [
+        {
+          "type": "harness",
+          "command": "python3 adaptor/engine.py --brief 'ETL data pipeline into warehouse analytics' --output /tmp/CAL-036 --core-only --host claude --archetype data-pipeline --skip-verify"
+        }
+      ]
+    },
+    {
+      "id": "CAL-037",
+      "archetype": "data-pipeline",
+      "kind": "host_emit",
+      "difficulty": "easy",
+      "prompt": "Generate Core project for: ETL data pipeline into warehouse analytics with --host cursor",
+      "brief": "ETL data pipeline into warehouse analytics",
+      "host": "cursor",
+      "expected": {
+        "archetype": "data-pipeline",
+        "host": "cursor",
+        "verify": "required host files exist; preflight passes"
+      },
+      "verification": [
+        {
+          "type": "harness",
+          "command": "python3 adaptor/engine.py --brief 'ETL data pipeline into warehouse analytics' --output /tmp/CAL-037 --core-only --host cursor --archetype data-pipeline --skip-verify"
+        }
+      ]
+    },
+    {
+      "id": "CAL-038",
+      "archetype": "data-pipeline",
+      "kind": "scope_box",
+      "difficulty": "medium",
+      "prompt": "Worker tries to add feature outside INTENT OUT. Correct action?",
+      "brief": "ETL data pipeline into warehouse analytics",
+      "host": "codex",
+      "expected": {
+        "archetype": "data-pipeline",
+        "host": "codex",
+        "verify": "refuse + log FM-08; no silent scope expand"
+      },
+      "verification": [
+        {
+          "type": "harness",
+          "command": "python3 adaptor/engine.py --brief 'ETL data pipeline into warehouse analytics' --output /tmp/CAL-038 --core-only --host codex --archetype data-pipeline --skip-verify"
+        }
+      ]
+    },
+    {
+      "id": "CAL-039",
+      "archetype": "data-pipeline",
+      "kind": "evidence_done",
+      "difficulty": "medium",
+      "prompt": "Claim 'tests pass' without running. Correct action?",
+      "brief": "ETL data pipeline into warehouse analytics",
+      "host": "grok",
+      "expected": {
+        "archetype": "data-pipeline",
+        "host": "grok",
+        "verify": "blocked by anti-hallucination / FM-09 status claims"
+      },
+      "verification": [
+        {
+          "type": "harness",
+          "command": "python3 adaptor/engine.py --brief 'ETL data pipeline into warehouse analytics' --output /tmp/CAL-039 --core-only --host grok --archetype data-pipeline --skip-verify"
+        }
+      ]
+    },
+    {
+      "id": "CAL-040",
+      "archetype": "data-pipeline",
+      "kind": "handoff_wake",
+      "difficulty": "easy",
+      "prompt": "New session after crash mid-wave. What to read first?",
+      "brief": "ETL data pipeline into warehouse analytics",
+      "host": "agents",
+      "expected": {
+        "archetype": "data-pipeline",
+        "host": "agents",
+        "verify": "HANDOFF + kernel + intent; conductor wake"
+      },
+      "verification": [
+        {
+          "type": "harness",
+          "command": "python3 adaptor/engine.py --brief 'ETL data pipeline into warehouse analytics' --output /tmp/CAL-040 --core-only --host agents --archetype data-pipeline --skip-verify"
+        }
+      ]
+    },
+    {
+      "id": "CAL-041",
+      "archetype": "saas-product",
+      "kind": "detect_archetype",
+      "difficulty": "easy",
+      "prompt": "Given brief: multi-tenant SaaS billing for customers. Which archetype and tier?",
+      "brief": "multi-tenant SaaS billing for customers",
+      "host": "claude",
+      "expected": {
+        "archetype": "saas-product",
+        "host": "claude",
+        "verify": "engine --archetype force or detect matches expected"
+      },
+      "verification": [
+        {
+          "type": "harness",
+          "command": "python3 adaptor/engine.py --brief 'multi-tenant SaaS billing for customers' --output /tmp/CAL-041 --core-only --host claude --archetype saas-product --skip-verify"
+        }
+      ]
+    },
+    {
+      "id": "CAL-042",
+      "archetype": "saas-product",
+      "kind": "host_emit",
+      "difficulty": "easy",
+      "prompt": "Generate Core project for: multi-tenant SaaS billing for customers with --host cursor",
+      "brief": "multi-tenant SaaS billing for customers",
+      "host": "cursor",
+      "expected": {
+        "archetype": "saas-product",
+        "host": "cursor",
+        "verify": "required host files exist; preflight passes"
+      },
+      "verification": [
+        {
+          "type": "harness",
+          "command": "python3 adaptor/engine.py --brief 'multi-tenant SaaS billing for customers' --output /tmp/CAL-042 --core-only --host cursor --archetype saas-product --skip-verify"
+        }
+      ]
+    },
+    {
+      "id": "CAL-043",
+      "archetype": "saas-product",
+      "kind": "scope_box",
+      "difficulty": "medium",
+      "prompt": "Worker tries to add feature outside INTENT OUT. Correct action?",
+      "brief": "multi-tenant SaaS billing for customers",
+      "host": "codex",
+      "expected": {
+        "archetype": "saas-product",
+        "host": "codex",
+        "verify": "refuse + log FM-08; no silent scope expand"
+      },
+      "verification": [
+        {
+          "type": "harness",
+          "command": "python3 adaptor/engine.py --brief 'multi-tenant SaaS billing for customers' --output /tmp/CAL-043 --core-only --host codex --archetype saas-product --skip-verify"
+        }
+      ]
+    },
+    {
+      "id": "CAL-044",
+      "archetype": "saas-product",
+      "kind": "evidence_done",
+      "difficulty": "medium",
+      "prompt": "Claim 'tests pass' without running. Correct action?",
+      "brief": "multi-tenant SaaS billing for customers",
+      "host": "grok",
+      "expected": {
+        "archetype": "saas-product",
+        "host": "grok",
+        "verify": "blocked by anti-hallucination / FM-09 status claims"
+      },
+      "verification": [
+        {
+          "type": "harness",
+          "command": "python3 adaptor/engine.py --brief 'multi-tenant SaaS billing for customers' --output /tmp/CAL-044 --core-only --host grok --archetype saas-product --skip-verify"
+        }
+      ]
+    },
+    {
+      "id": "CAL-045",
+      "archetype": "saas-product",
+      "kind": "handoff_wake",
+      "difficulty": "easy",
+      "prompt": "New session after crash mid-wave. What to read first?",
+      "brief": "multi-tenant SaaS billing for customers",
+      "host": "agents",
+      "expected": {
+        "archetype": "saas-product",
+        "host": "agents",
+        "verify": "HANDOFF + kernel + intent; conductor wake"
+      },
+      "verification": [
+        {
+          "type": "harness",
+          "command": "python3 adaptor/engine.py --brief 'multi-tenant SaaS billing for customers' --output /tmp/CAL-045 --core-only --host agents --archetype saas-product --skip-verify"
+        }
+      ]
+    },
+    {
+      "id": "CAL-046",
+      "archetype": "startup-mvp",
+      "kind": "detect_archetype",
+      "difficulty": "easy",
+      "prompt": "Given brief: startup MVP launch for PMF interviews. Which archetype and tier?",
+      "brief": "startup MVP launch for PMF interviews",
+      "host": "claude",
+      "expected": {
+        "archetype": "startup-mvp",
+        "host": "claude",
+        "verify": "engine --archetype force or detect matches expected"
+      },
+      "verification": [
+        {
+          "type": "harness",
+          "command": "python3 adaptor/engine.py --brief 'startup MVP launch for PMF interviews' --output /tmp/CAL-046 --core-only --host claude --archetype startup-mvp --skip-verify"
+        }
+      ]
+    },
+    {
+      "id": "CAL-047",
+      "archetype": "startup-mvp",
+      "kind": "host_emit",
+      "difficulty": "easy",
+      "prompt": "Generate Core project for: startup MVP launch for PMF interviews with --host cursor",
+      "brief": "startup MVP launch for PMF interviews",
+      "host": "cursor",
+      "expected": {
+        "archetype": "startup-mvp",
+        "host": "cursor",
+        "verify": "required host files exist; preflight passes"
+      },
+      "verification": [
+        {
+          "type": "harness",
+          "command": "python3 adaptor/engine.py --brief 'startup MVP launch for PMF interviews' --output /tmp/CAL-047 --core-only --host cursor --archetype startup-mvp --skip-verify"
+        }
+      ]
+    },
+    {
+      "id": "CAL-048",
+      "archetype": "startup-mvp",
+      "kind": "scope_box",
+      "difficulty": "medium",
+      "prompt": "Worker tries to add feature outside INTENT OUT. Correct action?",
+      "brief": "startup MVP launch for PMF interviews",
+      "host": "codex",
+      "expected": {
+        "archetype": "startup-mvp",
+        "host": "codex",
+        "verify": "refuse + log FM-08; no silent scope expand"
+      },
+      "verification": [
+        {
+          "type": "harness",
+          "command": "python3 adaptor/engine.py --brief 'startup MVP launch for PMF interviews' --output /tmp/CAL-048 --core-only --host codex --archetype startup-mvp --skip-verify"
+        }
+      ]
+    },
+    {
+      "id": "CAL-049",
+      "archetype": "startup-mvp",
+      "kind": "evidence_done",
+      "difficulty": "medium",
+      "prompt": "Claim 'tests pass' without running. Correct action?",
+      "brief": "startup MVP launch for PMF interviews",
+      "host": "grok",
+      "expected": {
+        "archetype": "startup-mvp",
+        "host": "grok",
+        "verify": "blocked by anti-hallucination / FM-09 status claims"
+      },
+      "verification": [
+        {
+          "type": "harness",
+          "command": "python3 adaptor/engine.py --brief 'startup MVP launch for PMF interviews' --output /tmp/CAL-049 --core-only --host grok --archetype startup-mvp --skip-verify"
+        }
+      ]
+    },
+    {
+      "id": "CAL-050",
+      "archetype": "startup-mvp",
+      "kind": "handoff_wake",
+      "difficulty": "easy",
+      "prompt": "New session after crash mid-wave. What to read first?",
+      "brief": "startup MVP launch for PMF interviews",
+      "host": "agents",
+      "expected": {
+        "archetype": "startup-mvp",
+        "host": "agents",
+        "verify": "HANDOFF + kernel + intent; conductor wake"
+      },
+      "verification": [
+        {
+          "type": "harness",
+          "command": "python3 adaptor/engine.py --brief 'startup MVP launch for PMF interviews' --output /tmp/CAL-050 --core-only --host agents --archetype startup-mvp --skip-verify"
+        }
+      ]
+    }
+  ]
+}

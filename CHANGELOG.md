@@ -1,5 +1,28 @@
 # Adaptoid OS Changelog
 
+## v5.1 — Jul 2026 — Core product finish (shippable)
+Focus: **portable harness + host adapters + thin runtime + proof gates**. Finish projects, not more protocol theater.
+
+### Added
+- **`core/` package** — Core vs Pro vs Lite ladder (`README.md`, `MANIFEST.yaml`, templates, host templates).
+- **`adaptor/host_emit.py`** — emit `AGENTS.md`, `CLAUDE.md`, Cursor `.mdc`, Codex/Grok cold-starts from one template.
+- **Engine flags** — `--host`, `--core-only`, `--archetype`, `--tier`; copies intent schema into projects.
+- **`conductor/conductor.py`** — status, wake, init-wave, check-disjoint (FM-13), dispatch (stub|shell), rewrite-handoff.
+- **`benchmarks/run_bench.sh`** — engine / preflight / conductor / dogfood timing + correctness.
+- **`calibration/`** — 50 harness cases (`generate_cases.py` → `cases.json`) + smoke runner.
+- **`scripts/ship_check.sh`** + `make ship-check` — release gate.
+- **`examples/core-finish/`** — documented dogfood path with evidence commands.
+- **Tests** for host emit, conductor, calibration count.
+
+### Changed
+- Install / Makefile / 00-INVOCATION / Lite OS_SETUP / healthcheck updated for v5.1 Core hosts.
+- Bootstrap wraps engine with `--host` / `--core-only` / `--brief`.
+- `route_sentinel.sh` integer + DAG node parsing fixed.
+- Multi-channel / enterprise stay demand-gated.
+
+### Philosophy
+Model = weapon. Host + MCP + skills = field. Adaptoid Core adapts the field so any weapon can finish the project.
+
 ## v5.0 — Jun 2026 — Public Product Layer + Super-Adaptoid Protocols
 The v5.0 release transforms Adaptoid OS into a professional open-source project with a clear category claim, launch playbook, and self-monitoring protocol layer.
 

@@ -1,13 +1,19 @@
 #!/usr/bin/env bash
 # Adaptoid OS — Project Bootstrap
-# Usage: bootstrap.sh <project_name> [--archetype <type>] [--tier <T0-T4>] [--output <dir>]
+# Usage:
+#   bootstrap.sh <project_name> [--archetype <type>] [--tier <T0-T4>]
+#               [--output <dir>] [--host <agents,claude,...|all>] [--core-only]
+#               [--brief "text"]
 set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "$0")/.." && pwd)"
 PROJECT_NAME="${1:-my-project}"
-ARCHETYPE="internal-tool"
-TIER="T1"
+ARCHETYPE=""
+TIER=""
 OUTPUT_DIR="."
+HOST="agents,claude"
+CORE_ONLY=0
+BRIEF=""
 shift || true
 
 while [[ $# -gt 0 ]]; do
@@ -15,35 +21,44 @@ while [[ $# -gt 0 ]]; do
     --archetype) ARCHETYPE="$2"; shift 2 ;;
     --tier) TIER="$2"; shift 2 ;;
     --output) OUTPUT_DIR="$2"; shift 2 ;;
+    --host) HOST="$2"; shift 2 ;;
+    --core-only) CORE_ONLY=1; shift ;;
+    --brief) BRIEF="$2"; shift 2 ;;
     *) echo "Unknown option: $1"; exit 1 ;;
   esac
 done
 
 TARGET="$OUTPUT_DIR/$PROJECT_NAME"
-echo "⚡ Bootstrapping $PROJECT_NAME ($ARCHETYPE @ $TIER)..."
+if [[ -z "$BRIEF" ]]; then
+  BRIEF="Project $PROJECT_NAME"
+  if [[ -n "$ARCHETYPE" ]]; then
+    BRIEF="$BRIEF ($ARCHETYPE)"
+  fi
+fi
 
-mkdir -p "$TARGET"
-cp -r "$SCRIPT_DIR/templates/root/"* "$TARGET/"
-cp -r "$SCRIPT_DIR/templates/orchestrator/"* "$TARGET/orchestrator/" 2>/dev/null || true
-cp -r "$SCRIPT_DIR/templates/work/"* "$TARGET/work/" 2>/dev/null || true
-cp -r "$SCRIPT_DIR/templates/plan/"* "$TARGET/plan/" 2>/dev/null || true
-cp -r "$SCRIPT_DIR/templates/specify/"* "$TARGET/specify/" 2>/dev/null || true
-cp -r "$SCRIPT_DIR/templates/docs/"* "$TARGET/docs/" 2>/dev/null || true
-cp -r "$SCRIPT_DIR/templates/evals/"* "$TARGET/evals/" 2>/dev/null || true
-cp -r "$SCRIPT_DIR/templates/ci/"* "$TARGET/.github/" 2>/dev/null || true
-cp -r "$SCRIPT_DIR/validators/"* "$TARGET/orchestrator/scripts/"
+echo "⚡ Bootstrapping $PROJECT_NAME via Adaptoid engine..."
+echo "   host=$HOST  core_only=$CORE_ONLY  output=$TARGET"
 
-# Fill placeholders
-find "$TARGET" -type f -name '*.md' -o -name '*.yaml' -o -name '*.yml' | while read -r f; do
-  sed -i.bak "s/{{PROJECT_NAME}}/$PROJECT_NAME/g" "$f"
-  sed -i.bak "s/{{ARCHETYPE}}/$ARCHETYPE/g" "$f"
-  sed -i.bak "s/{{TIER}}/$TIER/g" "$f"
-  sed -i.bak "s/{{DATE}}/$(date +%Y-%m-%d)/g" "$f"
-  rm -f "$f.bak"
-done
+ENGINE_ARGS=(
+  --brief "$BRIEF"
+  --output "$TARGET"
+  --host "$HOST"
+)
+if [[ -n "$ARCHETYPE" ]]; then
+  ENGINE_ARGS+=(--archetype "$ARCHETYPE")
+fi
+if [[ -n "$TIER" ]]; then
+  ENGINE_ARGS+=(--tier "$TIER")
+fi
+if [[ "$CORE_ONLY" -eq 1 ]]; then
+  ENGINE_ARGS+=(--core-only)
+fi
 
-echo "🔍 Running preflight..."
-cd "$TARGET" && bash orchestrator/scripts/preflight.sh . || true
+python3 "$SCRIPT_DIR/adaptor/engine.py" "${ENGINE_ARGS[@]}"
 
+echo ""
 echo "✅ $PROJECT_NAME ready at $TARGET"
-echo "Next: paste your brief into PROJECT-INTENT.md and run 'bash orchestrator/scripts/preflight.sh'"
+echo "Next:"
+echo "  1. Edit $TARGET/PROJECT-INTENT.md"
+echo "  2. Open your host agent in $TARGET"
+echo "  3. bash $TARGET/orchestrator/scripts/preflight.sh $TARGET"

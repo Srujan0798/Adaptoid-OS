@@ -5,11 +5,13 @@ Feed it (this DevKit + a project brief) and it analyzes the target,
 pulls exactly the relevant components, and emits an executable, tailored setup.
 
 Usage:
-    python3 adaptor/engine.py --brief "Convert RFQ PDFs to structured BOQ" \
-        --deadline "2 weeks" --audience "team" --output ./my-project
+    python3 adaptor/engine.py --brief "Convert RFQ PDFs to structured BOQ" \\
+        --output ./my-project --host claude,agents --core-only
 
 The engine is sovereign: needs no network, no daemon, no git.
 """
+from __future__ import annotations
+
 import argparse
 import json
 import os
@@ -19,13 +21,61 @@ import sys
 from datetime import datetime, timezone
 from pathlib import Path
 
+from host_emit import (
+    HOSTS,
+    build_context,
+    emit_hosts,
+    parse_hosts,
+    write_core_handoff_and_index,
+)
+
 # ─── paths relative to this file ───
 ENGINE_DIR = Path(__file__).parent.resolve()
 OS_SETUP_ROOT = ENGINE_DIR.parent
+CORE_DIR = OS_SETUP_ROOT / "core"
+
+# Must-run validators (Core). Mirrors core/MANIFEST.yaml validators list.
+CORE_VALIDATORS = [
+    "preflight.sh",
+    "validate_state.sh",
+    "check_handoff.sh",
+    "check_status_claims.sh",
+    "check_silent_failures.sh",
+    "check_references.sh",
+    "check_intent.sh",
+    "check_scope.sh",
+    "publish_gate.sh",
+    "route_sentinel.sh",
+    "oap_security.sh",
+    "context_budget.sh",
+    "check_config.sh",
+    "check_tests.sh",
+    "check_metrics.sh",
+    "check_processes.sh",
+    "audit_chain.sh",
+    "vault_mmu.sh",
+    "wake.sh",
+    "emit_event.sh",
+]
 
 
 def log(msg: str):
     print(f"[adaptoid] {msg}", file=sys.stderr)
+
+
+def yaml_escape(s: str) -> str:
+    """Escape a string for double-quoted YAML."""
+    return (
+        s.replace("\\", "\\\\")
+        .replace('"', '\\"')
+        .replace("\n", " ")
+        .replace("\r", "")
+    )
+
+
+def slugify(brief: str) -> str:
+    words = re.findall(r"[a-zA-Z0-9]+", brief.lower())
+    return "-".join(words[:4]) if words else "project"
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -86,7 +136,6 @@ def detect_tier(brief: str, archetype: str) -> str:
         signals = TIER_SIGNALS.get(tier, [])
         if any(s in text for s in signals):
             return tier
-    # Default per archetype
     defaults = {
         "hackathon": "T0",
         "internship": "T1",
@@ -108,7 +157,6 @@ def analyze(brief: str, context: dict) -> dict:
     archetype, confidence, ask = detect_archetype(brief)
     tier = detect_tier(brief, archetype or "internal-tool")
 
-    # Infer domain from archetype
     domain_map = {
         "research-ml": "ML", "nlp-pipeline": "NLP", "saas-product": "web",
         "internal-tool": "web", "cli-tool": "systems", "data-pipeline": "data",
@@ -116,7 +164,6 @@ def analyze(brief: str, context: dict) -> dict:
     }
     domain = domain_map.get(archetype, "general")
 
-    # Detect tech stack hints
     text = brief.lower()
     stack = []
     if "python" in text or "fastapi" in text or "django" in text:
@@ -128,7 +175,6 @@ def analyze(brief: str, context: dict) -> dict:
     if "node" in text or "express" in text:
         stack.append("node")
 
-    # Risk profile = failure modes most likely
     risk_fms = {
         "hackathon": ["FM-08", "FM-09"],
         "research-ml": ["FM-05", "FM-06", "FM-10"],
@@ -147,6 +193,7 @@ def analyze(brief: str, context: dict) -> dict:
         "stack_hints": stack,
         "risk_fms": risk_fms.get(archetype, ["FM-01", "FM-09"]),
         "ask": ask,
+        "confidence": confidence,
     }
 
 
@@ -154,10 +201,8 @@ def analyze(brief: str, context: dict) -> dict:
 # 3. PULL — consult ecosystem library
 # ═══════════════════════════════════════════════════════════════════════════════
 def pull_ecosystem(analysis: dict) -> dict:
-    """Read SELECTION.md, return recommended stack."""
-    log("PULL: consulting ecosystem/SELECTION.md")
-    selection_path = OS_SETUP_ROOT / "reference" / "ecosystem" / "SELECTION.md"
-    # We don't parse markdown deeply; we return the archetype's known defaults
+    """Return recommended stack for archetype."""
+    log("PULL: consulting ecosystem defaults")
     archetype = analysis["archetype"]
     stacks = {
         "hackathon": {"mcp": ["filesystem", "git"], "skills": ["tdd-lite"], "skip": ["sdk", "memory"]},
@@ -172,36 +217,73 @@ def pull_ecosystem(analysis: dict) -> dict:
 # ═══════════════════════════════════════════════════════════════════════════════
 # 4. COMPOSE — generate project structure
 # ═══════════════════════════════════════════════════════════════════════════════
-def copy_templates(tier: str, output_dir: Path):
-    """Copy template skeleton based on tier."""
+def copy_templates(tier: str, output_dir: Path, core_only: bool):
+    """Copy template skeleton based on tier / core mode."""
     templates = OS_SETUP_ROOT / "templates"
-    dirs_to_copy = ["root", "work", "specify", "plan", "docs", "orchestrator"]
-    if tier in ("T2", "T3", "T4"):
-        dirs_to_copy += ["evals"]
-    if tier in ("T3", "T4"):
-        dirs_to_copy += ["ci"]
+    if core_only:
+        dirs_to_copy = ["root"]
+    else:
+        dirs_to_copy = ["root", "work", "specify", "plan", "docs", "orchestrator"]
+        if tier in ("T2", "T3", "T4"):
+            dirs_to_copy += ["evals"]
+        if tier in ("T3", "T4"):
+            dirs_to_copy += ["ci"]
 
     for d in dirs_to_copy:
         src = templates / d
-        if src.exists():
+        if not src.exists():
+            continue
+        if d == "root":
+            # root templates go at project root
+            for item in src.iterdir():
+                dst = output_dir / item.name
+                if item.is_dir():
+                    if dst.exists():
+                        shutil.rmtree(dst)
+                    shutil.copytree(item, dst)
+                else:
+                    shutil.copy2(item, dst)
+            log("  copied template: root → project root")
+        else:
             dst = output_dir / d
             if dst.exists():
                 shutil.rmtree(dst)
             shutil.copytree(src, dst)
             log(f"  copied template: {d}")
 
+    # Core always needs work/ for two-tier dispatch
+    (output_dir / "work").mkdir(parents=True, exist_ok=True)
+    (output_dir / "work" / "reports").mkdir(parents=True, exist_ok=True)
+    (output_dir / "plan").mkdir(parents=True, exist_ok=True)
+    (output_dir / "attic").mkdir(parents=True, exist_ok=True)
 
-def write_config(analysis: dict, brief: str, output_dir: Path):
+
+def copy_kernel(output_dir: Path):
+    """Copy always-load kernel into the project."""
+    src = OS_SETUP_ROOT / "kernel"
+    dst = output_dir / "kernel"
+    if dst.exists():
+        shutil.rmtree(dst)
+    shutil.copytree(src, dst)
+    log("  copied kernel/")
+
+
+def write_config(analysis: dict, brief: str, output_dir: Path, hosts: list, core_only: bool):
     """Write adaptoid.config.yaml."""
     cfg_path = output_dir / "adaptoid.config.yaml"
+    eco = pull_ecosystem(analysis)
+    goal = yaml_escape(brief[:120])
+    now = datetime.now(timezone.utc).isoformat()
     content = f"""---
 project:
-  name: "project"
-  goal: "{brief[:120]}"
+  name: "{slugify(brief)}"
+  goal: "{goal}"
   domain: "{analysis['domain']}"
 
 archetype: "{analysis['archetype']}"
 tier: "{analysis['tier']}"
+kit: "{'core' if core_only else 'pro'}"
+hosts: {json.dumps(hosts)}
 
 stack:
   language: ""
@@ -211,7 +293,7 @@ stack:
   extras: []
 
 compliance: []
-mcp_servers: {json.dumps(pull_ecosystem(analysis)['mcp'])}
+mcp_servers: {json.dumps(eco['mcp'])}
 
 orchestrator:
   model: "claude-or-kimi"
@@ -221,55 +303,243 @@ workers:
   tool: "opencode-cli"
   max_parallel: 5
 
+dag_transitions:
+  plan:
+    allowed_next: [dispatch, review]
+    max_retries: 3
+  dispatch:
+    allowed_next: [review, merge]
+    max_retries: 2
+  review:
+    allowed_next: [merge, dispatch]
+    max_retries: 3
+  merge:
+    allowed_next: [ship]
+    max_retries: 1
+
+policies:
+  active_pack: "default.yaml"
+  auto_load: true
+
+vault:
+  enabled: true
+  hash_algorithm: "sha256"
+
+event_sourcing:
+  enabled: true
+  hash_chain: true
+
 waves:
   active: "wave-1"
   total_planned: 0
   shipped: 0
 
-adapted_at: "{datetime.now(timezone.utc).isoformat()}Z"
-last_verified: "{datetime.now(timezone.utc).isoformat()}Z"
-version: "1.0"
+adapted_at: "{now}Z"
+last_verified: "{now}Z"
+version: "5.1"
 """
-    cfg_path.write_text(content)
+    cfg_path.write_text(content, encoding="utf-8")
     log(f"  wrote {cfg_path.name}")
 
 
-def copy_validators(output_dir: Path):
+def project_type_for(analysis: dict) -> str:
+    """Map domain/archetype → ProjectIntent.schema.json project_type enum."""
+    allowed = {
+        "web_app",
+        "data_analysis",
+        "api_design",
+        "ml_pipeline",
+        "infrastructure",
+        "research",
+        "content_creation",
+    }
+    domain = (analysis.get("domain") or "").lower()
+    arch = (analysis.get("archetype") or "").lower()
+    mapping = {
+        "ml": "ml_pipeline",
+        "nlp": "ml_pipeline",
+        "web": "web_app",
+        "systems": "infrastructure",
+        "data": "data_analysis",
+        "general": "web_app",
+        "varies": "web_app",
+    }
+    arch_map = {
+        "research-ml": "research",
+        "cli-tool": "infrastructure",
+        "data-pipeline": "data_analysis",
+        "nlp-pipeline": "ml_pipeline",
+        "saas-product": "web_app",
+        "startup-mvp": "web_app",
+        "internal-tool": "web_app",
+        "hackathon": "web_app",
+        "job-take-home": "api_design",
+        "internship": "research",
+    }
+    pt = arch_map.get(arch) or mapping.get(domain) or "web_app"
+    return pt if pt in allowed else "web_app"
+
+
+def write_intent(analysis: dict, brief: str, output_dir: Path):
+    """Write PROJECT-INTENT.md filled from brief."""
+    risk = ", ".join(analysis["risk_fms"])
+    project_type = project_type_for(analysis)
+    content = f"""---
+schema_version: "1.0"
+project_type: "{project_type}"
+archetype: "{analysis['archetype']}"
+tier: "{analysis['tier']}"
+stakeholders:
+  - role: "user"
+    needs: "complete the project with evidence-backed done"
+success_criteria:
+  - "preflight passes"
+  - "HANDOFF.md reflects current wave"
+  - "scope stays inside IN box"
+failure_modes:
+  - "hallucination"
+  - "wrong_route"
+  - "false_done"
+non_negotiables:
+  - "evidence or it did not happen"
+  - "replace never append state"
+preferences:
+  tech_stack: "{', '.join(analysis.get('stack_hints') or []) or 'unspecified'}"
+  worker_tool: "host-native agent"
+verification_level: "standard"
+---
+
+# Project Intent
+
+## Problem Statement
+{brief.strip()}
+
+## Scope
+### IN
+- Deliver the capability described in the problem statement
+- Keep harness contracts (kernel, HANDOFF, preflight) healthy
+
+### OUT
+- Speculative features not in the brief
+- Rewriting the harness itself unless required
+
+### LATER
+- Stretch polish after success criteria pass
+
+## Falsification
+- Preflight fails and is ignored
+- "Done" claimed without command evidence
+- Scope expands into OUT without a new intent revision
+
+## Highest-risk failure modes
+{risk}
+"""
+    path = output_dir / "PROJECT-INTENT.md"
+    path.write_text(content, encoding="utf-8")
+    log("  wrote PROJECT-INTENT.md")
+
+
+def copy_validators(output_dir: Path, core_only: bool):
     """Copy validators into orchestrator/scripts/."""
     src = OS_SETUP_ROOT / "validators"
     dst = output_dir / "orchestrator" / "scripts"
     dst.mkdir(parents=True, exist_ok=True)
-    for f in src.glob("*.sh"):
-        shutil.copy2(f, dst / f.name)
-    log(f"  copied {len(list(src.glob('*.sh')))} validators → orchestrator/scripts/")
+    if core_only:
+        names = CORE_VALIDATORS
+        count = 0
+        for name in names:
+            f = src / name
+            if f.exists():
+                shutil.copy2(f, dst / name)
+                count += 1
+        log(f"  copied {count} Core validators → orchestrator/scripts/")
+    else:
+        files = list(src.glob("*.sh"))
+        for f in files:
+            shutil.copy2(f, dst / f.name)
+        log(f"  copied {len(files)} validators → orchestrator/scripts/")
 
 
-def compose(analysis: dict, brief: str, output_dir: Path):
-    """Generate the full project structure."""
+def copy_core_marker(output_dir: Path, core_only: bool):
+    """Record which kit was installed."""
+    marker = output_dir / ".adaptoid-kit"
+    marker.write_text(
+        "core\n" if core_only else "pro\n",
+        encoding="utf-8",
+    )
+
+
+def copy_intent_schema(output_dir: Path):
+    """Copy PROJECT-INTENT JSON schema when present in the kit."""
+    src = OS_SETUP_ROOT / "schemas" / "ProjectIntent.schema.json"
+    if not src.exists():
+        return
+    dst_dir = output_dir / "schemas"
+    dst_dir.mkdir(parents=True, exist_ok=True)
+    shutil.copy2(src, dst_dir / src.name)
+    log("  copied schemas/ProjectIntent.schema.json")
+
+
+def compose(
+    analysis: dict,
+    brief: str,
+    output_dir: Path,
+    hosts: list,
+    core_only: bool,
+):
+    """Generate the full project structure + host surfaces."""
     log("COMPOSE: generating project structure")
     output_dir.mkdir(parents=True, exist_ok=True)
-    copy_templates(analysis["tier"], output_dir)
-    write_config(analysis, brief, output_dir)
-    copy_validators(output_dir)
-    # Write ADR stub
-    adr = output_dir / "docs" / "decisions" / "0002-stack-selection.md"
-    adr.parent.mkdir(parents=True, exist_ok=True)
-    adr.write_text(f"""# ADR 0002 — Stack Selection
+
+    copy_templates(analysis["tier"], output_dir, core_only)
+    copy_kernel(output_dir)
+    write_config(analysis, brief, output_dir, hosts, core_only)
+    write_intent(analysis, brief, output_dir)
+    copy_validators(output_dir, core_only)
+    copy_core_marker(output_dir, core_only)
+    copy_intent_schema(output_dir)
+
+    host_label = ",".join(hosts)
+    ctx = build_context(
+        project_name=slugify(brief),
+        goal=brief,
+        archetype=analysis["archetype"] or "internal-tool",
+        tier=analysis["tier"],
+        host=host_label,
+    )
+    written_state = write_core_handoff_and_index(output_dir, ctx)
+    for w in written_state:
+        log(f"  wrote {w}")
+
+    host_files = emit_hosts(output_dir, hosts, ctx)
+    for hf in host_files:
+        log(f"  host emit: {hf}")
+
+    # ADR stub (Pro docs or core plan/)
+    adr_dir = output_dir / "docs" / "decisions"
+    if not core_only:
+        adr_dir.mkdir(parents=True, exist_ok=True)
+    else:
+        adr_dir = output_dir / "plan"
+        adr_dir.mkdir(parents=True, exist_ok=True)
+    adr = adr_dir / "0002-stack-selection.md"
+    eco = pull_ecosystem(analysis)
+    adr.write_text(
+        f"""# ADR 0002 — Stack Selection
 
 | Decision | Why | Rejected |
 |---|---|---|
 | Archetype: {analysis['archetype']} | Detected from brief signals | — |
 | Tier: {analysis['tier']} | Smallest that fits | — |
-| MCP: {', '.join(pull_ecosystem(analysis)['mcp'])} | Minimal viable tools | Others from SELECTION.md |
+| Kit: {'core' if core_only else 'pro'} | User/engine selection | — |
+| Hosts: {', '.join(hosts)} | --host flag | — |
+| MCP: {', '.join(eco['mcp'])} | Minimal viable tools | Others from SELECTION.md |
 
-Highest-risk failure modes for this archetype: {', '.join(analysis['risk_fms'])}
-""")
-    log(f"  wrote {adr}")
-
-
-# ═══════════════════════════════════════════════════════════════════════════════
-# 5. RECORD — already done in COMPOSE (ADR written)
-# ═══════════════════════════════════════════════════════════════════════════════
+Highest-risk failure modes: {', '.join(analysis['risk_fms'])}
+""",
+        encoding="utf-8",
+    )
+    log(f"  wrote {adr.relative_to(output_dir)}")
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -290,19 +560,56 @@ def verify(output_dir: Path) -> bool:
 # MAIN
 # ═══════════════════════════════════════════════════════════════════════════════
 def main():
-    parser = argparse.ArgumentParser(description="OS-Setup Adaptor Engine")
+    parser = argparse.ArgumentParser(
+        description="Adaptoid OS Adaptor Engine — adapt harness to project + host",
+        formatter_class=argparse.RawDescriptionHelpFormatter,
+        epilog=f"""
+hosts: {', '.join(HOSTS)}, all
+examples:
+  python3 adaptor/engine.py --brief "cli log parser" --output ./p --host agents,claude
+  python3 adaptor/engine.py --brief "48h hackathon app" --output ./h --core-only --host all
+""",
+    )
     parser.add_argument("--brief", required=True, help="Project brief (one line or paragraph)")
     parser.add_argument("--output", required=True, help="Output directory for generated project")
     parser.add_argument("--deadline", default="", help="Deadline context")
     parser.add_argument("--audience", default="", help="Who will see it")
     parser.add_argument("--tech", default="", help="Tech preference")
+    parser.add_argument(
+        "--host",
+        default="agents,claude",
+        help="Host adapters to emit (comma-separated or 'all'). Default: agents,claude",
+    )
+    parser.add_argument(
+        "--core-only",
+        action="store_true",
+        help="Emit Adaptoid Core kit only (kernel + contracts + must-run validators)",
+    )
     parser.add_argument("--skip-verify", action="store_true", help="Skip preflight verification")
+    parser.add_argument(
+        "--archetype",
+        default="",
+        help="Force archetype (skip detection). Example: hackathon",
+    )
+    parser.add_argument(
+        "--tier",
+        default="",
+        help="Force tier T0-T4 (skip detection)",
+    )
     args = parser.parse_args()
+
+    try:
+        hosts = parse_hosts(args.host)
+    except ValueError as e:
+        log(str(e))
+        sys.exit(2)
 
     context = {
         "deadline": args.deadline,
         "audience": args.audience,
         "tech": args.tech,
+        "hosts": hosts,
+        "core_only": args.core_only,
     }
 
     # 1. INGEST
@@ -310,9 +617,19 @@ def main():
 
     # 2. ANALYZE
     analysis = analyze(args.brief, context)
-    log(f"  archetype={analysis['archetype']}  tier={analysis['tier']}  domain={analysis['domain']}")
-    if analysis["ask"]:
+    if args.archetype:
+        analysis["archetype"] = args.archetype
+        analysis["ask"] = None
+    if args.tier:
+        analysis["tier"] = args.tier
+    log(
+        f"  archetype={analysis['archetype']}  tier={analysis['tier']}  "
+        f"domain={analysis['domain']}  kit={'core' if args.core_only else 'pro'}  "
+        f"hosts={hosts}"
+    )
+    if analysis["ask"] and not args.archetype:
         log(f"  NEEDS CLARIFICATION: {analysis['ask']}")
+        log("  tip: re-run with --archetype <name> or a more specific brief")
         sys.exit(1)
 
     # 3. PULL
@@ -321,7 +638,7 @@ def main():
 
     # 4. COMPOSE
     out = Path(args.output).resolve()
-    compose(analysis, args.brief, out)
+    compose(analysis, args.brief, out, hosts, args.core_only)
 
     # 5. RECORD — ADR already written in compose
 
@@ -331,17 +648,33 @@ def main():
             log("VERIFY FAILED — fix above before declaring ready")
             sys.exit(1)
 
-    # Done
-    print(json.dumps({
-        "status": "READY",
-        "output_dir": str(out),
-        "archetype": analysis["archetype"],
-        "tier": analysis["tier"],
-        "domain": analysis["domain"],
-        "risk_fms": analysis["risk_fms"],
-        "mcp_servers": stack["mcp"],
-        "next": f"cd {out} && claude  # or kimi",
-    }, indent=2))
+    print(
+        json.dumps(
+            {
+                "status": "READY",
+                "output_dir": str(out),
+                "kit": "core" if args.core_only else "pro",
+                "hosts": hosts,
+                "host_files": {
+                    "AGENTS.md": (out / "AGENTS.md").exists(),
+                    "CLAUDE.md": (out / "CLAUDE.md").exists(),
+                    "cursor_rules": (out / ".cursor" / "rules" / "adaptoid.mdc").exists(),
+                },
+                "archetype": analysis["archetype"],
+                "tier": analysis["tier"],
+                "domain": analysis["domain"],
+                "risk_fms": analysis["risk_fms"],
+                "mcp_servers": stack["mcp"],
+                "next": [
+                    f"cd {out}",
+                    "Fill PROJECT-INTENT.md success criteria if needed",
+                    "Open your host (claude / cursor / codex / grok) in this directory",
+                    "bash orchestrator/scripts/preflight.sh .",
+                ],
+            },
+            indent=2,
+        )
+    )
 
 
 if __name__ == "__main__":

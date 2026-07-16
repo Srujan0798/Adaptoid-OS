@@ -110,6 +110,56 @@ else
   echo "FAIL: engine did not generate orchestrator/scripts"
   fail=1
 fi
+# Core + host adapters
+python3 "$HERE/adaptor/engine.py" \
+  --brief "test cli tool" \
+  --output "$TMPDIR/core-host" \
+  --core-only \
+  --host all \
+  --skip-verify >/dev/null 2>&1
+core_ok=1
+for f in AGENTS.md CLAUDE.md HANDOFF.md kernel/PRINCIPLES.md \
+         .cursor/rules/adaptoid.mdc .adaptoid-kit; do
+  if [ ! -e "$TMPDIR/core-host/$f" ]; then
+    echo "FAIL: core-only host emit missing $f"
+    core_ok=0
+    fail=1
+  fi
+done
+[ "$core_ok" -eq 1 ] && echo "OK  engine core-only + host adapters"
+# Core package on kit itself
+if [ -f "$HERE/core/MANIFEST.yaml" ] && [ -f "$HERE/core/README.md" ] \
+   && [ -f "$HERE/adaptor/host_emit.py" ]; then
+  echo "OK  core package + host_emit present"
+else
+  echo "FAIL: core package incomplete"
+  fail=1
+fi
+# Conductor runtime
+if [ -f "$HERE/conductor/conductor.py" ]; then
+  if python3 "$HERE/conductor/conductor.py" -h >/dev/null 2>&1; then
+    echo "OK  conductor runtime present"
+  else
+    echo "FAIL: conductor.py failed -h"
+    fail=1
+  fi
+else
+  echo "FAIL: conductor/conductor.py missing"
+  fail=1
+fi
+# Benchmarks + ship gate scripts
+if [ -x "$HERE/benchmarks/run_bench.sh" ] || [ -f "$HERE/benchmarks/run_bench.sh" ]; then
+  echo "OK  benchmarks/run_bench.sh present"
+else
+  echo "FAIL: benchmarks missing"
+  fail=1
+fi
+if [ -f "$HERE/scripts/ship_check.sh" ]; then
+  echo "OK  ship_check.sh present"
+else
+  echo "FAIL: ship_check.sh missing"
+  fail=1
+fi
 rm -rf "$TMPDIR"
 
 # ── Super-Adaptoid protocol layer (v5.0): every protocol has a passing validator ──
