@@ -21,9 +21,14 @@ A self-improving, framework-agnostic **agent harness / OS**. The model is the we
 2. Read `kernel/TWO-TIER.md` — Brain/Hands/Session architecture.
 3. Read `kernel/ANTI-HALLUCINATION.md` — drift prevention rules.
 4. Read `HANDOFF.md` — current wave, active task, pending decisions.
-5. Read `adaptoid.config.yaml` — project-specific config and DAG transitions.
-6. Read `PROJECT-INTENT.md` — typed intent with success criteria and falsification.
+5. If working **on this kit repo**: also read `PRODUCT.md` + `VERSION`.
+6. If working **on a generated project**: read `adaptoid.config.yaml` + `PROJECT-INTENT.md`.
 7. Read `INDEX.md` — navigation table for what to load next.
+
+## Verification (kit maintainers)
+```bash
+make ship-check
+```
 
 ## Rules
 - **Evidence or it didn't happen.** Every claim of "done" must include the command run + its output.

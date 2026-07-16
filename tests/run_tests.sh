@@ -120,6 +120,19 @@ else
   rc=1
 fi
 
+# Test: claw bridge
+echo "Test: claw_bridge"
+python3 "$ROOT/tests/test_claw_bridge.py" || rc=1
+
+# Test: VERSION + PRODUCT present
+echo "Test: product markers"
+if [ -f "$ROOT/VERSION" ] && [ -f "$ROOT/PRODUCT.md" ] && [ -f "$ROOT/HANDOFF.md" ]; then
+  echo "  PASS: VERSION + PRODUCT.md + HANDOFF.md"
+else
+  echo "  FAIL: missing product markers"
+  rc=1
+fi
+
 echo ""
 if [ "$rc" -eq 0 ]; then
   echo "ALL TESTS PASS ✅"

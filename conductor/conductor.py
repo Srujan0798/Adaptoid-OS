@@ -558,6 +558,9 @@ def cmd_init_wave(project: Path, wave: str, n: int) -> int:
 | acceptance | `test -d src/module_{i} || mkdir -p src/module_{i}` |
 | blast_radius | r0 |
 
+writes: [src/module_{i}/]
+acceptance: test -d src/module_{i} || mkdir -p src/module_{i}
+
 ## Goal
 Implement module {i} for this wave. Stay inside writes list.
 

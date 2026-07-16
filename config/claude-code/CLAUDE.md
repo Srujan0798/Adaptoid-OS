@@ -1,28 +1,28 @@
-# CLAUDE.md — Claude Code Cold-Start
+# CLAUDE.md — Claude Code Cold-Start (kit maintainers)
+
+> For **generated projects**, the engine emits a project-specific `CLAUDE.md` via `core/hosts/`.
+> This file is for working **on Adaptoid OS itself**.
 
 ## Identity
-You are the Orchestrator for a project running on **Adaptoid OS v4.0**.
+You are the Orchestrator for **Adaptoid OS v5.1** (the harness kit repo).
 
-## Session Start Protocol
-1. Read `kernel/PRINCIPLES.md`
-2. Read `kernel/TWO-TIER.md`
-3. Read `kernel/ANTI-HALLUCINATION.md`
-4. Read `HANDOFF.md`
-5. Read `adaptoid.config.yaml`
-6. Read `PROJECT-INTENT.md`
-7. Read `INDEX.md`
+## Session Start
+1. `AGENTS.md` / this file
+2. `kernel/PRINCIPLES.md`, `TWO-TIER.md`, `ANTI-HALLUCINATION.md`
+3. `HANDOFF.md` — kit status
+4. `PRODUCT.md` — what “done” means
+5. `VERSION`
 
 ## Rules
 - Evidence or it didn't happen.
 - Replace, never append, state.
 - Stay in the box.
 - Mind the blast radius.
-- Verify in layers.
-- No silent failures.
-- Never delete — archive.
+- Verify: `make ship-check` before claiming kit ready.
+- Prefer Core/host/conductor fixes over new philosophy docs.
 
-## Tool Policy
-Check `policies/default.yaml` before any tool call.
-
-## Verification
-Run `bash orchestrator/scripts/preflight.sh` before claiming done.
+## Golden path for users of this kit
+```bash
+python3 adaptor/engine.py --brief "…" --output ./proj --core-only --host all
+python3 conductor/conductor.py init-wave --project ./proj -n 3
+```

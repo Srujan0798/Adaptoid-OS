@@ -1,5 +1,13 @@
 # Adaptoid OS Changelog
 
+## v5.1.0 — Jul 2026 — Structure polish + product markers
+- **`VERSION`**, **`PRODUCT.md`**, kit **`HANDOFF.md`** — explicit definition of done
+- **CI** `.github/workflows/ci.yml` — dogfood, tests, bench, calibration, bridges
+- Generated projects get a **README**; conductor task briefs include plain `acceptance:` lines
+- Align CONTRIBUTING / SECURITY / `.cursorrules` / Claude config to v5.1
+- multi-channel + vault documented as demand-gated / optional
+- INDEX rebranded Adaptoid OS; remove redundant docs_sync workflow
+
 ## v5.1 — Jul 2026 — Core product finish (shippable)
 Focus: **portable harness + host adapters + thin runtime + proof gates**. Finish projects, not more protocol theater.
 

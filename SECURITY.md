@@ -4,17 +4,18 @@
 
 | Version | Supported |
 |---|---|
-| 4.0.x | ✅ |
-| 3.x | ⚠️ Critical fixes only |
-| < 3.0 | ❌ |
+| 5.1.x | ✅ |
+| 5.0.x | ✅ security fixes |
+| 4.0.x | ⚠️ critical only |
+| < 4.0 | ❌ |
 
 ## Reporting a Vulnerability
 
-Please open a private vulnerability report via GitHub Security Advisories:
+Open a private report via GitHub Security Advisories:  
 https://github.com/Srujan0798/Adaptoid-OS/security/advisories/new
 
-Please include:
-1. FM number (if matches a known failure mode)
+Include:
+1. FM number if it matches a known failure mode
 2. Steps to reproduce
 3. Impact assessment
 4. Suggested fix (optional)
@@ -32,9 +33,13 @@ Please include:
 
 - `validators/oap_security.sh` — policy enforcement
 - `validators/vault_mmu.sh` — state integrity
-- `validators/publish_gate.sh` — prevents secret leakage
+- `validators/publish_gate.sh` — secret / embarrassment gate
+- `validators/route_sentinel.sh` — wrong-route blocking
 
 ## OAP Default Policy
 
-By default, all tool calls require explicit policy. No policy = DENY.
-See `templates/root/policies/default.yaml`.
+By default, destructive and network tool patterns ask or deny. See `templates/root/policies/default.yaml`.
+
+## Scope note
+
+Adaptoid is a **harness kit** (markdown + shell + small Python). Treat generated project policies as starting points; harden for your production blast radius.

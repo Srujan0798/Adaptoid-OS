@@ -1,16 +1,21 @@
-# Adaptoid OS v4.0 — Cursor Rules
+# Adaptoid OS v5.1 — Cursor Rules
 
 ## Context
-This project is Adaptoid OS v4.0, a self-improving agentic AI harness OS.
+Portable agent harness. Model = weapon; host + MCP + skills = field; this kit adapts the field.
+
+## Product ladder
+- Lite: `reference/OS_SETUP_v1.3_full.md`
+- Core: `core/` + `adaptor/engine.py --core-only --host …`
+- Pro: this full repository
 
 ## Rules
-1. Read `kernel/PRINCIPLES.md`, `kernel/TWO-TIER.md`, `AGENTS.md` before any work.
+1. Read `AGENTS.md`, `kernel/PRINCIPLES.md`, `kernel/TWO-TIER.md`, `HANDOFF.md` before work.
 2. Evidence-required: every "done" claim needs command + output.
-3. Replace, never append, state files.
-4. Run `validators/preflight.sh` before claiming completion.
+3. Replace, never append, state files (`HANDOFF.md`).
+4. Run `bash validators/preflight.sh .` and `make ship-check` before claiming kit complete.
 5. No silent failures — every exception is logged.
 6. Mind the blast radius: remote/money/humans pause for confirmation.
 7. Stay in the box: list files you may touch AND files you must NOT.
-8. Never delete — archive to `attic/`.
-9. Check `policies/default.yaml` before any tool call.
+8. Never delete — archive to `attic/` or `docs/historical/`.
+9. Prefer Core improvements over new protocol docs.
 10. Cost discipline: stop and ask if approaching the ceiling.

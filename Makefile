@@ -1,8 +1,10 @@
 .PHONY: help dogfood preflight health install test clean \
-	bench cal core-demo ship-check conductor-help
+	bench cal core-demo ship-check conductor-help version
+
+VERSION := $(shell cat VERSION 2>/dev/null || echo 5.1.0)
 
 help:
-	@echo "Adaptoid OS v5.1 — Make targets"
+	@echo "Adaptoid OS v$(VERSION) — Make targets"
 	@echo ""
 	@echo "  make dogfood      — kit self-validation"
 	@echo "  make preflight    — validators on this repo"
@@ -52,6 +54,9 @@ ship-check:
 
 conductor-help:
 	python3 conductor/conductor.py -h
+
+version:
+	@cat VERSION
 
 clean:
 	find . -name '*.bak' -delete

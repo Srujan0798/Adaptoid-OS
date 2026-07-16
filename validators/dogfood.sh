@@ -160,6 +160,22 @@ else
   echo "FAIL: ship_check.sh missing"
   fail=1
 fi
+# Product markers
+for f in VERSION PRODUCT.md HANDOFF.md; do
+  if [ -f "$HERE/$f" ]; then
+    echo "OK  $f present"
+  else
+    echo "FAIL: missing $f"
+    fail=1
+  fi
+done
+# Generated project should include README
+if [ -f "$TMPDIR/core-host/README.md" ]; then
+  echo "OK  engine writes project README"
+else
+  echo "FAIL: engine did not write project README"
+  fail=1
+fi
 rm -rf "$TMPDIR"
 
 # ── Super-Adaptoid protocol layer (v5.0): every protocol has a passing validator ──

@@ -1,6 +1,9 @@
 # Vault — Obsidian-Compatible Second Brain
 
 > Human-facing knowledge store. Machine-parseable. Grep-friendly.
+>
+> **In this kit repo:** template + docs only (empty scaffold).  
+> **In generated projects:** create `vault/` when you want durable human notes; Core does not require it.
 
 ## Structure
 

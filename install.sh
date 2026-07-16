@@ -5,7 +5,7 @@ set -euo pipefail
 REPO_URL="https://github.com/Srujan0798/Adaptoid-OS.git"
 INSTALL_DIR="${1:-$HOME/adaptoid-os}"
 
-echo "⚡ Installing Adaptoid OS v5.1 (Core + Pro kit)..."
+echo "⚡ Installing Adaptoid OS (Core + Pro kit)..."
 
 if [ -d "$INSTALL_DIR/.git" ]; then
   echo "Directory $INSTALL_DIR already exists. Updating..."
@@ -23,7 +23,9 @@ echo "🔍 Running dogfood validation..."
 bash validators/dogfood.sh
 
 echo ""
-echo "✅ Adaptoid OS installed at $INSTALL_DIR"
+VER="5.1.0"
+[ -f "$INSTALL_DIR/VERSION" ] && VER="$(tr -d '[:space:]' < "$INSTALL_DIR/VERSION")"
+echo "✅ Adaptoid OS v${VER} installed at $INSTALL_DIR"
 echo ""
 echo "Product ladder:"
 echo "  Lite  — reference/OS_SETUP_v1.3_full.md  (paste into any chat)"

@@ -1,6 +1,6 @@
 # Kernel — Two-Tier Architecture (Brain / Hands / Session)
 
-> Always loaded. The shape of every project built with OS-Setup.
+> Always loaded. The shape of every project built with Adaptoid OS (OS-Setup lineage).
 
 ## The two tiers
 

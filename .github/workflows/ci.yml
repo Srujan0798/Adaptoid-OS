@@ -1,0 +1,45 @@
+name: CI — Adaptoid product gate
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  ship-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Optional schema deps (intent check)
+        run: pip install pyyaml jsonschema || true
+
+      - name: Dogfood
+        run: bash validators/dogfood.sh
+
+      - name: Preflight
+        run: bash validators/preflight.sh .
+
+      - name: Full test suite
+        run: bash tests/run_tests.sh
+
+      - name: Host emit unit tests
+        run: python3 tests/test_host_emit.py
+
+      - name: Claw bridge smoke
+        run: python3 tests/test_claw_bridge.py
+
+      - name: Benchmarks
+        run: bash benchmarks/run_bench.sh
+
+      - name: Calibration smoke
+        run: bash calibration/run_calibration_smoke.sh
+
+      - name: Conductor help
+        run: python3 conductor/conductor.py -h

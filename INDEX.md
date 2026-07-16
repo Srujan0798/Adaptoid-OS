@@ -1,11 +1,17 @@
-# OS-Setup INDEX — Agent Navigation Table
+# Adaptoid OS INDEX — Agent Navigation Table
 
 > Agent: read this to know what exists and WHEN to load it. Do NOT load everything. Progressive disclosure is the point. Load the kernel always; load the rest only when the trigger fires.
+>
+> Product ladder: **Lite** (`reference/OS_SETUP_v1.3_full.md`) · **Core** (`core/`) · **Pro** (this repo). See `PRODUCT.md`.
 
 ## Always load (the kernel — ~2K tokens total)
 
 | File | Load when | Contains |
 |---|---|---|
+| `AGENTS.md` | every session start | cold-start contract |
+| `HANDOFF.md` | every session start | current kit/project truth |
+| `PRODUCT.md` | orienting on what “done” means for the kit | v5.1 product definition |
+| `VERSION` | release / badge sync | semver |
 | `kernel/PRINCIPLES.md` | every session start | the 12 non-negotiable laws |
 | `kernel/TWO-TIER.md` | every session start | orchestrator vs workers, Brain/Hands/Session |
 | `kernel/ANTI-HALLUCINATION.md` | every session start | the rules that stop drift/hallucination/false-status |

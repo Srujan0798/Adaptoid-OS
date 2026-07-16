@@ -5,7 +5,8 @@
 
 [![Dogfood](https://img.shields.io/badge/dogfood-passing-brightgreen)](#)
 [![Preflight](https://img.shields.io/badge/preflight-passing-brightgreen)](#)
-[![Version](https://img.shields.io/badge/version-5.1-blue)](#)
+[![Version](https://img.shields.io/badge/version-5.1.0-blue)](#)
+[![CI](https://github.com/Srujan0798/Adaptoid-OS/actions/workflows/ci.yml/badge.svg)](https://github.com/Srujan0798/Adaptoid-OS/actions/workflows/ci.yml)
 [![License](https://img.shields.io/badge/license-MIT-yellow)](#)
 [![Archetypes](https://img.shields.io/badge/archetypes-11-orange)](#)
 [![Failure%20Modes](https://img.shields.io/badge/failure_modes-18-red)](#)
@@ -183,16 +184,18 @@ See [`protocols/super-adaptoid/README.md`](protocols/super-adaptoid/README.md) f
 
 ```
 ┌─────────────────────────────────────┐
-│  Layer 3: v5.0 Protocols            │
-│  consciousness · memory · evolution │
+│  Layer 3: Optional Pro protocols    │
+│  memory · evolution · workflows     │
 ├─────────────────────────────────────┤
-│  Layer 2: Public Product            │
-│  README · docs/launch · ecosystem   │
+│  Layer 2: Product surfaces          │
+│  Core hosts · conductor · ship-check│
 ├─────────────────────────────────────┤
-│  Layer 1: Adaptoid Kernel (v4.0)    │
-│  principles · protocols · validators│
+│  Layer 1: Kernel (always load)      │
+│  principles · two-tier · anti-hall. │
 └─────────────────────────────────────┘
 ```
+
+See [`PRODUCT.md`](PRODUCT.md) for the v5.1 definition of done.
 
 **The 7-Layer Verification Stack:**
 1. **L1** Schema validation (<50µs)

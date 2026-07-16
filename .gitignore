@@ -1,5 +1,6 @@
 *.zip
 __pycache__/
+**/__pycache__/
 *.pyc
 *.pyo
 .DS_Store
@@ -7,9 +8,15 @@ node_modules/
 .vscode/
 .idea/
 *.log
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
 launch-kit/
 docs/designs/
 docs/superpowers/
 benchmarks/last_results.json
 examples/core-finish/generated/
+*.egg-info/
+dist/
+build/
 
