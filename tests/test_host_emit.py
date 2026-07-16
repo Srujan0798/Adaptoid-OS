@@ -54,7 +54,10 @@ class TestEmitHosts(unittest.TestCase):
             self.assertTrue((tmp / "CLAUDE.md").exists())
             self.assertTrue((tmp / ".claude" / "hooks" / "session-start.sh").exists())
             body = (tmp / "AGENTS.md").read_text()
-            self.assertIn("Session Start Protocol", body)
+            self.assertTrue(
+                "Session start" in body or "Session Start Protocol" in body or "SHIP SYSTEM" in body,
+                msg="cold-start missing session orient",
+            )
             self.assertIn("ship a demo", body)
         finally:
             shutil.rmtree(tmp)

@@ -1,53 +1,43 @@
 # Start here — Adaptoid OS
 
-## What you want (and what we built)
+## What Adaptoid **is**
 
-You give:
+Not a tip sheet. The **ship operating system**:
 
-1. **A brief** — internship / job / hackathon / product / anything  
-2. **A mode** — **Lite** (one md) · **Core** (engine) · **Pro** (full repo)  
-3. A line to the model: **“Use this. Adapt the environment. Complete it.”**
+**GFG SDLC (plan → requirements → design → build → test → deploy → maintain)**  
+**×**  
+**Full host toolkit (Grok Build / Claude / Cursor / Codex)**  
 
-The model:
+Plan mode · Subagents · Skills · Hooks · MCP · AGENTS.md · Memory · Code search · Multi-file edits · Git · Deep reasoning · Web search · Terminal · Headless CI · Code review · Sandbox · Background tasks  
 
-- adapts the environment to that project  
-- runs **SDLC** (plan → design → build → test → ship)  
-- uses the **host** tools (Grok Build / Claude / Cursor / …)  
-- finishes with **evidence**
+**Authoritative file:** [`core/SHIP-SYSTEM.md`](core/SHIP-SYSTEM.md)
 
-Full recipes + magic prompt: **[`USE.md`](USE.md)**
+## What you do
 
----
+1. Brief (internship / job / hackathon / product / anything)  
+2. Mode: **Lite** (`LITE.md`) · **Core** (engine) · **Pro** (full repo)  
+3. Say: *Use Adaptoid SHIP SYSTEM. Adapt environment. Complete the project.*  
 
-## Three modes
+Recipes: [`USE.md`](USE.md)
 
-### Lite — paste only
-Hand them **`LITE.md`** + brief + magic prompt in `USE.md`.
+## Core one-liner
 
-### Core — recommended
 ```bash
 python3 adaptor/engine.py \
   --brief "YOUR BRIEF" \
   --output ../my-project \
   --core-only --host all --sdlc
 ```
-Open `../my-project` → say complete wave-1 with evidence.
 
-### Pro — full kit
-Same as Core **without** `--core-only` (more validators), from this repo clone.
-
----
+Opens with `SHIP-SYSTEM.md` + 7 stage tasks already created.
 
 ## Map
 
-| Doc | Why |
+| File | Role |
 |---|---|
-| `USE.md` | how to hand Lite/Core/Pro to a model |
-| `LITE.md` | paste-only Lite kit |
-| `FLOW.md` | every live file on the spine |
-| `PRODUCT.md` | what’s complete / not |
-| `protocols/sdlc-loop.md` | SDLC gates |
+| `core/SHIP-SYSTEM.md` | **Product OS** (SDLC × toolkit) |
+| `USE.md` | hand Lite/Core/Pro to a model |
+| `LITE.md` | paste-only |
+| `FLOW.md` | live file spine |
 
-Archived only: `docs/historical/`
-
-Kit health: `make ship-check`
+`make ship-check` · Archived: `docs/historical/` only  
