@@ -1,15 +1,12 @@
 # OS-Setup — Universal Agentic Project Kickstart
 
-> **Product ladder (v5.1).**  
-> - **Lite (this file):** paste into any chat — no clone required.  
-> - **Core:** portable generated harness + host adapters:  
->   `python3 adaptor/engine.py --brief "..." --output ./proj --core-only --host all`  
-> - **Pro:** full Adaptoid-OS repository (failure-mode library, workflows, v5 protocols).  
-> See `core/README.md`. Conductor runtime: `python3 conductor/conductor.py wake|dispatch|status`.
+> **Product ladder (v5.1.3).** Prefer short **`LITE.md`** at repo root for paste-only.  
+> This file is the **deep Lite** (long form). Daily path: see **`USE.md`**.  
+> - **Lite:** paste `LITE.md` (or this file) + brief → “adapt environment, complete project”.  
+> - **Core:** `python3 adaptor/engine.py --brief "..." --output ./proj --core-only --host all --sdlc`  
+> - **Pro:** same without `--core-only` (full validators from this repo).  
 
-> **Hosts (v5.1).** One project truth → many coding agents:  
-> `AGENTS.md` (Codex / OpenCode / Grok / generic) · `CLAUDE.md` (Claude Code) ·  
-> `.cursor/rules/adaptoid.mdc` (Cursor). Always also: `kernel/`, `HANDOFF.md`, `PROJECT-INTENT.md`.
+> **Hosts.** `AGENTS.md` · `CLAUDE.md` · `.cursor/rules/adaptoid.mdc` · kernel · HANDOFF · PROJECT-INTENT · SDLC.
 
 > **What this is.** A single self-sufficient markdown file that turns ANY project brief into a complete, dual-tier agentic project structure. Paste this file + your project details into Claude, Cursor, Codex, Grok, or Kimi, and you get the entire repo pre-filled, ready to start shipping with parallel workers.
 >
@@ -36,8 +33,7 @@
 ```bash
 python3 ~/adaptoid-os/adaptor/engine.py \
   --brief "your brief" --output ./my-project \
-  --core-only --host all
-python3 ~/adaptoid-os/conductor/conductor.py init-wave --project ./my-project -n 3
+  --core-only --host all --sdlc
 ```
 
 ### 0B. Paste path (Lite — no install)

@@ -632,8 +632,8 @@ def main():
         epilog=f"""
 hosts: {', '.join(HOSTS)}, all
 examples:
-  python3 adaptor/engine.py --brief "cli log parser" --output ./p --host agents,claude
-  python3 adaptor/engine.py --brief "48h hackathon app" --output ./h --core-only --host all
+  python3 adaptor/engine.py --brief "cli log parser" --output ./p --host all --core-only --sdlc
+  python3 adaptor/engine.py --brief "internship API" --output ./p --core-only --host all --sdlc
 """,
     )
     parser.add_argument("--brief", required=True, help="Project brief (one line or paragraph)")
@@ -661,6 +661,11 @@ examples:
         "--tier",
         default="",
         help="Force tier T0-T4 (skip detection)",
+    )
+    parser.add_argument(
+        "--sdlc",
+        action="store_true",
+        help="After generate, run conductor init-wave --sdlc (PLAN→SHIP tasks)",
     )
     args = parser.parse_args()
 
@@ -708,11 +713,39 @@ examples:
 
     # 5. RECORD — ADR already written in compose
 
+    # 5b. Optional SDLC task scaffold
+    sdlc_ok = None
+    if args.sdlc:
+        log("SDLC: conductor init-wave --sdlc")
+        cond = OS_SETUP_ROOT / "conductor" / "conductor.py"
+        if cond.exists():
+            rc = os.system(
+                f"{sys.executable} '{cond}' init-wave --project '{out}' --wave wave-1 --sdlc"
+            )
+            sdlc_ok = rc == 0
+            if not sdlc_ok:
+                log("SDLC init-wave failed (non-fatal if you init later)")
+        else:
+            log("conductor.py missing — skip --sdlc")
+            sdlc_ok = False
+
     # 6. VERIFY
     if not args.skip_verify:
         if not verify(out):
             log("VERIFY FAILED — fix above before declaring ready")
             sys.exit(1)
+
+    next_steps = [
+        f"cd {out}",
+        "Open in Grok Build / Claude / Cursor / Codex",
+        'Say: "Read AGENTS.md + HANDOFF + INTENT. Complete wave-1 with evidence."',
+        "bash orchestrator/scripts/preflight.sh .",
+    ]
+    if not args.sdlc:
+        next_steps.insert(
+            1,
+            f"python3 {OS_SETUP_ROOT}/conductor/conductor.py init-wave --project {out} --sdlc",
+        )
 
     print(
         json.dumps(
@@ -721,6 +754,7 @@ examples:
                 "output_dir": str(out),
                 "kit": "core" if args.core_only else "pro",
                 "hosts": hosts,
+                "sdlc_tasks": sdlc_ok,
                 "host_files": {
                     "AGENTS.md": (out / "AGENTS.md").exists(),
                     "CLAUDE.md": (out / "CLAUDE.md").exists(),
@@ -731,12 +765,8 @@ examples:
                 "domain": analysis["domain"],
                 "risk_fms": analysis["risk_fms"],
                 "mcp_servers": stack["mcp"],
-                "next": [
-                    f"cd {out}",
-                    "Fill PROJECT-INTENT.md success criteria if needed",
-                    "Open your host (claude / cursor / codex / grok) in this directory",
-                    "bash orchestrator/scripts/preflight.sh .",
-                ],
+                "use": "See USE.md — hand brief + kit to the model and say complete it",
+                "next": next_steps,
             },
             indent=2,
         )

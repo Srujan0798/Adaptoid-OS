@@ -1,5 +1,11 @@
 # Adaptoid OS Changelog
 
+## v5.1.3 — Jul 2026 — Use path complete (Lite/Core/Pro)
+- **`USE.md`** — hand brief + Lite/Core/Pro to any model; magic prompt
+- **`LITE.md`** — short paste-only kit (deep Lite remains OS_SETUP full)
+- **`engine --sdlc`** — auto `init-wave --sdlc` after generate
+- PRODUCT planned-vs-done aligned to user promise
+
 ## v5.1.2 — Jul 2026 — Final spine cleanup
 - **`FLOW.md`** — every live file on one product spine
 - Orphans archived → `docs/historical/attic-v5.1.2-orphans/` (claw_bridge, skills, extra protocols/validators, unused workflows, adaptor prose)

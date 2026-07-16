@@ -7,9 +7,9 @@
 [![CI](https://github.com/Srujan0798/Adaptoid-OS/actions/workflows/ci.yml/badge.svg)](https://github.com/Srujan0798/Adaptoid-OS/actions/workflows/ci.yml)
 [![License](https://img.shields.io/badge/license-MIT-yellow)](#)
 
-> **One spine.** Plan → build → test → ship. Host does tools. Adaptoid does mission rules + proof.
+> **Hand brief + Lite/Core/Pro → model adapts environment → completes project.**
 
-[Start](START_HERE.md) · [Flow](FLOW.md) · [Product](PRODUCT.md)
+[Use it](USE.md) · [Lite](LITE.md) · [Start](START_HERE.md) · [Flow](FLOW.md) · [Product](PRODUCT.md)
 
 </div>
 
@@ -23,24 +23,27 @@ Agent projects fail from false “done”, lost handoff, scope creep, and no tes
 
 ## Quick Start
 
+**Full recipes:** [`USE.md`](USE.md) (magic prompt for any mode).
+
 ```bash
 git clone https://github.com/Srujan0798/Adaptoid-OS.git && cd Adaptoid-OS
 
+# Core (default): brief → adapted project + SDLC tasks
 python3 adaptor/engine.py \
   --brief "YOUR real project idea" \
   --output ../my-project \
-  --core-only --host all
+  --core-only --host all --sdlc
 
-python3 conductor/conductor.py init-wave --project ../my-project --sdlc
-# Open ../my-project in Grok Build / Claude / Cursor / Codex
+# Open ../my-project → "Complete wave-1 with evidence."
 bash ../my-project/orchestrator/scripts/preflight.sh ../my-project
 ```
 
-| Layer | Path |
+| Layer | You hand the model |
 |---|---|
-| **Lite** | `reference/OS_SETUP_v1.3_full.md` |
-| **Core** | command above |
-| **Archived** | `docs/historical/` (not on hot path) |
+| **Lite** | `LITE.md` + brief + “use Adaptoid, complete it” |
+| **Core** | generated folder from command above |
+| **Pro** | same without `--core-only` |
+| **Archived** | `docs/historical/` — not required |
 
 Kit health: `make ship-check`
 

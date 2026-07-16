@@ -161,7 +161,7 @@ else
   fail=1
 fi
 # Product markers
-for f in VERSION PRODUCT.md HANDOFF.md START_HERE.md FLOW.md; do
+for f in VERSION PRODUCT.md HANDOFF.md START_HERE.md FLOW.md USE.md LITE.md; do
   if [ -f "$HERE/$f" ]; then
     echo "OK  $f present"
   else

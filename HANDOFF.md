@@ -5,20 +5,20 @@
 ## Status
 - **Active wave:** wave-1
 - **Active task:** maintain single spine (`FLOW.md`)
-- **Release:** v5.1.2 (see `VERSION`)
+- **Release:** v5.1.3 (see `VERSION`)
 - **Last updated:** 2026-07-16
 
 ## Goal
-One connected product: brief → engine → SDLC tasks → preflight → ship.
+Hand brief + Lite/Core/Pro → model adapts environment → completes project.
 
 ## Done
-- FLOW.md inventory of all live files
-- Orphans archived (v5.1.2)
-- SDLC + host capabilities + multi-host emit
+- USE.md + LITE.md + engine `--sdlc`
+- FLOW spine + orphans archived
+- SDLC + multi-host emit
 
 ## Next
-1. User brief → `engine` → `init-wave --sdlc`
-2. Only change files listed on FLOW.md
+1. Real user brief on Core path
+2. Only extend FLOW.md spine when needed
 
 ## Do NOT
 - Add top-level modules outside FLOW

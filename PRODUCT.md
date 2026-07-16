@@ -1,32 +1,55 @@
-# Adaptoid OS — Product (v5.1.2)
+# Adaptoid OS — Product status (v5.1.3)
 
-## One sentence
+## Promise
 
-Portable **agent harness**: any host + any model → **SDLC gates** → projects that finish with evidence.
+> Hand **brief + Lite/Core/Pro** to any coding model → it **adapts the environment** and **completes the project** with SDLC + evidence.
 
-## Direct path
+## Planned vs done
+
+| Plan | Status |
+|---|---|
+| Model is swappable; harness is the product | **Done** |
+| **Lite** — single md, paste into any chat | **Done** → `LITE.md` (+ deep `reference/OS_SETUP_v1.3_full.md`) |
+| **Core** — engine generates multi-host project + validators | **Done** → `engine --core-only --host all --sdlc` |
+| **Pro** — full repo (FMs, all validators, archetypes) | **Done** → engine without `--core-only` |
+| Multi-host: AGENTS / CLAUDE / Cursor / Codex / Grok | **Done** |
+| SDLC loop (not empty process theater) | **Done** → `protocols/sdlc-loop.md` + `init-wave --sdlc` / `--sdlc` |
+| Host tools used, not reinvented | **Done** → `core/HOST-CAPABILITIES.md` |
+| Lean tree; orphans archived | **Done** → `FLOW.md` + `docs/historical/` |
+| One user entry: hand kit + brief + “complete it” | **Done** → `USE.md` |
+| Ship gate | **Done** → `make ship-check` |
+
+## What “complete” means for a *user project*
+
+Not “Adaptoid docs finished” — **their** internship/hackathon/product:
+
+1. Environment adapted (intent, AGENTS, HANDOFF, tasks)  
+2. Wave-1+ implemented with acceptance evidence  
+3. Preflight green (Core/Pro)  
+4. HANDOFF ready for next session  
+
+Adaptoid **does not** write their business app alone without a host agent working the tasks — it **orients and gates** that agent.
+
+## How to run (copy)
 
 ```bash
-python3 adaptor/engine.py --brief "YOUR idea" --output ../proj --core-only --host all
-python3 conductor/conductor.py init-wave --project ../proj --sdlc
+# Core (default)
+python3 adaptor/engine.py --brief "…" --output ../proj --core-only --host all --sdlc
+
+# Pro
+python3 adaptor/engine.py --brief "…" --output ../proj --host all --sdlc
+
+# Lite: paste LITE.md into the agent + brief + USE.md magic prompt
 ```
 
-Spine of every live file: [`FLOW.md`](FLOW.md).
+## Recommendations (next, only if needed)
 
-## Shipped surfaces
-
-| Surface | Path |
-|---|---|
-| Entry | `START_HERE.md` |
-| Engine + hosts | `adaptor/` |
-| Core kit | `core/` |
-| Conductor SDLC | `conductor/` |
-| Gates | `protocols/sdlc-loop.md` + preflight validators |
-| Lite | `reference/OS_SETUP_v1.3_full.md` |
-
-## Explicitly not live
-
-Anything under `docs/historical/` (launch kits, research dumps, claw_bridge, skills, extra protocols, super-adaptoid validators).
+| Priority | Improvement | Why |
+|---|---|---|
+| P1 | Real user dogfood on *your* brief | Proves end-to-end, not kit self-test |
+| P2 | Optional one-line `install` that prints USE.md | Onboarding |
+| P3 | Keep Lite deep file or freeze it | `OS_SETUP_v1.3_full.md` is long; `LITE.md` is the daily path |
+| Skip | Multi-channel, enterprise, more protocols | Off-promise |
 
 ## Kit health
 

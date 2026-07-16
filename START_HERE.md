@@ -1,40 +1,53 @@
 # Start here — Adaptoid OS
 
-**What this is:** harness so agents finish *your* project with a **correct SDLC loop**.  
-**What this is not:** a second IDE, demo apps, or disconnected docs.
+## What you want (and what we built)
 
-**Host** (Grok Build / Claude / Cursor / Codex) = tools.  
-**Adaptoid** = intent + SDLC gates + multi-host rules + proof of done.
+You give:
 
-## 60-second path
+1. **A brief** — internship / job / hackathon / product / anything  
+2. **A mode** — **Lite** (one md) · **Core** (engine) · **Pro** (full repo)  
+3. A line to the model: **“Use this. Adapt the environment. Complete it.”**
 
+The model:
+
+- adapts the environment to that project  
+- runs **SDLC** (plan → design → build → test → ship)  
+- uses the **host** tools (Grok Build / Claude / Cursor / …)  
+- finishes with **evidence**
+
+Full recipes + magic prompt: **[`USE.md`](USE.md)**
+
+---
+
+## Three modes
+
+### Lite — paste only
+Hand them **`LITE.md`** + brief + magic prompt in `USE.md`.
+
+### Core — recommended
 ```bash
 python3 adaptor/engine.py \
-  --brief "PASTE YOUR REAL PROJECT IDEA" \
+  --brief "YOUR BRIEF" \
   --output ../my-project \
-  --core-only --host all
-
-python3 conductor/conductor.py init-wave --project ../my-project --sdlc
-
-# Open ../my-project in your host and work PLAN→DESIGN→BUILD→TEST→SHIP
-bash ../my-project/orchestrator/scripts/preflight.sh ../my-project
+  --core-only --host all --sdlc
 ```
+Open `../my-project` → say complete wave-1 with evidence.
 
-## SDLC gates
+### Pro — full kit
+Same as Core **without** `--core-only` (more validators), from this repo clone.
 
-| Stage | Evidence |
+---
+
+## Map
+
+| Doc | Why |
 |---|---|
-| Plan | `PROJECT-INTENT.md` success + falsification |
-| Design | light design / task briefs |
-| Build | code under `writes` only |
-| Test | acceptance exit 0 in report |
-| Ship | `preflight.sh` green |
-| Maintain | `HANDOFF.md` rewritten |
+| `USE.md` | how to hand Lite/Core/Pro to a model |
+| `LITE.md` | paste-only Lite kit |
+| `FLOW.md` | every live file on the spine |
+| `PRODUCT.md` | what’s complete / not |
+| `protocols/sdlc-loop.md` | SDLC gates |
 
-## Map of this repo
+Archived only: `docs/historical/`
 
-**Every live file is on the spine:** [`FLOW.md`](FLOW.md)
-
-Also: `PRODUCT.md` · `protocols/sdlc-loop.md` · `core/HOST-CAPABILITIES.md` · `make ship-check`
-
-Archived (not required): `docs/historical/`
+Kit health: `make ship-check`
