@@ -75,6 +75,17 @@ def _parse_list_field(text: str, key: str) -> list[str]:
     return [p.strip().strip("`'\"") for p in re.split(r"[, ]+", raw) if p.strip()]
 
 
+def _parse_table_field(text: str, key: str) -> str:
+    """Parse markdown table row: | key | value |"""
+    m = re.search(
+        rf"(?im)^\|\s*{re.escape(key)}\s*\|\s*(.+?)\s*\|?\s*$",
+        text,
+    )
+    if not m:
+        return ""
+    return m.group(1).strip().strip("`").strip()
+
+
 def parse_task(path: Path, wave: str) -> Task:
     text = path.read_text(encoding="utf-8")
     title = ""
@@ -86,6 +97,8 @@ def parse_task(path: Path, wave: str) -> Task:
     m = re.search(r"(?im)^acceptance\s*:\s*(.+)$", text)
     if m:
         acc = m.group(1).strip().strip("`")
+    if not acc:
+        acc = _parse_table_field(text, "acceptance")
     # also accept ## Acceptance section with a command line
     if not acc:
         m2 = re.search(r"(?is)##\s*Acceptance\s*\n+`([^`]+)`", text)
@@ -95,13 +108,28 @@ def parse_task(path: Path, wave: str) -> Task:
             m3 = re.search(r"(?is)##\s*Acceptance\s*\n+(\S.+)", text)
             if m3:
                 acc = m3.group(1).strip()
+    writes = _parse_list_field(text, "writes")
+    if not writes:
+        w = _parse_table_field(text, "writes")
+        if w:
+            # e.g. [`src/module_1/`] or src/module_1/
+            writes = [
+                p.strip().strip("`'\"[]")
+                for p in re.split(r"[, ]+", w)
+                if p.strip().strip("`'\"[]")
+            ]
+    forbid = _parse_list_field(text, "forbid")
+    if not forbid:
+        f = _parse_table_field(text, "forbid")
+        if f:
+            forbid = [f]
     return Task(
         path=path,
         wave=wave,
         task_id=path.stem,
         title=title or path.stem,
-        writes=_parse_list_field(text, "writes"),
-        forbid=_parse_list_field(text, "forbid"),
+        writes=writes,
+        forbid=forbid,
         acceptance=acc,
         body=text,
     )
