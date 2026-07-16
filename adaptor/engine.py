@@ -17,6 +17,7 @@ import json
 import os
 import re
 import shutil
+import subprocess
 import sys
 from datetime import datetime, timezone
 from pathlib import Path
@@ -201,8 +202,12 @@ def analyze(brief: str, context: dict) -> dict:
 # 3. PULL — consult ecosystem library
 # ═══════════════════════════════════════════════════════════════════════════════
 def pull_ecosystem(analysis: dict) -> dict:
-    """Return recommended stack for archetype."""
-    log("PULL: consulting ecosystem defaults")
+    """Return recommended stack for archetype.
+
+    Note: uses built-in tables (fast, offline). reference/ecosystem/SELECTION.md
+    is human documentation, not parsed at runtime.
+    """
+    log("PULL: consulting built-in archetype defaults")
     archetype = analysis["archetype"]
     stacks = {
         "hackathon": {"mcp": ["filesystem", "git"], "skills": ["tdd-lite"], "skip": ["sdk", "memory"]},
@@ -336,7 +341,7 @@ waves:
 
 adapted_at: "{now}Z"
 last_verified: "{now}Z"
-version: "5.1"
+version: "5.1.6"
 """
     cfg_path.write_text(content, encoding="utf-8")
     log(f"  wrote {cfg_path.name}")
@@ -602,7 +607,7 @@ def compose(
 | Tier: {analysis['tier']} | Smallest that fits | — |
 | Kit: {'core' if core_only else 'pro'} | User/engine selection | — |
 | Hosts: {', '.join(hosts)} | --host flag | — |
-| MCP: {', '.join(eco['mcp'])} | Minimal viable tools | Others from SELECTION.md |
+| MCP: {', '.join(eco['mcp'])} | Built-in archetype defaults | Human notes in ecosystem/SELECTION.md |
 
 Highest-risk failure modes: {', '.join(analysis['risk_fms'])}
 """,
@@ -667,8 +672,9 @@ examples:
     )
     parser.add_argument(
         "--sdlc",
-        action="store_true",
-        help="After generate, run conductor init-wave --sdlc (PLAN→SHIP tasks)",
+        action=argparse.BooleanOptionalAction,
+        default=True,
+        help="After generate, run conductor init-wave --sdlc (default: on). Use --no-sdlc to skip.",
     )
     args = parser.parse_args()
 
@@ -722,12 +728,28 @@ examples:
         log("SDLC: conductor init-wave --sdlc")
         cond = OS_SETUP_ROOT / "conductor" / "conductor.py"
         if cond.exists():
-            rc = os.system(
-                f"{sys.executable} '{cond}' init-wave --project '{out}' --wave wave-1 --sdlc"
+            # Keep conductor JSON off stdout so engine JSON stays parseable
+            r = subprocess.run(
+                [
+                    sys.executable,
+                    str(cond),
+                    "init-wave",
+                    "--project",
+                    str(out),
+                    "--wave",
+                    "wave-1",
+                    "--sdlc",
+                ],
+                capture_output=True,
+                text=True,
             )
-            sdlc_ok = rc == 0
+            if r.stderr:
+                print(r.stderr, file=sys.stderr, end="")
+            sdlc_ok = r.returncode == 0
             if not sdlc_ok:
                 log("SDLC init-wave failed (non-fatal if you init later)")
+                if r.stdout:
+                    log(r.stdout.strip()[:500])
         else:
             log("conductor.py missing — skip --sdlc")
             sdlc_ok = False

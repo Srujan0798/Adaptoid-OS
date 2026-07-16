@@ -15,6 +15,7 @@ launch-kit/
 docs/designs/
 docs/superpowers/
 benchmarks/last_results.json
+**/last_results.json
 examples/core-finish/generated/
 *.egg-info/
 dist/

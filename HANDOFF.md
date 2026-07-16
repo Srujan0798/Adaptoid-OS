@@ -5,18 +5,18 @@
 ## Status
 - **Active wave:** wave-1
 - **Active task:** maintain single spine (`FLOW.md`)
-- **Release:** v5.1.5 (see `VERSION`)
+- **Release:** v5.1.6 (see `VERSION`)
 - **Last updated:** 2026-07-16
 
 ## Goal
-Lite = standalone OS_SETUP md · Core = this entire folder · SHIP SYSTEM completes projects.
+Lite = OS_SETUP standalone · Core = this folder · SHIP SYSTEM · efficient defaults.
 
 ## Done
-- Naming fixed: no root LITE.md; Lite path is reference/OS_SETUP_v1.3_full.md
-- SHIP-SYSTEM + 7-stage tasks + USE.md
+- Deep audit (`AUDIT.md`) + fixes: default --sdlc, Lite override block, MANIFEST, entry docs
+- Naming fixed; SHIP-SYSTEM + 7 stages
 
 ## Next
-1. User real brief
+1. User real brief on Core or Lite paste
 2. Extend only via FLOW.md
 
 ## Do NOT

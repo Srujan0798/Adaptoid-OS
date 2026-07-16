@@ -39,7 +39,8 @@ git clone https://github.com/Srujan0798/Adaptoid-OS.git && cd Adaptoid-OS
 python3 adaptor/engine.py \
   --brief "YOUR real project idea" \
   --output ../my-project \
-  --core-only --host all --sdlc
+  --core-only --host all
+# --sdlc is default (7 GFG stages). --no-sdlc to skip.
 ```
 
 Open `../my-project` in Grok Build / Claude / Cursor.  

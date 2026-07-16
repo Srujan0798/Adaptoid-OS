@@ -1,34 +1,34 @@
-# Adaptoid Core — the minimal harness that must ship with every project.
-# Pro = this repo. Lite = reference/OS_SETUP_v1.3_full.md.
-# Engine --core-only copies only what is listed here.
+# Adaptoid product surfaces (authoritative)
+# Lite = standalone md only. Core = entire this repository.
 
-version: "5.1.2"
-name: adaptoid-core
-# Single spine: repo FLOW.md
-# SDLC: protocols/sdlc-loop.md + conductor init-wave --sdlc
-# Host map: core/HOST-CAPABILITIES.md
+version: "5.1.6"
+name: adaptoid
 
-# Always load (~2K tokens). Copied into every generated project.
+surfaces:
+  lite: "reference/OS_SETUP_v1.3_full.md"
+  core: "this repository (engine, SHIP-SYSTEM, validators, archetypes, …)"
+
+ship_os: "core/SHIP-SYSTEM.md"   # SDLC × host toolkit
+
+# Always load into generated Core projects (~2K tokens)
 kernel:
   - kernel/PRINCIPLES.md
   - kernel/TWO-TIER.md
   - kernel/ANTI-HALLUCINATION.md
 
-# Cold-start + durable state contracts (generated or templated).
 contracts:
-  - AGENTS.md          # host-neutral cold start (also used by Codex/Cursor/Grok)
-  - HANDOFF.md         # replace-not-append session state
-  - PROJECT-INTENT.md  # typed intent + falsification
+  - AGENTS.md
+  - CLAUDE.md          # when --host includes claude
+  - HANDOFF.md
+  - PROJECT-INTENT.md
   - adaptoid.config.yaml
-  - INDEX.md           # progressive disclosure map (core-sized)
+  - SHIP-SYSTEM.md
+  - INDEX.md
 
-# Policies (OAP / blast-radius defaults)
 policies:
   - templates/root/policies/default.yaml
 
-# Must-run validators — the ones that catch real ship-blockers.
-# Full Pro kit has more (consciousness, evolution, etc.).
-validators:
+validators_core:
   - preflight.sh
   - validate_state.sh
   - check_handoff.sh
@@ -50,27 +50,9 @@ validators:
   - wake.sh
   - emit_event.sh
 
-# Host adapters: one source of truth → host-specific files.
-# Engine --host emits the matching surface.
 hosts:
-  agents:
-    description: "Host-neutral AGENTS.md (Codex, OpenCode, many CLIs)"
-    files: [AGENTS.md]
-  claude:
-    description: "Claude Code CLAUDE.md + session-start hook"
-    files: [CLAUDE.md, .claude/hooks/session-start.sh]
-  cursor:
-    description: "Cursor rules + AGENTS.md"
-    files: [AGENTS.md, .cursor/rules/adaptoid.mdc]
-  codex:
-    description: "OpenAI Codex AGENTS.md"
-    files: [AGENTS.md]
-  grok:
-    description: "Grok Build / xAI TUI AGENTS.md"
-    files: [AGENTS.md]
-
-# Product ladder
-ladder:
-  lite: "reference/OS_SETUP_v1.3_full.md — single pasteable file"
-  core: "core/ — kernel + contracts + must-run validators + host emit"
-  pro:  "this full repository — archetypes, FM library, workflows, v5 protocols"
+  agents: [AGENTS.md]
+  claude: [CLAUDE.md, .claude/hooks/session-start.sh]
+  cursor: [AGENTS.md, .cursor/rules/adaptoid.mdc]
+  codex: [AGENTS.md]
+  grok: [AGENTS.md]

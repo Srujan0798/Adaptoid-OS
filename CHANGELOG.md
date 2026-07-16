@@ -1,5 +1,12 @@
 # Adaptoid OS Changelog
 
+## v5.1.6 — Jul 2026 — Deep audit fixes
+- **`AUDIT.md`** — competitor-style full-flow audit
+- **`--sdlc` default on** (`--no-sdlc` to skip)
+- Lite **canonical override** block in `OS_SETUP_v1.3_full.md` (wins over legacy mid-file)
+- MANIFEST aligned (Lite file / Core folder); engine honesty on SELECTION.md
+- install/00-INVOCATION → USE.md; drop tracked last_results noise
+
 ## v5.1.5 — Jul 2026 — Lite naming fixed
 - **Lite** = only `reference/OS_SETUP_v1.3_full.md` (original standalone)
 - **Core** = entire Adaptoid-OS folder/repo

@@ -46,15 +46,16 @@ cd /Users/srujansai/Desktop/Adaptoid-OS   # or your clone
 python3 adaptor/engine.py \
   --brief "YOUR BRIEF" \
   --output ../my-project \
-  --core-only --host all --sdlc
+  --core-only --host all
+# --sdlc is ON by default (7 stage tasks). Use --no-sdlc to skip.
 ```
 
 Open `../my-project` and say complete wave-1 (reads `SHIP-SYSTEM.md` + AGENTS.md).
 
-For **full validators** (still Core folder, not a third product):
+For **full validators** (still Core folder):
 
 ```bash
-python3 adaptor/engine.py --brief "…" --output ../my-project --host all --sdlc
+python3 adaptor/engine.py --brief "…" --output ../my-project --host all
 # omit --core-only
 ```
 

@@ -4,10 +4,25 @@
 > Paste this whole file into any agent + your brief → “Use Adaptoid. Adapt the environment. Complete the project.”  
 >  
 > **Core** = the **entire Adaptoid-OS folder/repo** (not a second md):  
-> `python3 adaptor/engine.py --brief "..." --output ./proj --core-only --host all --sdlc`  
-> Recipes: repo root **`USE.md`**. Ship OS: **`core/SHIP-SYSTEM.md`**.  
+> `python3 adaptor/engine.py --brief "..." --output ./proj --core-only --host all`  
+> (`--sdlc` is default). Recipes: repo **`USE.md`**. Ship OS: **`core/SHIP-SYSTEM.md`**.  
 
-> **Hosts.** `AGENTS.md` · `CLAUDE.md` · `.cursor/rules/adaptoid.mdc` · kernel · HANDOFF · PROJECT-INTENT · SDLC.
+> **Hosts.** `AGENTS.md` · `CLAUDE.md` · Cursor rules · kernel · HANDOFF · PROJECT-INTENT · SDLC.
+
+---
+
+## ⚠️ CANONICAL OVERRIDE (v5.1.6) — if anything below conflicts, THIS WINS
+
+Mid-file sections of this document are **historical**. For Adaptoid 5.1.x you MUST:
+
+1. **Product surfaces:** Lite = *this file only*. Core = full Adaptoid-OS repo. No separate short LITE.md.
+2. **Ship loop:** Plan → Requirements → Design → Build → Test → Deploy → Maintain (GFG SDLC).
+3. **Host toolkit (required by stage):** plan mode, subagents, skills, hooks, MCP, AGENTS.md, memory/HANDOFF, code search, multi-file edits, git, deep reasoning, web search, terminal, headless/CI, code review, sandbox, background tasks — full matrix in Core’s `SHIP-SYSTEM.md`.
+4. **Evidence or it didn’t happen.** Rewrite HANDOFF (never append). Stay in task `writes`/`forbid`.
+5. **Do not** create archived tree paths (`skills/` at kit root, `dispatch-protocol.md` as required, claw_bridge, multi-channel). Prefer: intent, AGENTS, HANDOFF, plan/, work/wave-*/tasks, preflight if Core-generated.
+6. **Core path preferred when available:** run engine; open generated project; follow SHIP-SYSTEM.
+
+If a later section says otherwise, **ignore the later section**.
 
 > **What this is.** A single self-sufficient markdown file that turns ANY project brief into a complete, dual-tier agentic project structure. Paste this file + your project details into Claude, Cursor, Codex, Grok, or Kimi, and you get the entire repo pre-filled, ready to start shipping with parallel workers.
 >

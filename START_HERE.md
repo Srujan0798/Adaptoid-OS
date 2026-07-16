@@ -19,9 +19,9 @@ cd /path/to/Adaptoid-OS
 python3 adaptor/engine.py \
   --brief "YOUR BRIEF" \
   --output ../my-project \
-  --core-only --host all --sdlc
+  --core-only --host all
 ```
-Open `../my-project` → complete with SHIP-SYSTEM.
+(`--sdlc` default on.) Open `../my-project` → complete with SHIP-SYSTEM.
 
 Full recipes: **`USE.md`**  
 Product OS: **`core/SHIP-SYSTEM.md`**  

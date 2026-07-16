@@ -74,8 +74,9 @@ conductor/conductor.py  init-wave --sdlc → work/wave-1/tasks
 | `protocols/route-sentinel.md` | DAG routes |
 | `workflows/core/sdlc-agile.yaml` | stage machine |
 | `reference/OS_SETUP_v1.3_full.md` | Lite paste path |
-| `reference/ecosystem/SELECTION.md` | stack defaults |
+| `reference/ecosystem/SELECTION.md` | human stack notes (engine uses built-in defaults) |
 | `config/claude-code/*` | kit maintainer Claude |
+| `AUDIT.md` | latest competitor-style audit |
 
 ### Validators (preflight + kit)
 All under `validators/` — only scripts wired by `preflight.sh`, `dogfood.sh`, or Core copy list.

@@ -43,6 +43,7 @@ ENGINE_ARGS=(
   --brief "$BRIEF"
   --output "$TARGET"
   --host "$HOST"
+  # engine defaults --sdlc on
 )
 if [[ -n "$ARCHETYPE" ]]; then
   ENGINE_ARGS+=(--archetype "$ARCHETYPE")
