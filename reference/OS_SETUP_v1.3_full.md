@@ -1,10 +1,11 @@
 # OS-Setup — Universal Agentic Project Kickstart
 
-> **Product ladder (v5.1.3).** Prefer short **`LITE.md`** at repo root for paste-only.  
-> This file is the **deep Lite** (long form). Daily path: see **`USE.md`**.  
-> - **Lite:** paste `LITE.md` (or this file) + brief → “adapt environment, complete project”.  
-> - **Core:** `python3 adaptor/engine.py --brief "..." --output ./proj --core-only --host all --sdlc`  
-> - **Pro:** same without `--core-only` (full validators from this repo).  
+> **You are holding Adaptoid LITE** — the **only standalone markdown product**.  
+> Paste this whole file into any agent + your brief → “Use Adaptoid. Adapt the environment. Complete the project.”  
+>  
+> **Core** = the **entire Adaptoid-OS folder/repo** (not a second md):  
+> `python3 adaptor/engine.py --brief "..." --output ./proj --core-only --host all --sdlc`  
+> Recipes: repo root **`USE.md`**. Ship OS: **`core/SHIP-SYSTEM.md`**.  
 
 > **Hosts.** `AGENTS.md` · `CLAUDE.md` · `.cursor/rules/adaptoid.mdc` · kernel · HANDOFF · PROJECT-INTENT · SDLC.
 

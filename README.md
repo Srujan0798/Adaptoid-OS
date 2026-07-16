@@ -1,114 +1,84 @@
 <div align="center">
 
-# Adaptoid OS v5.1
-## Portable agent harness — SDLC gates + any host
+# Adaptoid OS
+## Agent harness — Lite (standalone md) · Core (this folder)
 
-[![Version](https://img.shields.io/badge/version-5.1.2-blue)](#)
+[![Version](https://img.shields.io/badge/version-5.1.5-blue)](#)
 [![CI](https://github.com/Srujan0798/Adaptoid-OS/actions/workflows/ci.yml/badge.svg)](https://github.com/Srujan0798/Adaptoid-OS/actions/workflows/ci.yml)
 [![License](https://img.shields.io/badge/license-MIT-yellow)](#)
 
-> **Hand brief + Lite/Core/Pro → model adapts environment → completes project.**
+> Hand a **project brief** + **Lite file** or **this Core folder** → model adapts the environment and ships with evidence.
 
-[Use it](USE.md) · [Lite](LITE.md) · [Start](START_HERE.md) · [Flow](FLOW.md) · [Product](PRODUCT.md)
+[Use it](USE.md) · [Lite file](reference/OS_SETUP_v1.3_full.md) · [SHIP SYSTEM](core/SHIP-SYSTEM.md) · [Flow](FLOW.md)
 
 </div>
 
 ---
 
-## The Problem
+## Two products only
 
-Agent projects fail from false “done”, lost handoff, scope creep, and no test gate — not from missing models.
+| | What | Where |
+|---|---|---|
+| **Lite** | **Standalone markdown** (original OS-Setup) | [`reference/OS_SETUP_v1.3_full.md`](reference/OS_SETUP_v1.3_full.md) |
+| **Core** | **This entire repository** | engine, SHIP-SYSTEM, validators, archetypes, … |
 
----
-
-## Quick Start
-
-**Full recipes:** [`USE.md`](USE.md) (magic prompt for any mode).
+Paste Lite into any chat, **or** run Core:
 
 ```bash
 git clone https://github.com/Srujan0798/Adaptoid-OS.git && cd Adaptoid-OS
 
-# Core (default): brief → adapted project + SDLC tasks
 python3 adaptor/engine.py \
   --brief "YOUR real project idea" \
   --output ../my-project \
   --core-only --host all --sdlc
-
-# Open ../my-project → "Complete wave-1 with evidence."
-bash ../my-project/orchestrator/scripts/preflight.sh ../my-project
 ```
 
-| Layer | You hand the model |
-|---|---|
-| **Lite** | `LITE.md` + brief + “use Adaptoid, complete it” |
-| **Core** | generated folder from command above |
-| **Pro** | same without `--core-only` |
-| **Archived** | `docs/historical/` — not required |
+Open `../my-project` in Grok Build / Claude / Cursor.  
+Full recipes + magic prompt: **[`USE.md`](USE.md)**
 
-Kit health: `make ship-check`
+---
+
+## The Problem
+
+Agent projects fail from false “done”, lost handoff, and no test/ship gate — not from missing models.
 
 ---
 
 ## Features
 
-| Safety | Flow | Host |
+| Safety | Ship OS | Host |
 |---|---|---|
-| Failure modes + preflight | Agile SDLC tasks | Multi-host emit |
-| Intent + falsification | Conductor `--sdlc` | Use plan mode / MCP / git on host |
-| Blast-radius + OAP | HANDOFF rewrite | AGENTS.md / CLAUDE.md |
+| Failure modes + preflight | GFG SDLC 7 stages | Multi-host AGENTS/CLAUDE/Cursor |
+| Intent + falsification | Required host tools per stage | Plan mode, subagents, MCP, git, … |
+| Blast-radius + OAP | `SHIP-SYSTEM.md` | Evidence before “done” |
 
 ---
 
 ## Why Adaptoid OS Wins
 
-| | Typical stack | Adaptoid |
+| | Typical | Adaptoid |
 |---|---|---|
-| Process | Ad-hoc chat | **SDLC gates with evidence** |
-| Hosts | One vendor file | **Claude + Cursor + Codex + Grok** |
+| Surfaces | Confused packs | **Lite file** or **Core folder** |
+| Process | Ad-hoc chat | **SDLC × host toolkit** |
 | Done | Hope | **preflight + reports** |
-| Tree | Doc sprawl | **Single spine (`FLOW.md`)** |
 
 ---
 
 ## Architecture
 
 ```
-Host tools (plan, subagents, skills, MCP, terminal, git)
-        ▲
-        │ guided by
-Adaptoid spine: intent → SDLC tasks → validators → HANDOFF
+Lite:  OS_SETUP_v1.3_full.md  →  paste → adapt → complete
+Core:  this folder → engine --sdlc → project → SHIP-SYSTEM → complete
 ```
 
-Every live file is listed in [`FLOW.md`](FLOW.md).
-
----
-
-## Folder Map
-
-```
-START_HERE / FLOW / PRODUCT / AGENTS / HANDOFF
-kernel/  core/  adaptor/  conductor/
-protocols/   (sdlc + 4 safety/verify)
-templates/ archetypes/ failure-modes/ validators/
-reference/OS_SETUP…   workflows/core/sdlc-agile.yaml
-tests/ benchmarks/ calibration/
-docs/historical/   ← attic only
-```
+Every live file: [`FLOW.md`](FLOW.md). Archived only: `docs/historical/`.
 
 ---
 
 ## Contributing
 
-[CONTRIBUTING.md](CONTRIBUTING.md) — only changes that stay on `FLOW.md`.
+[CONTRIBUTING.md](CONTRIBUTING.md) — stay on FLOW.md.
 
 ## License
 
 MIT — [LICENSE](LICENSE)
-
----
-
-<div align="center">
-
-**⭐ Star if it stops one false “done”.**
-
-</div>

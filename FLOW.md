@@ -4,11 +4,11 @@
 > **One flow.** No side timelines.
 
 ```
-USE.md / START_HERE.md / LITE.md
+USE.md / START_HERE.md
     │
-    ├── Lite: paste LITE.md + brief → agent adapts & completes
+    ├── Lite: paste reference/OS_SETUP_v1.3_full.md + brief → adapt & complete
     │
-    ▼ Core/Pro:
+    ▼ Core (this entire folder):
 adaptor/engine.py --sdlc ──host──►  AGENTS.md / CLAUDE.md / Cursor rules
     │                          (core/hosts/*)
     ├── kernel/                always-load laws
@@ -34,8 +34,8 @@ conductor/conductor.py  init-wave --sdlc → work/wave-1/tasks
 ### Entry
 | Path | Role |
 |---|---|
-| `USE.md` | **how to hand Lite/Core/Pro + brief to a model** |
-| `LITE.md` | paste-only Lite kit |
+| `USE.md` | **how to hand Lite file or Core folder + brief** |
+| `reference/OS_SETUP_v1.3_full.md` | **Lite = standalone md (only Lite)** |
 | `START_HERE.md` | short entry |
 | `PRODUCT.md` | planned vs done |
 | `FLOW.md` | this map |

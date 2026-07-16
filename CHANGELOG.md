@@ -1,5 +1,11 @@
 # Adaptoid OS Changelog
 
+## v5.1.5 — Jul 2026 — Lite naming fixed
+- **Lite** = only `reference/OS_SETUP_v1.3_full.md` (original standalone)
+- **Core** = entire Adaptoid-OS folder/repo
+- Removed misleading root `LITE.md` (archived)
+- USE / START_HERE / README / dogfood aligned — no third “Pro product” naming confusion
+
 ## v5.1.4 — Jul 2026 — SHIP SYSTEM: SDLC × full host toolkit
 - **`core/SHIP-SYSTEM.md`** — GFG 7-stage SDLC fused with Grok Build capabilities (plan mode, subagents, skills, hooks, MCP, memory, git, CI, review, sandbox, …)
 - Cold-start + conductor tasks require **host tools per stage** (not optional tips)

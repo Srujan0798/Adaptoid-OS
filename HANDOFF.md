@@ -5,19 +5,18 @@
 ## Status
 - **Active wave:** wave-1
 - **Active task:** maintain single spine (`FLOW.md`)
-- **Release:** v5.1.4 (see `VERSION`)
+- **Release:** v5.1.5 (see `VERSION`)
 - **Last updated:** 2026-07-16
 
 ## Goal
-Adaptoid **is** the ship system: GFG SDLC × full host toolkit → complete projects.
+Lite = standalone OS_SETUP md · Core = this entire folder · SHIP SYSTEM completes projects.
 
 ## Done
-- `core/SHIP-SYSTEM.md` (merged SDLC + Grok Build capabilities)
-- 7-stage conductor tasks with required host tools
-- USE / LITE / engine `--sdlc` / lean spine
+- Naming fixed: no root LITE.md; Lite path is reference/OS_SETUP_v1.3_full.md
+- SHIP-SYSTEM + 7-stage tasks + USE.md
 
 ## Next
-1. User real brief on Core
+1. User real brief
 2. Extend only via FLOW.md
 
 ## Do NOT

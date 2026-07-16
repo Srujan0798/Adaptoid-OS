@@ -1,43 +1,28 @@
 # Start here — Adaptoid OS
 
-## What Adaptoid **is**
+## Two surfaces (do not confuse)
 
-Not a tip sheet. The **ship operating system**:
+| Name | What | Path |
+|---|---|---|
+| **Lite** | **Standalone one markdown file** (the original) | `reference/OS_SETUP_v1.3_full.md` |
+| **Core** | **This entire folder / repo** | `Adaptoid-OS/` (engine, SHIP-SYSTEM, validators, …) |
 
-**GFG SDLC (plan → requirements → design → build → test → deploy → maintain)**  
-**×**  
-**Full host toolkit (Grok Build / Claude / Cursor / Codex)**  
+There is **no** root `LITE.md`. Lite = the long standalone OS-Setup file only.
 
-Plan mode · Subagents · Skills · Hooks · MCP · AGENTS.md · Memory · Code search · Multi-file edits · Git · Deep reasoning · Web search · Terminal · Headless CI · Code review · Sandbox · Background tasks  
+## How you use it
 
-**Authoritative file:** [`core/SHIP-SYSTEM.md`](core/SHIP-SYSTEM.md)
+**Lite:** paste `reference/OS_SETUP_v1.3_full.md` + brief → “adapt & complete.”  
 
-## What you do
-
-1. Brief (internship / job / hackathon / product / anything)  
-2. Mode: **Lite** (`LITE.md`) · **Core** (engine) · **Pro** (full repo)  
-3. Say: *Use Adaptoid SHIP SYSTEM. Adapt environment. Complete the project.*  
-
-Recipes: [`USE.md`](USE.md)
-
-## Core one-liner
-
+**Core:**
 ```bash
+cd /path/to/Adaptoid-OS
 python3 adaptor/engine.py \
   --brief "YOUR BRIEF" \
   --output ../my-project \
   --core-only --host all --sdlc
 ```
+Open `../my-project` → complete with SHIP-SYSTEM.
 
-Opens with `SHIP-SYSTEM.md` + 7 stage tasks already created.
-
-## Map
-
-| File | Role |
-|---|---|
-| `core/SHIP-SYSTEM.md` | **Product OS** (SDLC × toolkit) |
-| `USE.md` | hand Lite/Core/Pro to a model |
-| `LITE.md` | paste-only |
-| `FLOW.md` | live file spine |
-
-`make ship-check` · Archived: `docs/historical/` only  
+Full recipes: **`USE.md`**  
+Product OS: **`core/SHIP-SYSTEM.md`**  
+Live file map: **`FLOW.md`**

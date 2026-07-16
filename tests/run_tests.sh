@@ -143,10 +143,11 @@ fi
 # Test: product markers + flow
 echo "Test: product markers"
 if [ -f "$ROOT/VERSION" ] && [ -f "$ROOT/PRODUCT.md" ] && [ -f "$ROOT/HANDOFF.md" ] \
-   && [ -f "$ROOT/START_HERE.md" ] && [ -f "$ROOT/FLOW.md" ]; then
-  echo "  PASS: VERSION + PRODUCT + HANDOFF + START_HERE + FLOW"
+   && [ -f "$ROOT/START_HERE.md" ] && [ -f "$ROOT/FLOW.md" ] && [ -f "$ROOT/USE.md" ] \
+   && [ -f "$ROOT/reference/OS_SETUP_v1.3_full.md" ] && [ ! -f "$ROOT/LITE.md" ]; then
+  echo "  PASS: markers + Lite=OS_SETUP + no root LITE.md"
 else
-  echo "  FAIL: missing product markers"
+  echo "  FAIL: missing product markers or misleading LITE.md"
   rc=1
 fi
 # Spine protocols only

@@ -161,7 +161,8 @@ else
   fail=1
 fi
 # Product markers
-for f in VERSION PRODUCT.md HANDOFF.md START_HERE.md FLOW.md USE.md LITE.md core/SHIP-SYSTEM.md; do
+for f in VERSION PRODUCT.md HANDOFF.md START_HERE.md FLOW.md USE.md core/SHIP-SYSTEM.md \
+         reference/OS_SETUP_v1.3_full.md; do
   if [ -f "$HERE/$f" ]; then
     echo "OK  $f present"
   else
@@ -169,6 +170,13 @@ for f in VERSION PRODUCT.md HANDOFF.md START_HERE.md FLOW.md USE.md LITE.md core
     fail=1
   fi
 done
+# Short root LITE.md must NOT exist (misleading); Lite = OS_SETUP standalone only
+if [ -f "$HERE/LITE.md" ]; then
+  echo "FAIL: root LITE.md must not exist — Lite is reference/OS_SETUP_v1.3_full.md"
+  fail=1
+else
+  echo "OK  no misleading root LITE.md"
+fi
 # Disconnected top-level modules must stay archived
 for d in claw_bridge skills multi-channel vault examples setup slash-commands patterns philosophy memory-bank; do
   if [ -e "$HERE/$d" ]; then
