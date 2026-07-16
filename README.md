@@ -15,15 +15,24 @@
 
 ---
 
-## Two products only
+## The Problem
+
+Agent projects fail from false “done”, lost handoff, and no test/ship gate — not from missing models.
+
+---
+
+## Quick Start
+
+**Two products only:**
 
 | | What | Where |
 |---|---|---|
 | **Lite** | **Standalone markdown** (original OS-Setup) | [`reference/OS_SETUP_v1.3_full.md`](reference/OS_SETUP_v1.3_full.md) |
 | **Core** | **This entire repository** | engine, SHIP-SYSTEM, validators, archetypes, … |
 
-Paste Lite into any chat, **or** run Core:
+**Lite:** paste `reference/OS_SETUP_v1.3_full.md` + brief → “Use Adaptoid. Complete it.”  
 
+**Core:**
 ```bash
 git clone https://github.com/Srujan0798/Adaptoid-OS.git && cd Adaptoid-OS
 
@@ -34,13 +43,7 @@ python3 adaptor/engine.py \
 ```
 
 Open `../my-project` in Grok Build / Claude / Cursor.  
-Full recipes + magic prompt: **[`USE.md`](USE.md)**
-
----
-
-## The Problem
-
-Agent projects fail from false “done”, lost handoff, and no test/ship gate — not from missing models.
+Full recipes: **[`USE.md`](USE.md)** · Kit health: `make ship-check`
 
 ---
 
@@ -82,3 +85,11 @@ Every live file: [`FLOW.md`](FLOW.md). Archived only: `docs/historical/`.
 ## License
 
 MIT — [LICENSE](LICENSE)
+
+---
+
+<div align="center">
+
+**⭐ Star this repo if it saves you from one agentic failure.**
+
+</div>
