@@ -1,55 +1,53 @@
-# Adaptoid OS INDEX — Progressive disclosure
+# Adaptoid OS INDEX
 
-> Load the minimum. Open the rest only when the trigger fires.
+> Progressive disclosure. Start at [`START_HERE.md`](START_HERE.md). Full spine: [`FLOW.md`](FLOW.md).
 
-**Start:** [`START_HERE.md`](START_HERE.md) · **Product:** [`PRODUCT.md`](PRODUCT.md)
-
-## Always load (~2K tokens)
+## Always load
 
 | File | Why |
 |---|---|
 | `AGENTS.md` | cold-start |
 | `kernel/PRINCIPLES.md` | 12 laws |
 | `kernel/TWO-TIER.md` | orchestrator vs workers |
-| `kernel/ANTI-HALLUCINATION.md` | evidence + state rules |
+| `kernel/ANTI-HALLUCINATION.md` | evidence rules |
 | `HANDOFF.md` | current truth |
 
-## Core product (default path)
+## Product spine (in order)
 
-| Path | Load when |
+| Step | Path |
 |---|---|
-| `adaptor/engine.py` | create a project from a brief |
-| `adaptor/host_emit.py` | host adapters (Claude/Cursor/Grok/…) |
-| `core/` | Core kit definition |
-| `core/HOST-CAPABILITIES.md` | map host features (plan mode, MCP, …) → harness |
-| `conductor/conductor.py` | wake / init-wave `--sdlc` / dispatch |
-| `protocols/sdlc-loop.md` | correct Agile SDLC gates (not theater) |
-| `workflows/core/sdlc-agile.yaml` | machine-readable stage map |
-| `templates/` | project skeleton |
-| `archetypes/` | project type |
-| `validators/` | preflight / ship-check |
-| `failure-modes/` | when a symptom appears |
-| `reference/OS_SETUP_v1.3_full.md` | Lite single-file path |
-| `schemas/ProjectIntent.schema.json` | intent validation |
+| 0 | `START_HERE.md` · `PRODUCT.md` · `FLOW.md` |
+| 1 | `adaptor/engine.py` + `adaptor/host_emit.py` |
+| 2 | `core/` (hosts, templates, HOST-CAPABILITIES) |
+| 3 | `conductor/conductor.py` (`init-wave --sdlc`) |
+| 4 | `protocols/sdlc-loop.md` |
+| 5 | `validators/preflight.sh` |
+| 6 | `workflows/core/sdlc-agile.yaml` |
 
-## Generate a project
+## Support (on trigger)
+
+| Path | When |
+|---|---|
+| `archetypes/` | engine detects project type |
+| `failure-modes/` | a failure symptom appears |
+| `templates/` | engine copies skeleton |
+| `tiers/TIERS.md` | size the project |
+| `schemas/` | intent validation |
+| `protocols/blast-radius.md` | remote/money/humans |
+| `protocols/verification.md` | how to verify |
+| `protocols/oap-security.md` | tool policy |
+| `protocols/route-sentinel.md` | DAG transitions |
+| `reference/OS_SETUP_v1.3_full.md` | Lite paste path |
+| `make ship-check` | kit health |
+
+## Generate
 
 ```bash
 python3 adaptor/engine.py --brief "YOUR IDEA" --output ../proj --core-only --host all
 python3 conductor/conductor.py init-wave --project ../proj --sdlc
+bash ../proj/orchestrator/scripts/preflight.sh ../proj
 ```
 
-## Load on trigger only
+## Archived (not in flow)
 
-| Trigger | Path |
-|---|---|
-| Kit health | `make ship-check` |
-| Benchmarks | `benchmarks/` |
-| Calibration | `calibration/` |
-| Framework export | `claw_bridge/` |
-| Core protocols | `protocols/*.md` (blast-radius, verification, …) |
-| Archived bulk | `docs/historical/attic-v5.1-lean/` |
-
-## Do not load by default
-
-Everything under `docs/historical/attic-v5.1-lean/` — launch kits, research dumps, optional protocol theater, extra examples.
+`docs/historical/` — do not load unless restoring deliberately.

@@ -32,9 +32,6 @@ jobs:
       - name: Host emit unit tests
         run: python3 tests/test_host_emit.py
 
-      - name: Claw bridge smoke
-        run: python3 tests/test_claw_bridge.py
-
       - name: Benchmarks
         run: bash benchmarks/run_bench.sh
 

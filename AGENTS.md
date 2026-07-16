@@ -14,12 +14,12 @@ A self-improving, framework-agnostic **agent harness / OS**.
 Models are swappable; the harness compounds. Loop engineering only if each loop is a real **SDLC gate** (`protocols/sdlc-loop.md`) — not doc theater.
 
 ## Product ladder (load on need)
-- **Start:** `START_HERE.md` (direct path only)
+- **Start:** `START_HERE.md` · **Spine:** `FLOW.md` (every live file)
 - **Lite:** `reference/OS_SETUP_v1.3_full.md`
-- **Core:** `core/` — portable minimum (`--core-only`)
-- **Pro:** this full repository
+- **Core:** `core/` + engine `--core-only`
+- **Archived:** `docs/historical/` only
 
-Work **in this repo** or folders the user names. Do not create random Desktop demo apps.
+Work **in this repo** or paths the user names. Do not create random Desktop demos. Do not restore attic into the hot path without need.
 
 ## Session Start Protocol
 1. Read `kernel/PRINCIPLES.md` — the 12 non-negotiable laws.

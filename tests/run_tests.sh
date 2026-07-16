@@ -140,19 +140,35 @@ else
   rc=1
 fi
 
-# Test: claw bridge
-echo "Test: claw_bridge"
-python3 "$ROOT/tests/test_claw_bridge.py" || rc=1
-
-# Test: product markers
+# Test: product markers + flow
 echo "Test: product markers"
 if [ -f "$ROOT/VERSION" ] && [ -f "$ROOT/PRODUCT.md" ] && [ -f "$ROOT/HANDOFF.md" ] \
-   && [ -f "$ROOT/START_HERE.md" ]; then
-  echo "  PASS: VERSION + PRODUCT + HANDOFF + START_HERE"
+   && [ -f "$ROOT/START_HERE.md" ] && [ -f "$ROOT/FLOW.md" ]; then
+  echo "  PASS: VERSION + PRODUCT + HANDOFF + START_HERE + FLOW"
 else
   echo "  FAIL: missing product markers"
   rc=1
 fi
+# Spine protocols only
+echo "Test: protocol spine"
+n_proto=$(find "$ROOT/protocols" -maxdepth 1 -name '*.md' | wc -l | tr -d ' ')
+if [ "$n_proto" -le 8 ] && [ -f "$ROOT/protocols/sdlc-loop.md" ]; then
+  echo "  PASS: lean protocols ($n_proto files) + sdlc-loop"
+else
+  echo "  FAIL: unexpected protocols count=$n_proto"
+  rc=1
+fi
+# No claw_bridge / skills on live tree
+echo "Test: no disconnected top-level modules"
+ok_disc=1
+for d in claw_bridge skills multi-channel vault examples setup slash-commands patterns philosophy memory-bank; do
+  if [ -e "$ROOT/$d" ]; then
+    echo "  FAIL: disconnected module still live: $d"
+    ok_disc=0
+    rc=1
+  fi
+done
+[ "$ok_disc" -eq 1 ] && echo "  PASS: disconnected modules archived"
 
 echo ""
 if [ "$rc" -eq 0 ]; then

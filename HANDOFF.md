@@ -1,27 +1,25 @@
 # HANDOFF — Adaptoid OS (this repo only)
 
-> Replace, never append. Work stays **in this repository**.
+> Replace, never append.
 
 ## Status
 - **Active wave:** wave-1
-- **Active task:** maintain Core path; no external demo projects
-- **Release:** v5.1.0 (see `VERSION`)
+- **Active task:** maintain single spine (`FLOW.md`)
+- **Release:** v5.1.2 (see `VERSION`)
 - **Last updated:** 2026-07-16
 
 ## Goal
-Keep Adaptoid a direct, usable harness: brief → project folder → agent finishes work.
+One connected product: brief → engine → SDLC tasks → preflight → ship.
 
 ## Done
-- Core / Pro / Lite ladder
-- Host emission + conductor + ship-check + CI
-- Lean attic cut
-- **SDLC loop** + **host capabilities** map (v5.1.1): `init-wave --sdlc`
+- FLOW.md inventory of all live files
+- Orphans archived (v5.1.2)
+- SDLC + host capabilities + multi-host emit
 
 ## Next
-1. User pastes **their** brief → engine → `init-wave --sdlc`  
-2. Improve Core only when real use exposes gaps
+1. User brief → `engine` → `init-wave --sdlc`
+2. Only change files listed on FLOW.md
 
 ## Do NOT
-- Pull attic material back into always-load without need  
-- Create random demo apps outside this repo  
-- Expand protocol surface without product need
+- Add top-level modules outside FLOW
+- Restore attic without product need

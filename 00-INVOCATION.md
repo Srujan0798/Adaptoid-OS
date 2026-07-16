@@ -16,11 +16,11 @@ python3 <ADAPTOID_OS>/adaptor/engine.py \
   --host all
 
 python3 <ADAPTOID_OS>/conductor/conductor.py wake --project ./<project-name>
-python3 <ADAPTOID_OS>/conductor/conductor.py init-wave --project ./<project-name> -n 3
+python3 <ADAPTOID_OS>/conductor/conductor.py init-wave --project ./<project-name> --sdlc
 ```
 
 Hosts: `agents`, `claude`, `cursor`, `codex`, `grok`, or `all`.  
-Ladder: **Lite** = `reference/OS_SETUP_v1.3_full.md` · **Core** = `--core-only` · **Pro** = full repo.
+Ladder: **Lite** = `reference/OS_SETUP_v1.3_full.md` · **Core** = `--core-only` · spine = `FLOW.md`.
 
 ---
 

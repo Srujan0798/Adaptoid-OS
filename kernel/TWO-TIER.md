@@ -42,4 +42,4 @@ You use Claude Code and Kimi interchangeably. So:
 
 ## Why workers are stateless
 
-Workers forget everything between tasks BY DESIGN. This is a feature: it forces every task brief to be self-contained, which is what makes parallel dispatch safe. A brief that needs "remember what we discussed" is a broken brief. See `protocols/dispatch-protocol.md`.
+Workers forget everything between tasks BY DESIGN. This is a feature: it forces every task brief to be self-contained, which is what makes parallel dispatch safe. A brief that needs "remember what we discussed" is a broken brief. See `protocols/sdlc-loop.md` (task briefs + evidence gates).

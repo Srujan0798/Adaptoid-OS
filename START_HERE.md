@@ -1,53 +1,40 @@
 # Start here — Adaptoid OS
 
-**What this is:** a harness so AI coding agents finish *your* project with a **correct SDLC loop**.  
-**What this is not:** a second IDE, a whiteboard app, or empty process docs.
+**What this is:** harness so agents finish *your* project with a **correct SDLC loop**.  
+**What this is not:** a second IDE, demo apps, or disconnected docs.
 
-Your **host** (Grok Build, Claude Code, Cursor, Codex, …) already has plan mode, subagents, skills, hooks, MCP, git, terminal, review, CI/headless.  
-**Adaptoid** adds: intent, handoff, multi-host rules, validators, and SDLC gates.
+**Host** (Grok Build / Claude / Cursor / Codex) = tools.  
+**Adaptoid** = intent + SDLC gates + multi-host rules + proof of done.
 
 ## 60-second path
 
 ```bash
-# 1. From this repo — YOUR real idea
 python3 adaptor/engine.py \
   --brief "PASTE YOUR REAL PROJECT IDEA" \
   --output ../my-project \
-  --core-only \
-  --host all
+  --core-only --host all
 
-# 2. SDLC task gates (plan → design → build → test → ship)
 python3 conductor/conductor.py init-wave --project ../my-project --sdlc
 
-# 3. Open ../my-project in Grok Build / Claude / Cursor / Codex and work the loop
-
-# 4. Before claiming done
+# Open ../my-project in your host and work PLAN→DESIGN→BUILD→TEST→SHIP
 bash ../my-project/orchestrator/scripts/preflight.sh ../my-project
 ```
 
-## SDLC (efficient)
+## SDLC gates
 
-| Stage | Do | Evidence |
-|---|---|---|
-| Plan / requirements | Fill intent | success criteria + falsification |
-| Design | Light blueprint | `plan/design.md` or task design |
-| Build | Code in `writes` only | git diff |
-| Test | acceptance commands | exit 0 in report |
-| Deploy / ship | preflight green | `preflight.sh` |
-| Maintain | next wave | HANDOFF rewritten |
-
-Details: `protocols/sdlc-loop.md` · Host map: `core/HOST-CAPABILITIES.md`
-
-## Product ladder
-
-| | Use |
+| Stage | Evidence |
 |---|---|
-| **Lite** | `reference/OS_SETUP_v1.3_full.md` |
-| **Core** | command above — default |
-| **Pro** | full repo + optional attic material |
+| Plan | `PROJECT-INTENT.md` success + falsification |
+| Design | light design / task briefs |
+| Build | code under `writes` only |
+| Test | acceptance exit 0 in report |
+| Ship | `preflight.sh` green |
+| Maintain | `HANDOFF.md` rewritten |
 
-## Kit health
+## Map of this repo
 
-```bash
-make ship-check
-```
+**Every live file is on the spine:** [`FLOW.md`](FLOW.md)
+
+Also: `PRODUCT.md` · `protocols/sdlc-loop.md` · `core/HOST-CAPABILITIES.md` · `make ship-check`
+
+Archived (not required): `docs/historical/`

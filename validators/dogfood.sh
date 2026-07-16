@@ -161,7 +161,7 @@ else
   fail=1
 fi
 # Product markers
-for f in VERSION PRODUCT.md HANDOFF.md START_HERE.md; do
+for f in VERSION PRODUCT.md HANDOFF.md START_HERE.md FLOW.md; do
   if [ -f "$HERE/$f" ]; then
     echo "OK  $f present"
   else
@@ -169,6 +169,22 @@ for f in VERSION PRODUCT.md HANDOFF.md START_HERE.md; do
     fail=1
   fi
 done
+# Disconnected top-level modules must stay archived
+for d in claw_bridge skills multi-channel vault examples setup slash-commands patterns philosophy memory-bank; do
+  if [ -e "$HERE/$d" ]; then
+    echo "FAIL: disconnected module live (should be attic): $d"
+    fail=1
+  fi
+done
+echo "OK  no disconnected top-level modules"
+# Protocol spine lean
+n_proto=$(find "$HERE/protocols" -maxdepth 1 -name '*.md' 2>/dev/null | wc -l | tr -d ' ')
+if [ "$n_proto" -gt 10 ]; then
+  echo "FAIL: protocols/ bloated ($n_proto files) — archive orphans"
+  fail=1
+else
+  echo "OK  protocols spine lean ($n_proto)"
+fi
 # Generated project should include README
 if [ -f "$TMPDIR/core-host/README.md" ]; then
   echo "OK  engine writes project README"

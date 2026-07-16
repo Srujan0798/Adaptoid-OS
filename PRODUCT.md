@@ -1,44 +1,32 @@
-# Adaptoid OS — Product (v5.1)
+# Adaptoid OS — Product (v5.1.2)
 
 ## One sentence
 
-Portable **agent harness**: any coding host + any model → projects that finish.
+Portable **agent harness**: any host + any model → **SDLC gates** → projects that finish with evidence.
 
-## Direct use (only path that matters)
+## Direct path
 
 ```bash
-python3 adaptor/engine.py \
-  --brief "YOUR real idea" \
-  --output ../my-project \
-  --core-only \
-  --host all
-
-python3 conductor/conductor.py init-wave --project ../my-project --sdlc
+python3 adaptor/engine.py --brief "YOUR idea" --output ../proj --core-only --host all
+python3 conductor/conductor.py init-wave --project ../proj --sdlc
 ```
 
-Then open `../my-project` in **Grok Build / Claude / Cursor / Codex** and run the SDLC loop  
-(plan → build → test → ship). Host tools do execution; Adaptoid enforces gates + evidence.
+Spine of every live file: [`FLOW.md`](FLOW.md).
 
-See `START_HERE.md` · `protocols/sdlc-loop.md` · `core/HOST-CAPABILITIES.md`.
-
-## What shipped
+## Shipped surfaces
 
 | Surface | Path |
 |---|---|
+| Entry | `START_HERE.md` |
+| Engine + hosts | `adaptor/` |
+| Core kit | `core/` |
+| Conductor SDLC | `conductor/` |
+| Gates | `protocols/sdlc-loop.md` + preflight validators |
 | Lite | `reference/OS_SETUP_v1.3_full.md` |
-| Core | `core/` + engine `--core-only` |
-| Pro | this full repository |
-| Hosts | agents, claude, cursor, codex, grok |
-| Conductor | `conductor/conductor.py` |
-| Gate | `make ship-check` |
 
-## Not this product
+## Explicitly not live
 
-- Not a whiteboard or sample app  
-- Not a chat UI  
-- Not multi-channel Slack  
-- Not enterprise packs until needed  
-- Not research encyclopedias in the hot path (archived under `docs/historical/attic-v5.1-lean/`)
+Anything under `docs/historical/` (launch kits, research dumps, claw_bridge, skills, extra protocols, super-adaptoid validators).
 
 ## Kit health
 

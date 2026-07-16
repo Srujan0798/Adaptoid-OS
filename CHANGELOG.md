@@ -1,5 +1,11 @@
 # Adaptoid OS Changelog
 
+## v5.1.2 — Jul 2026 — Final spine cleanup
+- **`FLOW.md`** — every live file on one product spine
+- Orphans archived → `docs/historical/attic-v5.1.2-orphans/` (claw_bridge, skills, extra protocols/validators, unused workflows, adaptor prose)
+- Live protocols = 5 (sdlc + blast-radius + verification + oap + route-sentinel)
+- Dogfood fails if disconnected top-level modules return
+
 ## v5.1.1 — Jul 2026 — SDLC loop + host capabilities
 - **`protocols/sdlc-loop.md`** — Agile SDLC gates (plan→maintain); anti-waste rules
 - **`workflows/core/sdlc-agile.yaml`** — machine-readable stages

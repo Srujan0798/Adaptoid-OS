@@ -19,7 +19,7 @@ Models are weapons. IDEs/CLIs/TUIs are the field. **Core is the loadout** that a
 3. **Must-run validators** — handoff, status claims, silent failures, intent, preflight, …  
 4. **Host adapters** — same source of truth → Claude Code / Cursor / Codex / Grok / AGENTS.md  
 
-What Core **excludes** (Pro only): super-adaptoid consciousness/evolution protocols, full research encyclopedias, multi-channel gateways, enterprise packs.
+What Core **excludes**: anything under `docs/historical/` (archived research, adapters, extra protocols).
 
 ## Generate a Core project
 

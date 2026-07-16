@@ -2,10 +2,11 @@
 # Pro = this repo. Lite = reference/OS_SETUP_v1.3_full.md.
 # Engine --core-only copies only what is listed here.
 
-version: "5.1.1"
+version: "5.1.2"
 name: adaptoid-core
+# Single spine: repo FLOW.md
 # SDLC: protocols/sdlc-loop.md + conductor init-wave --sdlc
-# Host map: core/HOST-CAPABILITIES.md (Grok Build / Claude / Cursor surfaces)
+# Host map: core/HOST-CAPABILITIES.md
 
 # Always load (~2K tokens). Copied into every generated project.
 kernel:

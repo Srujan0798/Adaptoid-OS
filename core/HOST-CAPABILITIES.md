@@ -20,8 +20,8 @@
 | **Web search** | Docs/packages | Prefer cited reality over memory |
 | **Terminal / streaming** | Build & test live | Acceptance commands + preflight |
 | **Headless / CI** | Script in pipelines | `validators/preflight.sh`, `make ship-check` |
-| **Code review** | Line feedback pre-PR | `review-protocol` + status-claims check |
-| **Sandbox** | Untrusted code | See `protocols/sandboxing.md` when needed |
+| **Code review** | Line feedback pre-PR | status-claims check + host review |
+| **Sandbox** | Untrusted code | host sandbox + OAP policy (`protocols/oap-security.md`) |
 | **Background tasks** | Long builds | Don’t claim done until exit code known |
 | **Theming** | UX only | Out of harness scope |
 
