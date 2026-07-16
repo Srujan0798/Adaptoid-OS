@@ -542,17 +542,17 @@ SDLC_TASKS = [
     (
         "01-plan",
         "1-PLAN",
-        "PROJECT-INTENT.md",
+        "plan/feasibility.md",
         "test -f PROJECT-INTENT.md",
-        "Planning & feasibility: refine goal, IN/OUT, tier, viability. No feature code.",
+        "Planning & feasibility: refine goal, IN/OUT, tier, viability. Touch plan/feasibility.md notes. No feature code.",
         "Plan mode, deep reasoning, web search (stack viability)",
     ),
     (
         "02-requirements",
         "2-REQ",
-        "PROJECT-INTENT.md",
+        "plan/requirements.md",
         "grep -q success_criteria PROJECT-INTENT.md",
-        "Requirements: testable success criteria + non-functionals if real + falsification.",
+        "Requirements: testable success criteria + NFRs + falsification. Capture in plan/requirements.md.",
         "Plan mode, subagents (research), web search, MCP tickets if configured",
     ),
     (

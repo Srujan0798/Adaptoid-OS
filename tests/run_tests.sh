@@ -101,10 +101,11 @@ python3 "$ROOT/adaptor/engine.py" \
   --output "$TMPDIR/cproj" \
   --core-only \
   --host agents \
-  --skip-verify >/dev/null 2>&1
-python3 "$ROOT/conductor/conductor.py" init-wave --project "$TMPDIR/cproj" --wave wave-1 -n 2 >/dev/null
-python3 "$ROOT/conductor/conductor.py" check-disjoint --project "$TMPDIR/cproj" --wave wave-1 >/dev/null
-python3 "$ROOT/conductor/conductor.py" dispatch --project "$TMPDIR/cproj" --wave wave-1 --mode stub >/dev/null
+  --no-sdlc \
+  --skip-verify >/dev/null 2>&1 || rc=1
+python3 "$ROOT/conductor/conductor.py" init-wave --project "$TMPDIR/cproj" --wave wave-1 -n 2 >/dev/null || rc=1
+python3 "$ROOT/conductor/conductor.py" check-disjoint --project "$TMPDIR/cproj" --wave wave-1 >/dev/null || rc=1
+python3 "$ROOT/conductor/conductor.py" dispatch --project "$TMPDIR/cproj" --wave wave-1 --mode stub >/dev/null || true
 n_reports=$(find "$TMPDIR/cproj/work/reports" -name '*.report.md' 2>/dev/null | wc -l | tr -d ' ')
 if [ "$n_reports" -ge 2 ]; then
   echo "  PASS: conductor init+dispatch ($n_reports reports)"
@@ -112,8 +113,8 @@ else
   echo "  FAIL: conductor reports=$n_reports"
   rc=1
 fi
-# SDLC init
-python3 "$ROOT/conductor/conductor.py" init-wave --project "$TMPDIR/cproj" --wave wave-2 --sdlc >/dev/null
+# SDLC init (separate wave)
+python3 "$ROOT/conductor/conductor.py" init-wave --project "$TMPDIR/cproj" --wave wave-2 --sdlc >/dev/null || rc=1
 n_sdlc=$(find "$TMPDIR/cproj/work/wave-2/tasks" -name '*.md' 2>/dev/null | wc -l | tr -d ' ')
 if [ "$n_sdlc" -ge 7 ]; then
   echo "  PASS: conductor --sdlc ($n_sdlc GFG stages)"
