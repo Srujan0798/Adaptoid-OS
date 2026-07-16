@@ -163,11 +163,33 @@ Adaptoid counter: **falsification**, **evidence**, **IN/OUT box**, **HANDOFF own
 
 ---
 
-## G. Generated projects must ship with
+## G. Session operating playbook (from Grok Build practice)
 
-- This file: `SHIP-SYSTEM.md` (or `core/SHIP-SYSTEM.md` in kit)  
-- `protocols/sdlc-loop.md` (short pointer)  
-- AGENTS.md that **requires** stages + host tools  
-- SDLC tasks from `conductor init-wave --sdlc` / `engine --sdlc`  
+Full detail: **`HOST-OPERATING-PLAYBOOK.md`** (copied into every Core project).
 
-**If the agent is not using plan mode, terminal tests, and HANDOFF — Adaptoid is not running.**
+Mandatory behavior:
+
+| Practice | Rule |
+|---|---|
+| **Intent lock** | Ambiguous brief → ≤4 A/B/C options **before** BUILD |
+| **Plan → approve → implement** | Big/ambiguous → plan mode / `plan/design.md` → user “go” → code |
+| **One outcome per turn** | Don’t mix 10 unrelated jobs |
+| **Point at files** | Use explicit paths when known |
+| **Session hygiene** | Compact/new session between phases when context bloated |
+| **Subagents** | Large explore/tests only — not empty greenfield |
+| **AGENTS.md** | Stack + secrets + test rules once; never re-explain every chat |
+| **Verify before done** | Run tests · show diff · exit code required |
+| **Safety** | Careful on secrets/prod; never commit secrets |
+
+---
+
+## H. Generated projects must ship with
+
+- `SHIP-SYSTEM.md` (this file)  
+- `HOST-OPERATING-PLAYBOOK.md` (how to proceed like an efficient host agent)  
+- `protocols/sdlc-loop.md`  
+- AGENTS.md that requires stages + host tools + playbook  
+- SDLC tasks (engine default `--sdlc`)  
+- Intent-lock section in PROJECT-INTENT or `plan/intent-lock.md` when brief is thin  
+
+**If the agent is not intent-locking, planning big work, running tests, and rewriting HANDOFF — Adaptoid is not running.**

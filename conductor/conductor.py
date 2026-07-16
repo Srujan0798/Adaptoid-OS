@@ -537,8 +537,16 @@ def cmd_rewrite_handoff(project: Path, wave: str) -> int:
     return 0
 
 
-# Full GFG-aligned SDLC × host toolkit (see core/SHIP-SYSTEM.md)
+# Full GFG-aligned SDLC × host toolkit (see core/SHIP-SYSTEM.md + HOST-OPERATING-PLAYBOOK.md)
 SDLC_TASKS = [
+    (
+        "00-intent-lock",
+        "0-LOCK",
+        "plan/intent-lock.md",
+        "test -f plan/intent-lock.md",
+        "INTENT LOCK (Grok-style): If brief is ambiguous, ask ≤4 A/B/C options, record in intent-lock + PROJECT-INTENT. No BUILD until locked. Tiny clear tasks may mark N/A.",
+        "Plan mode, ask-user options, deep reasoning — NO feature code yet",
+    ),
     (
         "01-plan",
         "1-PLAN",

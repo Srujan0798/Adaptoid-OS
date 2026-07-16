@@ -438,10 +438,54 @@ verification_level: "standard"
 
 ## Highest-risk failure modes
 {risk}
+
+## Intent lock (resolve before BUILD if open)
+If any of these are unclear, ask the user A/B/C options (one recommended) and record answers here — do not full-build until locked:
+- Target user / industry / domain specifics
+- Must-have constraints (offline, language, Excel-only, deadline)
+- Success metric for v0.1 (what demo proves)
+
+## Operating law
+Follow `HOST-OPERATING-PLAYBOOK.md`: plan→approve→implement for big work; one outcome per turn; verify before done.
 """
     path = output_dir / "PROJECT-INTENT.md"
     path.write_text(content, encoding="utf-8")
     log("  wrote PROJECT-INTENT.md")
+
+    # Intent-lock stub for ambiguous briefs (engine confidence low or generic domain)
+    lock = output_dir / "plan" / "intent-lock.md"
+    lock.parent.mkdir(parents=True, exist_ok=True)
+    lock.write_text(
+        f"""# Intent lock — resolve before BUILD
+
+> Grok-style: lock intent before code. Fill after user answers A/B/C.
+
+## Brief (raw)
+{brief.strip()[:2000]}
+
+## Detected
+- Archetype: `{analysis.get('archetype')}`
+- Tier: `{analysis.get('tier')}`
+- Stack hints: `{', '.join(analysis.get('stack_hints') or []) or 'none'}`
+
+## Open questions (agent: ask ≤4, one recommended)
+1. Primary user / industry for v0.1?
+   - A) …
+   - B) …
+   - C) …
+2. Hard constraints (offline, languages, formats)?
+3. What single demo proves success?
+4. Must-not-do?
+
+## Decisions (record here)
+- …
+
+## Status
+- [ ] Locked — then continue SDLC stage 3 design / stage 4 build
+""",
+        encoding="utf-8",
+    )
+    log("  wrote plan/intent-lock.md")
 
 
 def copy_validators(output_dir: Path, core_only: bool):
@@ -537,6 +581,7 @@ def copy_sdlc_docs(output_dir: Path):
     proto_dst.mkdir(parents=True, exist_ok=True)
     pairs = [
         ("core/SHIP-SYSTEM.md", output_dir / "SHIP-SYSTEM.md"),
+        ("core/HOST-OPERATING-PLAYBOOK.md", output_dir / "HOST-OPERATING-PLAYBOOK.md"),
         ("core/HOST-CAPABILITIES.md", output_dir / "HOST-CAPABILITIES.md"),
         ("protocols/sdlc-loop.md", proto_dst / "sdlc-loop.md"),
         ("protocols/blast-radius.md", proto_dst / "blast-radius.md"),

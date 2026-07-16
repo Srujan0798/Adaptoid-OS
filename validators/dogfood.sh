@@ -162,7 +162,7 @@ else
 fi
 # Product markers
 for f in VERSION PRODUCT.md HANDOFF.md START_HERE.md FLOW.md USE.md core/SHIP-SYSTEM.md \
-         reference/OS_SETUP_v1.3_full.md AUDIT.md; do
+         core/HOST-OPERATING-PLAYBOOK.md reference/OS_SETUP_v1.3_full.md AUDIT.md; do
   if [ -f "$HERE/$f" ]; then
     echo "OK  $f present"
   else

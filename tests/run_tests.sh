@@ -116,16 +116,17 @@ fi
 # SDLC init (separate wave)
 python3 "$ROOT/conductor/conductor.py" init-wave --project "$TMPDIR/cproj" --wave wave-2 --sdlc >/dev/null || rc=1
 n_sdlc=$(find "$TMPDIR/cproj/work/wave-2/tasks" -name '*.md' 2>/dev/null | wc -l | tr -d ' ')
-if [ "$n_sdlc" -ge 7 ]; then
-  echo "  PASS: conductor --sdlc ($n_sdlc GFG stages)"
+if [ "$n_sdlc" -ge 8 ]; then
+  echo "  PASS: conductor --sdlc ($n_sdlc stages incl intent-lock)"
 else
-  echo "  FAIL: sdlc tasks=$n_sdlc (want 7)"
+  echo "  FAIL: sdlc tasks=$n_sdlc (want 8)"
   rc=1
 fi
-if [ -f "$ROOT/core/SHIP-SYSTEM.md" ] && [ -f "$ROOT/protocols/sdlc-loop.md" ]; then
-  echo "  PASS: SHIP-SYSTEM + sdlc-loop present"
+if [ -f "$ROOT/core/SHIP-SYSTEM.md" ] && [ -f "$ROOT/core/HOST-OPERATING-PLAYBOOK.md" ] \
+   && [ -f "$ROOT/protocols/sdlc-loop.md" ]; then
+  echo "  PASS: SHIP-SYSTEM + playbook + sdlc-loop present"
 else
-  echo "  FAIL: missing SHIP-SYSTEM"
+  echo "  FAIL: missing SHIP-SYSTEM or playbook"
   rc=1
 fi
 rm -rf "$TMPDIR"

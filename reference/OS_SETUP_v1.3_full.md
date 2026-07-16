@@ -11,16 +11,22 @@
 
 ---
 
-## ⚠️ CANONICAL OVERRIDE (v5.1.6) — if anything below conflicts, THIS WINS
+## ⚠️ CANONICAL OVERRIDE (v5.1.7) — if anything below conflicts, THIS WINS
 
 Mid-file sections of this document are **historical**. For Adaptoid 5.1.x you MUST:
 
-1. **Product surfaces:** Lite = *this file only*. Core = full Adaptoid-OS repo. No separate short LITE.md.
+1. **Product surfaces:** Lite = *this file only*. Core = full Adaptoid-OS repo.
 2. **Ship loop:** Plan → Requirements → Design → Build → Test → Deploy → Maintain (GFG SDLC).
-3. **Host toolkit (required by stage):** plan mode, subagents, skills, hooks, MCP, AGENTS.md, memory/HANDOFF, code search, multi-file edits, git, deep reasoning, web search, terminal, headless/CI, code review, sandbox, background tasks — full matrix in Core’s `SHIP-SYSTEM.md`.
-4. **Evidence or it didn’t happen.** Rewrite HANDOFF (never append). Stay in task `writes`/`forbid`.
-5. **Do not** create archived tree paths (`skills/` at kit root, `dispatch-protocol.md` as required, claw_bridge, multi-channel). Prefer: intent, AGENTS, HANDOFF, plan/, work/wave-*/tasks, preflight if Core-generated.
-6. **Core path preferred when available:** run engine; open generated project; follow SHIP-SYSTEM.
+3. **Host toolkit by stage** (Grok Build–class): plan mode, subagents, skills, hooks, MCP, AGENTS.md, memory/HANDOFF, code search, multi-file edits, git, deep reasoning, web search, terminal, headless/CI, code review, sandbox, background tasks.
+4. **Proceed like an efficient host agent:**
+   - **Intent lock** if ambiguous (≤4 A/B/C options) before BUILD  
+   - **Plan → approve → implement** for big work; skip plan for tiny fixes  
+   - **One outcome per turn**  
+   - **Verify before done** (tests + exit code)  
+   - **Subagents only for large explore/tests**  
+   - **AGENTS.md once** for stack/style/secrets  
+5. **Evidence or it didn’t happen.** Rewrite HANDOFF (never append). Stay in `writes`/`forbid`.
+6. Prefer Core engine when available → generated project includes `SHIP-SYSTEM.md` + `HOST-OPERATING-PLAYBOOK.md`.
 
 If a later section says otherwise, **ignore the later section**.
 

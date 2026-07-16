@@ -67,6 +67,7 @@ conductor/conductor.py  init-wave --sdlc → work/wave-1/tasks
 | `schemas/ProjectIntent.schema.json` | intent schema |
 | `tiers/TIERS.md` | T0–T4 |
 | `core/SHIP-SYSTEM.md` | **product OS: full SDLC × host toolkit** |
+| `core/HOST-OPERATING-PLAYBOOK.md` | **how to proceed** (Grok-style: intent lock, plan→approve, verify) |
 | `protocols/sdlc-loop.md` | short SDLC gates |
 | `protocols/blast-radius.md` | safety |
 | `protocols/verification.md` | verify layers |
