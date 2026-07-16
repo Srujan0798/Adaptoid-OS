@@ -9,46 +9,45 @@ description: >
 methodology: agile   # agile | waterfall | devops
 reference: protocols/sdlc-loop.md
 
+# Full matrix: core/SHIP-SYSTEM.md (GFG SDLC × Grok/Claude toolkit)
 stages:
   - id: plan
-    sdlc: [1, 2]          # planning + requirements
-    artifacts: [PROJECT-INTENT.md, HANDOFF.md]
-    gate: "intent has success_criteria + falsification"
+    sdlc: [1]
+    host: [plan_mode, deep_reasoning, web_search]
+    artifacts: [PROJECT-INTENT.md]
+    gate: "feasibility + scope + tier"
+  - id: requirements
+    sdlc: [2]
+    host: [plan_mode, subagents, web_search, mcp]
+    artifacts: [PROJECT-INTENT.md success_criteria]
+    gate: "testable criteria + OUT box"
   - id: design
     sdlc: [3]
-    artifacts: [plan/, work/<wave>/tasks/*.md]
-    gate: "tasks list disjoint writes + acceptance"
+    host: [plan_mode, code_search]
+    artifacts: [plan/design.md, task writes]
+    gate: "HLD/LLD-light for this wave"
   - id: build
     sdlc: [4]
-    artifacts: [src/, app/, … under writes]
-    gate: "code exists; no OUT-scope freebies"
+    host: [terminal, multi_file_edits, code_search, git, skills, sandbox]
+    artifacts: [src/]
+    gate: "code in writes only"
   - id: test
     sdlc: [5]
-    artifacts: [work/reports/, tests/]
-    gate: "acceptance exit 0 + evidence in report"
-  - id: ship
+    host: [terminal, subagents, background_tasks]
+    artifacts: [tests/, reports]
+    gate: "acceptance exit 0"
+  - id: deploy
     sdlc: [6]
-    artifacts: [release / deploy notes]
+    host: [terminal, headless_ci, git, hooks, mcp]
+    artifacts: [preflight PASS]
     gate: "bash orchestrator/scripts/preflight.sh ."
   - id: maintain
     sdlc: [7]
+    host: [memory_handoff, plan_mode, code_search]
     artifacts: [HANDOFF.md rewritten]
-    gate: "next wave listed; state replaced not appended"
+    gate: "next wave clear"
 
 wave_default:
   name: wave-1
   slice: "smallest vertical feature that proves the product"
-  tasks_hint:
-    - "01-plan-intent"
-    - "02-design-slice"
-    - "03-build"
-    - "04-test"
-    - "05-preflight-ship"
-
-host_features_used:
-  - plan_mode
-  - subagents
-  - skills
-  - terminal
-  - git
-  - code_review
+  tasks: [01-plan, 02-requirements, 03-design, 04-build, 05-test, 06-deploy, 07-maintain]

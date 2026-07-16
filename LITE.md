@@ -26,6 +26,14 @@ You are the **Orchestrator**. The host provides tools (terminal, edit, git, plan
 6. **Never delete — archive** superseded work.  
 7. **Simplicity first** — smallest tier that fits (T0 hackathon … T2 product).
 
+## SHIP SYSTEM (Adaptoid = SDLC × host toolkit)
+
+Adaptoid **includes** the full ship workflow. At each SDLC stage you **must** use the host tools (Grok Build / Claude / Cursor):
+
+Plan mode · Subagents · Skills · Hooks · MCP · AGENTS.md · Memory(HANDOFF) · Code search · Multi-file edits · Git · Deep reasoning · Web search · Terminal · Headless/CI · Code review · Sandbox · Background tasks
+
+Full matrix: if Core/Pro project has `SHIP-SYSTEM.md`, follow it. Below is the Lite embedded gate list.
+
 ## SDLC loop (do not skip)
 
 ```

@@ -115,16 +115,16 @@ fi
 # SDLC init
 python3 "$ROOT/conductor/conductor.py" init-wave --project "$TMPDIR/cproj" --wave wave-2 --sdlc >/dev/null
 n_sdlc=$(find "$TMPDIR/cproj/work/wave-2/tasks" -name '*.md' 2>/dev/null | wc -l | tr -d ' ')
-if [ "$n_sdlc" -ge 5 ]; then
-  echo "  PASS: conductor --sdlc ($n_sdlc stage tasks)"
+if [ "$n_sdlc" -ge 7 ]; then
+  echo "  PASS: conductor --sdlc ($n_sdlc GFG stages)"
 else
-  echo "  FAIL: sdlc tasks=$n_sdlc"
+  echo "  FAIL: sdlc tasks=$n_sdlc (want 7)"
   rc=1
 fi
-if [ -f "$ROOT/protocols/sdlc-loop.md" ] && [ -f "$ROOT/core/HOST-CAPABILITIES.md" ]; then
-  echo "  PASS: sdlc-loop + HOST-CAPABILITIES present"
+if [ -f "$ROOT/core/SHIP-SYSTEM.md" ] && [ -f "$ROOT/protocols/sdlc-loop.md" ]; then
+  echo "  PASS: SHIP-SYSTEM + sdlc-loop present"
 else
-  echo "  FAIL: missing sdlc docs"
+  echo "  FAIL: missing SHIP-SYSTEM"
   rc=1
 fi
 rm -rf "$TMPDIR"

@@ -66,7 +66,8 @@ conductor/conductor.py  init-wave --sdlc → work/wave-1/tasks
 | `failure-modes/*` | scar library |
 | `schemas/ProjectIntent.schema.json` | intent schema |
 | `tiers/TIERS.md` | T0–T4 |
-| `protocols/sdlc-loop.md` | SDLC gates |
+| `core/SHIP-SYSTEM.md` | **product OS: full SDLC × host toolkit** |
+| `protocols/sdlc-loop.md` | short SDLC gates |
 | `protocols/blast-radius.md` | safety |
 | `protocols/verification.md` | verify layers |
 | `protocols/oap-security.md` | tool policy |

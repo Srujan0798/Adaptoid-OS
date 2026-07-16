@@ -1,5 +1,10 @@
 # Adaptoid OS Changelog
 
+## v5.1.4 — Jul 2026 — SHIP SYSTEM: SDLC × full host toolkit
+- **`core/SHIP-SYSTEM.md`** — GFG 7-stage SDLC fused with Grok Build capabilities (plan mode, subagents, skills, hooks, MCP, memory, git, CI, review, sandbox, …)
+- Cold-start + conductor tasks require **host tools per stage** (not optional tips)
+- Engine copies SHIP-SYSTEM into every project; `--sdlc` emits 7 stage tasks
+
 ## v5.1.3 — Jul 2026 — Use path complete (Lite/Core/Pro)
 - **`USE.md`** — hand brief + Lite/Core/Pro to any model; magic prompt
 - **`LITE.md`** — short paste-only kit (deep Lite remains OS_SETUP full)

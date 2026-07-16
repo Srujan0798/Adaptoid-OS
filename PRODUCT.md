@@ -2,7 +2,8 @@
 
 ## Promise
 
-> Hand **brief + Lite/Core/Pro** to any coding model → it **adapts the environment** and **completes the project** with SDLC + evidence.
+> Hand **brief + Lite/Core/Pro** to any coding model → it runs **Adaptoid SHIP SYSTEM**:  
+> full **SDLC (plan→maintain)** **fused with** host toolkit (plan mode, subagents, skills, hooks, MCP, AGENTS.md, memory, search, multi-file edit, git, reasoning, web, terminal, CI, review, sandbox, background tasks) → **adapts environment and completes the project with evidence**.
 
 ## Planned vs done
 
@@ -13,8 +14,8 @@
 | **Core** — engine generates multi-host project + validators | **Done** → `engine --core-only --host all --sdlc` |
 | **Pro** — full repo (FMs, all validators, archetypes) | **Done** → engine without `--core-only` |
 | Multi-host: AGENTS / CLAUDE / Cursor / Codex / Grok | **Done** |
-| SDLC loop (not empty process theater) | **Done** → `protocols/sdlc-loop.md` + `init-wave --sdlc` / `--sdlc` |
-| Host tools used, not reinvented | **Done** → `core/HOST-CAPABILITIES.md` |
+| SDLC (GFG 7 stages) fused into product | **Done** → `core/SHIP-SYSTEM.md` + 7 stage tasks |
+| Host toolkit (Grok Build list) activated by stage | **Done** → SHIP-SYSTEM §A + cold-start + task host-tools |
 | Lean tree; orphans archived | **Done** → `FLOW.md` + `docs/historical/` |
 | One user entry: hand kit + brief + “complete it” | **Done** → `USE.md` |
 | Ship gate | **Done** → `make ship-check` |

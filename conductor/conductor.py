@@ -537,41 +537,63 @@ def cmd_rewrite_handoff(project: Path, wave: str) -> int:
     return 0
 
 
+# Full GFG-aligned SDLC × host toolkit (see core/SHIP-SYSTEM.md)
 SDLC_TASKS = [
     (
         "01-plan",
-        "PLAN",
-        "plan/",
+        "1-PLAN",
+        "PROJECT-INTENT.md",
         "test -f PROJECT-INTENT.md",
-        "Lock scope: refine PROJECT-INTENT success criteria + falsification. No feature code.",
+        "Planning & feasibility: refine goal, IN/OUT, tier, viability. No feature code.",
+        "Plan mode, deep reasoning, web search (stack viability)",
     ),
     (
-        "02-design",
-        "DESIGN",
+        "02-requirements",
+        "2-REQ",
+        "PROJECT-INTENT.md",
+        "grep -q success_criteria PROJECT-INTENT.md",
+        "Requirements: testable success criteria + non-functionals if real + falsification.",
+        "Plan mode, subagents (research), web search, MCP tickets if configured",
+    ),
+    (
+        "03-design",
+        "3-DESIGN",
         "plan/design.md",
         "test -f plan/design.md",
-        "Light design for this wave only: modules, APIs, data. Write plan/design.md.",
+        "Design (HLD/LLD-light): modules, APIs, data for THIS wave only. Write plan/design.md.",
+        "Plan mode, code search, multi-file read",
     ),
     (
-        "03-build",
-        "BUILD",
+        "04-build",
+        "4-BUILD",
         "src/",
         "test -d src",
-        "Implement the vertical slice under src/. Stay inside writes. No OUT-scope freebies.",
+        "Development: implement vertical slice under src/. Stay in writes. No OUT freebies.",
+        "Terminal, multi-file edits, code search, git, skills, sandbox if untrusted",
     ),
     (
-        "04-test",
-        "TEST",
+        "05-test",
+        "5-TEST",
         "tests/",
         "test -d tests || test -f plan/design.md",
-        "Add/run tests for the slice. Paste command evidence in the report.",
+        "Testing: unit/integration as needed. Run acceptance. Paste exit codes in report.",
+        "Terminal, subagents (parallel tests), background tasks (wait for exit)",
     ),
     (
-        "05-ship-gate",
-        "SHIP",
+        "06-deploy",
+        "6-DEPLOY",
         "orchestrator/scripts/",
         "bash orchestrator/scripts/preflight.sh .",
-        "Run preflight. Fix failures. Only then consider ship/deploy.",
+        "Deployment gate: preflight PASS. Prod needs blast-radius confirm. Optional CI headless.",
+        "Terminal, headless/CI, git PR, hooks, MCP observability if configured",
+    ),
+    (
+        "07-maintain",
+        "7-MAINT",
+        "HANDOFF.md",
+        "test -f HANDOFF.md",
+        "Maintenance: rewrite HANDOFF with next wave. No silent scope. Bugs = new tasks.",
+        "Memory=HANDOFF, plan mode for next slice, code search",
     ),
 ]
 
@@ -588,15 +610,16 @@ def cmd_init_wave(project: Path, wave: str, n: int, sdlc: bool = False) -> int:
         specs = [
             (
                 f"{i:02d}-task",
-                "BUILD",
+                "4-BUILD",
                 f"src/module_{i}/",
                 f"test -d src/module_{i} || mkdir -p src/module_{i}",
                 f"Implement module {i} for this wave. Stay inside writes list.",
+                "Terminal, multi-file edits, code search, git",
             )
             for i in range(1, n + 1)
         ]
 
-    for tid, stage, writes, acceptance, goal in specs:
+    for tid, stage, writes, acceptance, goal, host_tools in specs:
         path = task_dir / f"{tid}.md"
         if path.exists():
             continue
@@ -618,13 +641,18 @@ acceptance: {acceptance}
 ## Goal
 {goal}
 
+## Host tools REQUIRED this stage (Adaptoid SHIP SYSTEM)
+{host_tools}
+
+See `SHIP-SYSTEM.md` for full SDLC×toolkit matrix. Do not skip tools or evidence.
+
 ## Context
-See PROJECT-INTENT.md, HANDOFF.md, and protocols/sdlc-loop.md (if present).
-Use host plan mode / subagents / terminal — do not skip evidence.
+PROJECT-INTENT.md · HANDOFF.md · SHIP-SYSTEM.md · protocols/sdlc-loop.md
 
 ## Done means
-- Stage goal met
-- acceptance command exits 0 (paste output in report)
+- Stage goal met with artifacts
+- Host tools above actually used where applicable
+- acceptance exits 0 (paste output in report)
 - No scope outside PROJECT-INTENT IN box
 """,
             encoding="utf-8",

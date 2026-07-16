@@ -37,14 +37,17 @@ MY BRIEF:
 """
 
 Do this:
-1. Adapt the environment to this brief (intent, host files, SDLC tasks, policies).
-2. Do NOT invent scope outside the brief.
-3. Run Agile SDLC: PLAN → DESIGN → BUILD → TEST → PREFLIGHT → rewrite HANDOFF.
-4. Use this host’s tools (plan mode, terminal, git, subagents, MCP). Do not reimplement them.
-5. Evidence or it didn’t happen — paste command + exit code for every “done”.
-6. Before claiming complete: run preflight (or equivalent checks if Lite).
+1. Adapt the environment (intent, AGENTS/host files, SDLC tasks, policies).
+2. Follow Adaptoid SHIP SYSTEM: full SDLC (plan→requirements→design→build→test→deploy→maintain)
+   fused with this host’s full toolkit:
+   Plan mode, Subagents, Skills, Hooks, MCP, AGENTS.md, Memory/HANDOFF, Code search,
+   Multi-file edits, Git, Deep reasoning, Web search, Terminal, Headless/CI, Code review,
+   Sandbox, Background tasks. (See SHIP-SYSTEM.md or LITE.md embedded rules.)
+3. Do NOT invent scope outside the brief. Do NOT skip stages or tools when the stage requires them.
+4. Evidence or it didn’t happen — paste command + exit code for every “done”.
+5. Before claiming complete: preflight (Core/Pro) or Lite ship checklist.
 
-Start now. Orient, then execute wave-1.
+Start now. Orient on SHIP-SYSTEM / AGENTS / HANDOFF / INTENT, then execute wave-1.
 ```
 
 ---
@@ -101,11 +104,14 @@ Same magic prompt with `MODE: Pro` and path to this repo if the agent should con
 | Gate | Evidence |
 |---|---|
 | Intent clear | `PROJECT-INTENT.md` success + falsification |
-| Environment adapted | AGENTS/CLAUDE/kernel/HANDOFF present |
+| Environment adapted | AGENTS + SHIP-SYSTEM (or LITE rules) + HANDOFF |
+| SDLC stages run | plan→…→maintain with host tools used |
 | Built | code under task `writes` |
 | Tested | acceptance / tests exit 0 |
-| Shipped gate | `preflight.sh` green (Core/Pro) |
-| Continuity | `HANDOFF.md` rewritten for next session |
+| Deploy gate | `preflight.sh` green (Core/Pro) |
+| Continuity | `HANDOFF.md` rewritten |
+
+**Adaptoid itself is the ship system** (SDLC × host toolkit), not a folder of optional tips.
 
 ---
 
