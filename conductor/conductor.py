@@ -537,52 +537,123 @@ def cmd_rewrite_handoff(project: Path, wave: str) -> int:
     return 0
 
 
-def cmd_init_wave(project: Path, wave: str, n: int) -> int:
-    """Create n placeholder disjoint task briefs for a wave."""
+SDLC_TASKS = [
+    (
+        "01-plan",
+        "PLAN",
+        "plan/",
+        "test -f PROJECT-INTENT.md",
+        "Lock scope: refine PROJECT-INTENT success criteria + falsification. No feature code.",
+    ),
+    (
+        "02-design",
+        "DESIGN",
+        "plan/design.md",
+        "test -f plan/design.md",
+        "Light design for this wave only: modules, APIs, data. Write plan/design.md.",
+    ),
+    (
+        "03-build",
+        "BUILD",
+        "src/",
+        "test -d src",
+        "Implement the vertical slice under src/. Stay inside writes. No OUT-scope freebies.",
+    ),
+    (
+        "04-test",
+        "TEST",
+        "tests/",
+        "test -d tests || test -f plan/design.md",
+        "Add/run tests for the slice. Paste command evidence in the report.",
+    ),
+    (
+        "05-ship-gate",
+        "SHIP",
+        "orchestrator/scripts/",
+        "bash orchestrator/scripts/preflight.sh .",
+        "Run preflight. Fix failures. Only then consider ship/deploy.",
+    ),
+]
+
+
+def cmd_init_wave(project: Path, wave: str, n: int, sdlc: bool = False) -> int:
+    """Create task briefs for a wave (generic n modules, or SDLC stage gates)."""
     task_dir = project / "work" / wave / "tasks"
     task_dir.mkdir(parents=True, exist_ok=True)
     (project / "work" / "reports" / wave).mkdir(parents=True, exist_ok=True)
-    for i in range(1, n + 1):
-        tid = f"{i:02d}-task"
+
+    if sdlc:
+        specs = SDLC_TASKS
+    else:
+        specs = [
+            (
+                f"{i:02d}-task",
+                "BUILD",
+                f"src/module_{i}/",
+                f"test -d src/module_{i} || mkdir -p src/module_{i}",
+                f"Implement module {i} for this wave. Stay inside writes list.",
+            )
+            for i in range(1, n + 1)
+        ]
+
+    for tid, stage, writes, acceptance, goal in specs:
         path = task_dir / f"{tid}.md"
         if path.exists():
             continue
         path.write_text(
-            f"""# {tid}
+            f"""# {tid} — SDLC {stage}
 
 | Field | Value |
 |---|---|
 | Wave | {wave} |
-| writes | [`src/module_{i}/`] |
-| forbid | [other module paths] |
-| acceptance | `test -d src/module_{i} || mkdir -p src/module_{i}` |
+| Stage | {stage} |
+| writes | [`{writes}`] |
+| forbid | [paths owned by other tasks] |
+| acceptance | `{acceptance}` |
 | blast_radius | r0 |
 
-writes: [src/module_{i}/]
-acceptance: test -d src/module_{i} || mkdir -p src/module_{i}
+writes: [{writes}]
+acceptance: {acceptance}
 
 ## Goal
-Implement module {i} for this wave. Stay inside writes list.
+{goal}
 
 ## Context
-See PROJECT-INTENT.md and HANDOFF.md.
+See PROJECT-INTENT.md, HANDOFF.md, and protocols/sdlc-loop.md (if present).
+Use host plan mode / subagents / terminal — do not skip evidence.
 
 ## Done means
-- Files under writes exist
-- acceptance command exits 0
-- Report written with evidence
+- Stage goal met
+- acceptance command exits 0 (paste output in report)
+- No scope outside PROJECT-INTENT IN box
 """,
             encoding="utf-8",
         )
         log(f"created {path}")
+
+    first = specs[0][0]
     rewrite_handoff(
         project,
         wave=wave,
-        active_task=f"01-task",
-        done=[f"Initialized {wave} with {n} task stubs"],
-        next_items=[f"Edit briefs under work/{wave}/tasks/", f"conductor dispatch --wave {wave}"],
+        active_task=first,
+        done=[f"Initialized {wave} with {'SDLC' if sdlc else n} task stubs"],
+        next_items=[
+            f"Edit briefs under work/{wave}/tasks/",
+            "Follow PLAN→BUILD→TEST→SHIP; never skip gates",
+            f"conductor dispatch --wave {wave}",
+        ],
     )
-    print(json.dumps({"wave": wave, "tasks": n, "dir": str(task_dir)}, indent=2))
+    print(
+        json.dumps(
+            {
+                "wave": wave,
+                "mode": "sdlc" if sdlc else "modules",
+                "tasks": len(specs),
+                "dir": str(task_dir),
+            },
+            indent=2,
+        )
+    )
     return 0
 
 
@@ -614,9 +685,14 @@ def main(argv: list[str] | None = None) -> int:
     p_rh = sub.add_parser("rewrite-handoff", parents=[parent], help="Rewrite HANDOFF.md from reports")
     p_rh.add_argument("--wave", default="")
 
-    p_init = sub.add_parser("init-wave", parents=[parent], help="Create N placeholder task briefs")
+    p_init = sub.add_parser("init-wave", parents=[parent], help="Create task briefs (modules or SDLC)")
     p_init.add_argument("--wave", default="wave-1")
-    p_init.add_argument("-n", type=int, default=3)
+    p_init.add_argument("-n", type=int, default=3, help="Module tasks when not --sdlc")
+    p_init.add_argument(
+        "--sdlc",
+        action="store_true",
+        help="Create PLAN/DESIGN/BUILD/TEST/SHIP gate tasks (Agile SDLC)",
+    )
 
     args = parser.parse_args(argv)
     project = args.project.resolve()
@@ -636,7 +712,12 @@ def main(argv: list[str] | None = None) -> int:
     if args.cmd == "rewrite-handoff":
         return cmd_rewrite_handoff(project, wave)
     if args.cmd == "init-wave":
-        return cmd_init_wave(project, args.wave or "wave-1", args.n)
+        return cmd_init_wave(
+            project,
+            args.wave or "wave-1",
+            args.n,
+            sdlc=bool(getattr(args, "sdlc", False)),
+        )
     return 2
 
 

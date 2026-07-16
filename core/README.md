@@ -71,16 +71,20 @@ read AGENTS.md / CLAUDE.md
   → bash orchestrator/scripts/preflight.sh before claiming done
 ```
 
-## After generate — conductor
+## After generate — SDLC + conductor
 
 ```bash
-python3 conductor/conductor.py wake --project ./my-hackathon
-python3 conductor/conductor.py init-wave --project ./my-hackathon -n 3
-python3 conductor/conductor.py dispatch --project ./my-hackathon --mode stub
-bash ./my-hackathon/orchestrator/scripts/preflight.sh ./my-hackathon
+python3 conductor/conductor.py wake --project ./my-project
+# Preferred: Agile SDLC gates (plan → design → build → test → ship)
+python3 conductor/conductor.py init-wave --project ./my-project --sdlc
+# Or generic parallel modules: init-wave -n 3
+python3 conductor/conductor.py dispatch --project ./my-project --mode stub
+bash ./my-project/orchestrator/scripts/preflight.sh ./my-project
 ```
 
-Release gate on the kit itself: `make ship-check`.
+- Process: `protocols/sdlc-loop.md`
+- Host tools map: `core/HOST-CAPABILITIES.md` (use Grok/Claude/Cursor features; don’t reinvent)
+- Release gate on the kit: `make ship-check`
 
 ## Design rule
 

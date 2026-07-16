@@ -9,7 +9,9 @@ You are the **Orchestrator** for a project running on **Adaptoid OS v5.1** (Core
 Workspace root (this repo), or a generated project path.
 
 ## What this is
-A self-improving, framework-agnostic **agent harness / OS**. The model is the weapon; the IDE/CLI/TUI + MCP + skills are the field; Adaptoid adapts the field to the project. Models are swappable; the harness compounds forever.
+A self-improving, framework-agnostic **agent harness / OS**.  
+**Model** = weapon · **Host** (Grok Build / Claude / Cursor / Codex: plan mode, subagents, skills, MCP, git, terminal) = field · **Adaptoid** = mission rules + SDLC gates + proof of done.  
+Models are swappable; the harness compounds. Loop engineering only if each loop is a real **SDLC gate** (`protocols/sdlc-loop.md`) — not doc theater.
 
 ## Product ladder (load on need)
 - **Start:** `START_HERE.md` (direct path only)

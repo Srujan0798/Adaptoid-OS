@@ -1,5 +1,12 @@
 # Adaptoid OS Changelog
 
+## v5.1.1 — Jul 2026 — SDLC loop + host capabilities
+- **`protocols/sdlc-loop.md`** — Agile SDLC gates (plan→maintain); anti-waste rules
+- **`workflows/core/sdlc-agile.yaml`** — machine-readable stages
+- **`core/HOST-CAPABILITIES.md`** — Grok Build / Claude / Cursor features mapped to harness (use host, don’t reinvent)
+- **`conductor init-wave --sdlc`** — PLAN/DESIGN/BUILD/TEST/SHIP task briefs
+- Engine copies SDLC docs into generated projects; cold-start + START_HERE updated
+
 ## v5.1.0 — Jul 2026 — Lean Core product
 - **Archived** launch kits, research dumps, super-adaptoid theater, extra examples, multi-channel/vault stubs → `docs/historical/attic-v5.1-lean/`
 - Dogfood/tests skip optional Pro protocols when archived

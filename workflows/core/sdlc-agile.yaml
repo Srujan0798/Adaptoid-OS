@@ -1,0 +1,54 @@
+# Agile SDLC workflow — default for Adaptoid Core (T1+)
+# Each wave is a thin vertical slice; stages are gates, not paperwork.
+name: sdlc-agile
+version: "5.1"
+description: >
+  Plan → requirements → design (light) → build → test → deploy/ship → maintain.
+  Agile: repeat per wave. Waterfall only when tier/compliance forces it.
+
+methodology: agile   # agile | waterfall | devops
+reference: protocols/sdlc-loop.md
+
+stages:
+  - id: plan
+    sdlc: [1, 2]          # planning + requirements
+    artifacts: [PROJECT-INTENT.md, HANDOFF.md]
+    gate: "intent has success_criteria + falsification"
+  - id: design
+    sdlc: [3]
+    artifacts: [plan/, work/<wave>/tasks/*.md]
+    gate: "tasks list disjoint writes + acceptance"
+  - id: build
+    sdlc: [4]
+    artifacts: [src/, app/, … under writes]
+    gate: "code exists; no OUT-scope freebies"
+  - id: test
+    sdlc: [5]
+    artifacts: [work/reports/, tests/]
+    gate: "acceptance exit 0 + evidence in report"
+  - id: ship
+    sdlc: [6]
+    artifacts: [release / deploy notes]
+    gate: "bash orchestrator/scripts/preflight.sh ."
+  - id: maintain
+    sdlc: [7]
+    artifacts: [HANDOFF.md rewritten]
+    gate: "next wave listed; state replaced not appended"
+
+wave_default:
+  name: wave-1
+  slice: "smallest vertical feature that proves the product"
+  tasks_hint:
+    - "01-plan-intent"
+    - "02-design-slice"
+    - "03-build"
+    - "04-test"
+    - "05-preflight-ship"
+
+host_features_used:
+  - plan_mode
+  - subagents
+  - skills
+  - terminal
+  - git
+  - code_review

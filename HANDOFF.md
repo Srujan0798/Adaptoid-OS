@@ -14,12 +14,12 @@ Keep Adaptoid a direct, usable harness: brief → project folder → agent finis
 ## Done
 - Core / Pro / Lite ladder
 - Host emission + conductor + ship-check + CI
-- Direct docs: `START_HERE.md`, `PRODUCT.md`
-- **Lean cut:** launch/research/protocol-theater archived → `docs/historical/attic-v5.1-lean/`
+- Lean attic cut
+- **SDLC loop** + **host capabilities** map (v5.1.1): `init-wave --sdlc`
 
 ## Next
-1. User pastes **their** brief into the engine  
-2. Improve Core only when real use exposes gaps  
+1. User pastes **their** brief → engine → `init-wave --sdlc`  
+2. Improve Core only when real use exposes gaps
 
 ## Do NOT
 - Pull attic material back into always-load without need  

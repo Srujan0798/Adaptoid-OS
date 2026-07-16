@@ -12,11 +12,14 @@ python3 adaptor/engine.py \
   --output ../my-project \
   --core-only \
   --host all
+
+python3 conductor/conductor.py init-wave --project ../my-project --sdlc
 ```
 
-Then open `../my-project` in Claude / Cursor / Codex / Grok and build.
+Then open `../my-project` in **Grok Build / Claude / Cursor / Codex** and run the SDLC loop  
+(plan → build → test → ship). Host tools do execution; Adaptoid enforces gates + evidence.
 
-See `START_HERE.md`.
+See `START_HERE.md` · `protocols/sdlc-loop.md` · `core/HOST-CAPABILITIES.md`.
 
 ## What shipped
 

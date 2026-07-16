@@ -112,6 +112,21 @@ else
   echo "  FAIL: conductor reports=$n_reports"
   rc=1
 fi
+# SDLC init
+python3 "$ROOT/conductor/conductor.py" init-wave --project "$TMPDIR/cproj" --wave wave-2 --sdlc >/dev/null
+n_sdlc=$(find "$TMPDIR/cproj/work/wave-2/tasks" -name '*.md' 2>/dev/null | wc -l | tr -d ' ')
+if [ "$n_sdlc" -ge 5 ]; then
+  echo "  PASS: conductor --sdlc ($n_sdlc stage tasks)"
+else
+  echo "  FAIL: sdlc tasks=$n_sdlc"
+  rc=1
+fi
+if [ -f "$ROOT/protocols/sdlc-loop.md" ] && [ -f "$ROOT/core/HOST-CAPABILITIES.md" ]; then
+  echo "  PASS: sdlc-loop + HOST-CAPABILITIES present"
+else
+  echo "  FAIL: missing sdlc docs"
+  rc=1
+fi
 rm -rf "$TMPDIR"
 
 # Test: calibration generator produces 50 cases

@@ -19,9 +19,12 @@
 | Path | Load when |
 |---|---|
 | `adaptor/engine.py` | create a project from a brief |
-| `adaptor/host_emit.py` | host adapters (Claude/Cursor/…) |
+| `adaptor/host_emit.py` | host adapters (Claude/Cursor/Grok/…) |
 | `core/` | Core kit definition |
-| `conductor/conductor.py` | wake / init-wave / dispatch |
+| `core/HOST-CAPABILITIES.md` | map host features (plan mode, MCP, …) → harness |
+| `conductor/conductor.py` | wake / init-wave `--sdlc` / dispatch |
+| `protocols/sdlc-loop.md` | correct Agile SDLC gates (not theater) |
+| `workflows/core/sdlc-agile.yaml` | machine-readable stage map |
 | `templates/` | project skeleton |
 | `archetypes/` | project type |
 | `validators/` | preflight / ship-check |
@@ -33,6 +36,7 @@
 
 ```bash
 python3 adaptor/engine.py --brief "YOUR IDEA" --output ../proj --core-only --host all
+python3 conductor/conductor.py init-wave --project ../proj --sdlc
 ```
 
 ## Load on trigger only
