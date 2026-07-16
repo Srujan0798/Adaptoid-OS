@@ -1,63 +1,34 @@
-# Example: Core Finish Path (dogfood proof)
+# Example: Core usage (direct)
 
-> **Product claim:** any model + any host + Adaptoid Core → project scaffold that agents can complete without the usual failure modes.
+How to use Adaptoid **from this repo only** — no external demo apps.
 
-## Brief
-
-```
-48h hackathon: realtime collab whiteboard with presence cursors
-```
-
-## Commands (evidence)
+## Command
 
 ```bash
-# From Adaptoid-OS root
+# From Adaptoid-OS root — replace the brief with YOUR project
 python3 adaptor/engine.py \
-  --brief "48h hackathon: realtime collab whiteboard with presence cursors" \
-  --output ./examples/core-finish/generated \
+  --brief "YOUR project one-liner" \
+  --output ../my-project \
   --core-only \
-  --host all \
-  --skip-verify
+  --host all
 
-python3 conductor/conductor.py init-wave \
-  --project ./examples/core-finish/generated \
-  --wave wave-1 -n 3
-
-python3 conductor/conductor.py dispatch \
-  --project ./examples/core-finish/generated \
-  --wave wave-1 --mode stub
-
-bash ./examples/core-finish/generated/orchestrator/scripts/preflight.sh \
-  ./examples/core-finish/generated
+python3 conductor/conductor.py init-wave --project ../my-project -n 3
+bash ../my-project/orchestrator/scripts/preflight.sh ../my-project
 ```
 
-## Expected surfaces
+## What you get (in `../my-project`)
 
-| File | Host |
+| File | Purpose |
 |---|---|
-| `AGENTS.md` | Codex / OpenCode / Grok / generic |
+| `AGENTS.md` | Any host (Codex, OpenCode, Grok, …) |
 | `CLAUDE.md` | Claude Code |
 | `.cursor/rules/adaptoid.mdc` | Cursor |
-| `kernel/*` | always |
-| `HANDOFF.md` | session continuity |
-| `work/reports/wave-1/*.report.md` | evidence after dispatch |
+| `kernel/` | Always-load laws |
+| `HANDOFF.md` | Session continuity |
+| `PROJECT-INTENT.md` | Done means + falsification |
+| `orchestrator/scripts/preflight.sh` | Evidence gate |
 
-## Before / after (harness)
+## Next
 
-| Without Core | With Core |
-|---|---|
-| Cold chat, no HANDOFF | `conductor wake` orients from files |
-| "Done" with no evidence | Reports require evidence block |
-| Host lock-in (CLAUDE.md only) | Same intent → many hosts |
-| Scope freebies | PROJECT-INTENT IN/OUT box |
-
-## Failure modes this path exercises
-
-- FM-08 scope creep — INTENT OUT
-- FM-09 false done — report evidence
-- FM-13 parallel collision — `check-disjoint`
-- FM-14 lost handoff — HANDOFF rewrite on dispatch
-
-## Note
-
-`generated/` is produced by the engine; re-run commands above to refresh. Do not hand-edit as source of truth — the engine is.
+Open `../my-project` in your coding agent and build **your** product there.  
+Adaptoid only set the harness; it does not implement your app features.

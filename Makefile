@@ -1,21 +1,23 @@
 .PHONY: help dogfood preflight health install test clean \
-	bench cal core-demo ship-check conductor-help version
+	bench cal ship-check conductor-help version
 
 VERSION := $(shell cat VERSION 2>/dev/null || echo 5.1.0)
 
 help:
 	@echo "Adaptoid OS v$(VERSION) — Make targets"
 	@echo ""
+	@echo "  make ship-check   — full product gate (use this)"
 	@echo "  make dogfood      — kit self-validation"
+	@echo "  make test         — full test suite"
+	@echo "  make bench        — Core speed/correctness"
+	@echo "  make cal          — calibration smoke"
 	@echo "  make preflight    — validators on this repo"
 	@echo "  make health       — health check"
-	@echo "  make test         — full test suite"
-	@echo "  make bench        — Core speed/correctness benchmarks"
-	@echo "  make cal          — generate + smoke calibration cases"
-	@echo "  make core-demo    — generate demo Core project under /tmp"
-	@echo "  make ship-check   — release gate (dogfood+tests+bench+cal)"
-	@echo "  make install      — one-command setup"
-	@echo "  make clean        — remove temp files"
+	@echo "  make install      — install script"
+	@echo "  make clean        — temp files"
+	@echo ""
+	@echo "Generate a project (direct):"
+	@echo "  python3 adaptor/engine.py --brief 'YOUR IDEA' --output ../proj --core-only --host all"
 
 dogfood:
 	bash validators/dogfood.sh
@@ -37,17 +39,6 @@ bench:
 
 cal:
 	bash calibration/run_calibration_smoke.sh
-
-core-demo:
-	python3 adaptor/engine.py \
-		--brief "48h hackathon: realtime collab whiteboard" \
-		--output /tmp/adaptoid-core-demo \
-		--core-only \
-		--host all \
-		--skip-verify
-	python3 conductor/conductor.py init-wave --project /tmp/adaptoid-core-demo -n 3
-	python3 conductor/conductor.py status --project /tmp/adaptoid-core-demo
-	@echo "Demo at /tmp/adaptoid-core-demo"
 
 ship-check:
 	bash scripts/ship_check.sh

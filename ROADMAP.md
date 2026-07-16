@@ -13,9 +13,10 @@ Portable harness people can finish projects with.
 - [x] **Conductor** thin runtime: status / wake / init-wave / dispatch / disjoint / handoff
 - [x] **Benchmarks** (`benchmarks/run_bench.sh`)
 - [x] **Calibration** 50 harness cases + smoke runner
-- [x] Dogfood example path (`examples/core-finish/`)
+- [x] Direct usage docs (`START_HERE.md`, `examples/core-finish/`)
 - [x] **Ship gate** (`make ship-check` / `scripts/ship_check.sh`)
 - [x] Lite OS_SETUP + 00-INVOCATION refreshed for hosts/Core
+- [x] No external demo apps required — all work in this repo
 
 ## v5.0 — Public Product Layer + Super-Adaptoid (SHIPPED)
 - Professional open-source README and INDEX rewrite

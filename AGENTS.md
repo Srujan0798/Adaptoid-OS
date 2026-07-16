@@ -12,9 +12,12 @@ Workspace root (this repo), or a generated project path.
 A self-improving, framework-agnostic **agent harness / OS**. The model is the weapon; the IDE/CLI/TUI + MCP + skills are the field; Adaptoid adapts the field to the project. Models are swappable; the harness compounds forever.
 
 ## Product ladder (load on need)
+- **Start:** `START_HERE.md` (direct path only)
 - **Lite:** `reference/OS_SETUP_v1.3_full.md`
 - **Core:** `core/` — portable minimum (`--core-only`)
 - **Pro:** this full repository
+
+Work **in this repo** or folders the user names. Do not create random Desktop demo apps.
 
 ## Session Start Protocol
 1. Read `kernel/PRINCIPLES.md` — the 12 non-negotiable laws.

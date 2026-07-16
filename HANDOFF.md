@@ -1,42 +1,27 @@
-# HANDOFF — Adaptoid OS kit (this repo)
+# HANDOFF — Adaptoid OS (this repo only)
 
-> **Replace, never append.** Cold sessions for kit maintainers start here.
+> Replace, never append. Work stays **in this repository**.
 
 ## Status
 - **Active wave:** wave-1
-- **Active task:** maintenance / dogfood lessons only
-- **Release:** v5.1.0 product complete (see `VERSION`)
+- **Active task:** maintain Core path; no external demo projects
+- **Release:** v5.1.0 (see `VERSION`)
 - **Last updated:** 2026-07-16
-- **Branch:** `main`
 
-## Goal (one line)
-Keep the portable harness (Lite / Core / Pro) shippable: any host, any model, finishable projects.
+## Goal
+Keep Adaptoid a direct, usable harness: brief → project folder → agent finishes work.
 
-## Done so far
-- Core package + host emission (`agents`, `claude`, `cursor`, `codex`, `grok`)
-- Conductor runtime (wake, init-wave, dispatch stub/shell, HANDOFF rewrite)
-- Benchmarks + 50 harness calibration cases + `make ship-check`
-- CI workflow validates dogfood + tests + bench + cal smoke
-- Real dogfood: hackathon whiteboard brief → shell PASS reports
+## Done
+- Core / Pro / Lite ladder
+- Host emission + conductor + ship-check + CI
+- Direct docs: `START_HERE.md`, `PRODUCT.md`
+- **Lean cut:** launch/research/protocol-theater archived → `docs/historical/attic-v5.1-lean/`
 
-## Next (ordered)
-1. External dogfood on real user projects (collect FMs only with evidence)
-2. Optional: deeper host hooks when a host's lifecycle events are needed
-3. Do **not** expand multi-channel / enterprise without demand
-
-## Pending decisions
-- None blocking v5.1
-
-## Blockers
-- None
-
-## Evidence links
-- `PRODUCT.md` — definition of done
-- `make ship-check` — release gate
-- `CHANGELOG.md` — v5.1 entries
-- `core/README.md` — Core ladder
+## Next
+1. User pastes **their** brief into the engine  
+2. Improve Core only when real use exposes gaps  
 
 ## Do NOT
-- Bloat kernel beyond ~2K tokens
-- Add multi-channel/enterprise “for completeness”
-- Claim model quality wins without harness evidence
+- Pull attic material back into always-load without need  
+- Create random demo apps outside this repo  
+- Expand protocol surface without product need

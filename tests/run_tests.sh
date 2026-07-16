@@ -72,12 +72,17 @@ done
 [ "$ok" -eq 1 ] && echo "  PASS: core-only host all surfaces present"
 rm -rf "$TMPDIR"
 
-# Test: Super-Adaptoid protocol validators (v5.0)
-echo "Test: super-adaptoid validators"
-for v in check_consciousness check_memory_identity check_evolution check_proactive_assistant \
-         check_hidden_gems check_fable5 check_super_prompt; do
-  bash "$ROOT/validators/$v.sh" "$ROOT" || rc=1
-done
+# Test: optional Pro protocol validators (skip if archived)
+if [ -d "$ROOT/protocols/super-adaptoid" ]; then
+  echo "Test: pro protocol validators"
+  for v in check_consciousness check_memory_identity check_evolution check_proactive_assistant \
+           check_hidden_gems check_fable5 check_super_prompt; do
+    bash "$ROOT/validators/$v.sh" "$ROOT" || rc=1
+  done
+else
+  echo "Test: pro protocol validators"
+  echo "  SKIP: protocols/super-adaptoid archived (lean kit)"
+fi
 
 # Test: Core package presence
 echo "Test: core package present"
@@ -124,10 +129,11 @@ fi
 echo "Test: claw_bridge"
 python3 "$ROOT/tests/test_claw_bridge.py" || rc=1
 
-# Test: VERSION + PRODUCT present
+# Test: product markers
 echo "Test: product markers"
-if [ -f "$ROOT/VERSION" ] && [ -f "$ROOT/PRODUCT.md" ] && [ -f "$ROOT/HANDOFF.md" ]; then
-  echo "  PASS: VERSION + PRODUCT.md + HANDOFF.md"
+if [ -f "$ROOT/VERSION" ] && [ -f "$ROOT/PRODUCT.md" ] && [ -f "$ROOT/HANDOFF.md" ] \
+   && [ -f "$ROOT/START_HERE.md" ]; then
+  echo "  PASS: VERSION + PRODUCT + HANDOFF + START_HERE"
 else
   echo "  FAIL: missing product markers"
   rc=1

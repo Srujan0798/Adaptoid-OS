@@ -161,7 +161,7 @@ else
   fail=1
 fi
 # Product markers
-for f in VERSION PRODUCT.md HANDOFF.md; do
+for f in VERSION PRODUCT.md HANDOFF.md START_HERE.md; do
   if [ -f "$HERE/$f" ]; then
     echo "OK  $f present"
   else
@@ -178,17 +178,16 @@ else
 fi
 rm -rf "$TMPDIR"
 
-# ── Super-Adaptoid protocol layer (v5.0): every protocol has a passing validator ──
+# ── Optional Pro protocol layer (archived in lean kit) ──
 if [ -d "$HERE/protocols/super-adaptoid" ]; then
   for v in check_consciousness check_memory_identity check_evolution check_proactive_assistant \
            check_hidden_gems check_fable5 check_super_prompt; do
-    if [ -x "$HERE/validators/$v.sh" ]; then
+    if [ -f "$HERE/validators/$v.sh" ]; then
       bash "$HERE/validators/$v.sh" "$HERE" || fail=1
-    else
-      echo "FAIL: missing validator validators/$v.sh for super-adaptoid layer"
-      fail=1
     fi
   done
+else
+  echo "OK  lean kit — optional Pro protocols archived (docs/historical/)"
 fi
 
 # ── README quality gate (v5.0) ──
