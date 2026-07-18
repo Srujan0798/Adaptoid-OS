@@ -3,8 +3,9 @@
 | Field | Value |
 |---|---|
 | Started | 2026-07-18T08:18Z |
-| Loop | **every 20 minutes** — scheduler **`019f745f24dc`** (≥5 subagents/wave) |
-| Status | **IN PROGRESS — ocean OPEN · continuous 20m** |
+| Loop | **PAUSED** (was every 20m job `019f745f24dc` — cancelled 2026-07-18) |
+| Status | **HOLD — ocean OPEN · handoff to next agent** |
+| Resume guide | `HANDOFF-NEXT-AGENT.md` |
 | Honest coverage | **≪ 1%** of agentic surface |
 | Waves completed | **W1–W4** (multi-agent) |
 | Elite draft | `elite/ELITE-10-PERCENT.md` (**DRAFT**) |
