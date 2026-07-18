@@ -1,5 +1,10 @@
 # Adaptoid OS Changelog
 
+## v5.2.0 — Jul 2026 — Kill OS_SETUP_v1.3 name confusion
+- **Lite = only `ADAPTOID-LITE.md`** (repo root + Desktop)
+- `reference/OS_SETUP_v1.3_full.md` is a **stub redirect**, not a second product
+- Docs/USE say one name only
+
 ## v5.1.9 — Jul 2026 — Lite = one file ADAPTOID-LITE.md
 - **THE Lite product** is repo root **`ADAPTOID-LITE.md`** (ultimate standalone, one file)
 - Merged Desktop OS_SETUP v2.0 + SHIP SYSTEM + host playbook

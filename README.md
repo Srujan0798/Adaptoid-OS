@@ -9,7 +9,7 @@
 
 > Hand a **project brief** + **Lite file** or **this Core folder** → model adapts the environment and ships with evidence.
 
-[Use it](USE.md) · [**Lite = ADAPTOID-LITE.md**](ADAPTOID-LITE.md) · [SHIP SYSTEM](core/SHIP-SYSTEM.md) · [Flow](FLOW.md)
+[Use it](USE.md) · [Lite = ADAPTOID-LITE.md](ADAPTOID-LITE.md) · [Flow](FLOW.md)
 
 </div>
 
@@ -27,11 +27,11 @@ Agent projects fail from false “done”, lost handoff, and no test/ship gate �
 
 | | What | Where |
 |---|---|---|
-| **Lite** | **One ultimate standalone md** | **[`ADAPTOID-LITE.md`](ADAPTOID-LITE.md)** (repo root) |
-| **Core** | **This entire repository** | engine, SHIP-SYSTEM, validators, … |
+| **Lite** | One standalone md | **[`ADAPTOID-LITE.md`](ADAPTOID-LITE.md)** |
+| **Core** | This whole repo | engine + SHIP-SYSTEM + validators |
 
-**Lite:** open/paste `ADAPTOID-LITE.md` + brief → “Use Adaptoid Lite Ultimate. Complete it.”  
-Desktop: `~/Desktop/ADAPTOID-LITE.md`  
+**Lite:** paste `ADAPTOID-LITE.md` + brief.  
+(`OS_SETUP_v1.3` was an old filename — not the product name.)  
 
 **Core:**
 ```bash

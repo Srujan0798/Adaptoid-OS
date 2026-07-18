@@ -170,17 +170,26 @@ for f in VERSION PRODUCT.md HANDOFF.md START_HERE.md FLOW.md USE.md core/SHIP-SY
     fail=1
   fi
 done
-# THE Lite product is root ADAPTOID-LITE.md (ultimate standalone)
+# THE only Lite product
 if [ ! -f "$HERE/ADAPTOID-LITE.md" ]; then
-  echo "FAIL: missing ADAPTOID-LITE.md (the one standalone Lite file)"
+  echo "FAIL: missing ADAPTOID-LITE.md"
   fail=1
-elif grep -q "THE ONE STANDALONE FILE" "$HERE/ADAPTOID-LITE.md" \
-   && grep -q "0S. SHIP SYSTEM" "$HERE/ADAPTOID-LITE.md" \
+elif grep -q "THE ONE STANDALONE FILE\|Adaptoid Lite Ultimate\|0S. SHIP SYSTEM" "$HERE/ADAPTOID-LITE.md" \
    && grep -q "Adaptor Engine" "$HERE/ADAPTOID-LITE.md"; then
-  echo "OK  ADAPTOID-LITE.md ultimate markers present"
+  echo "OK  ADAPTOID-LITE.md is the ultimate standalone Lite"
 else
-  echo "FAIL: ADAPTOID-LITE.md missing Ultimate / SHIP / Adaptor markers"
+  echo "FAIL: ADAPTOID-LITE.md incomplete"
   fail=1
+fi
+# Old path must NOT be a second full Lite (must be stub only)
+if [ -f "$HERE/reference/OS_SETUP_v1.3_full.md" ]; then
+  lines=$(wc -l < "$HERE/reference/OS_SETUP_v1.3_full.md" | tr -d ' ')
+  if [ "$lines" -gt 40 ]; then
+    echo "FAIL: OS_SETUP_v1.3_full.md still a full file ($lines lines) — must be stub redirect"
+    fail=1
+  else
+    echo "OK  OS_SETUP_v1.3 is stub only (legacy name)"
+  fi
 fi
 # Disconnected top-level modules must stay archived
 for d in claw_bridge skills multi-channel vault examples setup slash-commands patterns philosophy memory-bank; do

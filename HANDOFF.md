@@ -5,15 +5,14 @@
 ## Status
 - **Active wave:** wave-1
 - **Active task:** maintain single spine (`FLOW.md`)
-- **Release:** v5.1.9 (see `VERSION`)
+- **Release:** v5.2.0 (see `VERSION`)
 - **Last updated:** 2026-07-18
 
 ## Goal
-Lite = one file `ADAPTOID-LITE.md` · Core = this folder.
+Lite = `ADAPTOID-LITE.md` only · Core = this folder · no OS_SETUP_v1.3 product.
 
 ## Done
-- Final ultimate standalone Lite at repo root + Desktop
-- SHIP-SYSTEM + playbook inside that file + Core
+- OS_SETUP_v1.3 reduced to stub; one Lite name everywhere
 
 ## Next
 1. User real brief

@@ -1,62 +1,32 @@
 # How to use Adaptoid
 
-## Two things only
+## Only two things
 
 | | What | Where |
 |---|---|---|
-| **Lite** | **ONE standalone markdown file** | **`ADAPTOID-LITE.md`** (repo root) |
-| **Core** | **This whole folder** | the `Adaptoid-OS` repo |
+| **Lite** | **One standalone file** | **`ADAPTOID-LITE.md`** (repo root) |
+| **Core** | **Whole folder** | this `Adaptoid-OS` repo |
 
-Same Lite file also on your Desktop: `~/Desktop/ADAPTOID-LITE.md`  
-(and `~/Desktop/OS_SETUP.md` — same content, old name)
+**`OS_SETUP_v1.3` is dead.** Old name. Do not use it. It only points here now.
 
----
-
-## Lite (the single file)
-
-**What I did:**  
-Merged your Desktop `OS_SETUP.md` (v2.0: structure + failure modes + archetypes + adaptor)  
-**with** Adaptoid SHIP SYSTEM + host playbook  
-into **one final ultimate standalone file.**
-
-**That file is:**
-
-```
-/Users/srujansai/Desktop/Adaptoid-OS/ADAPTOID-LITE.md
-```
-
-### How to use it
-1. Open Grok Build (or Claude / Cursor)  
-2. **Paste the whole `ADAPTOID-LITE.md`**  
-3. Paste your project brief  
-4. Say: **Use Adaptoid Lite Ultimate. Adapt the environment. Complete the project.**
+Desktop Lite: `~/Desktop/ADAPTOID-LITE.md`
 
 ---
 
-## Core (the folder)
+## Lite
+
+1. Open **`ADAPTOID-LITE.md`**
+2. Paste all of it into Grok/Claude
+3. Paste your brief
+4. Say: *Use Adaptoid Lite. Adapt the environment. Complete the project.*
+
+---
+
+## Core
 
 ```bash
 cd /Users/srujansai/Desktop/Adaptoid-OS
 python3 adaptor/engine.py --brief "YOUR BRIEF" --output ../my-project --core-only --host all
 ```
 
-Open `../my-project` and complete wave-1.
-
----
-
-## Magic prompt
-
-```
-You are using Adaptoid.
-
-MODE: Lite   (or Core)
-FILE/FOLDER: <pasted ADAPTOID-LITE.md  OR  path to Adaptoid-OS / generated project>
-
-BRIEF:
-"""
-...
-"""
-
-Adapt the environment for this brief. Intent-lock if needed.
-Follow SHIP SYSTEM (SDLC + host tools). Complete wave-1 with evidence.
-```
+Open `../my-project` and complete.

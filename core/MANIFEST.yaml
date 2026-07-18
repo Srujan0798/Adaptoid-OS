@@ -5,7 +5,7 @@ version: "5.1.8"
 name: adaptoid
 
 surfaces:
-  lite: "reference/OS_SETUP_v1.3_full.md (= ADAPTOID-LITE.md) — ultimate standalone v3.0"
+  lite: "ADAPTOID-LITE.md (repo root) — only standalone Lite"
   core: "this repository (engine, SHIP-SYSTEM, playbook, validators, …)"
 
 ship_os: "core/SHIP-SYSTEM.md"   # SDLC × host toolkit

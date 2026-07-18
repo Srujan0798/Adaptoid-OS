@@ -1,14 +1,10 @@
 # Start here
 
-## Lite = one file
-**`ADAPTOID-LITE.md`** (in this folder root)  
-Desktop: **`~/Desktop/ADAPTOID-LITE.md`**
+| | |
+|---|---|
+| **Lite** | **`ADAPTOID-LITE.md`** — the one standalone file |
+| **Core** | this whole **Adaptoid-OS** folder |
 
-Paste it + your brief → “Use Adaptoid Lite Ultimate. Complete the project.”
+`OS_SETUP_v1.3` = old name. Ignore it. Use **ADAPTOID-LITE.md**.
 
-## Core = this whole folder
-```bash
-python3 adaptor/engine.py --brief "YOUR BRIEF" --output ../my-project --core-only --host all
-```
-
-Details: **USE.md**
+**USE.md** for full steps.
