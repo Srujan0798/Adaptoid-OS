@@ -1,5 +1,12 @@
 # Adaptoid OS Changelog
 
+## v5.2.1 — Jul 2026 — Final product close
+- FLOW/USE/PRODUCT/README/core/README/install aligned: Lite=`ADAPTOID-LITE.md`, Core=folder
+- Entry docs slimmed; legacy OS_SETUP / short LITE paths are stubs or attic only
+- Lite invocation + templates README no longer point at OS_SETUP as product
+- AUDIT closed as final; tests require ADAPTOID-LITE + Core ship docs
+- Ready to use (`make ship-check`)
+
 ## v5.2.0 — Jul 2026 — Kill OS_SETUP_v1.3 name confusion
 - **Lite = only `ADAPTOID-LITE.md`** (repo root + Desktop)
 - `reference/OS_SETUP_v1.3_full.md` is a **stub redirect**, not a second product

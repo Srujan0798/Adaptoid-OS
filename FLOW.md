@@ -1,101 +1,53 @@
-# Product flow — every live path is on this spine
+# FLOW — final product map
 
-> If a file is not listed here and not under `docs/historical/`, it is a bug.  
-> **One flow.** No side timelines.
+**Two surfaces. One spine. Start using.**
 
 ```
-USE.md / START_HERE.md
-    │
-    ├── Lite: paste reference/OS_SETUP_v1.3_full.md + brief → adapt & complete
-    │
-    ▼ Core (this entire folder):
-adaptor/engine.py --sdlc ──host──►  AGENTS.md / CLAUDE.md / Cursor rules
-    │                          (core/hosts/*)
-    ├── kernel/                always-load laws
-    ├── core/                  kit + HOST-CAPABILITIES
-    ├── templates/             project skeleton
-    ├── archetypes/            brief → type
-    ├── PROJECT-INTENT + HANDOFF + config
-    ├── protocols/sdlc-loop.md + 4 security/verify protocols
-    └── validators/  ──► preflight.sh
-              │
-              ▼
-conductor/conductor.py  init-wave --sdlc → work/wave-1/tasks
-              │
-              ▼
-     PLAN → DESIGN → BUILD → TEST → SHIP (preflight)
-              │
-              ▼
-     rewrite HANDOFF → next wave
+START_HERE / USE
+       │
+       ├── LITE  →  paste ADAPTOID-LITE.md + brief → adapt & complete
+       │
+       └── CORE  →  this whole folder
+                      │
+                      ▼
+                 adaptor/engine.py  (--sdlc default)
+                      │
+                      ├── kernel/  core/SHIP-SYSTEM  HOST-OPERATING-PLAYBOOK
+                      ├── templates/ archetypes/ failure-modes/
+                      ├── AGENTS/CLAUDE + HANDOFF + INTENT
+                      └── validators → preflight
+                      │
+                      ▼
+                 conductor tasks: intent-lock → plan → … → maintain
+                      │
+                      ▼
+                 host agent (Grok/Claude/Cursor) ships with evidence
 ```
 
-## Live inventory (product tree only)
+---
 
-### Entry
-| Path | Role |
+## Lite
+
+| | |
 |---|---|
-| `USE.md` | **how to hand Lite file or Core folder + brief** |
-| **`ADAPTOID-LITE.md`** | **THE only Lite product (standalone)** |
-| `reference/OS_SETUP_v1.3_full.md` | **legacy name only** — stub redirect, not the product |
-| `START_HERE.md` | short entry |
-| `PRODUCT.md` | planned vs done |
-| `FLOW.md` | this map |
-| `INDEX.md` | progressive disclosure |
-| `AGENTS.md` / `HANDOFF.md` | kit cold-start + state |
-| `README.md` | GitHub front door |
-| `VERSION` | semver |
+| **File** | **`ADAPTOID-LITE.md`** (repo root only) |
+| **Desktop** | `~/Desktop/ADAPTOID-LITE.md` |
+| **Not Lite** | `reference/OS_SETUP_v1.3_*` (legacy stub only) |
 
-### Runtime (executable)
-| Path | Role |
+## Core (this folder)
+
+| Area | Paths |
 |---|---|
-| `adaptor/engine.py` | brief → project |
-| `adaptor/host_emit.py` | host surfaces |
-| `conductor/conductor.py` | SDLC tasks / dispatch / wake |
-| `scripts/bootstrap.sh` | thin wrapper → engine |
-| `scripts/ship_check.sh` | kit release gate |
-| `scripts/healthcheck.sh` | health |
-| `install.sh` | clone + dogfood |
-| `Makefile` | make ship-check / test / … |
+| Entry | `USE.md` `START_HERE.md` `PRODUCT.md` `FLOW.md` `README.md` |
+| Engine | `adaptor/engine.py` `adaptor/host_emit.py` |
+| Conductor | `conductor/conductor.py` |
+| Ship OS | `core/SHIP-SYSTEM.md` `core/HOST-OPERATING-PLAYBOOK.md` `core/hosts/*` |
+| Kernel | `kernel/*` |
+| Protocols | `sdlc-loop` `blast-radius` `verification` `oap-security` `route-sentinel` |
+| Scaffold | `templates/` `archetypes/` `failure-modes/` `schemas/` `tiers/` |
+| Check | `validators/` `scripts/ship_check.sh` |
+| CI | `tests/` `benchmarks/` `calibration/` `.github/` |
 
-### Generated-project inputs
-| Path | Role |
-|---|---|
-| `kernel/*` | laws |
-| `core/*` | Core kit + host templates |
-| `templates/*` | skeleton |
-| `archetypes/*` | type detection |
-| `failure-modes/*` | scar library |
-| `schemas/ProjectIntent.schema.json` | intent schema |
-| `tiers/TIERS.md` | T0–T4 |
-| `core/SHIP-SYSTEM.md` | **product OS: full SDLC × host toolkit** |
-| `core/HOST-OPERATING-PLAYBOOK.md` | **how to proceed** (Grok-style: intent lock, plan→approve, verify) |
-| `protocols/sdlc-loop.md` | short SDLC gates |
-| `protocols/blast-radius.md` | safety |
-| `protocols/verification.md` | verify layers |
-| `protocols/oap-security.md` | tool policy |
-| `protocols/route-sentinel.md` | DAG routes |
-| `workflows/core/sdlc-agile.yaml` | stage machine |
-| `reference/OS_SETUP_v1.3_full.md` | Lite paste path |
-| `reference/ecosystem/SELECTION.md` | human stack notes (engine uses built-in defaults) |
-| `config/claude-code/*` | kit maintainer Claude |
-| `AUDIT.md` | latest competitor-style audit |
+## Ignore
 
-### Validators (preflight + kit)
-All under `validators/` — only scripts wired by `preflight.sh`, `dogfood.sh`, or Core copy list.
-
-### Quality / CI
-| Path | Role |
-|---|---|
-| `tests/*` | host emit + conductor + dogfood |
-| `benchmarks/*` | speed/correctness |
-| `calibration/*` | harness calibration smoke |
-| `.github/workflows/ci.yml` | CI |
-
-### Meta (OSS)
-LICENSE, SECURITY, CONTRIBUTING, CODE_OF_CONDUCT, CHANGELOG, ROADMAP, `.cursorrules`, issue templates
-
-## Not live (archived on purpose)
-
-Everything under `docs/historical/` — old launch kits, research dumps, super-adaptoid, claw_bridge, skills, extra protocols/validators, etc.
-
-Restore only by copying out of attic when a real need appears.
+`docs/historical/` — attic only. Do not load for normal use.

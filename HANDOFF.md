@@ -1,23 +1,26 @@
-# HANDOFF — Adaptoid OS (this repo only)
+# HANDOFF — Adaptoid OS
 
 > Replace, never append.
 
 ## Status
-- **Active wave:** wave-1
-- **Active task:** maintain single spine (`FLOW.md`)
-- **Release:** v5.2.0 (see `VERSION`)
+- **Release:** v5.2.1 FINAL FOR USE
+- **Active wave:** closed — product ready to use
 - **Last updated:** 2026-07-18
 
-## Goal
-Lite = `ADAPTOID-LITE.md` only · Core = this folder · no OS_SETUP_v1.3 product.
+## Surfaces
+- **Lite:** `ADAPTOID-LITE.md`
+- **Core:** this folder + `adaptor/engine.py`
 
 ## Done
-- OS_SETUP_v1.3 reduced to stub; one Lite name everywhere
+- Hybrid Lite ultimate standalone
+- Core engine + SHIP-SYSTEM + playbook + SDLC tasks
+- Cleanup + link pass for final finish
 
-## Next
-1. User real brief
-2. Extend only via FLOW.md
+## Next (user)
+1. Pick Lite or Core  
+2. Real project brief  
+3. Complete wave-1  
 
 ## Do NOT
-- Add top-level modules outside FLOW
-- Restore attic without product need
+- Invent a third Lite path  
+- Load `docs/historical/` for normal work  

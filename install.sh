@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
-# Adaptoid OS — One-Command Installer (v5.1 Core/Pro)
+# Adaptoid OS — One-Command Installer
 set -euo pipefail
 
 REPO_URL="https://github.com/Srujan0798/Adaptoid-OS.git"
 INSTALL_DIR="${1:-$HOME/adaptoid-os}"
 
-echo "⚡ Installing Adaptoid OS (Core + Pro kit)..."
+echo "⚡ Installing Adaptoid OS (Lite + Core)..."
 
 if [ -d "$INSTALL_DIR/.git" ]; then
   echo "Directory $INSTALL_DIR already exists. Updating..."
@@ -23,24 +23,23 @@ echo "🔍 Running dogfood validation..."
 bash validators/dogfood.sh
 
 echo ""
-VER="5.1.0"
+VER="5.2.1"
 [ -f "$INSTALL_DIR/VERSION" ] && VER="$(tr -d '[:space:]' < "$INSTALL_DIR/VERSION")"
 echo "✅ Adaptoid OS v${VER} installed at $INSTALL_DIR"
 echo ""
-echo "Product ladder:"
-echo "  Lite  — reference/OS_SETUP_v1.3_full.md  (paste into any chat)"
-echo "  Core  — engine --core-only --host all     (default for real projects)"
-echo "  Pro   — this full repository"
+echo "Two surfaces:"
+echo "  Lite  — ADAPTOID-LITE.md   (paste into any chat + brief)"
+echo "  Core  — this whole folder  (engine --core-only --host all)"
 echo ""
 echo "Next steps:"
 echo "  cd $INSTALL_DIR"
+echo "  # Lite: open ADAPTOID-LITE.md, paste into agent + brief"
+echo "  # Core:"
 echo "  python3 adaptor/engine.py \\"
 echo "    --brief 'Your project idea' \\"
 echo "    --output ./my-project \\"
 echo "    --core-only \\"
 echo "    --host all"
 echo ""
-echo "  python3 conductor/conductor.py wake --project ./my-project"
 echo "  make ship-check   # full product gate"
-echo ""
-echo "Or: read USE.md — Lite = reference/OS_SETUP_v1.3_full.md | Core = this folder"
+echo "  See USE.md · FLOW.md · PRODUCT.md"

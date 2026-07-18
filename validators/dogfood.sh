@@ -119,6 +119,7 @@ python3 "$HERE/adaptor/engine.py" \
   --skip-verify >/dev/null 2>&1
 core_ok=1
 for f in AGENTS.md CLAUDE.md HANDOFF.md kernel/PRINCIPLES.md \
+         SHIP-SYSTEM.md HOST-OPERATING-PLAYBOOK.md \
          .cursor/rules/adaptoid.mdc .adaptoid-kit; do
   if [ ! -e "$TMPDIR/core-host/$f" ]; then
     echo "FAIL: core-only host emit missing $f"
@@ -126,7 +127,7 @@ for f in AGENTS.md CLAUDE.md HANDOFF.md kernel/PRINCIPLES.md \
     fail=1
   fi
 done
-[ "$core_ok" -eq 1 ] && echo "OK  engine core-only + host adapters"
+[ "$core_ok" -eq 1 ] && echo "OK  engine core-only + host adapters + ship OS"
 # Core package on kit itself
 if [ -f "$HERE/core/MANIFEST.yaml" ] && [ -f "$HERE/core/README.md" ] \
    && [ -f "$HERE/adaptor/host_emit.py" ]; then

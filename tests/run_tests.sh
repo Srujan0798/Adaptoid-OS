@@ -142,14 +142,15 @@ else
   rc=1
 fi
 
-# Test: product markers + flow
+# Test: product markers + flow (Lite = ADAPTOID-LITE.md only)
 echo "Test: product markers"
 if [ -f "$ROOT/VERSION" ] && [ -f "$ROOT/PRODUCT.md" ] && [ -f "$ROOT/HANDOFF.md" ] \
    && [ -f "$ROOT/START_HERE.md" ] && [ -f "$ROOT/FLOW.md" ] && [ -f "$ROOT/USE.md" ] \
-   && [ -f "$ROOT/reference/OS_SETUP_v1.3_full.md" ] && [ ! -f "$ROOT/LITE.md" ]; then
-  echo "  PASS: markers + Lite=OS_SETUP + no root LITE.md"
+   && [ -f "$ROOT/ADAPTOID-LITE.md" ] && [ ! -f "$ROOT/LITE.md" ] \
+   && [ -f "$ROOT/core/SHIP-SYSTEM.md" ] && [ -f "$ROOT/core/HOST-OPERATING-PLAYBOOK.md" ]; then
+  echo "  PASS: markers + Lite=ADAPTOID-LITE.md + Core ship OS + no root LITE.md"
 else
-  echo "  FAIL: missing product markers or misleading LITE.md"
+  echo "  FAIL: missing product markers, Lite, Core ship docs, or misleading LITE.md"
   rc=1
 fi
 # Spine protocols only

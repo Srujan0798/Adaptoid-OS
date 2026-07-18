@@ -1,32 +1,39 @@
-# How to use Adaptoid
+# USE — start using Adaptoid
 
-## Only two things
+## Lite (one file)
 
-| | What | Where |
-|---|---|---|
-| **Lite** | **One standalone file** | **`ADAPTOID-LITE.md`** (repo root) |
-| **Core** | **Whole folder** | this `Adaptoid-OS` repo |
+**`ADAPTOID-LITE.md`** (also `~/Desktop/ADAPTOID-LITE.md`)
 
-**`OS_SETUP_v1.3` is dead.** Old name. Do not use it. It only points here now.
-
-Desktop Lite: `~/Desktop/ADAPTOID-LITE.md`
+1. Paste whole file into Grok Build / Claude / Cursor  
+2. Paste brief  
+3. Say: **Use Adaptoid Lite. Adapt the environment. Complete the project.**
 
 ---
 
-## Lite
-
-1. Open **`ADAPTOID-LITE.md`**
-2. Paste all of it into Grok/Claude
-3. Paste your brief
-4. Say: *Use Adaptoid Lite. Adapt the environment. Complete the project.*
-
----
-
-## Core
+## Core (this folder)
 
 ```bash
-cd /Users/srujansai/Desktop/Adaptoid-OS
-python3 adaptor/engine.py --brief "YOUR BRIEF" --output ../my-project --core-only --host all
+cd /path/to/Adaptoid-OS
+python3 adaptor/engine.py \
+  --brief "YOUR BRIEF" \
+  --output ../my-project \
+  --core-only --host all
 ```
 
-Open `../my-project` and complete.
+Open `../my-project` → follow `SHIP-SYSTEM.md` + `HOST-OPERATING-PLAYBOOK.md` → finish wave-1 with evidence.
+
+---
+
+## Magic prompt
+
+```
+MODE: Lite or Core
+ADAPTOID: <pasted ADAPTOID-LITE.md | path to Adaptoid-OS | generated project>
+BRIEF: """ ... """
+
+Adapt environment. Intent-lock if needed.
+SHIP SYSTEM: plan→requirements→design→build→test→deploy→maintain.
+Use host tools. Evidence or it didn't happen. Rewrite HANDOFF.
+```
+
+**Ignore:** `OS_SETUP_v1.3` (old name / stub only).

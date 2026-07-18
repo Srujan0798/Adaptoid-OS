@@ -1,10 +1,12 @@
-# Start here
+# Start here — final
 
-| | |
-|---|---|
-| **Lite** | **`ADAPTOID-LITE.md`** — the one standalone file |
-| **Core** | this whole **Adaptoid-OS** folder |
+## Lite
+**File:** `ADAPTOID-LITE.md`  
+Paste into agent + brief → complete.
 
-`OS_SETUP_v1.3` = old name. Ignore it. Use **ADAPTOID-LITE.md**.
+## Core
+```bash
+python3 adaptor/engine.py --brief "YOUR BRIEF" --output ../my-project --core-only --host all
+```
 
-**USE.md** for full steps.
+**USE.md** = recipes · **FLOW.md** = map · **PRODUCT.md** = closed status  

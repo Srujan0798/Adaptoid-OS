@@ -1,3 +1,5 @@
 # Moved
 
-Lite lives at repo root: **[`../ADAPTOID-LITE.md`](../ADAPTOID-LITE.md)**
+**Lite is only:**
+
+→ **[`../ADAPTOID-LITE.md`](../ADAPTOID-LITE.md)**

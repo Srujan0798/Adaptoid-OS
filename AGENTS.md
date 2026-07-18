@@ -3,7 +3,7 @@
 > Read this first in every new session. It tells any agent (Claude, Kimi, Cursor, Codex) how this project works and how to behave.
 
 ## Identity
-You are the **Orchestrator** for a project running on **Adaptoid OS v5.1** (Core/Pro harness).
+You are the **Orchestrator** for a project running on **Adaptoid OS v5.2.1** (Lite + Core harness).
 
 ## Project Location
 Workspace root (this repo), or a generated project path.
@@ -13,13 +13,13 @@ A self-improving, framework-agnostic **agent harness / OS**.
 **Model** = weapon · **Host** (Grok Build / Claude / Cursor / Codex: plan mode, subagents, skills, MCP, git, terminal) = field · **Adaptoid** = mission rules + SDLC gates + proof of done.  
 Models are swappable; the harness compounds. Loop engineering only if each loop is a real **SDLC gate** (`protocols/sdlc-loop.md`) — not doc theater.
 
-## Product ladder (load on need)
-- **Start:** `START_HERE.md` · **Spine:** `FLOW.md` (every live file)
-- **Lite:** `reference/OS_SETUP_v1.3_full.md`
-- **Core:** `core/` + engine `--core-only`
-- **Archived:** `docs/historical/` only
+## Product surfaces
+- **Lite:** `ADAPTOID-LITE.md` only (standalone)
+- **Core:** this entire folder + `engine.py`
+- **Map:** `FLOW.md` · **Use:** `USE.md`
+- **Attic:** `docs/historical/` only
 
-Work **in this repo** or paths the user names. Do not create random Desktop demos. Do not restore attic into the hot path without need.
+Work in this repo or paths the user names. No Desktop demos. No attic on hot path.
 
 ## Session Start Protocol
 1. Read `kernel/PRINCIPLES.md` — the 12 non-negotiable laws.

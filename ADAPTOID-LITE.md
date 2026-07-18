@@ -227,7 +227,7 @@ This is why we *never* couple state into worker containers and why `work/` + `ev
 ├── HALL_OF_SHAME.md                   # ⊕T2: failure pattern archive (learning, NOT blame)
 ├── ROADMAP.md                         # ⊕T4: outward-facing long-term roadmap
 ├── STARTUP_ROADMAP.md                 # ⊕T4: vision + ICP + GTM + pricing experiments
-├── OS_SETUP.md                        # ← this file, kept for regeneration
+├── ADAPTOID-LITE.md                   # ← this file (Lite), kept for regeneration
 │
 ├── .claude/                           # ★ MINIMAL — Boris's rule, don't over-build
 │   └── settings.local.json            # permissions, MCP, auto-mode
@@ -1599,7 +1599,7 @@ If any check fails, setup is incomplete. Fix before declaring ready.
 ## 12. Invocation
 
 ```text
-[Paste OS_SETUP.md into Claude Code / Grok Build / Cursor / Codex / Kimi]
+[Paste THIS FILE (ADAPTOID-LITE.md) into Claude Code / Grok Build / Cursor / Codex / Kimi]
 
 Project brief:
 """
@@ -1608,14 +1608,14 @@ Project brief:
 
 Project tier: T<N>   (T1 default; bump for production / compliance / startup)
 
-Use OS-Setup v1.3 to generate the complete project structure.
+Use Adaptoid Lite Ultimate to generate the complete project structure.
 Apply tier-T<N> additions per §1.5.
 Honor the Brain/Hands/Session triad (§1.6).
+Follow SHIP SYSTEM (§0S) and Host Operating Playbook.
 Use the unified skills/commands schema (§4.22): allowed-tools + invocation + subagent.
 Generate evals/ as a first-class directory with starter tasks (§4.23–24).
 Initialize orchestrator/memory/session/ for durable event logging (§4.25).
 Honor blast-radius governance r0–r5 (§4.26).
-Honor all lessons in §10 v1.3.
 Fill all placeholders with project-specific content.
 Create folder structure, write all files; ask me only when you genuinely need a
 decision I haven't given you.

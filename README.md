@@ -1,15 +1,15 @@
 <div align="center">
 
 # Adaptoid OS
-## Agent harness — Lite (standalone md) · Core (this folder)
+## Lite = one file · Core = this folder
 
-[![Version](https://img.shields.io/badge/version-5.1.8-blue)](#)
+[![Version](https://img.shields.io/badge/version-5.2.1-blue)](#)
 [![CI](https://github.com/Srujan0798/Adaptoid-OS/actions/workflows/ci.yml/badge.svg)](https://github.com/Srujan0798/Adaptoid-OS/actions/workflows/ci.yml)
 [![License](https://img.shields.io/badge/license-MIT-yellow)](#)
 
-> Hand a **project brief** + **Lite file** or **this Core folder** → model adapts the environment and ships with evidence.
+> Paste **Lite** or run **Core** with your brief → agent adapts the environment and ships with evidence.
 
-[Use it](USE.md) · [Lite = ADAPTOID-LITE.md](ADAPTOID-LITE.md) · [Flow](FLOW.md)
+[**USE**](USE.md) · [**Lite file**](ADAPTOID-LITE.md) · [FLOW](FLOW.md) · [PRODUCT](PRODUCT.md)
 
 </div>
 
@@ -17,23 +17,17 @@
 
 ## The Problem
 
-Agent projects fail from false “done”, lost handoff, and no test/ship gate — not from missing models.
+Agent projects fail from false “done”, lost handoff, and no ship gate — not from weak models.
 
 ---
 
 ## Quick Start
 
-**Two products only:**
-
-| | What | Where |
+| | What | How |
 |---|---|---|
-| **Lite** | One standalone md | **[`ADAPTOID-LITE.md`](ADAPTOID-LITE.md)** |
-| **Core** | This whole repo | engine + SHIP-SYSTEM + validators |
+| **Lite** | [`ADAPTOID-LITE.md`](ADAPTOID-LITE.md) | Paste + brief → complete |
+| **Core** | This whole repo | Command below |
 
-**Lite:** paste `ADAPTOID-LITE.md` + brief.  
-(`OS_SETUP_v1.3` was an old filename — not the product name.)  
-
-**Core:**
 ```bash
 git clone https://github.com/Srujan0798/Adaptoid-OS.git && cd Adaptoid-OS
 
@@ -41,21 +35,19 @@ python3 adaptor/engine.py \
   --brief "YOUR real project idea" \
   --output ../my-project \
   --core-only --host all
-# --sdlc is default (7 GFG stages). --no-sdlc to skip.
 ```
 
 Open `../my-project` in Grok Build / Claude / Cursor.  
-Full recipes: **[`USE.md`](USE.md)** · Kit health: `make ship-check`
+`make ship-check` verifies the kit.
 
 ---
 
 ## Features
 
-| Safety | Ship OS | Host |
+| Safety | Ship | Host |
 |---|---|---|
-| Failure modes + preflight | GFG SDLC 7 stages | Multi-host AGENTS/CLAUDE/Cursor |
-| Intent + falsification | Required host tools per stage | Plan mode, subagents, MCP, git, … |
-| Blast-radius + OAP | `SHIP-SYSTEM.md` | Evidence before “done” |
+| Failure modes + preflight | SDLC 7 stages + intent lock | Multi-host AGENTS/CLAUDE/Cursor |
+| Evidence required | HOST-OPERATING-PLAYBOOK | Plan mode, terminal, git, … |
 
 ---
 
@@ -63,26 +55,26 @@ Full recipes: **[`USE.md`](USE.md)** · Kit health: `make ship-check`
 
 | | Typical | Adaptoid |
 |---|---|---|
-| Surfaces | Confused packs | **Lite file** or **Core folder** |
-| Process | Ad-hoc chat | **SDLC × host toolkit** |
-| Done | Hope | **preflight + reports** |
+| Surfaces | Messy packs | **Lite file** or **Core folder** |
+| Process | Ad-hoc chat | **SHIP SYSTEM** |
+| Done | Hope | **Commands + preflight** |
 
 ---
 
 ## Architecture
 
 ```
-Lite:  OS_SETUP_v1.3_full.md  →  paste → adapt → complete
-Core:  this folder → engine --sdlc → project → SHIP-SYSTEM → complete
+Lite:  ADAPTOID-LITE.md  →  paste  →  adapt  →  complete
+Core:  this folder       →  engine →  project →  complete
 ```
 
-Every live file: [`FLOW.md`](FLOW.md). Archived only: `docs/historical/`.
+Full map: [FLOW.md](FLOW.md). Attic only: `docs/historical/`.
 
 ---
 
 ## Contributing
 
-[CONTRIBUTING.md](CONTRIBUTING.md) — stay on FLOW.md.
+[CONTRIBUTING.md](CONTRIBUTING.md)
 
 ## License
 

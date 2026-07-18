@@ -1,7 +1,7 @@
 # Adaptoid product surfaces (authoritative)
 # Lite = standalone md only. Core = entire this repository.
 
-version: "5.1.8"
+version: "5.2.1"
 name: adaptoid
 
 surfaces:
