@@ -3,7 +3,7 @@
 > **Honesty:** This is **not** the full agentic world. It is a working distillation of  
 > “concepts the top ~10% of practitioners use that drive ~100% of their leverage.”  
 > Coverage of the ocean: **≪ 1%**. Every wave can rewrite this file.  
-> Last synthesis start: **2026-07-18** (Wave-1 in progress with parallel scrapers).
+> Last synthesis: **2026-07-18** Wave-1 + **W2 Cherny/long-run harness**. Still ≪1%.
 
 ## The stack the elite actually climb
 
@@ -173,9 +173,82 @@ Models (DeepSeek, Kimi training agent patterns) · full official doc diffs weekl
 - MCP deny-by-default (aligns FM-20)  
 
 ### Named community harnesses to watch (not adopt wholesale)
-Claude Code · Codex · OpenCode · Cursor · Cline · Aider · Agentsmith · Citadel · OpenRig · mini-SWE-agent · Odysseus (local workspace) · OpenClaw  
+Claude Code · Codex · OpenCode · Cursor · Cline · Aider · Agentsmith · Citadel · OpenRig · mini-SWE-agent · Odysseus (local workspace) · OpenClaw · Ash (agent=folder) · open-agent-sdk forks  
+
+## Wave-2 additions (2026-07-18 daily loop) — Cherny + long-running harness
+
+### Initializer / coding dual-session harness (Anthropic Eng primary)
+| Artifact | Role |
+|---|---|
+| `init.sh` | How to run + smoke |
+| `claude-progress.txt` (or HANDOFF) | Shift handoff text |
+| `feature_list.json` + `passes` | Only flip after E2E; do not delete tests |
+| `git` commits | Clean mergeable state between sessions |
+
+**Boot ritual every session:** pwd → progress → features → git log → smoke as user → one feature only.
+
+**Named failure modes (add to elite FM language):**
+- **One-shot mid-context death**
+- **Early victory** (declares done after partial progress)
+- **Agentic laziness** (stops multi-part early)
+- **Self-preferential bias** (self-grades own work)
+- **Goal drift** (after compaction)
+
+### Dynamic workflows (Claude Code Jun 2026)
+Host can **write a custom harness per task**. Patterns: fan-out, **adversarial verification**, tournament, loop-until-done, **quarantine** (untrusted readers ≠ privileged actors). Pair **`/loop` + `/goal` + budgets + worktrees**.
+
+### Goals (Codex official)
+**Goal = completion contract** (what true, how checked, constraints) — not unbounded autonomy. Automations = scheduled heartbeat.
+
+### Org ladder (Cherny discourse)
+0 Gated → 1 Assisted → 2 Parallel (~10) → 3 Supervised autonomy (~100) → 4 AI-native (agents spawn agents).  
+**Each step needs new guardrails** (verify, review, permissions, worktrees, cost). Measure **eng-hours saved**, not tokens.
+
+### Harness decay thesis
+Some claim product harness shrinks toward ~100 LOC as models improve. **Elite for Adaptoid: WATCH — do not delete mission gates** while intelligence remains jagged.
+
+### Adaptoid delta update (research only)
+| Concept | Status |
+|---|---|
+| Progress + clean commits between sessions | Aligns HANDOFF/git — keep |
+| Feature JSON `passes` after E2E | **Watch** for multi-day Core templates |
+| Session smoke before BUILD | **Adopt candidate** for playbook |
+| Dynamic host workflows | **Watch** (host-native) |
+| Harness disappearance | **Refuse** as product strategy |
+| Goals language | **Adopt** as acceptance-contract synonym |
+
+---
+
+## Wave-3 additions (2026-07-18 · 20m multi-agent · 6 subagents)
+
+### Species split (don’t confuse products)
+- **Channel daemon** (OpenClaw) · **Workspace cockpit** (Odysseus) · **Repo coding harness** (OpenCode / Claude Code)  
+- Adaptoid orchestrates mission; does not reimplement all three UIs.
+
+### Client-owned tool loops (DeepSeek / Kimi)
+- Re-inject `reasoning_content` on tool turns or multi-step breaks  
+- **Dynamic tool loading** (Kimi K3): search tools → inject schemas mid-loop = progressive tool disclosure  
+- Route heavy model for main / flash for subagents  
+
+### Framework / runtime / harness layers
+- LangGraph = runtime · DeepAgents = harness batteries · Agent SDKs = host loop as library  
+- Adaptoid stays **mission OS** above; steal disk memory, maker≠checker, hard hooks  
+
+### Loop + Goal (official Claude / Codex)
+- **Goal** = measurable end + how checked + constraints (completion contract)  
+- **Loop** = time-cadence proactive work  
+- Migrations: rulebook → mechanical queue on disk → adversarial review → smoke  
+
+### Community / evals / security
+- Discover → Isolate (worktree) → Verify (external) → Persist → Schedule  
+- Leaderboards ≠ ship DoD; steal end-state pytest methodology only  
+- MCP quarantine: no token passthrough, deny-by-default, schema pin  
+
+### Continuous process
+- Research loop now **every 20 minutes** with **≥5 live subagents**  
+- Coverage still ≪1%; improve every fire  
 
 ---
 
 **Ocean still open. This file is a draft sponge, not a finish line.**  
-**Next scheduled wave (every 2h):** pick a MANIFEST “next target” and deepen — do not rewrite history as complete.
+**Next 20m wave:** YC agent startups + CN discourse + OpenClaw threat deep + optional Goal playbook language.

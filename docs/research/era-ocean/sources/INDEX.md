@@ -81,15 +81,48 @@
 | S-20260718-075 | 2026-07-18 | Secondary | MorphLLM Terminal-Bench ranking roundup (verify scores) | https://www.morphllm.com/ai-coding-agent | wave-20260718-w1-hosts-models-standards |
 | S-20260718-076 | 2026-07-18 | Secondary | Codersera AI coding agents guide 2026 | https://codersera.com/blog/ai-coding-agents-complete-guide-2026/ | wave-20260718-w1-hosts-models-standards |
 | S-20260718-077 | 2026-07-18 | Secondary | Alice Labs agent frameworks 2026 | https://alicelabs.ai/en/insights/best-ai-agent-frameworks-2026 | wave-20260718-w1-hosts-models-standards |
+| S-20260718-078 | 2026-07-18 | Harness / primary | Anthropic Eng — Effective harnesses for long-running agents | https://www.anthropic.com/engineering/effective-harnesses-for-long-running-agents | wave-20260718-0827-cherny-longrun-harness |
+| S-20260718-079 | 2026-07-18 | Harness / primary | Claude blog — A harness for every task (dynamic workflows) | https://claude.com/blog/a-harness-for-every-task-dynamic-workflows-in-claude-code | wave-20260718-0827-cherny-longrun-harness |
+| S-20260718-080 | 2026-07-18 | Framework / SDK | Claude Agent SDK overview | https://code.claude.com/docs/en/agent-sdk/overview | wave-20260718-0827-cherny-longrun-harness |
+| S-20260718-081 | 2026-07-18 | Quickstart | anthropics/claude-quickstarts autonomous-coding | https://github.com/anthropics/claude-quickstarts/tree/main/autonomous-coding | wave-20260718-0827-cherny-longrun-harness |
+| S-20260718-082 | 2026-07-18 | Interview | WorkOS — Key takeaways Boris Cherny (Acquired Unplugged) | https://workos.com/blog/boris-cherny-claude-code-acquired-interview-takeaways | wave-20260718-0827-cherny-longrun-harness |
+| S-20260718-083 | 2026-07-18 | Video | Sequoia — Boris Cherny: Why Coding Is Solved | https://www.youtube.com/watch?v=SlGRN8jh2RI | wave-20260718-0827-cherny-longrun-harness |
+| S-20260718-084 | 2026-07-18 | Video | WorkOS — Boris Cherny Claude Code & Future of Engineering | https://www.youtube.com/watch?v=RkQQ7WEor7w | wave-20260718-0827-cherny-longrun-harness |
+| S-20260718-085 | 2026-07-18 | YC | Inside Claude Code With Its Creator Boris Cherny | https://www.ycombinator.com/library/NJ-inside-claude-code-with-its-creator-boris-cherny | wave-20260718-0827-cherny-longrun-harness |
+| S-20260718-086 | 2026-07-18 | Host / Codex | Using Goals in Codex (cookbook) | https://developers.openai.com/cookbook/examples/codex/using_goals_in_codex | wave-20260718-0827-cherny-longrun-harness |
+| S-20260718-087 | 2026-07-18 | Host / Codex | OpenAI Academy — Automations | https://openai.com/academy/codex-automations/ | wave-20260718-0827-cherny-longrun-harness |
+| S-20260718-088 | 2026-07-18 | HN | Effective harnesses for long-running agents (discussion) | https://news.ycombinator.com/item?id=46081704 | wave-20260718-0827-cherny-longrun-harness |
+| S-20260718-089 | 2026-07-18 | HN | Claude Agent SDK / plan auth threads (cluster) | https://news.ycombinator.com/item?id=48125552 | wave-20260718-0827-cherny-longrun-harness |
+| S-20260718-090 | 2026-07-18 | Community | Reddit r/codex — How to actually use goals | https://www.reddit.com/r/codex/comments/1tisa6e/how_to_actually_use_goals_in_codex/ | wave-20260718-0827-cherny-longrun-harness |
+| S-20260718-091 | 2026-07-18 | Secondary | Epsilla — Harnesses disappear / loops future (Sequoia summary) | https://www.epsilla.com/blogs/2026-05-10-the-end-of-programming-why-harnesses-will-disappear-and-loop | wave-20260718-0827-cherny-longrun-harness |
+| S-20260718-092 | 2026-07-18 | X | Live discourse: Cherny adoption levels 0–4 / loops (2026-07-18) | https://x.com (semantic/keyword search wave) | wave-20260718-0827-cherny-longrun-harness |
+| S-20260718-093 | 2026-07-18 | Community harness | OpenClaw docs + GitHub (Gateway, skills, MCP) | https://docs.openclaw.ai · https://github.com/openclaw/openclaw | wave-20260718-0837-multi (partial A) |
+| S-20260718-094 | 2026-07-18 | Community harness | Odysseus self-hosted workspace | https://github.com/pewdiepie-archdaemon/odysseus | wave-20260718-0837-multi (partial A) |
+| S-20260718-095 | 2026-07-18 | Host OSS | OpenCode docs + GitHub | https://opencode.ai/docs · https://github.com/anomalyco/opencode | wave-20260718-0837-multi (partial A) |
+| S-20260718-096 | 2026-07-18 | Lab API | DeepSeek API docs V4 + Anthropic wire | https://api-docs.deepseek.com/ | wave-20260718-0837-multi (partial B) |
+| S-20260718-097 | 2026-07-18 | Lab API | Moonshot Kimi platform models + tools | https://platform.kimi.ai/docs/models | wave-20260718-0837-multi (partial B) |
+| S-20260718-098 | 2026-07-18 | Framework | LangGraph + DeepAgents (primary docs/GitHub) | https://github.com/langchain-ai/langgraph · https://github.com/langchain-ai/deepagents | wave-20260718-0837-multi (partial C) |
+| S-20260718-099 | 2026-07-18 | Framework | Claude Agent SDK demos | https://github.com/anthropics/claude-agent-sdk-demos | wave-20260718-0837-multi (partial C) |
+| S-20260718-100 | 2026-07-18 | Host primary | Claude Code /goal /loop /workflows docs | https://code.claude.com/docs/en/goal · scheduled-tasks · workflows | wave-20260718-0837-multi (partial E) |
+| S-20260718-101 | 2026-07-18 | Host primary | Claude blog AI code migration Jul 2026 | https://claude.com/blog/ai-code-migration | wave-20260718-0837-multi (partial E) |
+| S-20260718-102 | 2026-07-18 | Eval | Terminal-Bench | https://www.tbench.ai/ | wave-20260718-0837-multi (partial F) |
+| S-20260718-103 | 2026-07-18 | Eval | SWE-bench | https://www.swebench.com/ | wave-20260718-0837-multi (partial F) |
+| S-20260718-104 | 2026-07-18 | Security | MCP security best practices | https://modelcontextprotocol.io/docs/tutorials/security/security_best_practices | wave-20260718-0837-multi (partial F) |
+| S-20260718-105 | 2026-07-18 | Multi merge | W3 multi wave + 6 partials | `waves/wave-20260718-0837-multi-20m.md` + `waves/partial/*` | wave-20260718-0837-multi |
+
+> Full URL lists live inside each `partial/wave-20260718-0837-*.md` — parent INDEX keeps high-signal anchors only.
 
 ## Category map (waves)
 
 | Category (MANIFEST) | Waves touching it |
 |---|---|
-| 2. Host CLIs | wave-20260718-w1-hosts-models-standards |
+| 1. Harness / OS / loop | w1-harness-loop-os · **0827-cherny-longrun-harness** |
+| 2. Host CLIs | wave-20260718-w1-hosts-models-standards · **0827** |
 | 3. Model labs | wave-20260718-w1-hosts-models-standards |
-| 4. Frameworks | wave-20260718-w1-hosts-models-standards |
+| 4. Frameworks | wave-20260718-w1-hosts-models-standards · **0827 Agent SDK** |
 | 5. Standards | wave-20260718-w1-hosts-models-standards |
 | 6. Tools / backends / DBs / deploy | wave-20260718-w1-stack-tools-eval |
+| 7. Community | w1-community-pulse · **0827** (X/HN/Reddit) |
 | 8. Benchmarks / evals | wave-20260718-w1-stack-tools-eval |
-| 9. Security / OAP / blast radius (MCP) | wave-20260718-w1-stack-tools-eval · wave-20260718-w1-hosts-models-standards |
+| 9. Security / OAP / blast radius (MCP) | wave-20260718-w1-stack-tools-eval · wave-20260718-w1-hosts-models-standards · **0827 quarantine** |
+| 10. Enterprise multi-agent | **0827 thin** (adoption ladder) |
