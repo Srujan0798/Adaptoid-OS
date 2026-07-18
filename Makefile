@@ -1,7 +1,7 @@
 .PHONY: help dogfood preflight health install test clean \
-	bench cal ship-check conductor-help version
+	bench cal ship-check conductor-help version plugin-skills
 
-VERSION := $(shell cat VERSION 2>/dev/null || echo 5.1.0)
+VERSION := $(shell cat VERSION 2>/dev/null || echo unknown)
 
 help:
 	@echo "Adaptoid OS v$(VERSION) — Make targets"
@@ -45,6 +45,9 @@ ship-check:
 
 conductor-help:
 	python3 conductor/conductor.py -h
+
+plugin-skills:
+	python3 scripts/build_plugin_skills.py
 
 version:
 	@cat VERSION

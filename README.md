@@ -26,7 +26,21 @@ Agent projects fail from false “done”, lost handoff, and no ship gate — no
 | | What | How |
 |---|---|---|
 | **Lite** | [`ADAPTOID-LITE.md`](ADAPTOID-LITE.md) | Paste + brief → complete |
-| **Core** | This whole repo | Command below |
+| **Core** | This whole repo | One command below |
+
+**60-second install (Core):**
+
+```bash
+uvx --from git+https://github.com/Srujan0798/Adaptoid-OS.git adaptoid \
+  --brief "YOUR real project idea" \
+  --output my-project \
+  --core-only --host all
+```
+
+(or `pip install git+https://github.com/Srujan0798/Adaptoid-OS.git` → `adaptoid --brief … --output my-project`; plain `uvx adaptoid-os` once the PyPI release lands)
+
+<details>
+<summary>Classic clone</summary>
 
 ```bash
 git clone https://github.com/Srujan0798/Adaptoid-OS.git && cd Adaptoid-OS
@@ -36,6 +50,8 @@ python3 adaptor/engine.py \
   --output ../my-project \
   --core-only --host all
 ```
+
+</details>
 
 Open `../my-project` in Grok Build / Claude / Cursor.  
 `make ship-check` verifies the kit.

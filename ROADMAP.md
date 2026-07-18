@@ -1,5 +1,15 @@
 # Adaptoid OS Roadmap
 
+## v5.4.0 — Honest core + distribution (SHIPPED)
+
+- [x] P1 leftovers closed: no-op acceptance rejection · portable hash · PreToolUse hook + emitted `.claude/settings.json`
+- [x] Stale v5.1 / Pro-tier / OS_SETUP refs killed in live tree
+- [x] FM-21 eval theater · SHIP row 23 context budget · playbook SDD interop
+- [x] `uvx`/pip bootstrap CLI (`adaptoid`) + README one-liner
+- [x] Claude Code plugin + self-marketplace + `make plugin-skills`
+- [x] Ocean W5 distribution economics + `docs/launch/DISTRIBUTION.md`
+- [ ] Owner actions: push to main → PyPI publish → demo repo → directory/list submissions (see DISTRIBUTION.md)
+
 ## v5.3.0 — Era adapt (SHIPPED)
 
 - [x] Multi-agent corner audit + live 2026 research → `ADAPTATION.md`

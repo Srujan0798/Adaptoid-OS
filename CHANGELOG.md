@@ -1,5 +1,14 @@
 # Adaptoid OS Changelog
 
+## v5.4.0 — Jul 2026 — Honest core + distribution (W5 research-driven)
+- **Honesty pass (P1s closed):** conductor shell mode rejects missing/no-op acceptances (`true`/`echo`/`exit 0` = FAIL, no stub fallback); portable SHA-256 on macOS (`emit_event.sh`, `vault_mmu.sh`); stale v5.1/Pro/OS_SETUP refs killed (`.cursorrules`, `config/claude-code/CLAUDE.md`, Makefile fallback)
+- **Hooks now real:** `core/hosts/pre-tool-use.sh` (FM-18 blast-radius guard: force-push main, `rm -rf /`, curl|sh) + emitted `.claude/settings.json` registering SessionStart/PreToolUse — emitted hooks previously never fired
+- **FM-21 eval theater** (benchmark-green ≠ reviewer-accepted; real-PR gap 35–50% vs 74–78% bench); SHIP-SYSTEM row 23 context budget; playbook §3b spec-driven-dev interop (Spec Kit/Kiro/OpenSpec → PROJECT-INTENT is the spec)
+- **60-second install:** `pyproject.toml` + `adaptoid_cli` bootstrap (`uvx --from git+… adaptoid` / `pip install`; `adaptoid home|update|conductor` passthrough); README leads with one-liner
+- **Claude Code plugin:** `.claude-plugin/plugin.json` + self-marketplace; `skills/` generated from engine's ADAPTOID_SKILLS via `make plugin-skills` (single truth)
+- **Ocean W5:** distribution economics wave (`era-ocean/waves/…w5-distribution-economics.md`) — traction law (install moment × channel × proof), ClawHub/CVE security bill, MCP trust stats; ELITE + MANIFEST updated
+- **Launch:** `docs/launch/DISTRIBUTION.md` — gated channel checklist (PyPI → demo repo → skill directories → awesome lists → posts); "anti-false-done harness" positioning
+
 ## v5.3.0 — Jul 2026 — Era adapt (multi-agent audit + live 2026)
 - **Research-driven:** AGENTS.md standard, agentskills.io, worktrees, soft vs hard enforcement, MCP sandbox reality
 - Engine always **Core** (no hollow pro); version from `VERSION`; clean UTC timestamps; stack filled from archetype tables

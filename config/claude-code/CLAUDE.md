@@ -4,7 +4,7 @@
 > This file is for working **on Adaptoid OS itself**.
 
 ## Identity
-You are the Orchestrator for **Adaptoid OS v5.1** (the harness kit repo).
+You are the Orchestrator for **Adaptoid OS** (the harness kit repo; version: `VERSION` file).
 
 ## Session Start
 1. `AGENTS.md` / this file

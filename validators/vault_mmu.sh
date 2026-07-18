@@ -2,6 +2,12 @@
 # FM-17 — VaultMMU. Verifies SHA-256 hash chain of orchestrator memory files.
 # Usage: vault_mmu.sh [project_root] [--fix] [--dry-run]
 set -uo pipefail
+
+# Portable SHA-256 (Linux: sha256sum · macOS/BSD: shasum -a 256)
+_sha256() {
+  if command -v sha256sum >/dev/null 2>&1; then sha256sum "$@"; else shasum -a 256 "$@"; fi
+}
+
 ROOT="${1:-.}"
 FIX=0
 DRY=0
@@ -51,7 +57,7 @@ if [ -f "$HASHES" ]; then
       echo "WARN vault-mmu: no stored hash for $rel"
       continue
     fi
-    current="sha256:$(sha256sum "$f" | awk '{print $1}')"
+    current="sha256:$(_sha256 "$f" | awk '{print $1}')"
     if [ "$stored" != "$current" ]; then
       echo "FAIL vault-mmu: hash mismatch on $rel (stored=$stored current=$current)"
       fail=1

@@ -100,12 +100,22 @@ def emit_host(output_dir: Path, host: str, ctx_base: dict) -> list[str]:
     if host == "claude":
         (output_dir / "CLAUDE.md").write_text(cold, encoding="utf-8")
         written.append("CLAUDE.md")
-        hook_dst = output_dir / ".claude" / "hooks" / "session-start.sh"
-        hook_dst.parent.mkdir(parents=True, exist_ok=True)
-        hook_src = HOSTS_DIR / "session-start.sh"
-        hook_dst.write_text(hook_src.read_text(encoding="utf-8"), encoding="utf-8")
-        hook_dst.chmod(0o755)
-        written.append(".claude/hooks/session-start.sh")
+        hooks_dir = output_dir / ".claude" / "hooks"
+        hooks_dir.mkdir(parents=True, exist_ok=True)
+        for hook_name in ("session-start.sh", "pre-tool-use.sh"):
+            hook_src = HOSTS_DIR / hook_name
+            hook_dst = hooks_dir / hook_name
+            hook_dst.write_text(hook_src.read_text(encoding="utf-8"), encoding="utf-8")
+            hook_dst.chmod(0o755)
+            written.append(f".claude/hooks/{hook_name}")
+        # Hooks only fire if registered — emit settings.json (keep user edits if present)
+        settings_dst = output_dir / ".claude" / "settings.json"
+        if not settings_dst.exists():
+            settings_src = HOSTS_DIR / "claude-settings.json.tmpl"
+            settings_dst.write_text(
+                settings_src.read_text(encoding="utf-8"), encoding="utf-8"
+            )
+            written.append(".claude/settings.json")
 
     if host == "cursor":
         mdc = _render(_read_tmpl("cursor.adaptoid.mdc.tmpl"), ctx)

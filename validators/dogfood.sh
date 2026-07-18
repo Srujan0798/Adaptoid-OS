@@ -196,13 +196,39 @@ if [ -f "$HERE/reference/OS_SETUP_v1.3_full.md" ]; then
   fi
 fi
 # Disconnected top-level modules must stay archived
-for d in claw_bridge skills multi-channel vault examples setup slash-commands patterns philosophy memory-bank; do
+# (skills/ is live since v5.4 — Claude Code plugin surface, sync-checked below)
+for d in claw_bridge multi-channel vault examples setup slash-commands patterns philosophy memory-bank; do
   if [ -e "$HERE/$d" ]; then
     echo "FAIL: disconnected module live (should be attic): $d"
     fail=1
   fi
 done
 echo "OK  no disconnected top-level modules"
+# Plugin skills/ must match engine truth (regenerate: make plugin-skills)
+if [ -d "$HERE/skills" ]; then
+  tmp_sync=$(mktemp -d)
+  python3 - "$HERE" "$tmp_sync" <<'PY'
+import importlib.util, sys
+from pathlib import Path
+root, tmp = Path(sys.argv[1]), Path(sys.argv[2])
+sys.path.insert(0, str(root / "adaptor"))
+spec = importlib.util.spec_from_file_location("adaptoid_engine", root / "adaptor" / "engine.py")
+mod = importlib.util.module_from_spec(spec)
+spec.loader.exec_module(mod)
+mod.emit_adaptoid_skills(tmp)
+PY
+  sync_fail=0
+  for s in "$tmp_sync/.agents/skills"/*/SKILL.md; do
+    name=$(basename "$(dirname "$s")")
+    if ! diff -q "$s" "$HERE/skills/$name/SKILL.md" >/dev/null 2>&1; then
+      echo "FAIL: skills/$name/SKILL.md out of sync with engine — run make plugin-skills"
+      sync_fail=1
+      fail=1
+    fi
+  done
+  rm -rf "$tmp_sync"
+  [ "$sync_fail" -eq 0 ] && echo "OK  plugin skills/ in sync with engine"
+fi
 # Protocol spine lean
 n_proto=$(find "$HERE/protocols" -maxdepth 1 -name '*.md' 2>/dev/null | wc -l | tr -d ' ')
 if [ "$n_proto" -gt 10 ]; then

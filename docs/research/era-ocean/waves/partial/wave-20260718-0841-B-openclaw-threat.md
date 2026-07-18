@@ -451,8 +451,8 @@ Public discourse (2026) flags: large exposed-instance populations, unreviewed co
 
 Adaptoid already has:
 
-- **OAP** — fail-closed pre-tool-call policy (`ALLOW` / `DENY` / `REQUIRE_APPROVAL`) — [`protocols/oap-security.md`](../../../../protocols/oap-security.md)
-- **FM-20** — MCP/tool trust & injection — [`failure-modes/FM-20-mcp-tool-trust.md`](../../../../failure-modes/FM-20-mcp-tool-trust.md)
+- **OAP** — fail-closed pre-tool-call policy (`ALLOW` / `DENY` / `REQUIRE_APPROVAL`) — [`protocols/oap-security.md`](../../../../../protocols/oap-security.md)
+- **FM-20** — MCP/tool trust & injection — [`failure-modes/FM-20-mcp-tool-trust.md`](../../../../../failure-modes/FM-20-mcp-tool-trust.md)
 - **FM-18** — unauthorized tool / destructive action
 
 ### 8.1 Portable imports (high value)

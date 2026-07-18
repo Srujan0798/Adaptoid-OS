@@ -1,4 +1,4 @@
-# ADAPTATION — how Adaptoid stays Adaptoid (v5.3.0+)
+# ADAPTATION — how Adaptoid stays Adaptoid (v5.4.0+)
 
 > Multi-agent corner audit + live agentic-era research (2026-07-18).  
 > **Adopt what compounds. Refuse framework theater.**  
@@ -36,6 +36,11 @@
 | Engine honesty (always Core) | `adaptor/engine.py` defaults + no hollow pro |
 | Wake paths for generated layout | `validators/wake.sh` |
 | Stack fill from archetype tables | `adaptoid.config.yaml` language/backend |
+| **v5.4:** No-op acceptance rejection (FM-21) | `conductor.py` shell mode |
+| **v5.4:** PreToolUse guard + settings emit (hooks fire for real) | `core/hosts/pre-tool-use.sh` + `claude-settings.json.tmpl` |
+| **v5.4:** 60-second install (traction law, W5) | `pyproject.toml` + `adaptoid_cli/` |
+| **v5.4:** Claude Code plugin from single skill truth | `.claude-plugin/` + `make plugin-skills` |
+| **v5.4:** SDD interop (Spec Kit/Kiro/OpenSpec era) | playbook §3b |
 
 ## What we refuse (bloat)
 
@@ -49,11 +54,12 @@
 
 | Item | Priority |
 |---|---|
-| Harden SDLC shell acceptances (no auto-pass theater) | P1 |
-| `sha256sum` → portable hash on macOS emit_event/vault | P1 |
+| ~~Harden SDLC shell acceptances (no auto-pass theater)~~ | ✅ v5.4.0 |
+| ~~`sha256sum` → portable hash on macOS emit_event/vault~~ | ✅ v5.4.0 |
+| ~~PreToolUse hook templates beyond SessionStart~~ | ✅ v5.4.0 |
 | Optional `--host gemini` + GEMINI.md | P2 |
-| PreToolUse hook templates beyond SessionStart | P1 |
 | Conductor optional worktree create flag | P2 |
+| PyPI publish + demo repo + directory submissions (owner) | P1 — `docs/launch/DISTRIBUTION.md` |
 
 ## How to keep adapting
 

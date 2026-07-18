@@ -4,6 +4,11 @@
 # Example: emit_event.sh wave-1 01-backend-skeleton task.dispatched file=work/wave-1/01-backend-skeleton.md
 set -uo pipefail
 
+# Portable SHA-256 (Linux: sha256sum · macOS/BSD: shasum -a 256)
+_sha256() {
+  if command -v sha256sum >/dev/null 2>&1; then sha256sum "$@"; else shasum -a 256 "$@"; fi
+}
+
 WAVE="${1:?usage: emit_event.sh <wave> <task> <type> [k=v ...]}"
 TASK="${2:?}"
 ETYPE="${3:?}"
@@ -37,7 +42,7 @@ fi
 # Compute hash of the event (including prev_hash) for the audit chain
 EVENT_LINE=$(printf '{"ts": "%s", "id": "%s", "type": "%s", "wave": "%s", "task": "%s", "prev_hash": "%s"%s}' \
   "$TS" "$ID" "$ETYPE" "$WAVE" "$TASK" "$PREV_HASH" "${PAYLOAD:+, $PAYLOAD}")
-HASH="sha256:$(echo "$EVENT_LINE" | sha256sum | awk '{print $1}')"
+HASH="sha256:$(echo "$EVENT_LINE" | _sha256 | awk '{print $1}')"
 
 # Append hash to the line
 printf '%s\n' "$EVENT_LINE" | sed "s|}$|, \"hash\": \"$HASH\"}|" >> "$EVENT_FILE"

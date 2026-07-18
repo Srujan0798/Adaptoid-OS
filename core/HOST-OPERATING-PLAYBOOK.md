@@ -104,6 +104,13 @@ Same-checkout multi-agent → FM-13 collisions. Prefer **one worktree per overla
 
 Default: host **CLI** (`git`, `gh`, tests) over MCP. MCP only for authenticated SaaS/DB/browser. Network/write MCP → blast-radius confirm. Allowlist in `adaptoid.config.yaml`; no silent marketplace installs.
 
+### Spec-driven development interop (Spec Kit / Kiro / OpenSpec era)
+
+Adaptoid already **is** spec-driven: `PROJECT-INTENT.md` + intent-lock = the spec; SDLC gates = the executable workflow.
+- Team uses GitHub Spec Kit / AWS Kiro / OpenSpec → point their constitution/spec file at `PROJECT-INTENT.md` (one intent source; never two specs — FM-01/FM-05).
+- Keep `AGENTS.md` AAIF-plain (thin, no frontmatter dependence) so every SDD tool can read it.
+- Their spec workflow may drive *planning*; Adaptoid still owns *proof of done* (acceptance + preflight).
+
 ### Single strong agent default
 
 One orchestrator + sparse subagents (explore / test / review). Full multi-agent crews only when debate is required — not greenfield scaffolding.

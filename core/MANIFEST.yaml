@@ -52,7 +52,7 @@ validators_core:
 
 hosts:
   agents: [AGENTS.md]
-  claude: [CLAUDE.md, .claude/hooks/session-start.sh]
+  claude: [CLAUDE.md, .claude/hooks/session-start.sh, .claude/hooks/pre-tool-use.sh, .claude/settings.json]
   cursor: [AGENTS.md, .cursor/rules/adaptoid.mdc]
   codex: [AGENTS.md]
   grok: [AGENTS.md]

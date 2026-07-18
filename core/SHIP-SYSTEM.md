@@ -49,6 +49,7 @@ Every coding host (especially Grok Build) already has these.
 | 20 | **Agent Skills (open)** | Portable `SKILL.md` procedures ([agentskills.io](https://agentskills.io)) | Prefer over bloating AGENTS. Engine emits `.agents/skills/*` (+ Claude mirror). |
 | 21 | **Permissions / sandbox profiles** | Host hard gates (deny/ask/allow, shell sandbox) | Map OAP tiers → host profile. **Codex: shell sandboxed, MCP often not** → MCP write = high blast-radius. |
 | 22 | **Nested project instructions** | Per-package AGENTS / rules in monorepos | Closest instruction file wins for files touched. |
+| 23 | **Context budget** | Tokens per turn are finite; decide where they go | Thin always-on law (AGENTS) + skills on demand + session reset between phases. Ask "where do this turn's tokens go?" before big reads (FM-04/FM-15). |
 
 ### Soft vs hard enforcement
 
@@ -116,7 +117,7 @@ Waterfall only if tier T3+ compliance needs hard phase freezes.
 | **Adaptoid artifacts** | `tests/`, task `acceptance:`, reports with exit codes |
 | **Host tools** | Terminal, subagents (parallel test), background tasks (wait for finish) |
 | **Evidence** | Commands + exit 0 pasted in report |
-| **Anti-mistake** | Never ship with late/skipped tests |
+| **Anti-mistake** | Never ship with late/skipped tests. Benchmark/proxy green ≠ done (FM-21) — acceptance must be able to fail |
 
 ### Stage 6 — Deployment
 | | |

@@ -1,0 +1,14 @@
+{
+  "name": "adaptoid-os",
+  "owner": {
+    "name": "Srujan",
+    "url": "https://github.com/Srujan0798"
+  },
+  "plugins": [
+    {
+      "name": "adaptoid",
+      "source": "./",
+      "description": "Adaptoid OS discipline skills: intent-lock, verify-before-done, blast-radius-check, handoff-rewrite, worktree-parallel."
+    }
+  ]
+}

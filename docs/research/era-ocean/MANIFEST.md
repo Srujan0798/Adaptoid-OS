@@ -7,9 +7,9 @@
 | Status | **HOLD — ocean OPEN · handoff to next agent** |
 | Resume guide | `HANDOFF-NEXT-AGENT.md` |
 | Honest coverage | **≪ 1%** of agentic surface |
-| Waves completed | **W1–W4** (multi-agent) |
+| Waves completed | **W1–W5** (multi-agent) |
 | Elite draft | `elite/ELITE-10-PERCENT.md` (**DRAFT**) |
-| Last wave | **2026-07-18T08:41Z** — W4 multi 6-agent |
+| Last wave | **2026-07-18** — W5 distribution economics (single-agent, live web) |
 
 ## Categories
 
@@ -25,6 +25,7 @@
 | 8 | Evals | W3-F |
 | 9 | Security | W3-F + **W4-B OpenClaw threat** |
 | 10 | Enterprise multi-agent | thin + YC fleet signal |
+| 11 | Distribution / growth | **W5** — install moments, channels, traction data |
 
 ## Wave log
 
@@ -34,6 +35,7 @@
 | W2 | Cherny + long-run harness | `waves/wave-20260718-0827-cherny-longrun-harness.md` |
 | W3 | 6-agent multi 20m | `waves/wave-20260718-0837-multi-20m.md` + partials A–F |
 | **W4** | **YC · OpenClaw threat · standards · Cline/Aider · Grok/Antigravity · live pulse** | `waves/wave-20260718-0841-multi-20m.md` + `partial/wave-20260718-0841-{A–F}.md` |
+| **W5** | **Distribution economics: how winners won (stars, installs, channels) + eval reality + MCP delta** | `waves/wave-20260718-w5-distribution-economics.md` |
 
 ## Next targets (20m rotation)
 

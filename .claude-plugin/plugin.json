@@ -1,0 +1,19 @@
+{
+  "name": "adaptoid",
+  "version": "5.4.0",
+  "description": "Adaptoid OS discipline skills: intent-lock, verify-before-done, blast-radius-check, handoff-rewrite, worktree-parallel. Evidence or it didn't happen.",
+  "author": {
+    "name": "Srujan",
+    "url": "https://github.com/Srujan0798"
+  },
+  "homepage": "https://github.com/Srujan0798/Adaptoid-OS",
+  "repository": "https://github.com/Srujan0798/Adaptoid-OS",
+  "license": "MIT",
+  "keywords": [
+    "agent-harness",
+    "sdlc",
+    "verification",
+    "failure-modes",
+    "harness-engineering"
+  ]
+}

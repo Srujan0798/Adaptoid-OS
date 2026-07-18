@@ -282,5 +282,31 @@ Substrate & teleop · Company Brain/skills · plan gates · fleet isolation · a
 
 ---
 
+## Wave-5 additions (2026-07-18 · distribution economics)
+
+### The traction law (verified against 2026 winners)
+**Content ≠ traction. Install moment × existing channel × shareable proof = traction.**
+- OpenClaw ~382k ⭐ (channels users already use) · Superpowers ~243k ⭐ (Claude Code plugin) · BMAD ~49k ⭐ (`npx` one-liner + retellable personas) · Spec Kit (GitHub brand + 30 integrations).  
+- Aggregator lists (~141k ⭐) are indexes, not products — word count is not a moat.  
+- **BMAD asymmetry lesson:** its content is heavier than Adaptoid's; its install is lighter. Fix the install, not the content.
+
+### Distribution's security bill
+ClawHub: 800+ malicious skills; OpenClaw: 9 CVEs / 4 days (one 9.9). Marketplace distribution = FM-20 at ecosystem scale. Deny-by-default survives the distro push or the push is refused.
+
+### Eval theater now has numbers (→ FM-21)
+SWE-bench V saturating at 74–78% (93.9% top claim with ~19.8% semantically wrong) · Terminal-Bench 52–58% · **real human PR acceptance 35–50%**. Benchmark-green ≠ reviewer-accepted = the "false done" thesis, industry-confirmed.
+
+### Adaptoid delta update (research → product)
+| Concept | Status |
+|---|---|
+| `uvx`/pip one-liner install | **Adopt** (v5.4 target) |
+| Claude Code plugin + skills.sh listing | **Adopt** (v5.4 target) |
+| Awesome-list presence | **Adopt** after gates honestly green |
+| Public demo repo with evidence trail | **Adopt** — the proof artifact |
+| BMAD-style named personas | **Watch** — retellability vs lean two-tier |
+| Skills marketplace as product | **Refuse** — hot-path law + ClawHub lesson |
+
+---
+
 **Ocean still open. This file is a draft sponge, not a finish line.**  
 **Next 20m wave:** CN harness discourse · PydanticAI · Cherny transcript · MCP RC re-verify.

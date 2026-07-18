@@ -53,6 +53,10 @@ class TestEmitHosts(unittest.TestCase):
             self.assertTrue((tmp / "AGENTS.md").exists())
             self.assertTrue((tmp / "CLAUDE.md").exists())
             self.assertTrue((tmp / ".claude" / "hooks" / "session-start.sh").exists())
+            self.assertTrue((tmp / ".claude" / "hooks" / "pre-tool-use.sh").exists())
+            settings = tmp / ".claude" / "settings.json"
+            self.assertTrue(settings.exists())
+            self.assertIn("PreToolUse", settings.read_text())
             body = (tmp / "AGENTS.md").read_text()
             self.assertTrue(
                 "Session start" in body or "Session Start Protocol" in body or "SHIP SYSTEM" in body,

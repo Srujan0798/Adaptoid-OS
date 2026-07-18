@@ -1,0 +1,33 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "adaptoid-os"
+version = "5.4.0"
+description = "Adaptoid OS — harness so AI coding agents finish real projects. Bootstrap CLI: uvx adaptoid-os --brief '...' --output my-project"
+readme = "README.md"
+license = { text = "MIT" }
+requires-python = ">=3.9"
+authors = [{ name = "Srujan" }]
+keywords = [
+  "ai-agents",
+  "agent-harness",
+  "harness-engineering",
+  "claude-code",
+  "cursor",
+  "codex",
+  "sdlc",
+  "agents-md",
+]
+
+[project.urls]
+Homepage = "https://github.com/Srujan0798/Adaptoid-OS"
+Repository = "https://github.com/Srujan0798/Adaptoid-OS"
+
+[project.scripts]
+adaptoid = "adaptoid_cli.main:main"
+adaptoid-os = "adaptoid_cli.main:main"
+
+[tool.setuptools]
+packages = ["adaptoid_cli"]

@@ -162,10 +162,10 @@ else
   echo "  FAIL: unexpected protocols count=$n_proto"
   rc=1
 fi
-# No claw_bridge / skills on live tree
+# No claw_bridge etc. on live tree (skills/ is live since v5.4 — plugin surface)
 echo "Test: no disconnected top-level modules"
 ok_disc=1
-for d in claw_bridge skills multi-channel vault examples setup slash-commands patterns philosophy memory-bank; do
+for d in claw_bridge multi-channel vault examples setup slash-commands patterns philosophy memory-bank; do
   if [ -e "$ROOT/$d" ]; then
     echo "  FAIL: disconnected module still live: $d"
     ok_disc=0

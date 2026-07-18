@@ -416,9 +416,21 @@ def run_task_stub(task: Task) -> tuple[str, str]:
     return "STUB_COMPLETE", evidence
 
 
+NOOP_ACCEPTANCE = re.compile(r"^\s*(true|:|exit\s+0)\s*$|^\s*echo\b[^|&;]*$")
+
+
 def run_task_shell(project: Path, task: Task) -> tuple[str, str]:
     if not task.acceptance:
-        return run_task_stub(task)
+        return "FAIL", (
+            f"no acceptance command on task '{task.task_id}' — shell mode requires one. "
+            "Add `acceptance: <command>` to the task brief, or dispatch with --mode stub "
+            "for coordination-only runs."
+        )
+    if NOOP_ACCEPTANCE.match(task.acceptance):
+        return "FAIL", (
+            f"acceptance is a no-op (`{task.acceptance}`) — auto-pass theater. "
+            "Use a command that can actually fail (test runner, validator, curl check)."
+        )
     try:
         proc = subprocess.run(
             task.acceptance,

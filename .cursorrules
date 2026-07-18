@@ -1,12 +1,11 @@
-# Adaptoid OS v5.1 — Cursor Rules
+# Adaptoid OS — Cursor Rules (version: see `VERSION`)
 
 ## Context
 Portable agent harness. Model = weapon; host + MCP + skills = field; this kit adapts the field.
 
-## Product ladder
-- Lite: `reference/OS_SETUP_v1.3_full.md`
-- Core: `core/` + `adaptor/engine.py --core-only --host …`
-- Pro: this full repository
+## Product surfaces (two, no more)
+- Lite: `ADAPTOID-LITE.md` (paste + brief)
+- Core: this folder + `adaptor/engine.py --core-only --host …`
 
 ## Rules
 1. Read `AGENTS.md`, `kernel/PRINCIPLES.md`, `kernel/TWO-TIER.md`, `HANDOFF.md` before work.
