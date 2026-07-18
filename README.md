@@ -3,7 +3,7 @@
 # Adaptoid OS
 ## Lite = one file · Core = this folder
 
-[![Version](https://img.shields.io/badge/version-5.2.1-blue)](#)
+[![Version](https://img.shields.io/badge/version-5.3.0-blue)](#)
 [![CI](https://github.com/Srujan0798/Adaptoid-OS/actions/workflows/ci.yml/badge.svg)](https://github.com/Srujan0798/Adaptoid-OS/actions/workflows/ci.yml)
 [![License](https://img.shields.io/badge/license-MIT-yellow)](#)
 
@@ -46,8 +46,8 @@ Open `../my-project` in Grok Build / Claude / Cursor.
 
 | Safety | Ship | Host |
 |---|---|---|
-| Failure modes + preflight | SDLC 7 stages + intent lock | Multi-host AGENTS/CLAUDE/Cursor |
-| Evidence required | HOST-OPERATING-PLAYBOOK | Plan mode, terminal, git, … |
+| Failure modes + preflight | SDLC + intent lock + skills | Multi-host AGENTS/CLAUDE/Cursor |
+| Evidence required | HOST-OPERATING-PLAYBOOK | Plan, worktrees, terminal, git, … |
 
 ---
 

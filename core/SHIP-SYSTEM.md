@@ -38,12 +38,25 @@ Every coding host (especially Grok Build) already has these.
 | 16 | **Sandbox** | Untrusted code isolated | Untrusted/generated code → sandbox; OAP deny-by-default secrets. |
 | 17 | **Background tasks** | Long builds/monitors | Wait for exit code; never claim done while running. |
 | 18 | **Theming** | UI chrome only | Optional; zero effect on ship gates. |
+| 19 | **Git worktrees** | Isolated checkouts for parallel agents | **Required** when ≥2 writers risk path collision (FM-13); else optional. Host: Claude `--worktree`, Grok/Codex worktrees. |
+| 20 | **Agent Skills (open)** | Portable `SKILL.md` procedures ([agentskills.io](https://agentskills.io)) | Prefer over bloating AGENTS. Engine emits `.agents/skills/*` (+ Claude mirror). |
+| 21 | **Permissions / sandbox profiles** | Host hard gates (deny/ask/allow, shell sandbox) | Map OAP tiers → host profile. **Codex: shell sandboxed, MCP often not** → MCP write = high blast-radius. |
+| 22 | **Nested project instructions** | Per-package AGENTS / rules in monorepos | Closest instruction file wins for files touched. |
+
+### Soft vs hard enforcement
+
+| Soft (guidance) | Hard (truth) |
+|---|---|
+| AGENTS.md prose, Cursor `.mdc` | Hooks (Claude/Codex/Grok), permissions, **preflight validators** |
+
+Rules without validators are theater. Ship = hard gates green.
 
 ### Efficiency law
 
 | Layer | Owns |
 |---|---|
-| **Host toolkit** (rows above) | Hands — execute, search, edit, test, git, MCP |
+| **Host toolkit** (rows above) | Hands — execute, search, edit, test, git, MCP, worktrees |
+| **Portable skills** | How-to on demand (`.agents/skills`) |
 | **Adaptoid SHIP SYSTEM** | Brain rules — which stage, which tools, what evidence, when stop |
 
 ---

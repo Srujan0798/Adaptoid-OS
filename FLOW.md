@@ -41,11 +41,12 @@ START_HERE / USE
 | Entry | `USE.md` `START_HERE.md` `PRODUCT.md` `FLOW.md` `README.md` |
 | Engine | `adaptor/engine.py` `adaptor/host_emit.py` |
 | Conductor | `conductor/conductor.py` |
-| Ship OS | `core/SHIP-SYSTEM.md` `core/HOST-OPERATING-PLAYBOOK.md` `core/hosts/*` |
-| Kernel | `kernel/*` |
-| Protocols | `sdlc-loop` `blast-radius` `verification` `oap-security` `route-sentinel` |
-| Scaffold | `templates/` `archetypes/` `failure-modes/` `schemas/` `tiers/` |
-| Check | `validators/` `scripts/ship_check.sh` |
+| Ship OS | `core/SHIP-SYSTEM.md` `core/HOST-OPERATING-PLAYBOOK.md` `core/HOST-CAPABILITIES.md` |
+| Kernel | `kernel/*` (always copied into projects) |
+| Protocols | 5 spine files → copied into projects |
+| Skills emit | `.agents/skills/*` (agentskills.io) into projects |
+| Kit library | `templates/` `archetypes/` `failure-modes/` (kit-side; not full-copied) |
+| Check | `validators/` → project `orchestrator/scripts/` |
 | CI | `tests/` `benchmarks/` `calibration/` `.github/` |
 
 ## Ignore

@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # wake.sh — Session crash recovery. Rebuilds context from durable files.
-# Usage: wake.sh [wave] [task]
+# Usage: wake.sh [project_root] [wave] [task]
 set -uo pipefail
 
 ROOT="${1:-.}"
@@ -15,7 +15,7 @@ for f in kernel/PRINCIPLES.md kernel/TWO-TIER.md kernel/ANTI-HALLUCINATION.md; d
   if [ -f "$ROOT/$f" ]; then
     echo "✓ $f"
   else
-    echo "✗ MISSING: $f — this project may not be OS-Setup compliant"
+    echo "✗ MISSING: $f — may not be an Adaptoid-generated project"
   fi
 done
 echo ""
@@ -30,39 +30,63 @@ else
 fi
 echo ""
 
-# 3. EXECUTION.md (shipped waves)
+# 3. Intent + ship OS
+for f in PROJECT-INTENT.md SHIP-SYSTEM.md HOST-OPERATING-PLAYBOOK.md AGENTS.md; do
+  if [ -f "$ROOT/$f" ]; then
+    echo "✓ $f"
+  else
+    echo "⚠ missing optional/cold-start: $f"
+  fi
+done
+echo ""
+
+# 4. Wave tasks (SDLC default layout)
+if [ -d "$ROOT/work" ]; then
+  n_tasks=$(find "$ROOT/work" -path '*/tasks/*.md' 2>/dev/null | wc -l | tr -d ' ')
+  echo "✓ work/ present ($n_tasks task file(s))"
+else
+  echo "⚠ no work/ yet"
+fi
+if [ -f "$ROOT/plan/intent-lock.md" ]; then
+  echo "✓ plan/intent-lock.md"
+fi
 if [ -f "$ROOT/plan/EXECUTION.md" ]; then
   SHIPPED=$(grep -c "SHIPPED" "$ROOT/plan/EXECUTION.md" 2>/dev/null || echo 0)
-  echo "✓ EXECUTION.md — $SHIPPED wave(s) shipped"
-else
-  echo "✗ MISSING: plan/EXECUTION.md"
+  echo "✓ plan/EXECUTION.md — $SHIPPED wave(s) shipped"
 fi
 echo ""
 
-# 4. Session events (if wave/task given)
+# 5. Session events (optional)
 if [ -n "$WAVE" ] && [ -n "$TASK" ]; then
   EVENT_FILE="$ROOT/orchestrator/memory/session/${WAVE}-${TASK}.events.jsonl"
   if [ -f "$EVENT_FILE" ]; then
     echo "✓ Session log: ${WAVE}-${TASK}.events.jsonl ($(wc -l < "$EVENT_FILE" | tr -d ' ') events)"
-    bash "$ROOT/validators/replay_session.sh" "$WAVE" "$TASK" 5 2>/dev/null || true
   else
-    echo "✗ No session log for $WAVE / $TASK"
+    echo "· No session log for $WAVE / $TASK (optional)"
   fi
   echo ""
 fi
 
-# 5. Config
+# 6. Config
 if [ -f "$ROOT/adaptoid.config.yaml" ]; then
-  echo "✓ adaptoid.config.yaml — project config present"
+  echo "✓ adaptoid.config.yaml"
 else
-  echo "⚠ adaptoid.config.yaml missing — consider adding for single-source-of-truth"
+  echo "⚠ adaptoid.config.yaml missing"
 fi
 echo ""
 
-# 6. Quick health check
-if [ -x "$ROOT/validators/preflight.sh" ]; then
-  echo "Running quick preflight (subset)..."
-  bash "$ROOT/validators/preflight.sh" "$ROOT" 2>/dev/null | tail -n 5
+# 7. Preflight — generated projects use orchestrator/scripts/
+PREFLIGHT=""
+if [ -x "$ROOT/orchestrator/scripts/preflight.sh" ] || [ -f "$ROOT/orchestrator/scripts/preflight.sh" ]; then
+  PREFLIGHT="$ROOT/orchestrator/scripts/preflight.sh"
+elif [ -x "$ROOT/validators/preflight.sh" ] || [ -f "$ROOT/validators/preflight.sh" ]; then
+  PREFLIGHT="$ROOT/validators/preflight.sh"
+fi
+if [ -n "$PREFLIGHT" ]; then
+  echo "Running preflight..."
+  bash "$PREFLIGHT" "$ROOT" 2>/dev/null | tail -n 8
+else
+  echo "⚠ preflight.sh not found (orchestrator/scripts/ or validators/)"
 fi
 
 echo ""

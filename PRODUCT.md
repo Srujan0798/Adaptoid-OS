@@ -1,23 +1,27 @@
-# PRODUCT — closed for use (v5.2.1)
+# PRODUCT — closed for use (v5.3.0)
 
 ## What this is
 
-**Adaptoid OS** = harness so AI coding agents finish real projects.
+**Adaptoid OS** = harness so AI coding agents finish real projects — and **adapts** as the agentic era evolves.
 
 | Surface | What | How |
 |---|---|---|
 | **Lite** | One file: **`ADAPTOID-LITE.md`** | Paste + brief → complete |
-| **Core** | **This whole folder** | `engine.py` → generated project → complete |
+| **Core** | **This whole folder** | `adaptor/engine.py` → generated project → complete |
 
-## Status: READY TO USE
+## Status: READY TO USE (+ era adapt)
 
 | Item | Status |
 |---|---|
 | Lite hybrid standalone | Done |
 | Core engine + multi-host + SDLC | Done |
-| SHIP-SYSTEM + operating playbook | Done |
+| SHIP-SYSTEM + playbook + host matrix | Done |
+| Agent Skills emit (`.agents/skills`) | Done |
+| agent-product archetype · FM-19/20 | Done |
 | Lean live tree + attic | Done |
 | Dogfood / ship-check | Must pass before release |
+
+Era notes: **`ADAPTATION.md`**
 
 ## How to start today
 

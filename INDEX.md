@@ -8,6 +8,7 @@
 | Ship OS | `core/SHIP-SYSTEM.md` · `core/HOST-OPERATING-PLAYBOOK.md` |
 | Engine | `adaptor/engine.py` · `conductor/conductor.py` |
 | Laws | `kernel/*` · `AGENTS.md` · `HANDOFF.md` |
+| Era adapt | `ADAPTATION.md` |
 | Attic | `docs/historical/` only |
 
 ```bash

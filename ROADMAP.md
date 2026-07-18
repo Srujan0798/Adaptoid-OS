@@ -1,5 +1,13 @@
 # Adaptoid OS Roadmap
 
+## v5.3.0 — Era adapt (SHIPPED)
+
+- [x] Multi-agent corner audit + live 2026 research → `ADAPTATION.md`
+- [x] Agent Skills emit (agentskills.io paths)
+- [x] Worktrees / soft-vs-hard / host matrix in SHIP + playbook
+- [x] `agent-product` archetype · FM-19 · FM-20
+- [x] Engine always Core; stack fill; host-neutral TWO-TIER
+
 ## v5.2.1 — Final product close (SHIPPED — READY TO USE)
 
 - [x] **Lite** = only `ADAPTOID-LITE.md` (standalone hybrid)

@@ -2,19 +2,20 @@
 
 > **This is the only Lite product.**  
 > Paste this whole file into Grok Build / Claude / Cursor / Codex + your project brief.  
-> Say: *Use Adaptoid Lite Ultimate. Adapt the environment. Complete the project.*  
+> Say: *Use Adaptoid Lite. Adapt the environment. Complete the project.*  
 >  
-> **Core** = the multi-file folder `Adaptoid-OS/` (engine + validators). Not this file.
+> **Core** = the multi-file folder `Adaptoid-OS/` (engine + validators). Not this file.  
+> **Kit version:** ships with Adaptoid OS **5.3.0** · **Lite content rev:** 3.1-standalone (Jul 2026)
 
 ---
 
-# Adaptoid Lite Ultimate — Standalone Single File
+# Adaptoid Lite — Standalone Single File
 
 > **THIS IS LITE.** One pasteable markdown file. Fully self-contained. No clone required.  
 > **CORE** = the entire multi-file folder: `Adaptoid-OS/` (engine, validators, SHIP-SYSTEM, …).  
-> **Version.** v3.0-standalone — Jul 2026  
-> **Sources merged:** Desktop `OS_SETUP.md` v2.0-standalone (structure + FMs + archetypes + adaptor)  
-> + Adaptoid Core SHIP SYSTEM + Host Operating Playbook (Grok Build–class efficiency).
+> **Version.** Lite content 3.1-standalone · kit **5.3.0**  
+> **Includes:** SHIP SYSTEM + Host Operating Playbook + FMs + archetypes + adaptor.  
+> **Single-host default:** you may implement under SHIP gates (dual-tier workers optional for scale-out).
 
 ---
 
@@ -26,13 +27,13 @@
 4. Say exactly:
 
 ```
-Use Adaptoid Lite Ultimate v3.0-standalone.
+Use Adaptoid Lite.
 1) Intent-lock if ambiguous (≤4 A/B/C options).
-2) Run the Adaptor Engine (§15): detect archetype (§14), pick tier (§1.5), wire FMs (§13).
+2) Adapt: detect archetype (§14), pick tier (§1.5), wire FMs (§13).
 3) Follow SHIP SYSTEM (§0S): SDLC plan→requirements→design→build→test→deploy→maintain
    using this host's full toolkit (plan mode, subagents, skills, hooks, MCP, AGENTS.md,
-   memory/HANDOFF, search, multi-file edit, git, terminal, CI, review, sandbox).
-4) Generate the project folder adapted to my brief. Then complete wave-1 with evidence.
+   memory/HANDOFF, worktrees if parallel, search, multi-file edit, git, terminal, CI).
+4) Complete wave-1 of MY brief with evidence — not just scaffold folders.
 ```
 
 5. Agent creates `<project>/` adapted to **your** brief and starts shipping.

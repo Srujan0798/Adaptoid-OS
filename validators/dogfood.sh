@@ -120,14 +120,16 @@ python3 "$HERE/adaptor/engine.py" \
 core_ok=1
 for f in AGENTS.md CLAUDE.md HANDOFF.md kernel/PRINCIPLES.md \
          SHIP-SYSTEM.md HOST-OPERATING-PLAYBOOK.md \
-         .cursor/rules/adaptoid.mdc .adaptoid-kit; do
+         .cursor/rules/adaptoid.mdc .adaptoid-kit \
+         .agents/skills/verify-before-done/SKILL.md \
+         .agents/skills/intent-lock/SKILL.md; do
   if [ ! -e "$TMPDIR/core-host/$f" ]; then
     echo "FAIL: core-only host emit missing $f"
     core_ok=0
     fail=1
   fi
 done
-[ "$core_ok" -eq 1 ] && echo "OK  engine core-only + host adapters + ship OS"
+[ "$core_ok" -eq 1 ] && echo "OK  engine core-only + host adapters + ship OS + skills"
 # Core package on kit itself
 if [ -f "$HERE/core/MANIFEST.yaml" ] && [ -f "$HERE/core/README.md" ] \
    && [ -f "$HERE/adaptor/host_emit.py" ]; then
@@ -163,7 +165,8 @@ else
 fi
 # Product markers
 for f in VERSION PRODUCT.md HANDOFF.md START_HERE.md FLOW.md USE.md core/SHIP-SYSTEM.md \
-         core/HOST-OPERATING-PLAYBOOK.md ADAPTOID-LITE.md AUDIT.md; do
+         core/HOST-OPERATING-PLAYBOOK.md core/HOST-CAPABILITIES.md ADAPTOID-LITE.md \
+         ADAPTATION.md AUDIT.md; do
   if [ -f "$HERE/$f" ]; then
     echo "OK  $f present"
   else

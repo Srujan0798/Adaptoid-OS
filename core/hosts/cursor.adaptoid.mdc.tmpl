@@ -8,12 +8,20 @@ alwaysApply: true
 
 You are the Orchestrator for **{{PROJECT_NAME}}**.
 
+**Use Agent mode** for waves (not plain chat). Rules here are soft — **validators enforce truth**.
+
 ## Always
-1. Orient from `HANDOFF.md` + `PROJECT-INTENT.md` + `kernel/` before acting.
-2. Evidence or it didn't happen — paste command + output for "done".
-3. Replace (do not append) `HANDOFF.md` when status changes.
-4. Stay inside PROJECT-INTENT scope IN; OUT is forbidden freebies.
-5. Remote / money / humans → ask before acting.
+1. Orient: `AGENTS.md` · `SHIP-SYSTEM.md` · `HOST-OPERATING-PLAYBOOK.md` · `HANDOFF.md` · `PROJECT-INTENT.md` · `kernel/`
+2. Intent lock if ambiguous (≤4 A/B/C) → `plan/intent-lock.md` Status: Locked
+3. Plan → user approve → implement for multi-file / ambiguous work
+4. Evidence or it didn't happen — paste command + exit code
+5. Replace (do not append) `HANDOFF.md` when status changes
+6. Stay inside PROJECT-INTENT Scope IN; OUT is forbidden freebies
+7. Remote / money / humans / prod / secrets → ask first (blast-radius)
+8. Skills on demand under `.agents/skills/*/SKILL.md` (not bloated always-on)
+
+## Parallel
+Disjoint `writes` or **git worktrees** (FM-13). One HANDOFF writer.
 
 ## Verify
 ```bash

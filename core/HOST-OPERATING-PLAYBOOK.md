@@ -78,6 +78,36 @@ Store resolution under PROJECT-INTENT preferences + success criteria.
 | Implement | Edits + terminal | code under task `writes` |
 | Verify | Terminal tests | report with exit code |
 
+---
+
+## 3b. Mid-2026 host reality (adapt or thrash)
+
+### Agent Skills (portable how-to)
+
+- Format: `.agents/skills/<name>/SKILL.md` ([agentskills.io](https://agentskills.io))
+- Generated projects include: `intent-lock`, `verify-before-done`, `blast-radius-check`, `handoff-rewrite`, `worktree-parallel`
+- **AGENTS.md = short always-on law.** Skills = procedures loaded when relevant (progressive disclosure / FM-04)
+
+### Soft rules vs hard gates
+
+| Host | Soft | Hard |
+|---|---|---|
+| Cursor | `.mdc` / AGENTS | **preflight only** — model may ignore rules |
+| Claude / Grok | CLAUDE/AGENTS | Hooks + permissions + preflight |
+| Codex | AGENTS | Shell sandbox + preflight; **MCP not shell-sandboxed** |
+
+### Parallel agents → worktrees
+
+Same-checkout multi-agent → FM-13 collisions. Prefer **one worktree per overlapping writer**. Orchestrator merges after tests. Single HANDOFF writer on primary tree.
+
+### MCP policy
+
+Default: host **CLI** (`git`, `gh`, tests) over MCP. MCP only for authenticated SaaS/DB/browser. Network/write MCP → blast-radius confirm. Allowlist in `adaptoid.config.yaml`; no silent marketplace installs.
+
+### Single strong agent default
+
+One orchestrator + sparse subagents (explore / test / review). Full multi-agent crews only when debate is required — not greenfield scaffolding.
+
 **Phases:** prefer one SDLC stage (or one wave slice) per focused session when possible.  
 Use host **session reset** (`/new` or equivalent) between unrelated jobs to save context and cost.
 

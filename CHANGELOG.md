@@ -1,5 +1,16 @@
 # Adaptoid OS Changelog
 
+## v5.3.0 — Jul 2026 — Era adapt (multi-agent audit + live 2026)
+- **Research-driven:** AGENTS.md standard, agentskills.io, worktrees, soft vs hard enforcement, MCP sandbox reality
+- Engine always **Core** (no hollow pro); version from `VERSION`; clean UTC timestamps; stack filled from archetype tables
+- Emit portable skills: `.agents/skills/*` + `.claude/skills/*` (intent-lock, verify, blast-radius, handoff, worktree-parallel)
+- SHIP-SYSTEM rows 19–22; HOST-CAPABILITIES host×matrix; playbook §3b mid-2026 reality
+- Archetype **agent-product**; FM-19 cost runaway; FM-20 MCP/tool trust
+- Host-neutral `kernel/TWO-TIER.md`; wake.sh paths for generated projects
+- Cursor `.mdc` requires SHIP-SYSTEM + intent-lock + Agent mode
+- Docs: `ADAPTATION.md`, Lite brand unify, FLOW honesty (kit libs not full-copied)
+- Multi-agent corner audit findings in ADAPTATION leftovers
+
 ## v5.2.1 — Jul 2026 — Final product close
 - FLOW/USE/PRODUCT/README/core/README/install aligned: Lite=`ADAPTOID-LITE.md`, Core=folder
 - Entry docs slimmed; legacy OS_SETUP / short LITE paths are stubs or attic only

@@ -20,7 +20,7 @@ Validator        — the script that enforces it
 Wire-in          — where the validator runs (hook/CI/review)
 ```
 
-## The 18
+## The library (grows only)
 
 | FM | Title | Class |
 |---|---|---|
@@ -42,6 +42,8 @@ Wire-in          — where the validator runs (hook/CI/review)
 | FM-16 | Wrong route (hallucinated DAG transitions) | Routing |
 | FM-17 | Tampered state / undetected context drift | Integrity |
 | FM-18 | Unauthorized tool call / destructive action | Security |
+| FM-19 | Cost / token runaway | Cost |
+| FM-20 | MCP / tool trust & injection | Security |
 
 ## Meta-rule
 Every CRITICAL bug found in production or audit → add a new FM file here + a regression test + a validator. The library only grows. (This is the Hermes-style self-evolution loop.)

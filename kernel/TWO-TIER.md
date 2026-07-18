@@ -1,45 +1,46 @@
 # Kernel — Two-Tier Architecture (Brain / Hands / Session)
 
-> Always loaded. The shape of every project built with Adaptoid OS (OS-Setup lineage).
+> Always loaded. The shape of every project built with Adaptoid OS.
 
 ## The two tiers
 
 ```
-TIER 1 — ORCHESTRATOR  (Claude Code OR Kimi — interchangeable)
+TIER 1 — ORCHESTRATOR  (any host: Grok Build / Claude Code / Cursor / Codex / …)
   Plans. Dispatches. Reviews. Merges. Owns project state.
-  ONE at a time. If one model is down, the other reads the same files and continues.
-        │  writes task brief → work/<wave>/<task>.md
+  ONE active orchestrator session at a time (or one primary + isolated subagents).
+        │  writes task brief → work/<wave>/tasks/*.md
         ▼
-TIER 2 — WORKERS  (OpenCode CLI / Cursor / MiniMax / Codex — many, parallel)
+TIER 2 — WORKERS / HANDS  (host subagents, worktrees, or secondary agent sessions)
   Each takes ONE self-contained brief. Executes. Writes code. Writes a report.
-  Stateless across tasks. Uses ITS OWN skills, not the orchestrator's.
-        │  writes report → work/reports/<wave>/<task>.report.md
+  Prefer isolation: git worktree or separate sandbox when writes may collide.
+        │  writes report → work/reports/<wave>/*.report.md
         ▼
-  Back to orchestrator: review → merge.
+  Back to orchestrator: review → merge → rewrite HANDOFF.
 ```
 
-**Hard rule:** the orchestrator never writes feature code; workers never plan. The bridge is the `work/` folder. Nothing else passes between tiers.
+**Hard rule:** workers never own product intent or HANDOFF truth. The bridge is the `work/` folder + reports. Models and hosts are **swappable**; files are the contract.
 
-## Anthropic's Brain / Hands / Session mapping (Apr 2026)
+**Single-host path (common):** one Agent session *is* both Brain and Hands under SHIP gates — still write tasks/reports/evidence so a cold session can resume.
+
+## Brain / Hands / Session
 
 | Primitive | Our equivalent | Why it matters |
 |---|---|---|
-| **Brain** (model + harness) | the orchestrator (Claude/Kimi) | can crash and resume |
-| **Hands** (sandboxes, tools) | OpenCode worker windows, MCP servers | disposable; replace freely |
-| **Session** (durable log) | `orchestrator/memory/session/<wave>-<task>.events.jsonl` | the ONE thing that must survive |
+| **Brain** (model + harness) | Orchestrator host session + Adaptoid law | can crash and resume |
+| **Hands** (tools, sandboxes) | Host tools, worktrees, MCP, terminal | disposable; replace freely |
+| **Session** (durable log) | `HANDOFF.md` + optional `orchestrator/memory/session/*.events.jsonl` | the ONE thing that must survive |
 
 Three failure modes, three recoveries:
-- **Brain crash** → reopen Claude/Kimi → reads HANDOFF.md + events.jsonl → resumes.
-- **Hand crash** → that worker window dies → open a new one with the same brief.
-- **Session lost** → the only fatal one. That's why state lives in files, never only in the chat.
+- **Brain crash** → reopen host → reads HANDOFF.md (+ events if any) → resumes.
+- **Hand crash** → that worktree/subagent dies → open a new one with the same brief.
+- **Session lost** → fatal if only chat held state. State lives in **files**, never only in chat.
 
-## Why interchangeable orchestrators
+## Why hosts are interchangeable
 
-You use Claude Code and Kimi interchangeably. So:
-- `CLAUDE.md` and `KIMI.md` at the project root have **identical content**.
-- `AGENTS.md` is an alias for the same (Cursor/Codex compat).
-- Switching mid-project requires zero migration — both read the same `orchestrator/` apparatus.
+- `AGENTS.md` is the portable law ([agents.md](https://agents.md/) standard).
+- `CLAUDE.md` / `.cursor/rules` / host skills are **projections** of the same truth.
+- Switching mid-project = open same repo; no migration of proprietary memory.
 
 ## Why workers are stateless
 
-Workers forget everything between tasks BY DESIGN. This is a feature: it forces every task brief to be self-contained, which is what makes parallel dispatch safe. A brief that needs "remember what we discussed" is a broken brief. See `protocols/sdlc-loop.md` (task briefs + evidence gates).
+Workers forget between tasks BY DESIGN. Every task brief must be self-contained (writes, forbid, acceptance). A brief that needs "remember what we discussed" is broken. See `protocols/sdlc-loop.md` + `SHIP-SYSTEM.md`.

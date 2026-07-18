@@ -1,6 +1,6 @@
 # INDEX — Core progressive disclosure
 
-> Load kernel always. Load the rest only when the trigger fires. Do not load the entire Pro kit.
+> Load kernel always. Load the rest only when the trigger fires. Progressive disclosure.
 
 ## Always load (~2K tokens)
 
@@ -30,7 +30,9 @@
 | New session feels lost | `orchestrator/scripts/check_handoff.sh` |
 | Tool call policy | `policies/default.yaml` |
 | Scope creep urge | PROJECT-INTENT Scope OUT |
-| Full FM library / Pro protocols | parent Adaptoid-OS Pro kit |
+| Stage procedures | `.agents/skills/*/SKILL.md` |
+| Ship OS | `SHIP-SYSTEM.md` · `HOST-OPERATING-PLAYBOOK.md` |
+| Parent kit FM library | Adaptoid-OS `failure-modes/` (if kit on disk) |
 
 ## Core loop
 

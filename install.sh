@@ -23,7 +23,7 @@ echo "🔍 Running dogfood validation..."
 bash validators/dogfood.sh
 
 echo ""
-VER="5.2.1"
+VER="5.3.0"
 [ -f "$INSTALL_DIR/VERSION" ] && VER="$(tr -d '[:space:]' < "$INSTALL_DIR/VERSION")"
 echo "✅ Adaptoid OS v${VER} installed at $INSTALL_DIR"
 echo ""

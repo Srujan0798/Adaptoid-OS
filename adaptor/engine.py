@@ -82,13 +82,26 @@ def slugify(brief: str) -> str:
 # ═══════════════════════════════════════════════════════════════════════════════
 # 1. INGEST
 # ═══════════════════════════════════════════════════════════════════════════════
+def kit_version() -> str:
+    """Read kit VERSION file (authoritative)."""
+    p = OS_SETUP_ROOT / "VERSION"
+    if p.exists():
+        return p.read_text(encoding="utf-8").strip() or "5.3.0"
+    return "5.3.0"
+
+
+def utc_now() -> str:
+    """RFC3339 UTC without double timezone suffix."""
+    return datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+
+
 def ingest(brief: str, context: dict) -> dict:
     """Read the brief + any existing code/config."""
     log("INGEST: reading brief + context")
     return {
         "brief": brief,
         "context": context,
-        "timestamp": datetime.now(timezone.utc).isoformat() + "Z",
+        "timestamp": utc_now(),
     }
 
 
@@ -106,6 +119,11 @@ ARCHETYPE_SIGNALS = {
     "startup-mvp": ["mvp", "pmf", "launch", "customers", "pitch", "investor"],
     "cli-tool": ["cli", "library", "package", "npm", "pip", "command-line"],
     "data-pipeline": ["etl", "warehouse", "analytics", "dashboard", "data pipeline"],
+    # Mid-2026: product IS the agent / tool-using system
+    "agent-product": [
+        "agent", "multi-agent", "tool use", "tool-use", "mcp server", "mcp tool",
+        "coding agent", "agentic", "function calling", "subagent", "autonomous agent",
+    ],
 }
 
 TIER_SIGNALS = {
@@ -148,6 +166,7 @@ def detect_tier(brief: str, archetype: str) -> str:
         "startup-mvp": "T2",
         "cli-tool": "T0",
         "data-pipeline": "T1",
+        "agent-product": "T2",
     }
     return defaults.get(archetype, "T1")
 
@@ -161,7 +180,8 @@ def analyze(brief: str, context: dict) -> dict:
     domain_map = {
         "research-ml": "ML", "nlp-pipeline": "NLP", "saas-product": "web",
         "internal-tool": "web", "cli-tool": "systems", "data-pipeline": "data",
-        "hackathon": "varies", "startup-mvp": "web",
+        "hackathon": "varies", "startup-mvp": "web", "agent-product": "agents",
+        "internship": "general", "job-take-home": "general",
     }
     domain = domain_map.get(archetype, "general")
 
@@ -173,8 +193,10 @@ def analyze(brief: str, context: dict) -> dict:
         stack.append("react")
     if "postgres" in text or "postgresql" in text:
         stack.append("postgres")
-    if "node" in text or "express" in text:
+    if "node" in text or "express" in text or "typescript" in text:
         stack.append("node")
+    if "mcp" in text:
+        stack.append("mcp")
 
     risk_fms = {
         "hackathon": ["FM-08", "FM-09"],
@@ -185,6 +207,9 @@ def analyze(brief: str, context: dict) -> dict:
         "startup-mvp": ["FM-08", "FM-09"],
         "cli-tool": ["FM-07", "FM-11"],
         "data-pipeline": ["FM-05", "FM-11"],
+        "internship": ["FM-01", "FM-09"],
+        "job-take-home": ["FM-01", "FM-09"],
+        "agent-product": ["FM-09", "FM-13", "FM-18", "FM-19", "FM-20"],
     }
 
     return {
@@ -205,34 +230,140 @@ def pull_ecosystem(analysis: dict) -> dict:
     """Return recommended stack for archetype.
 
     Note: uses built-in tables (fast, offline). reference/ecosystem/SELECTION.md
-    is human documentation, not parsed at runtime.
+    is human documentation, not parsed at runtime. Keep smallest stack.
     """
     log("PULL: consulting built-in archetype defaults")
     archetype = analysis["archetype"]
     stacks = {
-        "hackathon": {"mcp": ["filesystem", "git"], "skills": ["tdd-lite"], "skip": ["sdk", "memory"]},
-        "research-ml": {"mcp": ["filesystem", "git", "tavily"], "skills": ["tdd", "diagnose"], "skip": ["ui"]},
-        "internal-tool": {"mcp": ["filesystem", "git", "serena"], "skills": ["tdd", "code-review"], "skip": ["sdk"]},
-        "saas-product": {"mcp": ["filesystem", "git", "playwright"], "skills": ["tdd", "code-review", "observability"], "skip": []},
-        "cli-tool": {"mcp": ["filesystem", "git"], "skills": ["tdd"], "skip": ["ui", "sdk"]},
+        "hackathon": {
+            "mcp": ["filesystem", "git"],
+            "skills": ["tdd-lite", "verify-before-done"],
+            "skip": ["sdk", "memory", "multi-agent"],
+            "language": "python",
+            "backend": "",
+            "frontend": "",
+        },
+        "internship": {
+            "mcp": ["filesystem", "git"],
+            "skills": ["tdd", "verify-before-done"],
+            "skip": ["sdk"],
+            "language": "python",
+            "backend": "",
+            "frontend": "",
+        },
+        "job-take-home": {
+            "mcp": ["filesystem", "git"],
+            "skills": ["tdd", "code-review", "verify-before-done"],
+            "skip": ["sdk", "memory"],
+            "language": "python",
+            "backend": "",
+            "frontend": "",
+        },
+        "research-ml": {
+            "mcp": ["filesystem", "git"],
+            "skills": ["tdd", "diagnose", "verify-before-done"],
+            "skip": ["ui"],
+            "language": "python",
+            "backend": "",
+            "frontend": "",
+        },
+        "nlp-pipeline": {
+            "mcp": ["filesystem", "git"],
+            "skills": ["tdd", "verify-before-done"],
+            "skip": ["ui"],
+            "language": "python",
+            "backend": "",
+            "frontend": "",
+        },
+        "internal-tool": {
+            "mcp": ["filesystem", "git"],
+            "skills": ["tdd", "code-review", "verify-before-done"],
+            "skip": ["sdk"],
+            "language": "python",
+            "backend": "fastapi",
+            "frontend": "",
+        },
+        "saas-product": {
+            "mcp": ["filesystem", "git"],
+            "skills": ["tdd", "code-review", "verify-before-done"],
+            "skip": [],
+            "language": "typescript",
+            "backend": "node",
+            "frontend": "react",
+        },
+        "startup-mvp": {
+            "mcp": ["filesystem", "git"],
+            "skills": ["tdd-lite", "verify-before-done"],
+            "skip": ["multi-agent"],
+            "language": "typescript",
+            "backend": "node",
+            "frontend": "react",
+        },
+        "cli-tool": {
+            "mcp": ["filesystem", "git"],
+            "skills": ["tdd", "verify-before-done"],
+            "skip": ["ui", "sdk"],
+            "language": "python",
+            "backend": "",
+            "frontend": "",
+        },
+        "data-pipeline": {
+            "mcp": ["filesystem", "git"],
+            "skills": ["tdd", "verify-before-done"],
+            "skip": ["ui"],
+            "language": "python",
+            "backend": "",
+            "frontend": "",
+        },
+        "agent-product": {
+            "mcp": ["filesystem", "git"],
+            "skills": [
+                "intent-lock",
+                "verify-before-done",
+                "blast-radius-check",
+                "handoff-rewrite",
+            ],
+            "skip": ["crew-framework-default"],
+            "language": "python",
+            "backend": "",
+            "frontend": "",
+        },
     }
-    return stacks.get(archetype, {"mcp": ["filesystem", "git"], "skills": ["tdd"], "skip": []})
+    base = {
+        "mcp": ["filesystem", "git"],
+        "skills": ["tdd", "verify-before-done"],
+        "skip": [],
+        "language": "",
+        "backend": "",
+        "frontend": "",
+    }
+    out = {**base, **stacks.get(archetype or "", {})}
+    # Prefer brief stack_hints when present
+    hints = analysis.get("stack_hints") or []
+    if "python" in hints and not out.get("language"):
+        out["language"] = "python"
+    if "node" in hints:
+        out["language"] = out.get("language") or "typescript"
+        out["backend"] = out.get("backend") or "node"
+    if "react" in hints:
+        out["frontend"] = "react"
+    if "postgres" in hints:
+        out["database"] = "postgres"
+    else:
+        out.setdefault("database", "")
+    return out
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
 # 4. COMPOSE — generate project structure
 # ═══════════════════════════════════════════════════════════════════════════════
 def copy_templates(tier: str, output_dir: Path, core_only: bool):
-    """Copy template skeleton based on tier / core mode."""
+    """Copy template skeleton. Product path is Core only (lean kit)."""
     templates = OS_SETUP_ROOT / "templates"
-    if core_only:
-        dirs_to_copy = ["root"]
-    else:
-        dirs_to_copy = ["root", "work", "specify", "plan", "docs", "orchestrator"]
-        if tier in ("T2", "T3", "T4"):
-            dirs_to_copy += ["evals"]
-        if tier in ("T3", "T4"):
-            dirs_to_copy += ["ci"]
+    # Pro multi-dir scaffold archived — always Core root templates
+    if not core_only:
+        log("  note: non-core-only requested but Pro templates archived → using Core")
+    dirs_to_copy = ["root"]
 
     for d in dirs_to_copy:
         src = templates / d
@@ -273,12 +404,151 @@ def copy_kernel(output_dir: Path):
     log("  copied kernel/")
 
 
+# Portable Agent Skills (agentskills.io) — progressive disclosure procedures
+ADAPTOID_SKILLS = {
+    "intent-lock": {
+        "description": (
+            "Use when the brief is ambiguous or multi-path. "
+            "Offer ≤4 A/B/C options, write decisions into PROJECT-INTENT and plan/intent-lock.md."
+        ),
+        "body": """# Intent lock
+
+1. If industry, stack, offline, or success criteria are open → **stop coding**.
+2. Ask ≤4 options (A/B/C/D); mark one recommended.
+3. Write answers into `PROJECT-INTENT.md` + `plan/intent-lock.md` with **Status: Locked**.
+4. Only then enter plan mode for stages 1–3.
+
+Do not scaffold a full stack while decisions are open.
+""",
+    },
+    "verify-before-done": {
+        "description": (
+            "Use before claiming done, ship, or PR. "
+            "Run acceptance commands and preflight; paste exit codes."
+        ),
+        "body": """# Verify before done
+
+1. Run the task `acceptance` command(s); require exit 0.
+2. Run `bash orchestrator/scripts/preflight.sh .`
+3. Paste command + output in the report. No green claim without evidence.
+4. If background tasks were started, wait for exit codes first.
+
+Status without evidence = false (FM-09).
+""",
+    },
+    "blast-radius-check": {
+        "description": (
+            "Use before destructive, production, money, network-write, or MCP write actions. "
+            "Classify r0–r5 and pause for human if high."
+        ),
+        "body": """# Blast radius check
+
+| Tier | Examples | Action |
+|---|---|---|
+| r0–r1 | read files, local edit | free |
+| r2 | git commit local | free after tests |
+| r3 | push, PR, network write | confirm |
+| r4–r5 | prod deploy, secrets, money, `rm -rf` | **stop — human** |
+
+MCP write/network is often **unsandboxed** (esp. Codex) → treat as ≥ r3.
+See `protocols/blast-radius.md` + `policies/default.yaml`.
+""",
+    },
+    "handoff-rewrite": {
+        "description": (
+            "Use at end of session or wave. Rewrite HANDOFF.md (never append). "
+            "Cold session must resume from HANDOFF alone."
+        ),
+        "body": """# Handoff rewrite
+
+Replace entire `HANDOFF.md` with current truth:
+
+- Active wave / task
+- Done (with evidence pointers)
+- Next 1–3 steps
+- Do NOT list (pitfalls)
+
+Never append. Stale HANDOFF = FM-14.
+""",
+    },
+    "worktree-parallel": {
+        "description": (
+            "Use when ≥2 agents might edit overlapping paths. "
+            "One task → one git worktree → disjoint writes → merge after tests."
+        ),
+        "body": """# Worktree parallel (FM-13)
+
+1. Parallel BUILD only if `writes` sets are disjoint **or** each agent has its own worktree.
+2. Prefer host worktree isolation (Claude `--worktree`, Grok/Codex worktrees).
+3. Merge only after TEST evidence on each branch/worktree.
+4. Single writer for `HANDOFF.md` on the primary tree.
+""",
+    },
+}
+
+
+def emit_adaptoid_skills(output_dir: Path) -> list[str]:
+    """Emit agentskills-compliant skills under .agents/skills/ (+ Claude mirror)."""
+    written: list[str] = []
+    root = output_dir / ".agents" / "skills"
+    root.mkdir(parents=True, exist_ok=True)
+    for name, meta in ADAPTOID_SKILLS.items():
+        skill_dir = root / name
+        skill_dir.mkdir(parents=True, exist_ok=True)
+        body = (
+            f"---\n"
+            f"name: {name}\n"
+            f"description: >\n"
+            f"  {meta['description']}\n"
+            f"---\n\n"
+            f"{meta['body'].strip()}\n"
+        )
+        path = skill_dir / "SKILL.md"
+        path.write_text(body, encoding="utf-8")
+        written.append(f".agents/skills/{name}/SKILL.md")
+
+    # Claude Code common path (mirror) — progressive disclosure same content
+    claude_skills = output_dir / ".claude" / "skills"
+    for name in ADAPTOID_SKILLS:
+        src = root / name / "SKILL.md"
+        dst_dir = claude_skills / name
+        dst_dir.mkdir(parents=True, exist_ok=True)
+        dst = dst_dir / "SKILL.md"
+        dst.write_text(src.read_text(encoding="utf-8"), encoding="utf-8")
+        written.append(f".claude/skills/{name}/SKILL.md")
+
+    index = root / "README.md"
+    index.write_text(
+        """# Adaptoid Agent Skills
+
+Portable procedures ([agentskills.io](https://agentskills.io) format).
+
+| Skill | When |
+|---|---|
+| `intent-lock` | Ambiguous brief / multi-path |
+| `verify-before-done` | Before ship / done claims |
+| `blast-radius-check` | Prod, secrets, money, MCP write |
+| `handoff-rewrite` | End of wave / session |
+| `worktree-parallel` | Parallel agents risk collisions |
+
+Always-on law stays in `AGENTS.md` / `SHIP-SYSTEM.md`. Load skills on demand.
+""",
+        encoding="utf-8",
+    )
+    written.append(".agents/skills/README.md")
+    return written
+
+
 def write_config(analysis: dict, brief: str, output_dir: Path, hosts: list, core_only: bool):
     """Write adaptoid.config.yaml."""
     cfg_path = output_dir / "adaptoid.config.yaml"
     eco = pull_ecosystem(analysis)
     goal = yaml_escape(brief[:120])
-    now = datetime.now(timezone.utc).isoformat()
+    now = utc_now()
+    lang = yaml_escape(str(eco.get("language") or ""))
+    backend = yaml_escape(str(eco.get("backend") or ""))
+    frontend = yaml_escape(str(eco.get("frontend") or ""))
+    database = yaml_escape(str(eco.get("database") or ""))
     content = f"""---
 project:
   name: "{slugify(brief)}"
@@ -287,15 +557,15 @@ project:
 
 archetype: "{analysis['archetype']}"
 tier: "{analysis['tier']}"
-kit: "{'core' if core_only else 'pro'}"
+kit: "core"
 hosts: {json.dumps(hosts)}
 
 stack:
-  language: ""
-  backend: ""
-  frontend: ""
-  database: ""
-  extras: []
+  language: "{lang}"
+  backend: "{backend}"
+  frontend: "{frontend}"
+  database: "{database}"
+  extras: {json.dumps(eco.get("skills") or [])}
 
 compliance: []
 mcp_servers: {json.dumps(eco['mcp'])}
@@ -339,9 +609,9 @@ waves:
   total_planned: 0
   shipped: 0
 
-adapted_at: "{now}Z"
-last_verified: "{now}Z"
-version: "5.1.6"
+adapted_at: "{now}"
+last_verified: "{now}"
+version: "{kit_version()}"
 """
     cfg_path.write_text(content, encoding="utf-8")
     log(f"  wrote {cfg_path.name}")
@@ -634,13 +904,13 @@ def compose(
     for hf in host_files:
         log(f"  host emit: {hf}")
 
-    # ADR stub (Pro docs or core plan/)
-    adr_dir = output_dir / "docs" / "decisions"
-    if not core_only:
-        adr_dir.mkdir(parents=True, exist_ok=True)
-    else:
-        adr_dir = output_dir / "plan"
-        adr_dir.mkdir(parents=True, exist_ok=True)
+    skill_files = emit_adaptoid_skills(output_dir)
+    for sf in skill_files:
+        log(f"  skill emit: {sf}")
+
+    # ADR stub in plan/
+    adr_dir = output_dir / "plan"
+    adr_dir.mkdir(parents=True, exist_ok=True)
     adr = adr_dir / "0002-stack-selection.md"
     eco = pull_ecosystem(analysis)
     adr.write_text(
@@ -650,9 +920,11 @@ def compose(
 |---|---|---|
 | Archetype: {analysis['archetype']} | Detected from brief signals | — |
 | Tier: {analysis['tier']} | Smallest that fits | — |
-| Kit: {'core' if core_only else 'pro'} | User/engine selection | — |
+| Kit: core | Product path (Pro scaffold archived) | hollow pro |
 | Hosts: {', '.join(hosts)} | --host flag | — |
-| MCP: {', '.join(eco['mcp'])} | Built-in archetype defaults | Human notes in ecosystem/SELECTION.md |
+| Language: {eco.get('language') or '—'} | Built-in + brief hints | — |
+| MCP: {', '.join(eco['mcp'])} | Smallest stack | marketplace free-for-all |
+| Skills: {', '.join(eco.get('skills') or [])} | agentskills paths | always-on mega-prompt |
 
 Highest-risk failure modes: {', '.join(analysis['risk_fms'])}
 """,
@@ -701,8 +973,9 @@ examples:
     )
     parser.add_argument(
         "--core-only",
-        action="store_true",
-        help="Emit Adaptoid Core kit only (kernel + contracts + must-run validators)",
+        action=argparse.BooleanOptionalAction,
+        default=True,
+        help="Emit Core kit (default: on). Pro multi-dir scaffold is archived; --no-core-only still emits Core.",
     )
     parser.add_argument("--skip-verify", action="store_true", help="Skip preflight verification")
     parser.add_argument(
@@ -747,9 +1020,11 @@ examples:
         analysis["ask"] = None
     if args.tier:
         analysis["tier"] = args.tier
+    # Product honesty: always Core (Pro templates not on live tree)
+    args.core_only = True
     log(
         f"  archetype={analysis['archetype']}  tier={analysis['tier']}  "
-        f"domain={analysis['domain']}  kit={'core' if args.core_only else 'pro'}  "
+        f"domain={analysis['domain']}  kit=core  "
         f"hosts={hosts}"
     )
     if analysis["ask"] and not args.archetype:
@@ -822,13 +1097,15 @@ examples:
             {
                 "status": "READY",
                 "output_dir": str(out),
-                "kit": "core" if args.core_only else "pro",
+                "kit": "core",
+                "version": kit_version(),
                 "hosts": hosts,
                 "sdlc_tasks": sdlc_ok,
                 "host_files": {
                     "AGENTS.md": (out / "AGENTS.md").exists(),
                     "CLAUDE.md": (out / "CLAUDE.md").exists(),
                     "cursor_rules": (out / ".cursor" / "rules" / "adaptoid.mdc").exists(),
+                    "agents_skills": (out / ".agents" / "skills").is_dir(),
                 },
                 "archetype": analysis["archetype"],
                 "tier": analysis["tier"],
