@@ -1,0 +1,181 @@
+# Elite 10% concepts (DRAFT — living)
+
+> **Honesty:** This is **not** the full agentic world. It is a working distillation of  
+> “concepts the top ~10% of practitioners use that drive ~100% of their leverage.”  
+> Coverage of the ocean: **≪ 1%**. Every wave can rewrite this file.  
+> Last synthesis start: **2026-07-18** (Wave-1 in progress with parallel scrapers).
+
+## The stack the elite actually climb
+
+```
+Software 1.0  code you write
+Software 2.0  weights you train
+Software 3.0  context + tools + loops you program   ← Karpathy
+        │
+        ▼
+Prompt engineering     (baseline)
+Context engineering    (right information in window)
+Harness engineering    (environment one agent runs in)
+Loop engineering       (system that prompts agents on a timer / goal)
+Factory / mission OS   (gates, evidence, multi-host, ship)  ← Adaptoid target
+```
+
+---
+
+## Concept dictionary (elite language)
+
+| Term | Definition (working) | Why it matters |
+|---|---|---|
+| **Harness** | Scaffold around a model: tools, memory, rules, permissions, lifecycle, subagents | Model is commodity; harness = reliability |
+| **Loop** | Recurring plan→act→verify→state-write; system prompts agents, not human every turn | Boris Cherny / Steinberger / Osmani 2026 |
+| **LLM-as-OS** | Model as kernel; tools = syscalls; files = FS; context = RAM | Karpathy metaphor for product shape |
+| **Software 3.0** | Program via context window, tools, examples, memory | Unit of work = macro actions |
+| **Agentic engineering** | Professional discipline: specs, review, evals, security, taste while agents code | Raises ceiling; vibe coding raises floor |
+| **Verifiability** | What has automatic success signal trains and ships fastest | Coding wins because tests/run/diff |
+| **Jagged intelligence** | Spikes on trained+verifiable domains; fails oddly elsewhere | Don’t assume smooth IQ |
+| **Maker ≠ checker** | Separate writer from verifier (second agent/model grades done) | `/goal` pattern; no self-grading |
+| **Disk memory** | HANDOFF / progress / AGENTS on disk; model forgets between sessions | Long-running agents require FS state |
+| **Fewer tools** | Vercel: remove ~80% tools → higher success, fewer tokens | Tool bloat = decision tax |
+| **Worktrees** | Parallel isolation for multi-agent | FM-13 at filesystem level |
+| **Skills** | Portable SKILL.md procedures (agentskills.io) | Progressive disclosure vs mega-prompt |
+| **Soft vs hard** | Rules text vs hooks/sandbox/validators | Soft alone = theater |
+| **Comprehension debt** | Code ships faster than human understanding | Engineer must stay in loop |
+| **Intent debt** | Cold session fills holes with confident guesses | Skills + INTENT lock close holes |
+
+---
+
+## The five loop primitives (Osmani / host convergence)
+
+| Primitive | Job | Host examples | Adaptoid today |
+|---|---|---|---|
+| **Automations** | Heartbeat: discover/triage on schedule | Codex Automations, Claude `/loop` cron | Partial (conductor; not scheduled) |
+| **Worktrees** | Parallel without collision | Claude/Codex/Grok | Documented; not auto-created |
+| **Skills** | Codify project knowledge | agentskills both sides | **Emitted** `.agents/skills` (v5.3) |
+| **Connectors** | Real tools (MCP) | MCP everywhere | OAP allowlist; keep sparse |
+| **Sub-agents** | Ideate vs verify | Claude/Codex subagents | Playbook: sparse use |
+| **State** | What’s done/next | HANDOFF, progress files, Linear | **HANDOFF rewrite** core law |
+
+---
+
+## Karpathy (Sequoia Ascent 2026) — elite takeaways
+
+1. **Dec 2025 agentic inflection** — macro actions trusted more; profession → orchestrator  
+2. **Software 3.0** — context is the program  
+3. **Some apps should disappear** into direct model transforms (MenuGen lesson)  
+4. **Automate what you can verify** — tests, diffs, evals = rails  
+5. **Vibe coding vs agentic engineering** — floor vs ceiling  
+6. **Agent-native infrastructure** — CLIs, MCP, schemas, headless, audit  
+7. **You can outsource thinking, not understanding**  
+
+Primary: https://karpathy.bearblog.dev/sequoia-ascent-2026/
+
+---
+
+## Loop engineering (Cherny / Osmani / Steinberger)
+
+- Job of elite engineer: **write loops**, not one-shot prompts  
+- Loop without **verifier** = high-confidence bug machine  
+- **Token costs** explode unattended — budget is part of loop design  
+- Same five primitives now ship **inside** Claude Code and Codex — stop arguing tool tribe, design portable loops  
+
+Primary: https://addyosmani.com/blog/loop-engineering/
+
+---
+
+## Harness moat (industry consensus 2026)
+
+- Multi-day coherence > single-shot SWE-bench  
+- Initializer agents + progress files (e.g. progress.txt + git) bridge sessions  
+- Manus rewrote harness 5×; LangChain re-architected research agents 4× — **iteration on harness is the work**  
+- Meta-harness research: agents optimizing harness via filesystem experience  
+
+---
+
+## Vercel lesson
+
+**Fewer tools, better agent.** Removing ~80% tools → 100% success vs 80%, 37% fewer tokens.  
+→ Adaptoid default: **smallest MCP stack**, CLI over tool zoo.
+
+Primary: https://vercel.com/blog/we-removed-80-percent-of-our-agents-tools
+
+---
+
+## Odysseus / community “self OS” (note carefully)
+
+- **Odysseus** (public discourse 2026): self-hosted AI workspace (often linked to PewDiePie / local-first) — agents, memory, MCP, skills; OpenCode roots mentioned on HN.  
+- Treat as **local agent OS / workspace** pattern, not yet a coding-harness gold standard.  
+- Related: OpenClaw, Hermes-class names appear in social — verify before adopting brand claims.  
+- Elite signal: **local-first + skills + memory + MCP**, not celebrity product.
+
+---
+
+## What elite refuse
+
+| Hype | Why refuse |
+|---|---|
+| Framework-as-OS (CrewAI default) | Hosts already own the agent loop |
+| Infinite multi-agent crews greenfield | Token tax + coordination theater |
+| Self-grading “done” | False status FM-09 |
+| Fat always-on system prompts | Context rot; skills win |
+| Marketplace free-install MCP | Supply chain / FM-20 |
+| Claiming ocean mapped | Infinite surface; models move |
+
+---
+
+## Adaptoid delta (from this draft only — NOT done)
+
+| Elite concept | In Adaptoid now? | Next (research → product later) |
+|---|---|---|
+| Disk state / HANDOFF | Yes | Keep sacred |
+| Verify-before-done | Yes (law + skill) | Harder SDLC acceptances |
+| Skills portable | Yes v5.3 emit | Expand pack carefully |
+| Worktrees | Documented | Conductor flag |
+| Maker ≠ checker | Partial (playbook) | Explicit verify subagent skill |
+| Automations / `/goal` | Weak | Protocol for host `/goal` + scheduled wake |
+| Fewer tools | SELECTION smallest | Engine enforce MCP max N |
+| Software 3.0 copy-paste install | Lite paste | Keep Lite as Software 3.0 program |
+| Loop engineering as product OS | SHIP-SYSTEM stages | Name “loop” in SHIP; automation heartbeat |
+| Comprehension debt | Not explicit | Playbook warning row |
+| Agent-native surfaces | Host emit | GEMINI.md etc. demand-gated |
+
+---
+
+## Categories still almost untouched (ocean)
+
+Models (DeepSeek, Kimi training agent patterns) · full official doc diffs weekly · enterprise multi-agent · security papers · every YC W26 agent startup · non-English communities · hardware/local inference harnesses · eval science · legal/compliance agent loops · robotics/embodied · …
+
+## Wave-1 additions (2026-07-18 parallel scrapers)
+
+### From harness/loop research
+- **Outer loop vs inner loop** (Ronacher *Coming Loop*): outer keeps work alive after model would stop  
+- **Ralph loop**: often fresh context + disk state + mechanical done  
+- **Factory model** (Osmani): build the system that builds software; verification bottleneck  
+- **Failure → harness ratchet**: every bug becomes AGENTS.md / hook / test  
+
+### From community pulse
+- Early stopping = harness bug; re-inject TODOs  
+- Long AGENTS.md walls (~80–150 lines) silently ignored — **thin always-on**  
+- Auto-generated AGENTS often **hurts** (must be human-curated)  
+- Stronger models + incomplete context can **increase** cost (hunt/retry)  
+- YC signal: coding-agent sessions as hiring/product input  
+
+### From hosts/standards
+- Hosts converge: plan · act · hooks · skills · subagents · headless · MCP  
+- MCP **2026 RC**: stateless core, extensions — track breaking changes  
+- Antigravity / host brand churn — never hardcode unstable host IDs  
+- Claude Agent SDK / OpenAI Agents SDK = productizable same loops  
+
+### From stack/tools/eval
+- Encode **capability shapes** not vendor brands (edge vs VM long-loop)  
+- Postgres-first memory; vector optional  
+- OTEL-shaped observability default  
+- Public bench % ≠ product definition of done — **golden tasks** win  
+- MCP deny-by-default (aligns FM-20)  
+
+### Named community harnesses to watch (not adopt wholesale)
+Claude Code · Codex · OpenCode · Cursor · Cline · Aider · Agentsmith · Citadel · OpenRig · mini-SWE-agent · Odysseus (local workspace) · OpenClaw  
+
+---
+
+**Ocean still open. This file is a draft sponge, not a finish line.**  
+**Next scheduled wave (every 2h):** pick a MANIFEST “next target” and deepen — do not rewrite history as complete.

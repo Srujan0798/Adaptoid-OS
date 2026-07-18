@@ -1,7 +1,12 @@
-# ADAPTATION — how Adaptoid stays Adaptoid (v5.3.0)
+# ADAPTATION — how Adaptoid stays Adaptoid (v5.3.0+)
 
 > Multi-agent corner audit + live agentic-era research (2026-07-18).  
-> **Adopt what compounds. Refuse framework theater.**
+> **Adopt what compounds. Refuse framework theater.**  
+>  
+> **Ocean research (ongoing, ≪1% coverage):** `docs/research/era-ocean/`  
+> Elite draft: `docs/research/era-ocean/elite/ELITE-10-PERCENT.md`  
+> Continuous scrape: scheduler every 2h → new `waves/*` files.  
+> **We have not mapped the agentic world. Do not claim otherwise.**
 
 ## Product (unchanged)
 

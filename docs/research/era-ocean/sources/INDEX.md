@@ -1,0 +1,95 @@
+# Era Ocean — source index
+
+> Living registry. Append; do not invent coverage. Prefer official docs.
+
+| ID | Date | Category | Title / source | URL | Wave |
+|---|---|---|---|---|---|
+| S-20260718-001 | 2026-07-18 | Deploy / agents | Vercel AI SDK — Agents overview (ToolLoopAgent, loop, tools) | https://ai-sdk.dev/docs/agents/overview | wave-20260718-w1-stack-tools-eval |
+| S-20260718-002 | 2026-07-18 | Deploy / edge | Cloudflare Agents — durable runtime, state, MCP, sandbox | https://developers.cloudflare.com/agents/ | wave-20260718-w1-stack-tools-eval |
+| S-20260718-003 | 2026-07-18 | Deploy / edge | Cloudflare Durable Objects overview | https://developers.cloudflare.com/durable-objects/ | wave-20260718-w1-stack-tools-eval |
+| S-20260718-004 | 2026-07-18 | Deploy / PaaS | Railway for Agents — CLI, MCP, agent skills | https://docs.railway.com/agents | wave-20260718-w1-stack-tools-eval |
+| S-20260718-005 | 2026-07-18 | Deploy / PaaS | Railway Agent (dashboard agent) | https://docs.railway.com/ai/railway-agent | wave-20260718-w1-stack-tools-eval |
+| S-20260718-006 | 2026-07-18 | Deploy | Fly.io — Machines / Sprites agent environment | https://fly.io/ | wave-20260718-w1-stack-tools-eval |
+| S-20260718-007 | 2026-07-18 | Deploy / DB | Render Postgres (pgvector extensions) | https://render.com/docs/postgresql | wave-20260718-w1-stack-tools-eval |
+| S-20260718-008 | 2026-07-18 | Deploy | Render — deploy AI agent guidance | https://render.com/articles/deploy-ai-agent-on-render-with-auto-scaling-and-monitoring | wave-20260718-w1-stack-tools-eval |
+| S-20260718-009 | 2026-07-18 | Observability | Langfuse overview — OTEL, traces, sessions, evals | https://langfuse.com/docs | wave-20260718-w1-stack-tools-eval |
+| S-20260718-010 | 2026-07-18 | Observability | Langfuse OpenTelemetry integration | https://langfuse.com/integrations/native/opentelemetry | wave-20260718-w1-stack-tools-eval |
+| S-20260718-011 | 2026-07-18 | Observability | LangSmith Observability | https://docs.langchain.com/langsmith | wave-20260718-w1-stack-tools-eval |
+| S-20260718-012 | 2026-07-18 | Observability | Arize Phoenix — tracing, evals, datasets | https://arize.com/docs/phoenix | wave-20260718-w1-stack-tools-eval |
+| S-20260718-013 | 2026-07-18 | Observability | Helicone quickstart / AI Gateway | https://docs.helicone.ai/ | wave-20260718-w1-stack-tools-eval |
+| S-20260718-014 | 2026-07-18 | Eval | SWE-bench leaderboards & variants | https://www.swebench.com/ | wave-20260718-w1-stack-tools-eval |
+| S-20260718-015 | 2026-07-18 | Eval | Terminal-Bench (harbor-native terminal agents) | https://www.tbench.ai/ | wave-20260718-w1-stack-tools-eval |
+| S-20260718-016 | 2026-07-18 | Eval | GAIA benchmark org (HF) | https://huggingface.co/gaia-benchmark | wave-20260718-w1-stack-tools-eval |
+| S-20260718-017 | 2026-07-18 | Eval | GAIA dataset | https://huggingface.co/datasets/gaia-benchmark/GAIA | wave-20260718-w1-stack-tools-eval |
+| S-20260718-018 | 2026-07-18 | MCP / security | MCP Security Best Practices (official) | https://modelcontextprotocol.io/docs/tutorials/security/security_best_practices | wave-20260718-w1-stack-tools-eval |
+| S-20260718-019 | 2026-07-18 | CI | GitHub Actions — continuous integration | https://docs.github.com/en/actions/get-started/continuous-integration | wave-20260718-w1-stack-tools-eval |
+| S-20260718-020 | 2026-07-18 | CI / agents | GitHub discussion — agentic workflows vs single-turn agent runners | https://github.com/github/gh-aw/discussions/23245 | wave-20260718-w1-stack-tools-eval |
+| S-20260718-021 | 2026-07-18 | Vector / memory | Pinecone product (agent namespaces) | https://www.pinecone.io/ | wave-20260718-w1-stack-tools-eval |
+| S-20260718-022 | 2026-07-18 | Vector / memory | Qdrant docs / comparison materials | https://qdrant.tech/ | wave-20260718-w1-stack-tools-eval |
+| S-20260718-023 | 2026-07-18 | Internal | Adaptoid `pull_ecosystem` stack defaults | `adaptor/engine.py` | wave-20260718-w1-stack-tools-eval |
+| S-20260718-024 | 2026-07-18 | Internal | Adaptoid verification stack + T2 observability | `protocols/verification.md`, `tiers/TIERS.md` | wave-20260718-w1-stack-tools-eval |
+| S-20260718-025 | 2026-07-18 | Host | Claude Code docs — overview (surfaces, MCP, skills, hooks, subagents, Agent SDK) | https://code.claude.com/docs/en/overview | wave-20260718-w1-hosts-models-standards |
+| S-20260718-026 | 2026-07-18 | Host | Claude Code product page | https://claude.com/product/claude-code | wave-20260718-w1-hosts-models-standards |
+| S-20260718-027 | 2026-07-18 | Framework | Claude Agent SDK overview | https://code.claude.com/docs/en/agent-sdk/overview | wave-20260718-w1-hosts-models-standards |
+| S-20260718-028 | 2026-07-18 | Lab / model | Anthropic research — Claude Code expertise / session study | https://www.anthropic.com/research/claude-code-expertise | wave-20260718-w1-hosts-models-standards |
+| S-20260718-029 | 2026-07-18 | Lab / model | Claude Platform docs (models, Managed Agents) | https://platform.claude.com/docs | wave-20260718-w1-hosts-models-standards |
+| S-20260718-030 | 2026-07-18 | Host | Cursor docs (Agent, Rules, MCP, Skills, CLI) | https://cursor.com/docs | wave-20260718-w1-hosts-models-standards |
+| S-20260718-031 | 2026-07-18 | Host | Cursor — Best practices for coding with agents (harness triad) | https://cursor.com/blog/agent-best-practices | wave-20260718-w1-hosts-models-standards |
+| S-20260718-032 | 2026-07-18 | Host | OpenAI Codex CLI | https://developers.openai.com/codex/cli | wave-20260718-w1-hosts-models-standards |
+| S-20260718-033 | 2026-07-18 | Host | Codex subagents | https://developers.openai.com/codex/subagents | wave-20260718-w1-hosts-models-standards |
+| S-20260718-034 | 2026-07-18 | Host | Codex build skills | https://developers.openai.com/codex/build-skills | wave-20260718-w1-hosts-models-standards |
+| S-20260718-035 | 2026-07-18 | Host | Codex as MCP server | https://developers.openai.com/codex/mcp-server | wave-20260718-w1-hosts-models-standards |
+| S-20260718-036 | 2026-07-18 | Lab / model | Introducing GPT-5.2-Codex | https://openai.com/index/introducing-gpt-5-2-codex/ | wave-20260718-w1-hosts-models-standards |
+| S-20260718-037 | 2026-07-18 | Host | Grok Build docs (TUI, headless, ACP, multi-model) | https://docs.x.ai/build/overview | wave-20260718-w1-hosts-models-standards |
+| S-20260718-038 | 2026-07-18 | Host | Introducing Grok Build (May 2026) | https://x.ai/news/grok-build-cli | wave-20260718-w1-hosts-models-standards |
+| S-20260718-039 | 2026-07-18 | Lab / model | grok-build-0.1 on API | https://x.ai/news/grok-build-0-1 | wave-20260718-w1-hosts-models-standards |
+| S-20260718-040 | 2026-07-18 | Lab / model | Introducing Grok 4.5 (Jul 2026) | https://x.ai/news/grok-4-5 | wave-20260718-w1-hosts-models-standards |
+| S-20260718-041 | 2026-07-18 | Host | Simon Willison — Grok Build open source | https://simonwillison.net/2026/Jul/15/grok-build/ | wave-20260718-w1-hosts-models-standards |
+| S-20260718-042 | 2026-07-18 | Host | Google Antigravity platform | https://antigravity.google/ | wave-20260718-w1-hosts-models-standards |
+| S-20260718-043 | 2026-07-18 | Host | Gemini CLI → Antigravity CLI transition (Jun 18 2026 cutoff) | https://developers.googleblog.com/an-important-update-transitioning-gemini-cli-to-antigravity-cli/ | wave-20260718-w1-hosts-models-standards |
+| S-20260718-044 | 2026-07-18 | Host | Antigravity CLI plugins & skills | https://antigravity.google/docs/cli/plugins | wave-20260718-w1-hosts-models-standards |
+| S-20260718-045 | 2026-07-18 | Host | Antigravity CLI features (subagents, plugins) | https://antigravity.google/docs/cli/features | wave-20260718-w1-hosts-models-standards |
+| S-20260718-046 | 2026-07-18 | Host | Google I/O 2026 developer highlights — Antigravity | https://blog.google/innovation-and-ai/technology/developers-tools/google-io-2026-developer-highlights/ | wave-20260718-w1-hosts-models-standards |
+| S-20260718-047 | 2026-07-18 | Host | Cline product (IDE/CLI/SDK) | https://cline.bot/ | wave-20260718-w1-hosts-models-standards |
+| S-20260718-048 | 2026-07-18 | Host | Cline GitHub | https://github.com/cline/cline | wave-20260718-w1-hosts-models-standards |
+| S-20260718-049 | 2026-07-18 | Host | Cline VS Marketplace | https://marketplace.visualstudio.com/items?itemName=saoudrizwan.claude-dev | wave-20260718-w1-hosts-models-standards |
+| S-20260718-050 | 2026-07-18 | Host | OpenCode | https://opencode.ai/ | wave-20260718-w1-hosts-models-standards |
+| S-20260718-051 | 2026-07-18 | Host | Aider (AGENTS.md conf via agents.md FAQ) | https://aider.chat/ | wave-20260718-w1-hosts-models-standards |
+| S-20260718-052 | 2026-07-18 | Host | Devin Desktop (Windsurf rebrand) | https://devin.ai/desktop/ | wave-20260718-w1-hosts-models-standards |
+| S-20260718-053 | 2026-07-18 | Host | Continue.dev — acquired by Cursor | https://www.continue.dev/ | wave-20260718-w1-hosts-models-standards |
+| S-20260718-054 | 2026-07-18 | Standard | AGENTS.md (AAIF / Linux Foundation) | https://agents.md/ | wave-20260718-w1-hosts-models-standards |
+| S-20260718-055 | 2026-07-18 | Standard | Agent Skills home | https://agentskills.io/home | wave-20260718-w1-hosts-models-standards |
+| S-20260718-056 | 2026-07-18 | Standard | Agent Skills specification (SKILL.md) | https://agentskills.io/specification | wave-20260718-w1-hosts-models-standards |
+| S-20260718-057 | 2026-07-18 | Standard | MCP specification (draft track) | https://modelcontextprotocol.io/specification/draft | wave-20260718-w1-hosts-models-standards |
+| S-20260718-058 | 2026-07-18 | Standard | MCP 2026-07-28 RC — stateless core, extensions, Tasks, Apps | https://blog.modelcontextprotocol.io/posts/2026-07-28-release-candidate/ | wave-20260718-w1-hosts-models-standards |
+| S-20260718-059 | 2026-07-18 | Standard | MCP spec + schema repo | https://github.com/modelcontextprotocol/modelcontextprotocol | wave-20260718-w1-hosts-models-standards |
+| S-20260718-060 | 2026-07-18 | Standard | LF launches A2A protocol project | https://www.linuxfoundation.org/press/linux-foundation-launches-the-agent2agent-protocol-project-to-enable-secure-intelligent-communication-between-ai-agents | wave-20260718-w1-hosts-models-standards |
+| S-20260718-061 | 2026-07-18 | Standard | Google Cloud donates A2A to Linux Foundation | https://developers.googleblog.com/en/google-cloud-donates-a2a-to-linux-foundation/ | wave-20260718-w1-hosts-models-standards |
+| S-20260718-062 | 2026-07-18 | Standard | A2A protocol site | https://a2a-protocol.org/latest/ | wave-20260718-w1-hosts-models-standards |
+| S-20260718-063 | 2026-07-18 | Standard | A2A GitHub | https://github.com/a2aproject/A2A | wave-20260718-w1-hosts-models-standards |
+| S-20260718-064 | 2026-07-18 | Lab / model | Moonshot Kimi API models (K3, k2.7-code) | https://platform.kimi.ai/docs/models | wave-20260718-w1-hosts-models-standards |
+| S-20260718-065 | 2026-07-18 | Lab / model | Moonshot AI (Kimi K3) | https://www.moonshot.ai/ | wave-20260718-w1-hosts-models-standards |
+| S-20260718-066 | 2026-07-18 | Framework | Langfuse — open-source agent frameworks comparison (Jul 2026) | https://langfuse.com/blog/2025-03-19-ai-agent-comparison | wave-20260718-w1-hosts-models-standards |
+| S-20260718-067 | 2026-07-18 | Framework | LangGraph | https://github.com/langchain-ai/langgraph | wave-20260718-w1-hosts-models-standards |
+| S-20260718-068 | 2026-07-18 | Framework | LangChain DeepAgents | https://github.com/langchain-ai/deepagents | wave-20260718-w1-hosts-models-standards |
+| S-20260718-069 | 2026-07-18 | Framework | OpenAI Agents SDK (Python) | https://github.com/openai/openai-agents-python | wave-20260718-w1-hosts-models-standards |
+| S-20260718-070 | 2026-07-18 | Framework | Claude Agent SDK (Python package repo) | https://github.com/anthropics/claude-agent-sdk-python | wave-20260718-w1-hosts-models-standards |
+| S-20260718-071 | 2026-07-18 | Framework | PydanticAI | https://ai.pydantic.dev/ | wave-20260718-w1-hosts-models-standards |
+| S-20260718-072 | 2026-07-18 | Framework | CrewAI | https://github.com/crewAIInc/crewAI | wave-20260718-w1-hosts-models-standards |
+| S-20260718-073 | 2026-07-18 | Framework | Microsoft Agent Framework | https://github.com/microsoft/agent-framework | wave-20260718-w1-hosts-models-standards |
+| S-20260718-074 | 2026-07-18 | Framework | Mastra | https://github.com/mastra-ai/mastra | wave-20260718-w1-hosts-models-standards |
+| S-20260718-075 | 2026-07-18 | Secondary | MorphLLM Terminal-Bench ranking roundup (verify scores) | https://www.morphllm.com/ai-coding-agent | wave-20260718-w1-hosts-models-standards |
+| S-20260718-076 | 2026-07-18 | Secondary | Codersera AI coding agents guide 2026 | https://codersera.com/blog/ai-coding-agents-complete-guide-2026/ | wave-20260718-w1-hosts-models-standards |
+| S-20260718-077 | 2026-07-18 | Secondary | Alice Labs agent frameworks 2026 | https://alicelabs.ai/en/insights/best-ai-agent-frameworks-2026 | wave-20260718-w1-hosts-models-standards |
+
+## Category map (waves)
+
+| Category (MANIFEST) | Waves touching it |
+|---|---|
+| 2. Host CLIs | wave-20260718-w1-hosts-models-standards |
+| 3. Model labs | wave-20260718-w1-hosts-models-standards |
+| 4. Frameworks | wave-20260718-w1-hosts-models-standards |
+| 5. Standards | wave-20260718-w1-hosts-models-standards |
+| 6. Tools / backends / DBs / deploy | wave-20260718-w1-stack-tools-eval |
+| 8. Benchmarks / evals | wave-20260718-w1-stack-tools-eval |
+| 9. Security / OAP / blast radius (MCP) | wave-20260718-w1-stack-tools-eval · wave-20260718-w1-hosts-models-standards |

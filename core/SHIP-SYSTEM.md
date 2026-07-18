@@ -11,6 +11,13 @@
 
 **Ship = SDLC gates + host tools + evidence.** Skip a gate or a tool when required → not done.
 
+### Loop engineering (mid-2026 language)
+
+Elite practice is **not** one-shot prompts. It is **loops**: plan → act → verify → write state → next.  
+Harness = environment one agent runs in. **Loop** = system that prompts agents (automations, `/goal`, worktrees, skills, subagents) while **maker ≠ checker**.  
+Adaptoid SHIP SYSTEM is the **mission / factory layer** on top of host harnesses — portable across Claude / Cursor / Codex / Grok.  
+Research corpus (incomplete ocean): `docs/research/era-ocean/elite/ELITE-10-PERCENT.md`.
+
 ---
 
 ## A. Host toolkit (must use — Adaptoid activates these)
