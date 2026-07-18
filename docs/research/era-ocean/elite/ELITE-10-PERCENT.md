@@ -250,5 +250,37 @@ Some claim product harness shrinks toward ~100 LOC as models improve. **Elite fo
 
 ---
 
+## Wave-4 additions (2026-07-18 · 20m · 6 subagents)
+
+### YC market (what founders fund)
+Substrate & teleop · Company Brain/skills · plan gates · fleet isolation · agent observability · prod-fix · MCP-first + agent security · proof under vibe code.  
+→ Mission OS stays the wedge; not “another chat agent.”
+
+### OpenClaw security imports
+- Pairing = **admission**; capability approval separate  
+- sessionKey ≠ auth  
+- Skills/plugins = TCB; install-as-privilege  
+- Sandbox-off default is **anti-pattern** for Adaptoid  
+- External-content quarantine (PI chains)
+
+### Standards delta
+- AGENTS.md AAIF plain MD, nested nearest-wins, thin  
+- Skills progressive disclosure + validate  
+- **MCP 2026-07-28 RC:** stateless core, biggest break since launch — dual-stack readiness
+
+### Hosts: Cline / Aider / Grok / Antigravity
+- Plan/Act hard gate (Cline)  
+- Repo map + lint-test loop + dirty git hygiene (Aider)  
+- Grok: worktrees + ACP + Claude-compat skills  
+- Antigravity: plugin monorepo unit; host emit **watch**
+
+### Community delta
+- Delete-tests-to-green  
+- verified=1 binary gate desire  
+- Orphan swarm if parent dies without killing children  
+- Outer deterministic harness naming war (loop/flow/exoskeleton)
+
+---
+
 **Ocean still open. This file is a draft sponge, not a finish line.**  
-**Next 20m wave:** YC agent startups + CN discourse + OpenClaw threat deep + optional Goal playbook language.
+**Next 20m wave:** CN harness discourse · PydanticAI · Cherny transcript · MCP RC re-verify.

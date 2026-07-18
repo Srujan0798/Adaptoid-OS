@@ -109,8 +109,15 @@
 | S-20260718-103 | 2026-07-18 | Eval | SWE-bench | https://www.swebench.com/ | wave-20260718-0837-multi (partial F) |
 | S-20260718-104 | 2026-07-18 | Security | MCP security best practices | https://modelcontextprotocol.io/docs/tutorials/security/security_best_practices | wave-20260718-0837-multi (partial F) |
 | S-20260718-105 | 2026-07-18 | Multi merge | W3 multi wave + 6 partials | `waves/wave-20260718-0837-multi-20m.md` + `waves/partial/*` | wave-20260718-0837-multi |
+| S-20260718-106 | 2026-07-18 | YC | Agent startups W25–S26 census (partial A) | https://www.ycombinator.com/ · in-file company URLs | wave-20260718-0841-multi |
+| S-20260718-107 | 2026-07-18 | Security | OpenClaw threat model / pairing / sandbox (partial B) | https://docs.openclaw.ai · GitHub SECURITY | wave-20260718-0841-multi |
+| S-20260718-108 | 2026-07-18 | Standard | agents.md · agentskills · MCP 2026-07-28 RC (partial C) | https://agents.md/ · https://agentskills.io · https://blog.modelcontextprotocol.io/posts/2026-07-28-release-candidate/ | wave-20260718-0841-multi |
+| S-20260718-109 | 2026-07-18 | Host | Cline + Aider primary (partial D) | https://docs.cline.bot · https://aider.chat | wave-20260718-0841-multi |
+| S-20260718-110 | 2026-07-18 | Host | Grok Build + Antigravity (partial E) | https://docs.x.ai/build · https://antigravity.google | wave-20260718-0841-multi |
+| S-20260718-111 | 2026-07-18 | Community | Fresh HN/Reddit/X pulse (partial F) | https://news.ycombinator.com/item?id=48921077 + Reddit/X | wave-20260718-0841-multi |
+| S-20260718-112 | 2026-07-18 | Multi merge | W4 multi + 6 partials | `waves/wave-20260718-0841-multi-20m.md` + `partial/wave-20260718-0841-*` | wave-20260718-0841-multi |
 
-> Full URL lists live inside each `partial/wave-20260718-0837-*.md` — parent INDEX keeps high-signal anchors only.
+> Full URL lists live inside each `partial/wave-*-{A–F}.md` — parent INDEX keeps high-signal anchors only.
 
 ## Category map (waves)
 
