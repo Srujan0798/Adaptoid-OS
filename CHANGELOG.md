@@ -1,5 +1,11 @@
 # Adaptoid OS Changelog
 
+## v5.1.9 — Jul 2026 — Lite = one file ADAPTOID-LITE.md
+- **THE Lite product** is repo root **`ADAPTOID-LITE.md`** (ultimate standalone, one file)
+- Merged Desktop OS_SETUP v2.0 + SHIP SYSTEM + host playbook
+- Synced Desktop `ADAPTOID-LITE.md` / `OS_SETUP.md` (same content)
+- Docs simplified: no multi-name confusion
+
 ## v5.1.8 — Jul 2026 — Lite Ultimate standalone v3.0
 - Rebuilt **Lite** single file from Desktop `OS_SETUP.md` v2.0 + SHIP SYSTEM + host playbook
 - Canonical: `reference/OS_SETUP_v1.3_full.md` · alias `reference/ADAPTOID-LITE.md`

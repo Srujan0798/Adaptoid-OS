@@ -35,8 +35,8 @@ conductor/conductor.py  init-wave --sdlc → work/wave-1/tasks
 | Path | Role |
 |---|---|
 | `USE.md` | **how to hand Lite file or Core folder + brief** |
-| `reference/OS_SETUP_v1.3_full.md` | **Lite Ultimate standalone** (canonical) |
-| `reference/ADAPTOID-LITE.md` | same bytes as OS_SETUP (clear alias) |
+| **`ADAPTOID-LITE.md`** | **THE Lite product — one ultimate standalone file** |
+| `reference/OS_SETUP_v1.3_full.md` | same content (legacy path) |
 | `START_HERE.md` | short entry |
 | `PRODUCT.md` | planned vs done |
 | `FLOW.md` | this map |

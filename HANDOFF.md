@@ -5,15 +5,15 @@
 ## Status
 - **Active wave:** wave-1
 - **Active task:** maintain single spine (`FLOW.md`)
-- **Release:** v5.1.8 (see `VERSION`)
+- **Release:** v5.1.9 (see `VERSION`)
 - **Last updated:** 2026-07-18
 
 ## Goal
-Lite Ultimate standalone md + Core folder; adapt env; complete projects.
+Lite = one file `ADAPTOID-LITE.md` · Core = this folder.
 
 ## Done
-- Lite Ultimate v3.0 (Desktop v2.0 + SHIP + playbook), synced Desktop
-- HOST-OPERATING-PLAYBOOK + SHIP-SYSTEM + engine/conductor
+- Final ultimate standalone Lite at repo root + Desktop
+- SHIP-SYSTEM + playbook inside that file + Core
 
 ## Next
 1. User real brief

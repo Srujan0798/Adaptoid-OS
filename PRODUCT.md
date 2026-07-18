@@ -9,7 +9,7 @@ with **SHIP SYSTEM** (SDLC × host toolkit) + host operating playbook + evidence
 
 | Mode | Meaning | Path |
 |---|---|---|
-| **Lite** | **Ultimate standalone one md** (v3.0) | `reference/OS_SETUP_v1.3_full.md` (= `ADAPTOID-LITE.md`) · Desktop: `OS_SETUP.md` / `ADAPTOID-LITE.md` |
+| **Lite** | **One ultimate standalone md** | **`ADAPTOID-LITE.md`** (root) · Desktop same name |
 | **Core** | **Entire Adaptoid-OS product folder** | this repo |
 
 ## Planned vs done

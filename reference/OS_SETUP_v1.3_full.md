@@ -1,3 +1,13 @@
+# ADAPTOID LITE — THE ONE STANDALONE FILE
+
+> **This is the only Lite product.**  
+> Paste this whole file into Grok Build / Claude / Cursor / Codex + your project brief.  
+> Say: *Use Adaptoid Lite Ultimate. Adapt the environment. Complete the project.*  
+>  
+> **Core** = the multi-file folder `Adaptoid-OS/` (engine + validators). Not this file.
+
+---
+
 # Adaptoid Lite Ultimate — Standalone Single File
 
 > **THIS IS LITE.** One pasteable markdown file. Fully self-contained. No clone required.  

@@ -162,8 +162,7 @@ else
 fi
 # Product markers
 for f in VERSION PRODUCT.md HANDOFF.md START_HERE.md FLOW.md USE.md core/SHIP-SYSTEM.md \
-         core/HOST-OPERATING-PLAYBOOK.md reference/OS_SETUP_v1.3_full.md \
-         reference/ADAPTOID-LITE.md AUDIT.md; do
+         core/HOST-OPERATING-PLAYBOOK.md ADAPTOID-LITE.md AUDIT.md; do
   if [ -f "$HERE/$f" ]; then
     echo "OK  $f present"
   else
@@ -171,20 +170,16 @@ for f in VERSION PRODUCT.md HANDOFF.md START_HERE.md FLOW.md USE.md core/SHIP-SY
     fail=1
   fi
 done
-# Short root LITE.md must NOT exist; Lite = OS_SETUP / ADAPTOID-LITE only
-if [ -f "$HERE/LITE.md" ]; then
-  echo "FAIL: root LITE.md must not exist — Lite is reference/OS_SETUP_v1.3_full.md"
+# THE Lite product is root ADAPTOID-LITE.md (ultimate standalone)
+if [ ! -f "$HERE/ADAPTOID-LITE.md" ]; then
+  echo "FAIL: missing ADAPTOID-LITE.md (the one standalone Lite file)"
   fail=1
+elif grep -q "THE ONE STANDALONE FILE" "$HERE/ADAPTOID-LITE.md" \
+   && grep -q "0S. SHIP SYSTEM" "$HERE/ADAPTOID-LITE.md" \
+   && grep -q "Adaptor Engine" "$HERE/ADAPTOID-LITE.md"; then
+  echo "OK  ADAPTOID-LITE.md ultimate markers present"
 else
-  echo "OK  no misleading root LITE.md"
-fi
-# Lite ultimate markers
-if grep -q "Adaptoid Lite Ultimate" "$HERE/reference/OS_SETUP_v1.3_full.md" \
-   && grep -q "0S. SHIP SYSTEM" "$HERE/reference/OS_SETUP_v1.3_full.md" \
-   && grep -q "Adaptor Engine" "$HERE/reference/OS_SETUP_v1.3_full.md"; then
-  echo "OK  Lite Ultimate content markers present"
-else
-  echo "FAIL: Lite file missing Ultimate / SHIP / Adaptor markers"
+  echo "FAIL: ADAPTOID-LITE.md missing Ultimate / SHIP / Adaptor markers"
   fail=1
 fi
 # Disconnected top-level modules must stay archived
