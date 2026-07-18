@@ -1,31 +1,20 @@
 # Start here — Adaptoid OS
 
-## Two surfaces (do not confuse)
+## Two surfaces
 
 | Name | What | Path |
 |---|---|---|
-| **Lite** | **Standalone one markdown file** (the original) | `reference/OS_SETUP_v1.3_full.md` |
-| **Core** | **This entire folder / repo** | `Adaptoid-OS/` (engine, SHIP-SYSTEM, validators, …) |
+| **Lite** | **Ultimate standalone one file** | `reference/OS_SETUP_v1.3_full.md` (= `reference/ADAPTOID-LITE.md`) |
+| **Core** | **This entire folder** | Adaptoid-OS repo |
 
-There is **no** root `LITE.md`. Lite = the long standalone OS-Setup file only.
+Desktop: `~/Desktop/OS_SETUP.md` and `~/Desktop/ADAPTOID-LITE.md` (synced copies of Lite).
 
-## How you use it
+## Lite
+Paste the Lite file + brief → “Use Adaptoid Lite Ultimate. Complete it.”
 
-**Lite:** paste `reference/OS_SETUP_v1.3_full.md` + brief → “adapt & complete.”  
-
-**Core:**
+## Core
 ```bash
-cd /path/to/Adaptoid-OS
-python3 adaptor/engine.py \
-  --brief "YOUR BRIEF" \
-  --output ../my-project \
-  --core-only --host all
+python3 adaptor/engine.py --brief "YOUR BRIEF" --output ../my-project --core-only --host all
 ```
-(`--sdlc` default on.) Open `../my-project` → complete with SHIP-SYSTEM.
 
-| File | Role |
-|---|---|
-| **`USE.md`** | recipes + magic prompt |
-| **`core/SHIP-SYSTEM.md`** | SDLC × host toolkit |
-| **`core/HOST-OPERATING-PLAYBOOK.md`** | Grok-style how to proceed |
-| **`FLOW.md`** | live file spine |
+**USE.md** · **SHIP-SYSTEM.md** · **HOST-OPERATING-PLAYBOOK.md** · **FLOW.md**

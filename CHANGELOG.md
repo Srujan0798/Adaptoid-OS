@@ -1,5 +1,11 @@
 # Adaptoid OS Changelog
 
+## v5.1.8 — Jul 2026 — Lite Ultimate standalone v3.0
+- Rebuilt **Lite** single file from Desktop `OS_SETUP.md` v2.0 + SHIP SYSTEM + host playbook
+- Canonical: `reference/OS_SETUP_v1.3_full.md` · alias `reference/ADAPTOID-LITE.md`
+- Synced Desktop: `~/Desktop/OS_SETUP.md` + `~/Desktop/ADAPTOID-LITE.md`
+- Fully standalone: multi-host, intent-lock, SDLC×toolkit, FMs §13, archetypes §14, adaptor §15
+
 ## v5.1.7 — Jul 2026 — Host operating playbook (Grok-style proceed)
 - **`core/HOST-OPERATING-PLAYBOOK.md`** — extract Grok Build efficiency: intent lock A/B/C, plan→approve→implement, one outcome/turn, verify-before-done, subagent policy, AGENTS.md once, session hygiene
 - Cold-start + SHIP-SYSTEM + USE magic prompt require this behavior

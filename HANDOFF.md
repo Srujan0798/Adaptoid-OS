@@ -5,16 +5,15 @@
 ## Status
 - **Active wave:** wave-1
 - **Active task:** maintain single spine (`FLOW.md`)
-- **Release:** v5.1.7 (see `VERSION`)
-- **Last updated:** 2026-07-16
+- **Release:** v5.1.8 (see `VERSION`)
+- **Last updated:** 2026-07-18
 
 ## Goal
-Adapt environment from user intent using SHIP-SYSTEM + Grok-style operating playbook.
+Lite Ultimate standalone md + Core folder; adapt env; complete projects.
 
 ## Done
-- HOST-OPERATING-PLAYBOOK (intent lock, plan→approve, verify, efficiency)
-- SHIP-SYSTEM + 8-stage tasks (incl 00-intent-lock)
-- Lite = OS_SETUP file · Core = this folder
+- Lite Ultimate v3.0 (Desktop v2.0 + SHIP + playbook), synced Desktop
+- HOST-OPERATING-PLAYBOOK + SHIP-SYSTEM + engine/conductor
 
 ## Next
 1. User real brief

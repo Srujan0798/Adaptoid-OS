@@ -1,111 +1,72 @@
-# Adaptoid Lite Ultimate — Standalone Single File
+# OS-Setup — Universal Agentic Project Kickstart
 
-> **THIS IS LITE.** One pasteable markdown file. Fully self-contained. No clone required.  
-> **CORE** = the entire multi-file folder: `Adaptoid-OS/` (engine, validators, SHIP-SYSTEM, …).  
-> **Version.** v3.0-standalone — Jul 2026  
-> **Sources merged:** Desktop `OS_SETUP.md` v2.0-standalone (structure + FMs + archetypes + adaptor)  
-> + Adaptoid Core SHIP SYSTEM + Host Operating Playbook (Grok Build–class efficiency).
+> **You are holding Adaptoid LITE** — the **only standalone markdown product**.  
+> Paste this whole file into any agent + your brief → “Use Adaptoid. Adapt the environment. Complete the project.”  
+>  
+> **Core** = the **entire Adaptoid-OS folder/repo** (not a second md):  
+> `python3 adaptor/engine.py --brief "..." --output ./proj --core-only --host all`  
+> (`--sdlc` is default). Recipes: repo **`USE.md`**. Ship OS: **`core/SHIP-SYSTEM.md`**.  
+
+> **Hosts.** `AGENTS.md` · `CLAUDE.md` · Cursor rules · kernel · HANDOFF · PROJECT-INTENT · SDLC.
 
 ---
 
-## 0. How to use this file (only path that matters)
+## ⚠️ CANONICAL OVERRIDE (v5.1.7) — if anything below conflicts, THIS WINS
 
-1. Open **any** coding agent: **Grok Build · Claude Code · Cursor · Codex · Kimi**.
-2. Paste **this entire file** at the top of the conversation.
-3. Paste your **project brief** (internship / job take-home / hackathon / product / anything).
-4. Say exactly:
+Mid-file sections of this document are **historical**. For Adaptoid 5.1.x you MUST:
 
-```
-Use Adaptoid Lite Ultimate v3.0-standalone.
-1) Intent-lock if ambiguous (≤4 A/B/C options).
-2) Run the Adaptor Engine (§15): detect archetype (§14), pick tier (§1.5), wire FMs (§13).
-3) Follow SHIP SYSTEM (§0S): SDLC plan→requirements→design→build→test→deploy→maintain
-   using this host's full toolkit (plan mode, subagents, skills, hooks, MCP, AGENTS.md,
-   memory/HANDOFF, search, multi-file edit, git, terminal, CI, review, sandbox).
-4) Generate the project folder adapted to my brief. Then complete wave-1 with evidence.
-```
+1. **Product surfaces:** Lite = *this file only*. Core = full Adaptoid-OS repo.
+2. **Ship loop:** Plan → Requirements → Design → Build → Test → Deploy → Maintain (GFG SDLC).
+3. **Host toolkit by stage** (Grok Build–class): plan mode, subagents, skills, hooks, MCP, AGENTS.md, memory/HANDOFF, code search, multi-file edits, git, deep reasoning, web search, terminal, headless/CI, code review, sandbox, background tasks.
+4. **Proceed like an efficient host agent:**
+   - **Intent lock** if ambiguous (≤4 A/B/C options) before BUILD  
+   - **Plan → approve → implement** for big work; skip plan for tiny fixes  
+   - **One outcome per turn**  
+   - **Verify before done** (tests + exit code)  
+   - **Subagents only for large explore/tests**  
+   - **AGENTS.md once** for stack/style/secrets  
+5. **Evidence or it didn’t happen.** Rewrite HANDOFF (never append). Stay in `writes`/`forbid`.
+6. Prefer Core engine when available → generated project includes `SHIP-SYSTEM.md` + `HOST-OPERATING-PLAYBOOK.md`.
 
-5. Agent creates `<project>/` adapted to **your** brief and starts shipping.
+If a later section says otherwise, **ignore the later section**.
 
-**Fast path:** paste brief → *"Adaptoid Lite: adapt environment and complete this."*
+> **What this is.** A single self-sufficient markdown file that turns ANY project brief into a complete, dual-tier agentic project structure. Paste this file + your project details into Claude, Cursor, Codex, Grok, or Kimi, and you get the entire repo pre-filled, ready to start shipping with parallel workers.
+>
+> **Built from.** Four deep methodology iterations + two dedicated specifications + live web research (May 2026) across Anthropic Skills (agentskills.io), Boris Cherny's Claude Code best practices, Karpathy CLAUDE.md, 12-Factor Agents, 5 canonical patterns, SuperClaude (30 commands), BMAD Method, kmshihab Claude OS pattern, Spec-Kit, Kiro, MCP, A2A, mattpocock skills, OpenClaw, Hermes, Letta, and 40+ tools on the agentskills.io standard.
+>
+> **Plus empirical lessons from 5 real shipping projects:** rfq2boq (NLP/ML), swa-erp (Python+React internal ERP — already shipped wave-1 + wave-2), NRG (production-grade with DPDP compliance, observability, SLOs), Ultra-Dex-Orc (workflow-driven multi-agent with declarative JSON workflows + per-workflow state files), DRO-FairML (research project).
+>
+> **Plus the very latest Anthropic engineering posts (Q1+Q2 2026):**
+> - **"Scaling Managed Agents: Decoupling the brain from the hands"** (Apr 2026) — formal Brain/Hands/Session triad
+> - **"Demystifying evals for AI agents"** (Jan 2026) — eval-driven development, pass@k / pass^k, anti-patterns
+> - **"How we built Claude Code auto mode"** (Mar 2026) — safe skip-permissions for routine work
+> - **"Harness design for long-running application development"** (Mar 2026) — stateless harness + durable session log
+> - **"How we contain Claude across products"** — blast-radius as first-class concept
+> - **Skills 2026 unification** — commands are now skills; `.claude/commands/X.md` and `.claude/skills/X/SKILL.md` both create `/X`. `allowed-tools` frontmatter is canonical. Skills can run in their own sub-agent context.
+>
+> **Version.** v1.3 — May 2026 (added Brain/Hands/Session architecture, eval-driven development w/ pass@k & pass^k, eval anti-patterns, evals/ directory, durable session log, allowed-tools, skills-commands unification, blast-radius governance, auto mode, harness pattern, Harbor/Braintrust/Langfuse/Phoenix frameworks, transcript review, Swiss Cheese verification).
 
-**If Adaptoid-OS Core folder is on disk (preferred for multi-host files + validators):**
+---
+
+## 0. How to use this file
+
+### 0A. Fast path (recommended if Adaptoid-OS is installed)
+
 ```bash
-python3 <Adaptoid-OS>/adaptor/engine.py \
-  --brief "YOUR BRIEF" --output ../my-project --core-only --host all
-# --sdlc is default
+python3 ~/adaptoid-os/adaptor/engine.py \
+  --brief "your brief" --output ./my-project \
+  --core-only --host all --sdlc
 ```
-Then open `../my-project` (includes SHIP-SYSTEM.md + HOST-OPERATING-PLAYBOOK.md).
 
----
+### 0B. Paste path (Lite — no install)
 
-## 0S. SHIP SYSTEM (standalone) — SDLC × host toolkit
-
-> **Ship = SDLC gates + host tools + evidence.** Skip a required gate/tool → not done.
-
-### Host toolkit (activate by stage — do not ignore)
-
-| Capability | Adaptoid rule |
-|---|---|
-| **Plan mode** | Mandatory stages 1–3 for big/ambiguous work; skip for typos/one-liners |
-| **Subagents** | Large explore / parallel tests only — **not** empty greenfield |
-| **Skills / hooks** | Reusable workflows; session orient; pre-ship checks |
-| **MCP** | Only if needed; policy before network/write |
-| **AGENTS.md** | Project law forever — stack, style, secrets, test rules |
-| **Memory** | `HANDOFF.md` rewritten (never append) |
-| **Code search / multi-file** | Stay in task `writes` / `forbid` |
-| **Git** | After tests green; never commit secrets |
-| **Deep reasoning / web search** | Hard problems / live docs |
-| **Terminal** | Every acceptance + verify before done |
-| **Headless / CI** | Ship automation when available |
-| **Code review** | Before PR/ship |
-| **Sandbox** | Untrusted code |
-| **Background tasks** | Wait for exit code — never claim done while running |
-
-### SDLC (GFG 7 stages)
-
-| # | Stage | Artifact / evidence | Host tools |
-|---|---|---|---|
-| 0 | **Intent lock** | ≤4 A/B/C if ambiguous; write decisions | Plan mode, ask options |
-| 1 | Planning & feasibility | `PROJECT-INTENT.md` goal, IN/OUT, tier | Plan mode, web |
-| 2 | Requirements | Testable success criteria + OUT | Plan mode, research |
-| 3 | Design | `plan/design.md` + task writes lists | Plan mode, search |
-| 4 | Build | Code only under `writes` | Terminal, multi-file, git |
-| 5 | Test | Acceptance exit 0 in report | Terminal, subagents if large |
-| 6 | Deploy | Preflight/checklist green; blast-radius for prod | Terminal, CI, git |
-| 7 | Maintain | Rewrite HANDOFF for cold resume | Memory = HANDOFF |
-
-**Never BUILD without 0–3 when ambiguous. Never DEPLOY without 5.**
-
-### How to proceed (Grok Build–class efficiency)
-
-1. **Plain English** + tables + one outcome per turn + bottom line.  
-2. **Intent lock** before full scaffold if industry/stack/offline unclear.  
-3. **Plan → approve → implement** for big work; user says “go” then code.  
-4. **One outcome per turn** — don’t pile 10 jobs.  
-5. **Point at files** when known — don’t thrash the whole repo.  
-6. **Session hygiene** — compact/new between phases.  
-7. **Verify before done** — run tests; paste exit code; show diff.  
-8. **AGENTS.md once** — never re-explain stack every session.  
-9. **Security every stage** — no secrets in git; careful on prod/money/humans.
-
-### Kernel laws (always)
-
-1. Think before coding · 2. Simplicity first · 3. Surgical changes · 4. Goal-driven (check first)  
-5. **Evidence or it didn’t happen** · 6. One source of truth · 7. Honest status  
-8. **Replace, never append, state** · 9. Never delete — archive  
-10. Stay in the box · 11. Mind blast radius · 12. Verify in layers  
-
----
-
-## 0L. Lite vs Core (do not confuse)
-
-| | Lite (this file) | Core (folder) |
-|---|---|---|
-| What | Single self-contained md | Entire `Adaptoid-OS/` repo |
-| Use | Paste into any agent | `adaptor/engine.py` generates project |
-| Power | Rules inline (FMs, archetypes, adaptor §13–15) | Executable validators + SHIP-SYSTEM files |
-| When | Fastest start, no install | Multi-host emit + preflight scripts |
+1. **Open any coding agent** (Claude Code, Cursor, Codex, Grok Build, Kimi).
+2. **Paste this file** at the top of your conversation.
+3. **Paste the project brief** (PDF text, one-paragraph scope, or just a goal).
+4. **Pick a tier** (§1.5) — Tier 1 default; bump to 2/3/4 for production/enterprise/startup.
+5. **Say**: *"Use OS-Setup / Adaptoid Core at Tier N. Emit AGENTS.md + host files for my tools. Generate the complete project structure for this brief."*
+6. The orchestrator creates the `<project-name>/` folder with everything described below, **filled in for your specific project**.
+7. Open worker windows in parallel, paste task files from `work/`, require evidence in reports, rewrite `HANDOFF.md`.
 
 ---
 
@@ -113,7 +74,7 @@ Then open `../my-project` (includes SHIP-SYSTEM.md + HOST-OPERATING-PLAYBOOK.md)
 
 ```
 ┌──────────────────────────────────────────────────────────────────┐
-│  TIER 1 — ORCHESTRATOR  (Claude / Grok / Cursor / Codex / Kimi, interchangeable)        │
+│  TIER 1 — ORCHESTRATOR  (Claude OR Kimi, interchangeable)        │
 │                                                                  │
 │  • Reads project state, specs, reports                           │
 │  • Writes task files into work/                                  │
@@ -161,7 +122,7 @@ Per Anthropic's April 2026 "Scaling Managed Agents" post, the modern agent archi
 ```
 ┌─────────────────────────────────────────────────────────────────────┐
 │  BRAIN  — Claude/Kimi model + harness (stateless reasoning loop)    │
-│          • In our setup: Claude Code / Grok Build / Cursor / Codex / Kimi running the            │
+│          • In our setup: Claude Code or Kimi running the            │
 │            orchestrator/ apparatus                                  │
 │          • Can crash and recover via wake(sessionId)                │
 └──────┬─────────────────────────────────────────────────────┬────────┘
@@ -182,12 +143,12 @@ Per Anthropic's April 2026 "Scaling Managed Agents" post, the modern agent archi
 
 | Anthropic primitive | Our equivalent |
 |---|---|
-| **Brain** | Claude Code / Grok Build / Cursor / Codex / Kimi orchestrator (interchangeable) reading `orchestrator/` |
+| **Brain** | Claude Code or Kimi orchestrator (interchangeable) reading `orchestrator/` |
 | **Hands** | OpenCode CLI worker windows + MCP servers + (T3) Dockerfile.sandbox |
 | **Session** | `orchestrator/memory/session/<wave>-<task>.events.jsonl` (append-only) |
 | `execute(name, input)` | the task brief in `work/<wave>/<task>.md` (uniform interface) |
 | `emitEvent(id, event)` | append to events.jsonl on every tool use, review, merge |
-| `wake(sessionId)` | re-open the same host agent in the same dir; HANDOFF.md + events.jsonl + MEMORY.md restore context |
+| `wake(sessionId)` | re-open Claude Code in the same dir; HANDOFF.md + events.jsonl + MEMORY.md restore context |
 | `provision({resources})` | open a new OpenCode CLI window or `make worker-N` |
 | credentials outside sandboxes | `.env` (gitignored) loaded into harness; never into worker sandboxes |
 
@@ -1589,7 +1550,7 @@ If any check fails, setup is incomplete. Fix before declaring ready.
 ## 12. Invocation
 
 ```text
-[Paste OS_SETUP.md into Claude Code / Grok Build / Cursor / Codex / Kimi]
+[Paste OS_SETUP.md into Claude Code or Kimi]
 
 Project brief:
 """
@@ -1614,104 +1575,18 @@ When done, print:
 1. The folder you created
 2. The first wave's task files ready to dispatch
 3. The starter eval tasks created
-4. The exact command to open in Claude Code / Grok Build / Cursor / Codex / Kimi to start
+4. The exact command to open in Claude Code or Kimi to start
 5. Tier-specific extras created (if T2+)
 ```
 
 ---
 
-## 13. Failure-Mode Guardrails (the anti-hallucination teeth)
+## End of OS-Setup v1.3
 
-> Each line below is a REAL failure observed across real projects. The orchestrator wires the relevant ones into the generated project (pre-commit + CI + review) and obeys all of them itself. The `Adaptoid-OS Core folder /` folder ships these as executable validator scripts; here they are the rules to enforce.
-
-| # | Failure | Symptom | Prevention rule (enforce always) |
-|---|---|---|---|
-| FM-01 | **State drift** | duplicate/contradictory rows in EXECUTION/HANDOFF | status files are REWRITTEN to current truth, never appended; one row per item; active-wave must match across files |
-| FM-02 | **Stale process** | old run with wrong params burns CPU | before any long job: `ps`-check for an existing run; params come from config, asserted + printed at startup |
-| FM-03 | **Broken references** | a doc/script links a deleted file | before delete/rename, grep for inbound refs and fix in the same change; every committed reference resolves |
-| FM-04 | **Context bloat** | agent forgets earlier decisions | progressive disclosure; kernel ≤ ~3K tokens; /clear between tasks; compact to HANDOFF/ADR/events.jsonl |
-| FM-05 | **Metric inconsistency** | same number stated two ways | metrics live in ONE generated source (`results/metrics.json`); docs reference/regenerate, never hand-type |
-| FM-06 | **Config revert** | a param silently changed back | critical params in one config file, asserted at runtime so a revert fails loud; lock the critical keys |
-| FM-07 | **Embarrassing artifacts** | cheat-sheets / AI prompts / secrets committed | publish-gate scan before commit/push; working artifacts in `attic/`/`scratch/` (untracked); rotate any leaked secret |
-| FM-08 | **Scope creep** | features nobody asked for | `SCOPE_GUARD.md` lists IN/OUT/LATER; every worker brief lists files it may + must-NOT touch; extras → BACKLOG |
-| FM-09 | **False status** | "done"/"passes" without proof; misframing | evidence-required (command + output this session); own your bugs; never round "partly" up to "done" |
-| FM-10 | **Flaky tests** | pass alone, fail in suite | fresh state per test; seed all RNG; run suite twice shuffled; quarantine+fix, never "re-run until green" |
-| FM-11 | **Silent failures** | swallowed errors / hidden fallbacks | no bare `except: pass`; fallbacks log loud; missing required input fails loud, never substitutes synthetic data |
-| FM-12 | **Stale derived docs** | README shows old numbers | derived content is GENERATED, never hand-typed; regenerate on /ship; stamp "as of <sha>" |
-| FM-13 | **Parallel collisions** | two workers edit one file | wave briefs have DISJOINT write sets (check before dispatch); shared files owned by one early task; else sequence |
-| FM-14 | **Lost handoff** | cold new session re-derives wrongly | HANDOFF.md always current; new session reads HANDOFF→kernel→active spec→recent events before acting |
-
-**The failure→prevention loop:** every new CRITICAL bug → add it to this table + a regression test + the guardrail that stops it. The library only grows.
-
----
-
-## 14. Archetype Engine (auto-tailor the start)
-
-> Detect the project KIND from the brief, then adapt: default tier, what to emphasize, what to skip, and which failure modes to guard first. Load exactly one.
-
-| Archetype | Signals | Tier | Emphasize | Skip | Top FMs |
-|---|---|---|---|---|---|
-| **hackathon** | "48h", "demo day", judges, speed | T0–T1 | one end-to-end demo path; seeded/offline fallback; the pitch | auth, compliance, exhaustive tests, SDKs | FM-09, FM-02, FM-11 |
-| **internship** | mentor/professor, report, presentation | T1–T2 | working deliverable + report + slides; reproducibility; honest limitations | multi-tenancy, billing, heavy compliance | FM-07, FM-09, FM-05, FM-12 |
-| **job-take-home** | assessment, "evaluate my code", reviewer | T1 | reviewer UX (README/DECISIONS); clean idiomatic code; right tests; runs first try | over-engineering, infra they didn't ask | FM-07, FM-08, FM-09, FM-10 |
-| **research-ml** | paper, experiments, ablations, seeds | T2 | reproducibility; one-source metrics; config-as-law; honest negative results | UI, multi-tenancy, deployment | FM-02, FM-05, FM-06, FM-09, FM-11 |
-| **nlp-pipeline** | NER, OCR, extraction, documents | T1–T2 | ingestion robustness; schema-first; golden set; hybrid (rules+LLM) | multi-tenancy, heavy UI | FM-11, FM-05, FM-10, FM-02 |
-| **internal-tool** | ERP, admin, "for our team", CRUD | T1–T2 | domain model + lifecycle; RBAC; audit log; vertical slices | multi-tenancy, portals, mobile, AI features | FM-01, FM-13, FM-06, FM-04 |
-| **saas-product** | customers, multi-tenant, billing, uptime | T3 | tenant isolation; auth; observability; compliance; reliability | speculative features | FM-07, FM-11, FM-02, FM-01 |
-| **startup-mvp** | PMF, first customers, founder, validate | T2+T4 docs | speed to usable; funnel analytics; reversible decisions; business docs | full compliance, multi-region, premature scale | FM-08, FM-09, FM-04, FM-07 |
-| **cli-tool** | library, package, npm/pip, SDK | T1 | API design first; docs+examples; semver+changelog; matrix CI; min deps | UI, multi-tenancy, observability | FM-03, FM-05, FM-12, FM-10 |
-| **data-pipeline** | ETL, warehouse, analytics, dashboard | T2 | idempotency; data contracts+quarantine; lineage; one transformation layer | UI beyond dashboard, RBAC beyond warehouse | FM-11, FM-02, FM-05, FM-06 |
-
-**Selection:** match signals; on a tie ask ONE multiple-choice question; default `internal-tool` at T1. Mixed projects pick a PRIMARY for structure, pull emphases from a secondary. State which and why.
-
----
-
-## 15. The Adaptor Engine (the transform)
-
-> What makes this an *adaptoid*, not a static template: it analyzes the brief, pulls only what fits, and emits an executable, tailored setup. Architecture: **independent core + opt-in compatibility adapters** (LangGraph/CrewAI/AutoGen/ADK at the edges only — never a dependency). Output is **executable-first** (configs/specs), human guidance second. Persistence is **runtime-context-checks** before each phase (git hooks/daemons optional, never required — sovereign/air-gapped safe).
-
-### The 6-step transform
-```
-INGEST   read this file + the brief (+ any existing code/config).
-ANALYZE  detect archetype (§14) + tier (§1.5) + domain + constraints + deadline + audience
-         + success criteria; identify highest-risk failure modes (§13).
-         Ambiguous? ask ≤4 multiple-choice questions; never guess silently.
-PULL     the SMALLEST stack that ships the archetype; the skills tasks need;
-         the workflow templates that fit; the failure-mode guardrails to wire.
-COMPOSE  emit executable artifacts (below) adapted to archetype + tier + stack.
-RECORD   write docs/decisions/0002-stack-selection.md (ADR): chosen + why + rejected.
-VERIFY   run the guardrail checks (§13); must pass before declaring ready.
-```
-
-### Executable-first output (emit these, in this order)
-1. **Project structure** (archetype+tier adapted — §2).
-2. **Workflow spec** `workflows/<project>.plan.yaml` — waves, tasks (with disjoint `writes` + `forbid`), gates, parallelism, `self_heal` rules, blast-radius tags, executable acceptance.
-3. **Tool/skill manifest** — `mcp.json` + `skills.manifest.json` (pinned).
-4. **Routing rules** — which model/agent per work type (cost-aware cascade; cheap models for read-heavy/bulk).
-5. **Guardrail wiring** — the §13 rules bound to pre-commit + CI + review.
-6. **Kernel + briefs** — short `AGENTS.md` / `CLAUDE.md` / host cold-start + `work/wave-1/*.md` self-contained task files.
-7. **The ADR** (human layer) — the "why" behind the stack.
-
-### Self-heal rules (every wave declares these)
-`on_acceptance_fail → revise_brief` · `on_flaky → quarantine_and_fix` (FM-10) · `on_stale_process → kill_and_restart` (FM-02) · `on_drift → regenerate_from_source` (FM-01/05/12) · `on_context_full → handoff_and_clear` (FM-04).
-
-### The invariant
-Whatever it adapts, it never violates the kernel methodology and always wires the failure-mode guardrails. Adaptation changes the *what*, never the *discipline*. That — smallest winning stack + the specific guardrails your risk profile needs + an executable plan — is the edge.
-
----
-
-
----
-
-## End of Adaptoid Lite Ultimate v3.0-standalone
-
-**Single source of truth for paste-and-go.** Update this file when methodology evolves.  
-**Core folder** = expandable multi-file edition with executable validators + engine.  
-**This file** embeds the same discipline for one-paste use.
+Single source of truth for the dual-tier agentic project setup. Update this file (not the generated project) when the methodology evolves. Generated projects are downstream — rebuilt from a new OS-Setup version.
 
 **Changelog**
-- **v3.0-standalone (Jul 2026)** — Adaptoid Lite Ultimate: Desktop OS_SETUP v2.0 body + SHIP SYSTEM (§0S) + Host Operating Playbook (Grok Build–class) + multi-host (Grok/Claude/Cursor/Codex) + intent-lock stage 0 + clear Lite vs Core. Sources: Desktop `/OS_SETUP.md` + Adaptoid-OS Core.
-- **v2.0-standalone (Jun 2026)** — §13 Failure-Mode Guardrails · §14 Archetype Engine · §15 Adaptor Engine.
-- **v1.3–v1.0** — see historical OS-Setup changelog (Brain/Hands/Session, tiers, templates, …).
-
-*Generated for Adaptoid-OS · 2026-07-18*
+- **v1.3 (May 2026)** — Brain/Hands/Session triad (Anthropic Apr 2026) · durable events.jsonl session log · wake() resume · skills/commands unification with `allowed-tools` + `invocation` + `subagent` frontmatter · evals/ first-class directory · eval-driven development (pass@k, pass^k) · eval anti-patterns · Swiss Cheese verification · transcript review cadence · auto mode for r0/r1 (Anthropic Mar 2026) · blast-radius governance r0–r5 · Harbor/Braintrust/Phoenix framework support · bundled-skills awareness · replay_session.sh.
+- **v1.2 (May 2026)** — Tiers · HALL_OF_SHAME · BACKLOG · wave gotchas · operational docs · audit cycle · compliance · multi-Dockerfile · env docker-compose · Procfile · prometheus · skills-lock · workflows/ + state · validators · architecture.png · STAKEHOLDER · STARTUP_ROADMAP · interview runbook · repo meta-doc · ROADMAP separation · EXECUTION commit hashes · failure→prevention loop.
+- **v1.1 (May 2026)** — wave terminology · root CLAUDE/HANDOFF/HIERARCHY · attic/ · deliverables/ · expanded tests/ · plural data/ · models/ versioning · prompts/wave-N/.
+- **v1.0 (May 2026)** — initial.

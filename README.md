@@ -3,13 +3,13 @@
 # Adaptoid OS
 ## Agent harness — Lite (standalone md) · Core (this folder)
 
-[![Version](https://img.shields.io/badge/version-5.1.5-blue)](#)
+[![Version](https://img.shields.io/badge/version-5.1.8-blue)](#)
 [![CI](https://github.com/Srujan0798/Adaptoid-OS/actions/workflows/ci.yml/badge.svg)](https://github.com/Srujan0798/Adaptoid-OS/actions/workflows/ci.yml)
 [![License](https://img.shields.io/badge/license-MIT-yellow)](#)
 
 > Hand a **project brief** + **Lite file** or **this Core folder** → model adapts the environment and ships with evidence.
 
-[Use it](USE.md) · [Lite file](reference/OS_SETUP_v1.3_full.md) · [SHIP SYSTEM](core/SHIP-SYSTEM.md) · [Flow](FLOW.md)
+[Use it](USE.md) · [Lite Ultimate](reference/OS_SETUP_v1.3_full.md) · [SHIP SYSTEM](core/SHIP-SYSTEM.md) · [Flow](FLOW.md)
 
 </div>
 
@@ -27,10 +27,11 @@ Agent projects fail from false “done”, lost handoff, and no test/ship gate �
 
 | | What | Where |
 |---|---|---|
-| **Lite** | **Standalone markdown** (original OS-Setup) | [`reference/OS_SETUP_v1.3_full.md`](reference/OS_SETUP_v1.3_full.md) |
+| **Lite** | **Ultimate standalone single md** (v3.0) | [`reference/OS_SETUP_v1.3_full.md`](reference/OS_SETUP_v1.3_full.md) · alias [`ADAPTOID-LITE.md`](reference/ADAPTOID-LITE.md) |
 | **Core** | **This entire repository** | engine, SHIP-SYSTEM, validators, archetypes, … |
 
-**Lite:** paste `reference/OS_SETUP_v1.3_full.md` + brief → “Use Adaptoid. Complete it.”  
+**Lite:** paste that file + brief → “Use Adaptoid Lite Ultimate. Complete it.”  
+(Desktop copies: `~/Desktop/OS_SETUP.md`, `~/Desktop/ADAPTOID-LITE.md`)  
 
 **Core:**
 ```bash

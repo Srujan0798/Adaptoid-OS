@@ -162,7 +162,8 @@ else
 fi
 # Product markers
 for f in VERSION PRODUCT.md HANDOFF.md START_HERE.md FLOW.md USE.md core/SHIP-SYSTEM.md \
-         core/HOST-OPERATING-PLAYBOOK.md reference/OS_SETUP_v1.3_full.md AUDIT.md; do
+         core/HOST-OPERATING-PLAYBOOK.md reference/OS_SETUP_v1.3_full.md \
+         reference/ADAPTOID-LITE.md AUDIT.md; do
   if [ -f "$HERE/$f" ]; then
     echo "OK  $f present"
   else
@@ -170,12 +171,21 @@ for f in VERSION PRODUCT.md HANDOFF.md START_HERE.md FLOW.md USE.md core/SHIP-SY
     fail=1
   fi
 done
-# Short root LITE.md must NOT exist (misleading); Lite = OS_SETUP standalone only
+# Short root LITE.md must NOT exist; Lite = OS_SETUP / ADAPTOID-LITE only
 if [ -f "$HERE/LITE.md" ]; then
   echo "FAIL: root LITE.md must not exist — Lite is reference/OS_SETUP_v1.3_full.md"
   fail=1
 else
   echo "OK  no misleading root LITE.md"
+fi
+# Lite ultimate markers
+if grep -q "Adaptoid Lite Ultimate" "$HERE/reference/OS_SETUP_v1.3_full.md" \
+   && grep -q "0S. SHIP SYSTEM" "$HERE/reference/OS_SETUP_v1.3_full.md" \
+   && grep -q "Adaptor Engine" "$HERE/reference/OS_SETUP_v1.3_full.md"; then
+  echo "OK  Lite Ultimate content markers present"
+else
+  echo "FAIL: Lite file missing Ultimate / SHIP / Adaptor markers"
+  fail=1
 fi
 # Disconnected top-level modules must stay archived
 for d in claw_bridge skills multi-channel vault examples setup slash-commands patterns philosophy memory-bank; do

@@ -1,12 +1,12 @@
 # Adaptoid product surfaces (authoritative)
 # Lite = standalone md only. Core = entire this repository.
 
-version: "5.1.6"
+version: "5.1.8"
 name: adaptoid
 
 surfaces:
-  lite: "reference/OS_SETUP_v1.3_full.md"
-  core: "this repository (engine, SHIP-SYSTEM, validators, archetypes, …)"
+  lite: "reference/OS_SETUP_v1.3_full.md (= ADAPTOID-LITE.md) — ultimate standalone v3.0"
+  core: "this repository (engine, SHIP-SYSTEM, playbook, validators, …)"
 
 ship_os: "core/SHIP-SYSTEM.md"   # SDLC × host toolkit
 
