@@ -44,7 +44,15 @@ while IFS= read -r md; do
       echo "x" >> /tmp/.fm03_$$
     fi
   done
-done < <(find "$ROOT" -name '*.md' -not -path '*/node_modules/*' -not -path '*/.git/*' -not -path '*/attic/*' 2>/dev/null)
+# Vendored skill/plugin docs are third-party content whose examples are
+# illustrative, not paths in this repo — e.g. `./src/ordering/CONTEXT.md` in a
+# domain-modeling skill, or a dated playwright trace filename. FM-03 is about
+# *this project's* docs pointing at things that do not exist; holding vendored
+# material to that standard produces failures nobody in the repo can fix.
+done < <(find "$ROOT" -name '*.md' \
+  -not -path '*/node_modules/*' -not -path '*/.git/*' -not -path '*/attic/*' \
+  -not -path '*/.agents/skills/*' -not -path '*/.claude/skills/*' \
+  -not -path '*/.claude/plugins/*' 2>/dev/null)
 
 if [ -f /tmp/.fm03_$$ ]; then fail=1; rm -f /tmp/.fm03_$$; fi
 [ "$fail" -eq 0 ] && echo "OK FM-03: all markdown references resolve"
