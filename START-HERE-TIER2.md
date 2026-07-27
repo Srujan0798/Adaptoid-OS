@@ -205,6 +205,32 @@ research brief in this stack, and it is the only input that cannot be generated 
 
 ---
 
+
+## The spine — `~/.trinity/` (created 2026-07-27, empty)
+
+This folder now reads and writes a persistent store that outlives every project. It is the
+reason project ten starts where project nine ended instead of where project one did.
+
+| What | Path | This repo's role |
+|---|---|---|
+| Claim sets, per archetype | `~/.trinity/claims/` | **read at genesis** — an archetype pulls its claims, including every claim earned on every past project |
+| Run results | `~/.trinity/ledger.jsonl` | **append** — every claim result, every project, forever. Append-only, machine-generated |
+| Failures | `~/.trinity/incidents/` | **write** — when something breaks in a new way |
+
+Contract and rules: `~/.trinity/README.md`. Architecture: `~/Desktop/omniVerse/ARCHITECTURE.md` §7.
+
+**Two changes this implies here:**
+
+1. `adaptor/engine.py` — at genesis, after archetype detection, load
+   `~/.trinity/claims/_base.yaml` + `~/.trinity/claims/<archetype>.yaml` into the generated
+   project's claim set. Today the scaffold starts with no inherited standard.
+2. `validators/preflight.sh` — append each run's results to `~/.trinity/ledger.jsonl`, and on
+   any FAIL write an entry to `~/.trinity/incidents/`. Today results vanish when the terminal
+   closes.
+
+Keep it plain files. Nothing harness-specific — the spine must survive switching agents.
+
+---
 ## Rules that carry forward
 
 - **Verify every number at its primary source.** Six agents on an explicit verify-everything
