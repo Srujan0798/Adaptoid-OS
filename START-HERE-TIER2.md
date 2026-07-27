@@ -231,6 +231,25 @@ Contract and rules: `~/.trinity/README.md`. Architecture: `~/Desktop/omniVerse/A
 Keep it plain files. Nothing harness-specific — the spine must survive switching agents.
 
 ---
+
+## Order of work — start at 1, do not ask
+
+1. **Fix the 3 first-run defects** (U1a–c above). Genesis currently ends in a FAIL banner.
+   Order: U1b (malformed `policies/default.yaml` template) → U1c (declare `pyyaml`) → U1a
+   (`--help` must not clone into `$HOME`).
+2. **Spine wiring.** `adaptor/engine.py` loads `~/.trinity/claims/` at genesis;
+   `validators/preflight.sh` appends to `~/.trinity/ledger.jsonl` and writes failures to
+   `~/.trinity/incidents/`.
+3. **Arm the hooks** in the four product repos (command above). preflight passes on all four.
+4. **Subtract.** `docs/historical/` is 168 files and 11,529 lines — 47% of this repo's
+   markdown, two nested attics of dead versions. Removing it takes the prose:code ratio from
+   4.3:1 to 2.3:1 without touching a live file. Then collapse 20 root `.md` → 5.
+5. **U3** — put it in front of one person who is not you.
+
+Open questions (decide, do not drift): LangGraph vs `conductor/` for durable execution;
+whether the archetype layer earns its keep when all four projects landed on one archetype.
+
+---
 ## Rules that carry forward
 
 - **Verify every number at its primary source.** Six agents on an explicit verify-everything
