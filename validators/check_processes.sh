@@ -18,7 +18,12 @@ for arg in "$@"; do
   esac
 done
 
-hits=$(ps aux | grep -iE "$MARKER" | grep -viE "grep|Cursor Helper|Code Helper|check_processes|check_tests|check_|preflight|emit_event|opencode|claude |bash|zsh|ps aux|node |npm " || true)
+# FM-02 is about long-running jobs (training, serving) left alive with stale
+# params — not about transient tooling. `git`, `hook` and `pre-commit` are
+# excluded because this validator runs *inside* a pre-commit hook: without
+# them it detects its own parent `git -C <project> commit` as a stale run and
+# fails every commit, permanently. Found on first live use, 2026-07-27.
+hits=$(ps aux | grep -iE "$MARKER" | grep -viE "grep|Cursor Helper|Code Helper|check_processes|check_tests|check_|preflight|emit_event|opencode|claude |bash|zsh|ps aux|node |npm |git |hook|pre-commit" || true)
 
 if [ -n "$hits" ]; then
   echo "WARN FM-02: existing process(es) matching '$MARKER' are running:"
