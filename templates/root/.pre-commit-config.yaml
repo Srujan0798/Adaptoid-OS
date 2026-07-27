@@ -6,7 +6,7 @@ repos:
     hooks:
       - id: os-setup-preflight
         name: OS-Setup Preflight
-        entry: bash orchestrator/scripts/preflight.sh
+        entry: bash validators/preflight.sh
         language: system
         pass_filenames: false
         always_run: true
@@ -14,7 +14,7 @@ repos:
 
       - id: os-setup-publish-gate
         name: Publish Gate (FM-07)
-        entry: bash orchestrator/scripts/publish_gate.sh
+        entry: bash validators/publish_gate.sh
         language: system
         pass_filenames: false
         always_run: true
