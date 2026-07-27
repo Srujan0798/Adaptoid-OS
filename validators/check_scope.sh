@@ -27,7 +27,7 @@ fi
 HIERARCHY="$ROOT/HIERARCHY.md"
 if [ -f "$HIERARCHY" ]; then
   # Collect declared top-level entries (first-level headers, bullets, or backtick names)
-  declared=$(grep -oE '^[-*] `[^`]+`|^## `[^`]+`|^`[^`]+`' "$HIERARCHY" 2>/dev/null | tr -d '`-*# ' | sort -u)
+  declared=$(grep -oE '^[-*] `[^`]+`|^## `[^`]+`|^`[^`]+`' "$HIERARCHY" 2>/dev/null | sed 's/^ *[-*#]* *//; s/ *$//; s/`//g; s|/$||' | sort -u)
   if [ -n "$declared" ]; then
     while IFS= read -r entry; do
       [ -z "$entry" ] && continue
@@ -49,7 +49,7 @@ fi
 REPORTS_DIR="$ROOT/work/reports"
 if [ -d "$REPORTS_DIR" ]; then
   while IFS= read -r report; do
-    brief_files=$(grep -oE '`[^`]+`' "$report" 2>/dev/null | tr -d '`' | grep -E '\.(md|py|js|ts|go|rs|java|sh|yaml|json|toml)$' | sort -u)
+    brief_files=$(grep -oE '`[^`]+`' "$report" 2>/dev/null | tr -d '`' | grep -E '\.(md|py|js|ts|tsx|jsx|go|rs|java|sh|yaml|json|toml)$' | sort -u)
     changed=$(grep -iE '^[-*] changed|^[-*] modified|^[-*] touched|^[-*] files?' "$report" 2>/dev/null | sed -E 's/^[-*:] +//' | grep -oE '[A-Za-z0-9_./-]+\.[A-Za-z0-9]+' | sort -u)
     if [ -n "$brief_files" ] && [ -n "$changed" ]; then
       extras=$(comm -23 <(echo "$changed") <(echo "$brief_files"))

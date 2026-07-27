@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 # FM-09 — False status / misframing.
+# FM-21 — Eval theater: no-op acceptance commands in task briefs.
 # Flags claim words without an accompanying evidence block in worker reports.
 # Usage: check_status_claims.sh [project_root] [--fix] [--dry-run]
 set -uo pipefail
@@ -47,5 +48,14 @@ while IFS= read -r report; do
   fi
 done < <(find "$REPORTS_DIR" -name '*.md' 2>/dev/null)
 
-[ "$fail" -eq 0 ] && echo "OK FM-09: status claims backed by evidence"
+# FM-21 — no-op acceptance commands (auto-pass theater) in task briefs
+if [ -d "$ROOT/work" ]; then
+  noop=$(grep -rnE '^acceptance:[[:space:]]*(true|:|exit 0)[[:space:]]*$|^acceptance:[[:space:]]*echo [^|&;]*$' "$ROOT/work" --include='*.md' 2>/dev/null | grep -v '/reports/' || true)
+  if [ -n "$noop" ]; then
+    printf '%s\n' "$noop" | sed 's/^/FAIL FM-21: no-op acceptance (eval theater): /'
+    fail=1
+  fi
+fi
+
+[ "$fail" -eq 0 ] && echo "OK FM-09/FM-21: status claims backed by evidence, no theater acceptances"
 exit $fail

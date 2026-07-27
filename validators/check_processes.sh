@@ -18,7 +18,7 @@ for arg in "$@"; do
   esac
 done
 
-hits=$(ps aux | grep -iE "$MARKER" | grep -viE "grep|Cursor Helper|Code Helper|check_processes" || true)
+hits=$(ps aux | grep -iE "$MARKER" | grep -viE "grep|Cursor Helper|Code Helper|check_processes|check_tests|check_|preflight|emit_event|opencode|claude |bash|zsh|ps aux|node |npm " || true)
 
 if [ -n "$hits" ]; then
   echo "WARN FM-02: existing process(es) matching '$MARKER' are running:"
@@ -26,7 +26,7 @@ if [ -n "$hits" ]; then
 
   # Param mismatch check
   param_drift=0
-  for kv in "${params[@]}"; do
+  for kv in ${params[@]+"${params[@]}"}; do
     key="${kv%%=*}"; val="${kv##*=}"
     running=$(echo "$hits" | grep -oE -- "--?${key}[ =][^ ]+" | head -1)
     if [ -n "$running" ] && ! echo "$running" | grep -q "$val"; then

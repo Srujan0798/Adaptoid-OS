@@ -18,8 +18,8 @@ done
 fail=0
 
 # bare/swallowing excepts (Python)
-swallow=$(grep -rInE 'except[^:]*:\s*(pass|\.\.\.)\s*$' "$ROOT/src" 2>/dev/null || true)
-bare=$(grep -rInE '^\s*except\s*:' "$ROOT/src" 2>/dev/null || true)
+swallow=$(grep -rInE 'except[^:]*:\s*(pass|\.\.\.)\s*$' "$ROOT/src" --exclude-dir=node_modules --exclude-dir=.next 2>/dev/null || true)
+bare=$(grep -rInE '^\s*except\s*:' "$ROOT/src" --exclude-dir=node_modules --exclude-dir=.next 2>/dev/null || true)
 if [ -n "$swallow$bare" ]; then
   echo "FAIL FM-11: swallowed/bare exception(s):"
   [ -n "$swallow" ] && echo "$swallow" | sed 's/^/  /'
@@ -40,7 +40,7 @@ if [ -n "$swallow$bare" ]; then
 fi
 
 # JS/TS empty catch
-jscatch=$(grep -rInE 'catch\s*\([^)]*\)\s*\{\s*\}' "$ROOT/src" 2>/dev/null || true)
+jscatch=$(grep -rInE 'catch\s*\([^)]*\)\s*\{\s*\}' "$ROOT/src" --exclude-dir=node_modules --exclude-dir=.next 2>/dev/null || true)
 if [ -n "$jscatch" ]; then
   echo "FAIL FM-11: empty catch block(s):"; echo "$jscatch" | sed 's/^/  /'
   fail=1

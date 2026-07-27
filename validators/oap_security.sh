@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
-# FM-18 — OAP Security. Validates policy packs cover active tools.
+# FM-18 / FM-20 — OAP Security. Policy packs cover active tools;
+# MCP servers must be allowlisted (deny-by-default, FM-20-mcp-tool-trust.md).
 # Usage: oap_security.sh [project_root] [--fix] [--dry-run]
 set -uo pipefail
 ROOT="${1:-.}"
@@ -47,6 +48,18 @@ if [ -f "$CONFIG" ]; then
       fi
     done <<< "$tools"
   fi
+fi
+
+# FM-20 — every configured MCP server needs policy coverage (deny-by-default)
+if [ -f "$CONFIG" ]; then
+  servers=$(sed -n 's/^mcp_servers:[[:space:]]*\[\(.*\)\]/\1/p' "$CONFIG" | tr ',' '\n' | tr -d ' "')
+  for s in $servers; do
+    [ -z "$s" ] && continue
+    if ! grep -rqi "$s" "$POLICIES" 2>/dev/null; then
+      echo "FAIL oap-security FM-20: MCP server '$s' has no policy coverage (deny-by-default)"
+      fail=1
+    fi
+  done
 fi
 
 [ "$fail" -eq 0 ] && echo "OK oap-security: policy packs valid"

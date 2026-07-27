@@ -17,3 +17,10 @@ policies:
   data:
     - pattern: "Read(*.env*)"
       decision: deny
+  mcp:
+    - pattern: "mcp(filesystem*)"
+      decision: allow
+    - pattern: "mcp(git*)"
+      decision: allow
+    - pattern: "mcp(*)"
+      decision: ask   # FM-20: deny-by-default for unlisted servers

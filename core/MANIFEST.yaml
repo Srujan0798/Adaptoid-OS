@@ -45,6 +45,8 @@ validators_core:
   - check_tests.sh
   - check_metrics.sh
   - check_processes.sh
+  - check_parallel_writes.sh
+  - check_cost_ceiling.sh
   - audit_chain.sh
   - vault_mmu.sh
   - wake.sh

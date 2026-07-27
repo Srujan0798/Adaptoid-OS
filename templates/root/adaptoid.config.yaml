@@ -29,6 +29,10 @@ workers:
   tool: "opencode-cli"          # opencode-cli | cursor | minimax | codex
   max_parallel: 5
 
+cost:
+  max_usd_per_wave: 10          # FM-19: hard ceiling; host budget flags enforce
+  on_ceiling: "pause-and-ask"
+
 dag_transitions:
   plan:
     allowed_next: [dispatch, review]

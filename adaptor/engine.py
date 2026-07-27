@@ -578,6 +578,10 @@ workers:
   tool: "opencode-cli"
   max_parallel: 5
 
+cost:
+  max_usd_per_wave: 10
+  on_ceiling: "pause-and-ask"
+
 dag_transitions:
   plan:
     allowed_next: [dispatch, review]

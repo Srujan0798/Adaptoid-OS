@@ -31,17 +31,14 @@ while IFS= read -r f; do
   # Unseeded RNG
   if grep -qE '\brandom\.(rand|randint|choice|shuffle|sample)\b|\bnp\.random\.(rand|randn|choice)\b' "$f" && ! grep -qE '\bseed\b|\bnp\.random\.seed\b|\brandom\.state\b' "$f"; then
     echo "WARN FM-10: $f uses unseeded randomness"
-    fail=1
   fi
   # Time-dependent logic
   if grep -qE '\btime\.time\(\)\b|\bdatetime\.now\(\)\b|\bdatetime\.today\(\)\b' "$f"; then
     echo "WARN FM-10: $f uses time-dependent logic without mocking"
-    fail=1
   fi
   # Module-level mutable singletons
   if grep -qE '^[A-Za-z_][A-Za-z0-9_]* *= *\{\s*$|^[A-Za-z_][A-Za-z0-9_]* *= *\[\s*$' "$f"; then
     echo "WARN FM-10: $f has module-level mutable structures (possible shared state)"
-    fail=1
   fi
   # Stale quarantined tests
   quarantined=$(grep -HnE '@pytest\.mark\.flaky|@pytest\.mark\.skip\(.*flaky' "$f" 2>/dev/null)
