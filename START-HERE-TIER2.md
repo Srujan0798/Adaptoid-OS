@@ -206,29 +206,28 @@ research brief in this stack, and it is the only input that cannot be generated 
 ---
 
 
-## The spine — `~/.trinity/` (created 2026-07-27, empty)
+## The store lives in ETERNITY's repo, in git — not on this machine
 
-This folder now reads and writes a persistent store that outlives every project. It is the
-reason project ten starts where project nine ended instead of where project one did.
+An earlier version of this file pointed at `~/.trinity/`. **That was wrong** — a local home
+directory cannot be cloned, cannot travel, and is invisible to an agent handed a GitHub link.
+Removed. The accumulated standard lives in the **ETERNITY repo**, and `git push` is what makes
+it compound.
 
-| What | Path | This repo's role |
+| What | Where | This repo's role |
 |---|---|---|
-| Claim sets, per archetype | `~/.trinity/claims/` | **read at genesis** — an archetype pulls its claims, including every claim earned on every past project |
-| Run results | `~/.trinity/ledger.jsonl` | **append** — every claim result, every project, forever. Append-only, machine-generated |
-| Failures | `~/.trinity/incidents/` | **write** — when something breaks in a new way |
-
-Contract and rules: `~/.trinity/README.md`. Architecture: `~/Desktop/omniVerse/ARCHITECTURE.md` §7.
+| Claim sets, per archetype | `$ETERNITY_HOME/claims/` | **read at genesis** — a new project inherits every claim earned by every past project |
+| Run results, incidents | inside the project being built | **write** — they are that project's evidence, not global state |
+| A distilled lesson | `$ETERNITY_HOME/proposed/` | **propose** — a human accepts it into `claims/` and pushes |
 
 **Two changes this implies here:**
 
-1. `adaptor/engine.py` — at genesis, after archetype detection, load
-   `~/.trinity/claims/_base.yaml` + `~/.trinity/claims/<archetype>.yaml` into the generated
-   project's claim set. Today the scaffold starts with no inherited standard.
-2. `validators/preflight.sh` — append each run's results to `~/.trinity/ledger.jsonl`, and on
-   any FAIL write an entry to `~/.trinity/incidents/`. Today results vanish when the terminal
-   closes.
+1. `adaptor/engine.py` — at genesis, after archetype detection, load `_base.yaml` +
+   `<archetype>.yaml` from `$ETERNITY_HOME/claims/` (default: sibling directory `../ETERNITY`).
+   Today the scaffold starts with no inherited standard.
+2. `validators/preflight.sh` — on FAIL, write an incident into the project under
+   `work/incidents/`. That is the raw material the intake loop distills into a claim.
 
-Keep it plain files. Nothing harness-specific — the spine must survive switching agents.
+Keep it plain files. Nothing harness-specific — this must survive switching agent tools.
 
 ---
 
@@ -237,9 +236,8 @@ Keep it plain files. Nothing harness-specific — the spine must survive switchi
 1. **Fix the 3 first-run defects** (U1a–c above). Genesis currently ends in a FAIL banner.
    Order: U1b (malformed `policies/default.yaml` template) → U1c (declare `pyyaml`) → U1a
    (`--help` must not clone into `$HOME`).
-2. **Spine wiring.** `adaptor/engine.py` loads `~/.trinity/claims/` at genesis;
-   `validators/preflight.sh` appends to `~/.trinity/ledger.jsonl` and writes failures to
-   `~/.trinity/incidents/`.
+2. **Store wiring.** `adaptor/engine.py` loads claim sets from `$ETERNITY_HOME/claims/`
+   at genesis; `validators/preflight.sh` writes incidents into the project's `work/incidents/`.
 3. **Arm the hooks** in the four product repos (command above). preflight passes on all four.
 4. **Subtract.** `docs/historical/` is 168 files and 11,529 lines — 47% of this repo's
    markdown, two nested attics of dead versions. Removing it takes the prose:code ratio from
